@@ -1,3 +1,4 @@
+import React from 'react'
 import { aboutPage } from '@/data'
 import Link from 'next/link'
 
@@ -10,7 +11,7 @@ export default function AboutPage() {
   const { hero, introduction, mission, values, highlight, statistics } = aboutPage.sections
 
   const getIcon = (iconName: string) => {
-    const icons: Record<string, JSX.Element> = {
+    const icons: Record<string, React.JSX.Element> = {
       target: (
         <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
           <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 10V3L4 14h7v7l9-11h-7z' />

@@ -1,3 +1,4 @@
+import React from 'react'
 import Link from 'next/link'
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import Hero from '@/components/sections/Hero'
@@ -10,7 +11,7 @@ export const metadata = {
 }
 
 const getIcon = (iconName: string) => {
-  const icons: Record<string, JSX.Element> = {
+  const icons: Record<string, React.JSX.Element> = {
     target: (
       <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
         <path

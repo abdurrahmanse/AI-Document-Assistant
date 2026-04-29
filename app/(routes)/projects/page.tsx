@@ -84,7 +84,7 @@ export default function ProjectsPage() {
 
                     {/* Highlights */}
                     <div className='grid grid-cols-2 sm:grid-cols-3 gap-4 mb-6'>
-                      {Object.entries(project.highlights).map(([key, value]: [string, string]) => (
+                      {Object.entries(project.highlights).map(([key, value]: [string, string | number]) => (
                         <div key={key} className='bg-slate-700/30 rounded-lg p-3'>
                           <p className='text-xs text-slate-500 uppercase tracking-wider mb-1'>
                             {key.replace(/_/g, ' ')}
