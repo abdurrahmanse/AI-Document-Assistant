@@ -141,7 +141,10 @@ export default function Contact() {
             <details className='group bg-slate-700/50 border border-slate-600 rounded-lg p-6 cursor-pointer hover:border-blue-500/50 transition-all duration-300'>
               <summary className='flex items-center justify-between font-semibold text-white'>
                 <span>What services do you offer?</span>
-                <SiteIcon name='arrowDown' className='transition-transform duration-300 group-open:rotate-180 h-4 w-4' />
+                <SiteIcon
+                  name='arrowDown'
+                  className='transition-transform duration-300 group-open:rotate-180 h-4 w-4'
+                />
               </summary>
               <p className='text-slate-300 mt-4'>
                 I offer data science consulting, machine learning model development, data engineering, statistical
@@ -153,7 +156,10 @@ export default function Contact() {
             <details className='group bg-slate-700/50 border border-slate-600 rounded-lg p-6 cursor-pointer hover:border-blue-500/50 transition-all duration-300'>
               <summary className='flex items-center justify-between font-semibold text-white'>
                 <span>Whats your typical response time?</span>
-                <SiteIcon name='arrowDown' className='transition-transform duration-300 group-open:rotate-180 h-4 w-4' />
+                <SiteIcon
+                  name='arrowDown'
+                  className='transition-transform duration-300 group-open:rotate-180 h-4 w-4'
+                />
               </summary>
               <p className='text-slate-300 mt-4'>
                 I typically respond to inquiries within 24-48 hours. For urgent matters, please call or mention it in
@@ -165,7 +171,10 @@ export default function Contact() {
             <details className='group bg-slate-700/50 border border-slate-600 rounded-lg p-6 cursor-pointer hover:border-blue-500/50 transition-all duration-300'>
               <summary className='flex items-center justify-between font-semibold text-white'>
                 <span>Do you work remotely?</span>
-                <SiteIcon name='arrowDown' className='transition-transform duration-300 group-open:rotate-180 h-4 w-4' />
+                <SiteIcon
+                  name='arrowDown'
+                  className='transition-transform duration-300 group-open:rotate-180 h-4 w-4'
+                />
               </summary>
               <p className='text-slate-300 mt-4'>
                 Yes! Im based in San Francisco but work with clients globally. Remote collaboration is my preferred way
@@ -177,7 +186,10 @@ export default function Contact() {
             <details className='group bg-slate-700/50 border border-slate-600 rounded-lg p-6 cursor-pointer hover:border-blue-500/50 transition-all duration-300'>
               <summary className='flex items-center justify-between font-semibold text-white'>
                 <span>Can we schedule a call?</span>
-                <SiteIcon name='arrowDown' className='transition-transform duration-300 group-open:rotate-180 h-4 w-4' />
+                <SiteIcon
+                  name='arrowDown'
+                  className='transition-transform duration-300 group-open:rotate-180 h-4 w-4'
+                />
               </summary>
               <p className='text-slate-300 mt-4'>
                 Absolutely! Feel free to reach out via email or phone. Im happy to discuss your needs and explore

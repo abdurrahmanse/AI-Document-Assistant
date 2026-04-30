@@ -66,7 +66,15 @@ export default function AboutPage() {
                 <div className='flex items-start gap-4'>
                   <div className='text-blue-400 shrink-0 pt-1'>
                     <SiteIcon
-                      name={value.icon === 'code' ? 'code' : value.icon === 'users' ? 'users' : value.icon === 'book' ? 'book' : 'target'}
+                      name={
+                        value.icon === 'code'
+                          ? 'code'
+                          : value.icon === 'users'
+                            ? 'users'
+                            : value.icon === 'book'
+                              ? 'book'
+                              : 'target'
+                      }
                       className='h-8 w-8'
                     />
                   </div>
@@ -112,9 +120,9 @@ export default function AboutPage() {
                 <div className='relative'>
                   <div className='absolute inset-0 bg-linear-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                   <div className='relative bg-slate-900 rounded-lg p-6'>
-                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
-                    <SiteIcon name='sparkles' className='h-4 w-4' />
-                  </div>
+                    <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                      <SiteIcon name='sparkles' className='h-4 w-4' />
+                    </div>
                     <p className='text-3xl sm:text-4xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent'>
                       {stat.number}
                     </p>

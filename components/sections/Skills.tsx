@@ -27,7 +27,9 @@ export default function Skills() {
             >
               <h3 className='text-lg font-semibold text-white mb-4 flex items-center gap-2'>
                 <SiteIcon
-                  name={category.categoryIcon === 'code' ? 'code' : category.categoryIcon === 'brain' ? 'brain' : 'layers'}
+                  name={
+                    category.categoryIcon === 'code' ? 'code' : category.categoryIcon === 'brain' ? 'brain' : 'layers'
+                  }
                   className='h-4 w-4 text-cyan-400'
                 />
                 {category.categoryName}

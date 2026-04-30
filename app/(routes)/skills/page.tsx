@@ -38,7 +38,13 @@ export default function SkillsPage() {
                 <div className='flex items-center gap-4 mb-4'>
                   <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-blue-500/20 to-cyan-500/20 text-cyan-300'>
                     <SiteIcon
-                      name={category.categoryIcon === 'code' ? 'code' : category.categoryIcon === 'brain' ? 'brain' : 'layers'}
+                      name={
+                        category.categoryIcon === 'code'
+                          ? 'code'
+                          : category.categoryIcon === 'brain'
+                            ? 'brain'
+                            : 'layers'
+                      }
                       className='h-6 w-6'
                     />
                   </div>

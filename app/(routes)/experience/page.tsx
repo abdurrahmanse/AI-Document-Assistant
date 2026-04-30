@@ -1,5 +1,5 @@
-import { experiencePage } from '@/data'
 import { SiteIcon } from '@/components/ui'
+import { experiencePage } from '@/data'
 import Link from 'next/link'
 
 export const metadata = {
@@ -120,7 +120,7 @@ export default function ExperiencePage() {
                           <ul className='space-y-1'>
                             {job.highlights.map((highlight: string, highlightIdx) => (
                               <li key={highlightIdx} className='text-sm text-slate-400 flex items-start gap-2'>
-                                  <SiteIcon name='check' className='mt-1 h-4 w-4 text-green-400' />
+                                <SiteIcon name='check' className='mt-1 h-4 w-4 text-green-400' />
                                 <span>{highlight}</span>
                               </li>
                             ))}

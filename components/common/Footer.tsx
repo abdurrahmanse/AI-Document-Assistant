@@ -44,8 +44,8 @@ export default function Footer() {
               </Link>
 
               <p className='max-w-xl text-slate-400 leading-relaxed'>
-                Building structured, measurable, and scalable digital products with AI, machine learning, deep
-                learning, NLP, and data engineering.
+                Building structured, measurable, and scalable digital products with AI, machine learning, deep learning,
+                NLP, and data engineering.
               </p>
 
               <div className='flex flex-wrap gap-3'>
@@ -78,8 +78,7 @@ export default function Footer() {
                     rel='noopener noreferrer'
                     className='inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
                   >
-                    <SiteIcon name='twitter' className='h-4 w-4' />
-                    X / Twitter
+                    <SiteIcon name='twitter' className='h-4 w-4' />X / Twitter
                   </a>
                 )}
               </div>

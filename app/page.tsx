@@ -62,7 +62,15 @@ export default function Home() {
                 <div className='flex items-start gap-4'>
                   <div className='text-blue-400 shrink-0 pt-1'>
                     <SiteIcon
-                      name={value.icon === 'code' ? 'code' : value.icon === 'users' ? 'users' : value.icon === 'book' ? 'book' : 'target'}
+                      name={
+                        value.icon === 'code'
+                          ? 'code'
+                          : value.icon === 'users'
+                            ? 'users'
+                            : value.icon === 'book'
+                              ? 'book'
+                              : 'target'
+                      }
                       className='h-8 w-8'
                     />
                   </div>
