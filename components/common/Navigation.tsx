@@ -1,96 +1,85 @@
 'use client'
 
-import { siteConfig } from '@/data'
+import { Container } from '@/components/ui'
+import { useScroll, useToggle } from '@/hooks'
+import { ROUTES } from '@/utils'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
-import { useState } from 'react'
 
 export default function Navigation() {
-  const pathname = usePathname()
-  const [isOpen, setIsOpen] = useState(false)
-  const { pages } = siteConfig
+  const { isAtTop } = useScroll()
+  const [mobileMenuOpen, toggleMobileMenu, setMobileMenuOpen] = useToggle(false)
 
-  const isActive = (path: string) => pathname === path
-
-  const navLinks = pages.filter((p) => p.displayInNav).sort((a, b) => a.order - b.order)
+  const navLinks = [
+    { label: 'Home', href: ROUTES.HOME },
+    { label: 'About', href: ROUTES.ABOUT },
+    { label: 'Experience', href: ROUTES.EXPERIENCE },
+    { label: 'Projects', href: ROUTES.PROJECTS },
+    { label: 'Skills', href: ROUTES.SKILLS },
+    { label: 'Publications', href: ROUTES.PUBLICATIONS },
+    { label: 'Contact', href: ROUTES.CONTACT },
+  ]
 
   return (
-    <nav className='sticky top-0 z-50 bg-slate-900/95 backdrop-blur-md border-b border-slate-800'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        <div className='flex justify-between items-center h-16'>
+    <nav
+      className={`sticky top-0 z-50 transition-all duration-300 ${
+        !isAtTop ? 'bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50' : 'bg-transparent'
+      }`}
+    >
+      <Container size='xl'>
+        <div className='flex items-center justify-between py-4'>
           {/* Logo */}
-          <Link href='/' className='flex items-center gap-2 group'>
-            <div className='w-10 h-10 bg-linear-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center'>
-              <span className='text-white font-bold text-lg'>SM</span>
+          <Link href={ROUTES.HOME} className='flex items-center gap-2 group'>
+            <div className='w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all'>
+              SM
             </div>
-            <div className='hidden sm:flex flex-col'>
-              <span className='text-white font-bold leading-none'>S M Rahman</span>
-              <span className='text-xs text-blue-400'>Data Scientist</span>
-            </div>
+            <span className='font-bold text-lg hidden sm:inline'>Portfolio</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className='hidden md:flex items-center gap-8'>
+          <div className='hidden lg:flex items-center gap-1'>
             {navLinks.map((link) => (
               <Link
-                key={link.path}
-                href={link.path}
-                className={`text-sm font-medium transition-all duration-300 relative group ${
-                  isActive(link.path) ? 'text-blue-400' : 'text-slate-300 hover:text-white'
-                }`}
+                key={link.href}
+                href={link.href}
+                className='px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all duration-200 text-sm'
               >
-                {link.title}
-                <span
-                  className={`absolute bottom-0 left-0 h-0.5 bg-linear-to-r from-blue-400 to-cyan-400 transition-all duration-300 ${
-                    isActive(link.path) ? 'w-full' : 'w-0 group-hover:w-full'
-                  }`}
-                ></span>
+                {link.label}
               </Link>
             ))}
           </div>
 
-          {/* Mobile Menu Button */}
+          {/* Mobile Menu Toggle */}
           <button
-            onClick={() => setIsOpen(!isOpen)}
-            className='md:hidden p-2 text-slate-300 hover:text-white transition-colors'
-            aria-label='Toggle menu'
+            onClick={toggleMobileMenu}
+            className='lg:hidden p-2 hover:bg-slate-800/50 rounded-md transition-all'
+            aria-label='Toggle navigation'
           >
-            <svg
-              className={`w-6 h-6 transition-transform duration-300 ${isOpen ? 'rotate-90' : ''}`}
-              fill='none'
-              stroke='currentColor'
-              viewBox='0 0 24 24'
-            >
-              <path
-                strokeLinecap='round'
-                strokeLinejoin='round'
-                strokeWidth={2}
-                d={isOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-              />
+            <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
+              {mobileMenuOpen ? (
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
+              ) : (
+                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
+              )}
             </svg>
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className='md:hidden pb-4 space-y-2 animate-in fade-in slide-in-from-top-2'>
+        {mobileMenuOpen && (
+          <div className='lg:hidden pb-4 space-y-2 border-t border-slate-800'>
             {navLinks.map((link) => (
               <Link
-                key={link.path}
-                href={link.path}
-                onClick={() => setIsOpen(false)}
-                className={`block px-4 py-2 rounded-lg transition-all duration-300 ${
-                  isActive(link.path)
-                    ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                    : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                }`}
+                key={link.href}
+                href={link.href}
+                className='block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all'
+                onClick={() => setMobileMenuOpen(false)}
               >
-                {link.title}
+                {link.label}
               </Link>
             ))}
           </div>
         )}
-      </div>
+      </Container>
     </nav>
   )
 }

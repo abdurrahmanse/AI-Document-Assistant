@@ -238,7 +238,7 @@ export default function ProjectsPage() {
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-4xl font-bold text-white mb-6'>Have an interesting project in mind?</h2>
           <p className='text-xl text-slate-300 mb-8'>
-            I'm always open to discussing new opportunities and solving complex data science challenges.
+            I&apos;m always open to discussing new opportunities and solving complex data science challenges.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link

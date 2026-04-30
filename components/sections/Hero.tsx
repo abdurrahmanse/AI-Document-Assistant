@@ -1,4 +1,5 @@
 import { personalData } from '@/data/pages/01-personal'
+import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
@@ -99,13 +100,14 @@ export default function Hero() {
           <div className='hidden md:block'>
             <div className='relative'>
               <div className='absolute inset-0 bg-linear-to-r from-blue-600 to-cyan-600 rounded-2xl blur-3xl opacity-20'></div>
-              <div className='relative bg-linear-to-br from-slate-700 to-slate-800 rounded-2xl p-8 border border-slate-700 h-96 flex items-center justify-center'>
-                <div className='text-center text-slate-400'>
-                  <div className='text-6xl mb-4'>📊</div>
-                  <p className='text-lg'>Profile Image</p>
-                  <p className='text-sm mt-2'>Add your image to</p>
-                  <p className='text-xs text-slate-500'>public/images/profile.jpg</p>
-                </div>
+              <div className='relative h-96 overflow-hidden rounded-2xl border border-slate-700 bg-slate-800 shadow-2xl'>
+                <Image
+                  src='/images/profile/masfiq.png'
+                  alt='Masfiq profile portrait'
+                  fill
+                  priority
+                  className='object-cover'
+                />
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
-import React from 'react'
 import { aboutPage } from '@/data'
 import Link from 'next/link'
+import React from 'react'
 
 export const metadata = {
   title: aboutPage.page.title,
@@ -166,7 +166,8 @@ export default function AboutPage() {
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-4xl font-bold text-white mb-6'>Ready to Work Together?</h2>
           <p className='text-xl text-slate-300 mb-8'>
-            I'm always interested in connecting with people who share my passion for data and solving complex problems.
+            I&apos;m always interested in connecting with people who share my passion for data and solving complex
+            problems.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link

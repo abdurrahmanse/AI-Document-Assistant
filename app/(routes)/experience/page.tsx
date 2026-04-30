@@ -235,15 +235,15 @@ export default function ExperiencePage() {
         <div className='max-w-4xl mx-auto text-center'>
           <h2 className='text-4xl font-bold text-white mb-6'>Ready to work together?</h2>
           <p className='text-xl text-slate-300 mb-8'>
-            With years of experience building impactful data science solutions, I'm excited to tackle new challenges and
-            help drive your business forward.
+            With years of experience building impactful data science solutions, I&apos;m excited to tackle new
+            challenges and help drive your business forward.
           </p>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
             <Link
               href='/contact'
               className='px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105'
             >
-              Let's Connect
+              Let&apos;s Connect
             </Link>
             <Link
               href='/projects'

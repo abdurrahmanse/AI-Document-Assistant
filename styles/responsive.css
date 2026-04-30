@@ -1,0 +1,38 @@
+/**
+ * Responsive utilities
+ */
+
+@media (max-width: 768px) {
+  .text-display {
+    font-size: 2.25rem;
+  }
+
+  .text-headline {
+    font-size: 1.875rem;
+  }
+
+  .hidden-mobile {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) {
+  .hidden-desktop {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .text-display {
+    font-size: 1.875rem;
+  }
+
+  .text-headline {
+    font-size: 1.5rem;
+  }
+
+  .px-safe {
+    padding-left: max(1rem, env(safe-area-inset-left));
+    padding-right: max(1rem, env(safe-area-inset-right));
+  }
+}

@@ -1,9 +1,9 @@
-import React from 'react'
-import Link from 'next/link'
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import Hero from '@/components/sections/Hero'
 import Skills from '@/components/sections/Skills'
-import { siteConfig, aboutPage, recognitionHistory } from '@/data'
+import { aboutPage, recognitionHistory, siteConfig } from '@/data'
+import Link from 'next/link'
+import React from 'react'
 
 export const metadata = {
   title: siteConfig.siteConfig.title,
@@ -14,22 +14,12 @@ const getIcon = (iconName: string) => {
   const icons: Record<string, React.JSX.Element> = {
     target: (
       <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth={2}
-          d='M13 10V3L4 14h7v7l9-11h-7z'
-        />
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 10V3L4 14h7v7l9-11h-7z' />
       </svg>
     ),
     code: (
       <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth={2}
-          d='M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3'
-        />
+        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3' />
       </svg>
     ),
     users: (
@@ -191,9 +181,7 @@ export default function Home() {
                       <p className='text-xs text-amber-300 mt-1'>{award.date}</p>
                     </div>
                   </div>
-                  {award.description && (
-                    <p className='text-slate-300 text-sm leading-relaxed'>{award.description}</p>
-                  )}
+                  {award.description && <p className='text-slate-300 text-sm leading-relaxed'>{award.description}</p>}
                 </div>
               ))}
             </div>
@@ -217,7 +205,8 @@ export default function Home() {
           <div>
             <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>Ready to discuss your next project?</h2>
             <p className='text-xl text-slate-300 mb-8 max-w-2xl mx-auto'>
-              I'm available for consulting projects, speaking engagements, and full-time opportunities to help solve complex data science challenges.
+              I&apos;m available for consulting projects, speaking engagements, and full-time opportunities to help
+              solve complex data science challenges.
             </p>
           </div>
           <div className='flex flex-col sm:flex-row gap-4 justify-center'>
