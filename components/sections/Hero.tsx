@@ -13,15 +13,7 @@ export default function Hero() {
       <div className='absolute -left-32 top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl' />
       <div className='absolute -right-24 top-1/2 h-80 w-80 rounded-full bg-blue-500/15 blur-3xl' />
 
-      <div className='relative mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8 lg:py-28'>
-        <div className='mb-10 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-slate-200 backdrop-blur-xl shadow-[0_8px_32px_rgba(15,23,42,0.35)]'>
-          <span className='relative flex h-2.5 w-2.5'>
-            <span className='absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-60' />
-            <span className='relative inline-flex h-2.5 w-2.5 rounded-full bg-emerald-400' />
-          </span>
-          {availability.status}
-        </div>
-
+      <div className='relative mx-auto max-w-7xl px-2 py-4 sm:px-6 lg:px-8 lg:py-28'>
         <div className='grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16'>
           <div className='space-y-8'>
             <div className='space-y-5'>
