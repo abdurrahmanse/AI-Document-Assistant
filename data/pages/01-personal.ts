@@ -19,8 +19,8 @@ export const personalData: PersonalData = {
         coverImage: "/images/cover.jpg",
     },
     contact: {
-        email: "S M Masfequier Rahman.Swapno@email.com",
-        phone: "+1 (555) 123-4567",
+        email: "masfequier.cse.bubt@gmail.com",
+        phone: "+8801569188285",
         location: {
             city: "Dhaka",
             state: "Dhaka",

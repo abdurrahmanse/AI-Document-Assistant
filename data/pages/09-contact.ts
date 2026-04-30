@@ -26,12 +26,12 @@ export const contactPage: ContactPage = {
     },
     contactInfo: {
         email: {
-            address: "S M Masfequier Rahman.Swapno@email.com",
+            address: "masfequier.cse.bubt@gmail.com",
             label: "Email",
             responseTime: "24-48 hours",
         },
         phone: {
-            number: "+1 (555) 123-4567",
+            number: "+8801569188285",
             label: "Phone",
             availability: "By appointment",
         },
