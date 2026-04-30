@@ -1,4 +1,5 @@
 import { experiencePage } from '@/data'
+import { SiteIcon } from '@/components/ui'
 import Link from 'next/link'
 
 export const metadata = {
@@ -50,7 +51,10 @@ export default function ExperiencePage() {
                         <div>
                           <h3 className='text-2xl font-bold text-white mb-2'>{job.title}</h3>
                           <div className='flex flex-col md:items-end gap-2'>
-                            <p className='text-lg text-blue-400 font-semibold'>{job.company.name}</p>
+                            <p className='text-lg text-blue-400 font-semibold flex items-center gap-2 md:justify-end'>
+                              <SiteIcon name='briefcase' className='h-4 w-4' />
+                              {job.company.name}
+                            </p>
                             <p className='text-sm text-slate-400'>
                               {job.location.city}, {job.location.state}
                               {job.location.remote && ' • Remote'}
@@ -75,7 +79,7 @@ export default function ExperiencePage() {
                         <ul className='space-y-2'>
                           {job.responsibilities.slice(0, 4).map((responsibility: string, respIdx) => (
                             <li key={respIdx} className='flex items-start gap-3 text-sm text-slate-300'>
-                              <span className='text-blue-400 mt-1 shrink-0'>→</span>
+                              <SiteIcon name='arrowRight' className='text-blue-400 mt-1 h-4 w-4 shrink-0' />
                               <span>{responsibility}</span>
                             </li>
                           ))}
@@ -116,7 +120,7 @@ export default function ExperiencePage() {
                           <ul className='space-y-1'>
                             {job.highlights.map((highlight: string, highlightIdx) => (
                               <li key={highlightIdx} className='text-sm text-slate-400 flex items-start gap-2'>
-                                <span className='text-green-400 mt-1'>✓</span>
+                                  <SiteIcon name='check' className='mt-1 h-4 w-4 text-green-400' />
                                 <span>{highlight}</span>
                               </li>
                             ))}
@@ -141,6 +145,9 @@ export default function ExperiencePage() {
               <div className='relative'>
                 <div className='absolute inset-0 bg-linear-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                 <div className='relative bg-slate-900 rounded-lg p-6'>
+                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                    <SiteIcon name='briefcase' className='h-4 w-4' />
+                  </div>
                   <p className='text-4xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent'>
                     5+
                   </p>
@@ -153,6 +160,9 @@ export default function ExperiencePage() {
               <div className='relative'>
                 <div className='absolute inset-0 bg-linear-to-r from-green-500 to-emerald-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                 <div className='relative bg-slate-900 rounded-lg p-6'>
+                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                    <SiteIcon name='users' className='h-4 w-4' />
+                  </div>
                   <p className='text-4xl font-bold bg-linear-to-r from-green-400 to-emerald-400 bg-clip-text text-transparent'>
                     {jobs.length}
                   </p>
@@ -165,6 +175,9 @@ export default function ExperiencePage() {
               <div className='relative'>
                 <div className='absolute inset-0 bg-linear-to-r from-purple-500 to-pink-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                 <div className='relative bg-slate-900 rounded-lg p-6'>
+                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                    <SiteIcon name='layers' className='h-4 w-4' />
+                  </div>
                   <p className='text-4xl font-bold bg-linear-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent'>
                     4+
                   </p>
@@ -177,6 +190,9 @@ export default function ExperiencePage() {
               <div className='relative'>
                 <div className='absolute inset-0 bg-linear-to-r from-amber-500 to-orange-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                 <div className='relative bg-slate-900 rounded-lg p-6'>
+                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                    <SiteIcon name='chart' className='h-4 w-4' />
+                  </div>
                   <p className='text-4xl font-bold bg-linear-to-r from-amber-400 to-orange-400 bg-clip-text text-transparent'>
                     $4.1M+
                   </p>
@@ -215,11 +231,25 @@ export default function ExperiencePage() {
                 key={idx}
                 className='bg-linear-to-br from-slate-800/30 to-slate-900/30 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300'
               >
-                <h3 className='text-xl font-bold text-white mb-4'>{competency.title}</h3>
+                <h3 className='text-xl font-bold text-white mb-4 flex items-center gap-2'>
+                  <SiteIcon
+                    name={
+                      competency.title === 'Machine Learning'
+                        ? 'brain'
+                        : competency.title === 'Data Engineering'
+                          ? 'layers'
+                          : competency.title === 'Cloud & DevOps'
+                            ? 'rocket'
+                            : 'users'
+                    }
+                    className='h-5 w-5 text-cyan-300'
+                  />
+                  {competency.title}
+                </h3>
                 <div className='space-y-2'>
                   {competency.skills.map((skill, skillIdx) => (
                     <div key={skillIdx} className='flex items-center gap-3'>
-                      <div className='w-2 h-2 bg-blue-400 rounded-full'></div>
+                      <SiteIcon name='check' className='h-4 w-4 text-blue-400' />
                       <p className='text-slate-300'>{skill}</p>
                     </div>
                   ))}
@@ -243,13 +273,17 @@ export default function ExperiencePage() {
               href='/contact'
               className='px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105'
             >
-              Let&apos;s Connect
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='message' className='h-4 w-4' /> Let&apos;s Connect
+              </span>
             </Link>
             <Link
               href='/projects'
               className='px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300'
             >
-              View My Projects
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='rocket' className='h-4 w-4' /> View My Projects
+              </span>
             </Link>
           </div>
         </div>

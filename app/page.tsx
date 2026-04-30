@@ -1,49 +1,13 @@
 import FeaturedProjects from '@/components/sections/FeaturedProjects'
 import Hero from '@/components/sections/Hero'
 import Skills from '@/components/sections/Skills'
+import { SiteIcon } from '@/components/ui'
 import { aboutPage, recognitionHistory, siteConfig } from '@/data'
 import Link from 'next/link'
-import React from 'react'
 
 export const metadata = {
   title: siteConfig.siteConfig.title,
   description: siteConfig.siteConfig.description,
-}
-
-const getIcon = (iconName: string) => {
-  const icons: Record<string, React.JSX.Element> = {
-    target: (
-      <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M13 10V3L4 14h7v7l9-11h-7z' />
-      </svg>
-    ),
-    code: (
-      <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M10 20l4-16m4 4l4 4m0 0l-4 4m4-4H3' />
-      </svg>
-    ),
-    users: (
-      <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth={2}
-          d='M17 20h5v-2a3 3 0 00-5.856-1.487M15 10a3 3 0 11-6 0 3 3 0 016 0zM6 20a9 9 0 0118 0v2H6v-2z'
-        />
-      </svg>
-    ),
-    book: (
-      <svg className='w-8 h-8' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-        <path
-          strokeLinecap='round'
-          strokeLinejoin='round'
-          strokeWidth={2}
-          d='M12 6.253v13m0-13C6.5 6.253 2 10.998 2 17.001m0 0a8.987 8.987 0 016.5-2.684c2.326 0 4.539.911 6.5 2.684m0 0a8.987 8.987 0 006.5-2.684c3.649 0 7 3.686 7 8.235'
-        />
-      </svg>
-    ),
-  }
-  return icons[iconName] || icons.target
 }
 
 export default function Home() {
@@ -77,7 +41,7 @@ export default function Home() {
         <div className='max-w-4xl mx-auto'>
           <div className='bg-slate-800/50 backdrop-blur border border-slate-700 rounded-2xl p-12'>
             <h2 className='text-3xl font-bold text-white mb-6 flex items-center gap-3'>
-              <span className='text-2xl'>🎯</span>
+              <SiteIcon name='target' className='h-7 w-7 text-cyan-300' />
               {mission.heading}
             </h2>
             <p className='text-xl text-slate-300 leading-relaxed'>{mission.content}</p>
@@ -96,7 +60,12 @@ export default function Home() {
                 className='bg-linear-to-br from-slate-800/50 to-slate-900/50 border border-slate-700 rounded-xl p-8 hover:border-blue-500/50 transition-all duration-300'
               >
                 <div className='flex items-start gap-4'>
-                  <div className='text-blue-400 shrink-0 pt-1'>{getIcon(value.icon)}</div>
+                  <div className='text-blue-400 shrink-0 pt-1'>
+                    <SiteIcon
+                      name={value.icon === 'code' ? 'code' : value.icon === 'users' ? 'users' : value.icon === 'book' ? 'book' : 'target'}
+                      className='h-8 w-8'
+                    />
+                  </div>
                   <div className='flex-1'>
                     <h3 className='text-xl font-bold text-white mb-3'>{value.title}</h3>
                     <p className='text-slate-400 leading-relaxed'>{value.description}</p>
@@ -123,13 +92,7 @@ export default function Home() {
               <div key={idx} className='flex items-start gap-4'>
                 <div className='shrink-0 pt-1'>
                   <div className='flex items-center justify-center h-6 w-6 rounded-full bg-linear-to-r from-blue-500 to-cyan-500'>
-                    <svg className='h-4 w-4 text-white' fill='currentColor' viewBox='0 0 20 20'>
-                      <path
-                        fillRule='evenodd'
-                        d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z'
-                        clipRule='evenodd'
-                      />
-                    </svg>
+                    <SiteIcon name='check' className='h-4 w-4 text-white' />
                   </div>
                 </div>
                 <div>
@@ -151,6 +114,9 @@ export default function Home() {
                 <div className='relative'>
                   <div className='absolute inset-0 bg-linear-to-r from-blue-500 to-cyan-500 rounded-lg blur opacity-25 group-hover:opacity-100 transition-opacity duration-300'></div>
                   <div className='relative bg-slate-900 rounded-lg p-6'>
+                    <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
+                      <SiteIcon name='sparkles' className='h-4 w-4' />
+                    </div>
                     <p className='text-3xl sm:text-4xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent'>
                       {stat.number}
                     </p>
@@ -167,7 +133,9 @@ export default function Home() {
       {allAwards.length > 0 && (
         <section className='py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-slate-950 to-slate-900 border-b border-slate-800'>
           <div className='max-w-6xl mx-auto'>
-            <h2 className='text-4xl font-bold text-white mb-12 text-center'>🏆 Recent Recognition</h2>
+            <h2 className='text-4xl font-bold text-white mb-12 text-center flex items-center justify-center gap-3'>
+              <SiteIcon name='trophy' className='h-8 w-8 text-amber-300' /> Recent Recognition
+            </h2>
             <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
               {allAwards.slice(0, 3).map((award, idx) => (
                 <div
@@ -175,7 +143,7 @@ export default function Home() {
                   className='bg-linear-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-6 hover:border-amber-400/60 transition-all duration-300'
                 >
                   <div className='flex items-start gap-3 mb-3'>
-                    <span className='text-3xl'>🏅</span>
+                    <SiteIcon name='trophy' className='h-8 w-8 text-amber-300' />
                     <div className='flex-1'>
                       <h3 className='text-lg font-bold text-white'>{award.title}</h3>
                       <p className='text-xs text-amber-300 mt-1'>{award.date}</p>
@@ -191,7 +159,9 @@ export default function Home() {
                   href='/publications'
                   className='inline-block px-6 py-2 bg-amber-600 hover:bg-amber-500 text-white rounded-lg transition-colors duration-300 text-sm font-medium'
                 >
-                  View All Awards →
+                  <span className='inline-flex items-center gap-2'>
+                    <SiteIcon name='arrowRight' className='h-4 w-4' /> View All Awards
+                  </span>
                 </Link>
               </div>
             )}
@@ -214,13 +184,17 @@ export default function Home() {
               href='/contact'
               className='px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105'
             >
-              Get in Touch
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='message' className='h-4 w-4' /> Get in Touch
+              </span>
             </Link>
             <Link
               href='/projects'
               className='px-8 py-4 border-2 border-white text-white rounded-lg font-bold text-lg hover:bg-white/10 transition-all duration-300'
             >
-              View My Work
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='rocket' className='h-4 w-4' /> View My Work
+              </span>
             </Link>
           </div>
         </div>

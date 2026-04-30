@@ -1,6 +1,6 @@
 'use client'
 
-import { Container } from '@/components/ui'
+import { Container, SiteIcon } from '@/components/ui'
 import { personalData } from '@/data'
 import { ROUTES, formatLabel } from '@/utils'
 import Link from 'next/link'
@@ -34,8 +34,8 @@ export default function Footer() {
           <div className='grid grid-cols-1 lg:grid-cols-4 gap-10'>
             <div className='lg:col-span-2 space-y-5'>
               <Link href={ROUTES.HOME} className='inline-flex items-center gap-3 group'>
-                <div className='w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20'>
-                  SM
+                <div className='w-12 h-12 rounded-xl bg-linear-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white shadow-lg shadow-blue-500/20'>
+                  <SiteIcon name='sparkles' className='h-6 w-6' />
                 </div>
                 <div>
                   <p className='text-white font-bold text-lg leading-tight'>S M Rahman</p>
@@ -44,8 +44,8 @@ export default function Footer() {
               </Link>
 
               <p className='max-w-xl text-slate-400 leading-relaxed'>
-                Building structured, measurable, and scalable digital products with data science, machine learning, and
-                practical product thinking.
+                Building structured, measurable, and scalable digital products with AI, machine learning, deep
+                learning, NLP, and data engineering.
               </p>
 
               <div className='flex flex-wrap gap-3'>
@@ -56,6 +56,7 @@ export default function Footer() {
                     rel='noopener noreferrer'
                     className='inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
                   >
+                    <SiteIcon name='github' className='h-4 w-4' />
                     GitHub
                   </a>
                 )}
@@ -66,6 +67,7 @@ export default function Footer() {
                     rel='noopener noreferrer'
                     className='inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
                   >
+                    <SiteIcon name='linkedin' className='h-4 w-4' />
                     LinkedIn
                   </a>
                 )}
@@ -76,6 +78,7 @@ export default function Footer() {
                     rel='noopener noreferrer'
                     className='inline-flex items-center gap-2 rounded-full border border-slate-700 bg-slate-900/70 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
                   >
+                    <SiteIcon name='twitter' className='h-4 w-4' />
                     X / Twitter
                   </a>
                 )}
@@ -112,27 +115,38 @@ export default function Footer() {
                 href={`mailto:${contact.email}`}
                 className='break-all text-slate-300 transition-colors hover:text-blue-400'
               >
+                <span className='mr-2 inline-flex align-middle text-blue-400'>
+                  <SiteIcon name='mail' className='h-4 w-4' />
+                </span>
                 {contact.email}
               </a>
             </div>
             <div>
               <p className='mb-2 text-xs uppercase tracking-[0.2em] text-slate-500'>Phone</p>
               <a href={`tel:${contact.phone}`} className='text-slate-300 transition-colors hover:text-blue-400'>
+                <span className='mr-2 inline-flex align-middle text-blue-400'>
+                  <SiteIcon name='phone' className='h-4 w-4' />
+                </span>
                 {contact.phone}
               </a>
             </div>
             <div>
               <p className='mb-2 text-xs uppercase tracking-[0.2em] text-slate-500'>Location</p>
-              <p className='text-slate-300'>{contact.location.displayText}</p>
+              <p className='text-slate-300 flex items-center gap-2'>
+                <SiteIcon name='mapPin' className='h-4 w-4 text-blue-400' />
+                {contact.location.displayText}
+              </p>
             </div>
           </div>
 
-          <div className='my-10 h-px bg-gradient-to-r from-transparent via-slate-700 to-transparent' />
+          <div className='my-10 h-px bg-linear-to-r from-transparent via-slate-700 to-transparent' />
 
           <div className='flex flex-col gap-5 md:flex-row md:items-center md:justify-between'>
             <div className='text-sm text-slate-400'>
               <p>© {currentYear} S M Masfequier Rahman Swapno. All rights reserved.</p>
-              <p className='mt-1 text-slate-500'>Crafted with precision and care.</p>
+              <p className='mt-1 text-slate-500 flex items-center gap-2'>
+                <SiteIcon name='sparkles' className='h-4 w-4' /> Crafted with precision and care.
+              </p>
             </div>
 
             <div className='flex flex-wrap gap-5 text-sm'>
@@ -146,6 +160,9 @@ export default function Footer() {
                 onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 className='rounded-lg border border-slate-700 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
               >
+                <span className='mr-2 inline-flex align-middle text-blue-400'>
+                  <SiteIcon name='arrowUp' className='h-4 w-4' />
+                </span>
                 Back to Top
               </button>
             </div>

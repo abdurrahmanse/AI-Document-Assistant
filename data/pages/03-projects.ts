@@ -10,15 +10,15 @@ export const projectsPage: ProjectsPage = {
     page: {
         id: "projects",
         title: "Projects",
-        description: "Featured data science and machine learning projects",
-        metaDescription: "Portfolio of machine learning projects with quantified impact and business value",
+        description: "Featured AI and machine learning projects",
+        metaDescription: "Portfolio of AI, machine learning, and deep learning projects with quantified impact and business value",
     },
     sections: {
         hero: {
             title: "Featured Projects",
-            subtitle: "A showcase of machine learning solutions I've built",
+            subtitle: "A showcase of AI and machine learning solutions I've built",
             description:
-                "Each project represents a complete ML solution from research and development to production deployment. All projects achieved measurable business impact.",
+                "Each project represents a complete AI or ML solution from research and development to production deployment. All projects achieved measurable business impact.",
         },
         filters: [
             { name: "All", id: "all" },

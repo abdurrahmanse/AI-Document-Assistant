@@ -1,3 +1,4 @@
+import { SiteIcon } from '@/components/ui'
 import { publicationsPage, recognitionHistory } from '@/data'
 import Link from 'next/link'
 
@@ -31,7 +32,9 @@ export default function PublicationsPage() {
       <section className='py-20 px-4 sm:px-6 lg:px-8 bg-slate-950 border-b border-slate-800'>
         <div className='max-w-6xl mx-auto'>
           <div className='mb-16'>
-            <h2 className='text-4xl font-bold text-white mb-4'>📚 Peer-Reviewed Publications</h2>
+            <h2 className='text-4xl font-bold text-white mb-4 flex items-center gap-3'>
+              <SiteIcon name='book' className='h-8 w-8 text-cyan-300' /> Peer-Reviewed Publications
+            </h2>
             <p className='text-xl text-slate-400'>
               {publications.length} peer-reviewed papers with{' '}
               {publications.reduce((sum: number, p) => sum + p.citations, 0)}+ total citations
@@ -50,16 +53,20 @@ export default function PublicationsPage() {
                     <div className='flex-1'>
                       <h3 className='text-2xl font-bold text-white mb-3'>{publication.title}</h3>
                       <div className='flex flex-wrap gap-4 text-sm text-slate-400'>
-                        <span>
+                        <span className='inline-flex items-center gap-2'>
+                          <SiteIcon name='book' className='h-4 w-4' />
                           {typeof publication.journal === 'string' ? publication.journal : publication.journal.name}
                         </span>
                         <span>•</span>
-                        <span>
+                        <span className='inline-flex items-center gap-2'>
+                          <SiteIcon name='clock' className='h-4 w-4' />
                           Vol {publication.volume}, Issue {publication.issue} ({publication.publishedDate.split('-')[0]}
                           )
                         </span>
                         <span>•</span>
-                        <span className='text-blue-400 font-semibold'>{publication.citations}+ citations</span>
+                        <span className='text-blue-400 font-semibold inline-flex items-center gap-2'>
+                          <SiteIcon name='chart' className='h-4 w-4' /> {publication.citations}+ citations
+                        </span>
                       </div>
                     </div>
                   </div>
@@ -85,7 +92,10 @@ export default function PublicationsPage() {
 
                 {/* Impact */}
                 <div className='bg-blue-500/10 border border-blue-500/20 rounded-lg p-4 mb-6'>
-                  <p className='text-blue-300 text-sm'>{publication.impact}</p>
+                  <p className='text-blue-300 text-sm flex items-start gap-2'>
+                    <SiteIcon name='sparkles' className='mt-0.5 h-4 w-4 shrink-0' />
+                    {publication.impact}
+                  </p>
                 </div>
 
                 {/* Keywords */}
@@ -112,7 +122,9 @@ export default function PublicationsPage() {
                     rel='noopener noreferrer'
                     className='px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors duration-300 text-sm font-medium w-full sm:w-auto text-center'
                   >
-                    Read Publication →
+                    <span className='inline-flex items-center gap-2'>
+                      <SiteIcon name='external' className='h-4 w-4' /> Read Publication
+                    </span>
                   </a>
                 </div>
               </article>
@@ -126,7 +138,9 @@ export default function PublicationsPage() {
         <section className='py-20 px-4 sm:px-6 lg:px-8 bg-linear-to-b from-slate-950 to-slate-900 border-b border-slate-800'>
           <div className='max-w-6xl mx-auto'>
             <div className='mb-16'>
-              <h2 className='text-4xl font-bold text-white mb-4'>🏆 Awards & Recognition</h2>
+              <h2 className='text-4xl font-bold text-white mb-4 flex items-center gap-3'>
+                <SiteIcon name='trophy' className='h-8 w-8 text-amber-300' /> Awards & Recognition
+              </h2>
               <p className='text-xl text-slate-400'>Industry recognition and accolades</p>
             </div>
 
@@ -137,7 +151,7 @@ export default function PublicationsPage() {
                   className='bg-linear-to-br from-amber-500/10 to-orange-500/10 border border-amber-500/30 rounded-xl p-8 hover:border-amber-400/60 transition-all duration-300'
                 >
                   <div className='flex items-start gap-4 mb-4'>
-                    <span className='text-4xl'>🏅</span>
+                    <SiteIcon name='trophy' className='h-8 w-8 text-amber-300' />
                     <div className='flex-1'>
                       <h3 className='text-xl font-bold text-white mb-1'>{award.title}</h3>
                       <p className='text-sm text-amber-300 font-semibold'>{award.issuer}</p>
@@ -148,7 +162,8 @@ export default function PublicationsPage() {
                     <p className='text-slate-300 text-sm leading-relaxed mb-3'>{award.description}</p>
                   )}
                   {award.project && (
-                    <div className='inline-block px-3 py-1 bg-slate-700/50 text-slate-300 rounded text-xs'>
+                    <div className='inline-flex items-center gap-2 px-3 py-1 bg-slate-700/50 text-slate-300 rounded text-xs'>
+                      <SiteIcon name='briefcase' className='h-3.5 w-3.5' />
                       Project: {award.project}
                     </div>
                   )}

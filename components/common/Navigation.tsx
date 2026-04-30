@@ -1,6 +1,6 @@
 'use client'
 
-import { Container } from '@/components/ui'
+import { Container, SiteIcon } from '@/components/ui'
 import { useScroll, useToggle } from '@/hooks'
 import { ROUTES } from '@/utils'
 import Link from 'next/link'
@@ -10,13 +10,13 @@ export default function Navigation() {
   const [mobileMenuOpen, toggleMobileMenu, setMobileMenuOpen] = useToggle(false)
 
   const navLinks = [
-    { label: 'Home', href: ROUTES.HOME },
-    { label: 'About', href: ROUTES.ABOUT },
-    { label: 'Experience', href: ROUTES.EXPERIENCE },
-    { label: 'Projects', href: ROUTES.PROJECTS },
-    { label: 'Skills', href: ROUTES.SKILLS },
-    { label: 'Publications', href: ROUTES.PUBLICATIONS },
-    { label: 'Contact', href: ROUTES.CONTACT },
+    { label: 'Home', href: ROUTES.HOME, icon: 'sparkles' as const },
+    { label: 'About', href: ROUTES.ABOUT, icon: 'users' as const },
+    { label: 'Experience', href: ROUTES.EXPERIENCE, icon: 'briefcase' as const },
+    { label: 'Projects', href: ROUTES.PROJECTS, icon: 'rocket' as const },
+    { label: 'Skills', href: ROUTES.SKILLS, icon: 'layers' as const },
+    { label: 'Publications', href: ROUTES.PUBLICATIONS, icon: 'book' as const },
+    { label: 'Contact', href: ROUTES.CONTACT, icon: 'message' as const },
   ]
 
   return (
@@ -29,8 +29,8 @@ export default function Navigation() {
         <div className='flex items-center justify-between py-4'>
           {/* Logo */}
           <Link href={ROUTES.HOME} className='flex items-center gap-2 group'>
-            <div className='w-10 h-10 rounded-lg bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all'>
-              SM
+            <div className='w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all'>
+              <SiteIcon name='sparkles' className='h-5 w-5' />
             </div>
             <span className='font-bold text-lg hidden sm:inline'>Portfolio</span>
           </Link>
@@ -43,6 +43,9 @@ export default function Navigation() {
                 href={link.href}
                 className='px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all duration-200 text-sm'
               >
+                <span className='mr-2 inline-flex align-middle text-cyan-400'>
+                  <SiteIcon name={link.icon} className='h-4 w-4' />
+                </span>
                 {link.label}
               </Link>
             ))}
@@ -54,13 +57,7 @@ export default function Navigation() {
             className='lg:hidden p-2 hover:bg-slate-800/50 rounded-md transition-all'
             aria-label='Toggle navigation'
           >
-            <svg className='w-6 h-6' fill='none' stroke='currentColor' viewBox='0 0 24 24'>
-              {mobileMenuOpen ? (
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M6 18L18 6M6 6l12 12' />
-              ) : (
-                <path strokeLinecap='round' strokeLinejoin='round' strokeWidth={2} d='M4 6h16M4 12h16M4 18h16' />
-              )}
-            </svg>
+            <SiteIcon name={mobileMenuOpen ? 'x' : 'menu'} className='h-6 w-6' />
           </button>
         </div>
 
@@ -74,6 +71,9 @@ export default function Navigation() {
                 className='block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all'
                 onClick={() => setMobileMenuOpen(false)}
               >
+                <span className='mr-2 inline-flex align-middle text-cyan-400'>
+                  <SiteIcon name={link.icon} className='h-4 w-4' />
+                </span>
                 {link.label}
               </Link>
             ))}

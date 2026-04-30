@@ -10,7 +10,7 @@ export const careerNarrative: CareerNarrative = {
         title: "5-Year Data Science Journey: From Practitioner to Research Leader",
         period: "2019-2024",
         summary:
-            "Progressive career advancement from Junior Data Scientist to Senior Data Scientist and Research Contributor, with increasing responsibility, impact, and thought leadership. Built expertise across multiple ML domains while maintaining focus on delivering measurable business value.",
+            "Progressive career advancement from Junior Data Scientist to Senior Data Scientist and Research Contributor, with increasing responsibility, impact, and thought leadership. Built expertise across AI, machine learning, deep learning, NLP, data engineering, and data visualization while maintaining focus on delivering measurable business value.",
     },
     timeline: [
         {
@@ -26,7 +26,7 @@ export const careerNarrative: CareerNarrative = {
             ],
             projectsCount: 3,
             publicationsCount: 0,
-            skillsAdded: ["Python", "SQL", "Statistical Analysis", "Data Visualization", "A/B Testing"],
+            skillsAdded: ["Python", "SQL", "Statistics", "Data Visualization", "Domain Knowledge"],
             highlights: "First data science role focusing on fundamental analytics skills",
         },
         {
@@ -43,7 +43,7 @@ export const careerNarrative: CareerNarrative = {
             ],
             projectsCount: 8,
             publicationsCount: 1,
-            skillsAdded: ["Machine Learning", "XGBoost", "TensorFlow", "Cloud (GCP)", "Tableau"],
+            skillsAdded: ["Machine Learning", "Scikit-learn", "Pandas", "NumPy", "Data Engineering"],
             highlights: "Transitioned from analytics to full ML development, published first research paper",
         },
         {
@@ -62,7 +62,7 @@ export const careerNarrative: CareerNarrative = {
             ],
             projectsCount: 7,
             publicationsCount: 2,
-            skillsAdded: ["Leadership", "MLOps", "Deep Learning", "Advanced Python", "Kubernetes"],
+            skillsAdded: ["Deep Learning", "Neural Networks", "TensorFlow", "PyTorch", "Computer Vision"],
             highlights: "Strategic leadership role with focus on research and innovation",
         },
     ],

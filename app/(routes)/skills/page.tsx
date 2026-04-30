@@ -1,3 +1,4 @@
+import { SiteIcon } from '@/components/ui'
 import { skillsPage } from '@/data'
 
 export const metadata = {
@@ -14,15 +15,6 @@ export default function SkillsPage() {
     if (level === 4) return 'from-blue-500 to-cyan-500'
     if (level === 3) return 'from-yellow-500 to-orange-500'
     return 'from-slate-500 to-slate-600'
-  }
-
-  const getCategoryIcon = (icon: string) => {
-    const icons: Record<string, string> = {
-      code: '💻',
-      brain: '🧠',
-      tools: '🛠️',
-    }
-    return icons[icon] || '⭐'
   }
 
   return (
@@ -44,7 +36,12 @@ export default function SkillsPage() {
               {/* Category Header */}
               <div className='mb-12'>
                 <div className='flex items-center gap-4 mb-4'>
-                  <span className='text-4xl'>{getCategoryIcon(category.categoryIcon)}</span>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-blue-500/20 to-cyan-500/20 text-cyan-300'>
+                    <SiteIcon
+                      name={category.categoryIcon === 'code' ? 'code' : category.categoryIcon === 'brain' ? 'brain' : 'layers'}
+                      className='h-6 w-6'
+                    />
+                  </div>
                   <div>
                     <h2 className='text-3xl sm:text-4xl font-bold text-white'>{category.categoryName}</h2>
                     <p className='text-slate-400 text-sm mt-1'>{category.description}</p>
@@ -111,7 +108,7 @@ export default function SkillsPage() {
                         <ul className='space-y-1'>
                           {skill.useCases.map((useCase: string, useCaseIdx) => (
                             <li key={useCaseIdx} className='text-sm text-slate-300 flex items-start gap-2'>
-                              <span className='text-blue-400 mt-1'>→</span>
+                              <SiteIcon name='arrowRight' className='mt-1 h-4 w-4 text-blue-400' />
                               <span>{useCase}</span>
                             </li>
                           ))}
@@ -213,25 +210,25 @@ export default function SkillsPage() {
                 title: 'AWS Certified Machine Learning - Specialty',
                 issuer: 'Amazon Web Services',
                 year: '2023',
-                icon: '☁️',
+                icon: 'chart',
               },
               {
                 title: 'Google Cloud Professional Data Engineer',
                 issuer: 'Google Cloud',
                 year: '2023',
-                icon: '☁️',
+                icon: 'chart',
               },
               {
                 title: 'Kaggle Master',
                 issuer: 'Kaggle',
                 year: '2022',
-                icon: '🏆',
+                icon: 'trophy',
               },
               {
                 title: 'Deep Learning Specialization',
                 issuer: 'Coursera / Andrew Ng',
                 year: '2021',
-                icon: '📚',
+                icon: 'book',
               },
             ].map((cert, idx) => (
               <div
@@ -239,7 +236,9 @@ export default function SkillsPage() {
                 className='bg-linear-to-r from-slate-800/30 to-slate-900/30 border border-slate-700 rounded-xl p-6 hover:border-blue-500/50 transition-all duration-300'
               >
                 <div className='flex items-start gap-4'>
-                  <span className='text-3xl'>{cert.icon}</span>
+                  <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-linear-to-br from-blue-500/20 to-cyan-500/20 text-cyan-300'>
+                    <SiteIcon name={cert.icon as 'chart' | 'trophy' | 'book'} className='h-6 w-6' />
+                  </div>
                   <div className='flex-1'>
                     <h3 className='text-lg font-bold text-white mb-1'>{cert.title}</h3>
                     <p className='text-sm text-slate-400 mb-2'>{cert.issuer}</p>
@@ -265,13 +264,17 @@ export default function SkillsPage() {
               href='/contact'
               className='px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105'
             >
-              Get in Touch
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='message' className='h-4 w-4' /> Get in Touch
+              </span>
             </a>
             <a
               href='/projects'
               className='px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300'
             >
-              See My Work
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='rocket' className='h-4 w-4' /> See My Work
+              </span>
             </a>
           </div>
         </div>

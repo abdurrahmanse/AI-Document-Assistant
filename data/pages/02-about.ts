@@ -10,12 +10,12 @@ export const aboutPage: AboutPage = {
         id: "about",
         title: "About Me",
         description: "Learn about S M Masfequier Rahman Swapno - Senior Data Scientist",
-        metaDescription: "Senior Data Scientist with 5+ years of experience in machine learning, AI, and data engineering",
+        metaDescription: "Senior Data Scientist with 5+ years of experience in AI, machine learning, deep learning, NLP, computer vision, and data engineering",
     },
     sections: {
         hero: {
             title: "S M Masfequier Rahman Swapno",
-            subtitle: "Senior Data Scientist | ML Engineer | Data Enthusiast",
+            subtitle: "Senior Data Scientist | AI Engineer | Data Strategist",
             ctaButton: {
                 text: "Get In Touch",
                 url: "/contact",
@@ -24,13 +24,13 @@ export const aboutPage: AboutPage = {
         introduction: {
             heading: "About Me",
             content:
-                "I'm a Senior Data Scientist with 5+ years of experience building machine learning solutions that drive real business impact. My journey started with a passion for understanding data and has evolved into a career solving complex problems using statistical analysis, machine learning, and data engineering.\n\nI believe that the best solutions come from understanding both the data AND the business. That's why I focus on creating interpretable, scalable, and production-ready ML systems that stakeholders can trust and act upon.",
+                "I'm a Senior Data Scientist with 5+ years of experience building AI and machine learning solutions that drive real business impact. My journey started with a passion for understanding data and has evolved into a career solving complex problems using statistics, deep learning, NLP, computer vision, and data engineering.\n\nI believe that the best solutions come from understanding both the data AND the business. That's why I focus on creating interpretable, scalable, and production-ready systems that stakeholders can trust and act upon.",
             image: "/images/about-hero.jpg",
         },
         mission: {
             heading: "My Mission",
             content:
-                "To bridge the gap between cutting-edge machine learning research and practical business applications, creating data-driven solutions that generate measurable value and drive strategic decision-making.",
+                "To bridge the gap between cutting-edge AI research and practical business applications, creating data-driven solutions that generate measurable value and drive strategic decision-making.",
         },
         values: [
             {
@@ -61,7 +61,7 @@ export const aboutPage: AboutPage = {
         highlight: {
             heading: "Key Highlights",
             items: [
-                "5+ years of hands-on data science experience",
+                "5+ years of hands-on AI and data science experience",
                 "15+ production ML models deployed and maintaining 99.9%+ uptime",
                 "Generated $4.1M+ in quantifiable business value",
                 "Led cross-functional teams of 3-5 data scientists",

@@ -1,3 +1,4 @@
+import { SiteIcon } from '@/components/ui'
 import { skillsPage } from '@/data'
 
 export default function Skills() {
@@ -9,7 +10,9 @@ export default function Skills() {
         {/* Section Header */}
         <div className='text-center mb-16'>
           <div className='inline-block bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 text-sm text-blue-400 mb-4'>
-            🛠️ Technical Skills
+            <span className='inline-flex items-center gap-2'>
+              <SiteIcon name='layers' className='h-4 w-4' /> Technical Skills
+            </span>
           </div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>{sections.hero.title}</h2>
           <p className='text-xl text-slate-400 max-w-2xl mx-auto'>{sections.hero.description}</p>
@@ -22,13 +25,19 @@ export default function Skills() {
               key={category.id}
               className='bg-slate-800/50 border border-slate-700 rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300'
             >
-              <h3 className='text-lg font-semibold text-white mb-4'>{category.categoryName}</h3>
+              <h3 className='text-lg font-semibold text-white mb-4 flex items-center gap-2'>
+                <SiteIcon
+                  name={category.categoryIcon === 'code' ? 'code' : category.categoryIcon === 'brain' ? 'brain' : 'layers'}
+                  className='h-4 w-4 text-cyan-400'
+                />
+                {category.categoryName}
+              </h3>
               <p className='text-slate-400 text-sm mb-4'>{category.description}</p>
               <div className='space-y-2'>
                 {category.skills.slice(0, 3).map((skill) => (
                   <div key={skill.name} className='flex items-center justify-between'>
                     <span className='text-slate-300 text-sm flex items-center gap-2'>
-                      <span className='w-2 h-2 bg-blue-400 rounded-full'></span>
+                      <SiteIcon name='check' className='h-3.5 w-3.5 text-blue-400' />
                       {skill.name}
                     </span>
                     <span className='text-xs text-blue-400 font-medium'>{skill.proficiency}</span>
@@ -44,7 +53,10 @@ export default function Skills() {
 
         {/* Proficiency Levels */}
         <div className='bg-slate-800/50 border border-slate-700 rounded-xl p-8 mt-12'>
-          <h3 className='text-2xl font-bold text-white mb-8'>Proficiency Overview</h3>
+          <h3 className='text-2xl font-bold text-white mb-8 flex items-center gap-2'>
+            <SiteIcon name='trophy' className='h-5 w-5 text-amber-400' />
+            Proficiency Overview
+          </h3>
 
           <div className='space-y-6'>
             {skillCategories

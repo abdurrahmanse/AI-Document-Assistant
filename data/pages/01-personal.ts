@@ -11,10 +11,10 @@ export const personalData: PersonalData = {
         lastName: "Swapno",
         fullName: "S M Masfequier Rahman Swapno",
         title: "Senior Data Scientist",
-        subtitle: "Machine Learning | AI | Data Engineering",
-        bio: "Results-driven Data Scientist with 5+ years of experience in machine learning, statistical analysis, and data engineering. Passionate about leveraging data to solve complex business problems and drive strategic decision-making.",
+        subtitle: "AI | ML | Deep Learning | NLP | Data Engineering",
+        bio: "Results-driven Data Scientist with 5+ years of experience across AI, machine learning, deep learning, natural language processing, computer vision, and data engineering. Passionate about turning data into measurable business value.",
         professionalSummary:
-            "Experienced Data Scientist with proven expertise in building end-to-end machine learning solutions, statistical modeling, and data visualization. Strong background in Python, R, SQL, and cloud platforms. Successfully delivered 15+ data science projects resulting in 8+ figure cost savings and revenue growth for Fortune 500 companies.",
+            "Experienced Data Scientist with proven expertise in building end-to-end AI and machine learning solutions, statistical modeling, data visualization, and data engineering. Strong background in Python, SQL, TensorFlow, PyTorch, Scikit-learn, and modern LLM tooling. Successfully delivered 15+ data science projects resulting in 8+ figure cost savings and revenue growth for Fortune 500 companies.",
         profileImage: "/images/profile.jpg",
         coverImage: "/images/cover.jpg",
     },

@@ -1,3 +1,4 @@
+import { SiteIcon } from '@/components/ui'
 import { projectsPage } from '@/data'
 import Link from 'next/link'
 
@@ -11,7 +12,9 @@ export default function FeaturedProjects() {
         {/* Section Header */}
         <div className='text-center mb-16'>
           <div className='inline-block bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 text-sm text-blue-400 mb-4'>
-            ✨ {sections.hero.title}
+            <span className='inline-flex items-center gap-2'>
+              <SiteIcon name='sparkles' className='h-4 w-4' /> {sections.hero.title}
+            </span>
           </div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>{sections.hero.title}</h2>
           <p className='text-xl text-slate-400 max-w-2xl mx-auto'>{sections.hero.description}</p>
@@ -32,15 +35,17 @@ export default function FeaturedProjects() {
                   </p>
                 </div>
                 <span className='text-3xl'>
-                  {project.categoryId === 'ml'
-                    ? '🤖'
-                    : project.categoryId === 'dl'
-                      ? '🧠'
-                      : project.categoryId === 'nlp'
-                        ? '💬'
-                        : project.categoryId === 'cv'
-                          ? '👁️'
-                          : '📊'}
+                  {project.categoryId === 'ml' ? (
+                    <SiteIcon name='target' className='h-8 w-8' />
+                  ) : project.categoryId === 'dl' ? (
+                    <SiteIcon name='brain' className='h-8 w-8' />
+                  ) : project.categoryId === 'nlp' ? (
+                    <SiteIcon name='message' className='h-8 w-8' />
+                  ) : project.categoryId === 'cv' ? (
+                    <SiteIcon name='layers' className='h-8 w-8' />
+                  ) : (
+                    <SiteIcon name='chart' className='h-8 w-8' />
+                  )}
                 </span>
               </div>
 
@@ -65,7 +70,8 @@ export default function FeaturedProjects() {
                   href='/projects'
                   className='text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-2 transition-colors'
                 >
-                  Learn More →
+                  <SiteIcon name='arrowRight' className='h-4 w-4' />
+                  Learn More
                 </Link>
               </div>
             </div>
@@ -78,7 +84,9 @@ export default function FeaturedProjects() {
             href='/projects'
             className='inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105'
           >
-            View All {projects.length} Projects
+            <span className='inline-flex items-center gap-2'>
+              <SiteIcon name='rocket' className='h-4 w-4' /> View All {projects.length} Projects
+            </span>
           </Link>
         </div>
       </div>

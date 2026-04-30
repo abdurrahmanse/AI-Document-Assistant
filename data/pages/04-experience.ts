@@ -10,14 +10,14 @@ export const experiencePage: ExperiencePage = {
         id: "experience",
         title: "Experience",
         description: "Professional experience and career progression",
-        metaDescription: "5+ years of data science experience at leading tech companies",
+        metaDescription: "5+ years of AI, machine learning, and data science experience at leading tech companies",
     },
     sections: {
         hero: {
             title: "Professional Experience",
-            subtitle: "5+ years building data science solutions at leading companies",
+            subtitle: "5+ years building AI and data science solutions at leading companies",
             description:
-                "My career has progressed from Junior Data Scientist to Senior Data Scientist, leading teams and delivering high-impact ML projects at Fortune 500 companies.",
+                "My career has progressed from Junior Data Scientist to Senior Data Scientist, leading teams and delivering high-impact AI and ML projects at Fortune 500 companies.",
         },
     },
     jobs: [

@@ -12,7 +12,7 @@ const firaCode = Fira_Code({
 
 export const metadata: Metadata = {
   title: 'S M Masfequier Rahman Swapno - Senior Data Scientist',
-  description: 'Senior Data Scientist Portfolio - Machine Learning, AI, Data Engineering',
+  description: 'Senior Data Scientist Portfolio - AI, machine learning, deep learning, NLP, computer vision, and data engineering',
 }
 
 export default function RootLayout({

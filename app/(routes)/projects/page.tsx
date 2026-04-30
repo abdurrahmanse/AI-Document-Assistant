@@ -1,5 +1,6 @@
 'use client'
 
+import { SiteIcon } from '@/components/ui'
 import { projectsPage } from '@/data'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -36,7 +37,25 @@ export default function ProjectsPage() {
                     : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
                 }`}
               >
-                {filter.name}
+                <span className='inline-flex items-center gap-2'>
+                  <SiteIcon
+                    name={
+                      filter.id === 'ml'
+                        ? 'target'
+                        : filter.id === 'dl'
+                          ? 'brain'
+                          : filter.id === 'nlp'
+                            ? 'message'
+                            : filter.id === 'timeseries'
+                              ? 'chart'
+                              : filter.id === 'cv'
+                                ? 'layers'
+                                : 'sparkles'
+                    }
+                    className='h-4 w-4'
+                  />
+                  {filter.name}
+                </span>
               </button>
             ))}
           </div>
@@ -61,7 +80,9 @@ export default function ProjectsPage() {
                   <div className='h-48 bg-linear-to-r from-blue-500/10 to-cyan-500/10 flex items-center justify-center relative overflow-hidden'>
                     <div className='absolute inset-0 bg-linear-to-r from-blue-500/20 to-cyan-500/20 group-hover:scale-110 transition-transform duration-300'></div>
                     <div className='relative text-center'>
-                      <p className='text-6xl mb-2'>🚀</p>
+                      <div className='mx-auto mb-3 flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 text-cyan-300'>
+                        <SiteIcon name='rocket' className='h-8 w-8' />
+                      </div>
                       <p className='text-slate-400 text-sm'>{project.status}</p>
                     </div>
                   </div>
@@ -114,11 +135,15 @@ export default function ProjectsPage() {
                     {/* Project Metadata */}
                     <div className='grid grid-cols-2 gap-4 mb-6 text-sm'>
                       <div>
-                        <p className='text-slate-500 text-xs uppercase mb-1'>Duration</p>
+                        <p className='text-slate-500 text-xs uppercase mb-1 flex items-center gap-2'>
+                          <SiteIcon name='clock' className='h-3.5 w-3.5' /> Duration
+                        </p>
                         <p className='text-slate-300'>{project.duration}</p>
                       </div>
                       <div>
-                        <p className='text-slate-500 text-xs uppercase mb-1'>Team Size</p>
+                        <p className='text-slate-500 text-xs uppercase mb-1 flex items-center gap-2'>
+                          <SiteIcon name='users' className='h-3.5 w-3.5' /> Team Size
+                        </p>
                         <p className='text-slate-300'>{project.teamSize} members</p>
                       </div>
                     </div>
@@ -130,7 +155,7 @@ export default function ProjectsPage() {
                         <ul className='space-y-2'>
                           {project.businessOutcomes.slice(0, 2).map((outcome: string, idx) => (
                             <li key={idx} className='flex items-start gap-2 text-sm text-slate-300'>
-                              <span className='text-green-400 mt-1 shrink-0'>✓</span>
+                              <SiteIcon name='check' className='text-green-400 mt-1 h-4 w-4 shrink-0' />
                               <span>{outcome}</span>
                             </li>
                           ))}
@@ -147,7 +172,9 @@ export default function ProjectsPage() {
                           rel='noopener noreferrer'
                           className='flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-300 text-sm font-medium text-center'
                         >
-                          GitHub
+                          <span className='inline-flex items-center gap-2'>
+                            <SiteIcon name='github' className='h-4 w-4' /> GitHub
+                          </span>
                         </a>
                       )}
                       {project.links.demo && (
@@ -157,7 +184,9 @@ export default function ProjectsPage() {
                           rel='noopener noreferrer'
                           className='flex-1 px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white rounded-lg transition-colors duration-300 text-sm font-medium text-center'
                         >
-                          View Demo
+                          <span className='inline-flex items-center gap-2'>
+                            <SiteIcon name='external' className='h-4 w-4' /> View Demo
+                          </span>
                         </a>
                       )}
                       {project.links.blog && (
@@ -165,7 +194,9 @@ export default function ProjectsPage() {
                           href={project.links.blog}
                           className='flex-1 px-4 py-2 bg-slate-700 hover:bg-slate-600 text-slate-300 hover:text-white rounded-lg transition-colors duration-300 text-sm font-medium text-center'
                         >
-                          Case Study
+                          <span className='inline-flex items-center gap-2'>
+                            <SiteIcon name='book' className='h-4 w-4' /> Case Study
+                          </span>
                         </Link>
                       )}
                     </div>
@@ -245,13 +276,17 @@ export default function ProjectsPage() {
               href='/contact'
               className='px-8 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:shadow-lg transition-all duration-300 hover:scale-105'
             >
-              Start a Project
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='message' className='h-4 w-4' /> Start a Project
+              </span>
             </Link>
             <Link
               href='/about'
               className='px-8 py-3 border-2 border-white text-white font-semibold rounded-lg hover:bg-white/10 transition-all duration-300'
             >
-              Learn More About Me
+              <span className='inline-flex items-center gap-2'>
+                <SiteIcon name='users' className='h-4 w-4' /> Learn More About Me
+              </span>
             </Link>
           </div>
         </div>
