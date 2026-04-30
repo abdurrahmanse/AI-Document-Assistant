@@ -8,16 +8,16 @@ import type { PublicationsPage } from '../../entities/types';
 export const publicationsPage: PublicationsPage = {
     page: {
         id: "publications",
-        title: "Publications & Recognition",
-        description: "Research publications and awards",
-        metaDescription: "3 peer-reviewed publications with 127+ citations, multiple awards",
+        title: "Publications & Research Recognition",
+        description: "Research papers, presentations, and awards",
+        metaDescription: "3 peer-reviewed publications with 127+ citations and growing research recognition",
     },
     sections: {
         hero: {
-            title: "Publications & Recognition",
-            subtitle: "Research contributions and industry recognition",
+            title: "Publications & Research Recognition",
+            subtitle: "Papers, presentations, and the ideas behind them",
             description:
-                "Active contributor to machine learning research with peer-reviewed publications and recognition from industry leaders.",
+                "My publication trail follows the same pattern as my projects: ask a question, test a hypothesis, write clearly, and measure what changed.",
         },
     },
     publications: [

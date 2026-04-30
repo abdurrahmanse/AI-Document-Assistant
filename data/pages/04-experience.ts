@@ -8,16 +8,16 @@ import type { ExperiencePage } from '../../entities/types';
 export const experiencePage: ExperiencePage = {
     page: {
         id: "experience",
-        title: "Experience",
-        description: "Professional experience and career progression",
-        metaDescription: "5+ years of AI, machine learning, and data science experience at leading tech companies",
+        title: "Research Experience",
+        description: "Professional journey through research, experimentation, and production systems",
+        metaDescription: "5+ years of research-led AI, machine learning, and data science experience at leading tech companies",
     },
     sections: {
         hero: {
-            title: "Professional Experience",
-            subtitle: "5+ years building AI and data science solutions at leading companies",
+            title: "Research Experience",
+            subtitle: "5+ years turning questions into models, papers, and systems",
             description:
-                "My career has progressed from Junior Data Scientist to Senior Data Scientist, leading teams and delivering high-impact AI and ML projects at Fortune 500 companies.",
+                "My career has progressed from junior analyst to research-driven senior data scientist by asking better questions, designing stronger experiments, and turning evidence into production systems.",
         },
     },
     jobs: [
@@ -39,15 +39,15 @@ export const experiencePage: ExperiencePage = {
             endDate: "Present",
             duration: "3+ years",
             current: true,
-            description: "Lead data science initiatives for enterprise clients; develop and deploy production-grade ML models at scale.",
+            description: "Lead research and data science initiatives for enterprise clients; develop and deploy production-grade ML models at scale.",
             summary:
-                "Led end-to-end machine learning projects from conception through production deployment, managing cross-functional teams and delivering measurable business impact.",
+                "Led end-to-end machine learning research from problem framing through production deployment, managing cross-functional teams and delivering measurable results.",
             responsibilities: [
                 "Designed and implemented advanced machine learning models that improved customer retention by 23%",
-                "Architected and built data pipeline processing 500M+ records daily using PySpark and AWS",
-                "Led cross-functional team of 4 data scientists in developing and deploying production ML systems",
-                "Mentored junior data scientists and conducted code reviews for quality assurance",
-                "Implemented MLOps best practices reducing model deployment time by 60%",
+                "Architected and built a data pipeline processing 500M+ records daily using PySpark and AWS",
+                "Led a cross-functional team of 4 data scientists in developing and deploying production ML systems",
+                "Mentored junior data scientists and conducted code reviews for reproducibility and quality",
+                "Implemented MLOps practices reducing model deployment time by 60%",
                 "Established monitoring and alerting for model drift and performance degradation",
             ],
             achievements: [
@@ -108,7 +108,7 @@ export const experiencePage: ExperiencePage = {
             duration: "1.8 years",
             current: false,
             description: "Developed machine learning models and analytics solutions for Fortune 500 companies.",
-            summary: "Built diverse ML solutions for enterprise clients across various industries, from fraud detection to customer analytics.",
+            summary: "Built diverse research-backed ML solutions for enterprise clients across fraud detection, customer analytics, and reporting.",
             responsibilities: [
                 "Built classification models for fraud detection achieving 94.2% accuracy on financial transaction data",
                 "Conducted exploratory data analysis on large-scale datasets with 50M+ rows",
@@ -162,7 +162,7 @@ export const experiencePage: ExperiencePage = {
             duration: "0.8 years",
             current: false,
             description: "Developed statistical models and performed data analysis for business intelligence.",
-            summary: "Started data science career with focus on statistical analysis and exploratory data analysis for business intelligence.",
+            summary: "Started the research journey with statistical analysis and exploratory data analysis for business intelligence.",
             responsibilities: [
                 "Performed statistical analysis and A/B testing for product features and experiments",
                 "Created data visualizations and dashboards to communicate insights to business stakeholders",

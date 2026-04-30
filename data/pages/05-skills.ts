@@ -8,24 +8,24 @@ import type { SkillsPage } from '../../entities/types';
 export const skillsPage: SkillsPage = {
     page: {
         id: "skills",
-        title: "Skills",
-        description: "Technical skills and expertise",
-        metaDescription: "Data science skills including AI, machine learning, deep learning, NLP, computer vision, and data engineering",
+        title: "Research Skills",
+        description: "Research methods, modeling tools, and data systems",
+        metaDescription: "Research-led data science skills including statistics, experiment design, AI, machine learning, deep learning, NLP, computer vision, and data engineering",
     },
     sections: {
         hero: {
-            title: "Data Science & ML Skills",
-            subtitle: "A focused skill set across AI, machine learning, deep learning, NLP, computer vision, and data engineering",
+            title: "Research Skills & Methods",
+            subtitle: "A focused toolkit for turning questions into evidence",
             description:
-                "Over 5 years of hands-on experience building production-grade data science solutions, analytical products, and AI systems.",
+                "Over 5 years of hands-on experience building research-backed data science solutions, analytical products, and AI systems.",
         },
     },
     skillCategories: [
         {
             id: "foundations",
-            categoryName: "Data Science Foundations",
+            categoryName: "Research Foundations",
             categoryIcon: "code",
-            description: "Core analytical skills for statistical reasoning, storytelling, and data manipulation",
+            description: "Core skills for statistical reasoning, evidence gathering, and reproducible analysis",
             skills: [
                 {
                     name: "Statistics",
@@ -44,11 +44,11 @@ export const skillsPage: SkillsPage = {
                     expertise: ["Dashboards", "Storytelling", "Executive Reporting", "Exploratory Analysis"],
                 },
                 {
-                    name: "Domain Knowledge",
+                    name: "Research Framing",
                     proficiency: "Advanced",
                     level: 4,
                     years: 5,
-                    description: "Translating business context into practical analytical and AI solutions",
+                    description: "Translating organizational context into precise research questions and testable hypotheses",
                     expertise: ["Stakeholder Discovery", "Problem Framing", "Decision Support"],
                 },
                 {
@@ -72,9 +72,9 @@ export const skillsPage: SkillsPage = {
         },
         {
             id: "ai-ml",
-            categoryName: "Artificial Intelligence & Machine Learning",
+            categoryName: "Modeling & Experimentation",
             categoryIcon: "brain",
-            description: "Modeling skills spanning classic ML, automation, and AI system design",
+            description: "Modeling skills spanning classic ML, evaluation, and AI system design",
             skills: [
                 {
                     name: "Artificial Intelligence",
@@ -89,7 +89,7 @@ export const skillsPage: SkillsPage = {
                     proficiency: "Expert",
                     level: 5,
                     years: 5,
-                    description: "Supervised and unsupervised learning for business-critical outcomes",
+                    description: "Supervised and unsupervised learning for research and business-critical outcomes",
                     techniques: ["Classification", "Regression", "Clustering", "Ensemble Learning", "Model Evaluation"],
                     useCases: ["Fraud Detection", "Churn Prediction", "Risk Modeling"],
                 },
@@ -152,7 +152,7 @@ export const skillsPage: SkillsPage = {
         },
         {
             id: "nlp-llm",
-            categoryName: "Natural Language Processing & LLMs",
+            categoryName: "Language Research & LLMs",
             categoryIcon: "brain",
             description: "Language understanding, prompt workflows, and LLM application design",
             skills: [
@@ -177,7 +177,7 @@ export const skillsPage: SkillsPage = {
         },
         {
             id: "data-engineering",
-            categoryName: "Data Engineering & Big Data",
+            categoryName: "Data Infrastructure",
             categoryIcon: "tools",
             description: "Reliable pipelines and distributed systems for large-scale data and AI workloads",
             skills: [

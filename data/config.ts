@@ -7,8 +7,8 @@ import type { SiteConfig } from '../entities/types';
 
 export const siteConfig: SiteConfig = {
     siteConfig: {
-        title: "S M Masfequier Rahman Swapno - Data Scientist",
-        description: "Senior Data Scientist Portfolio - AI, machine learning, deep learning, NLP, computer vision, and data engineering",
+        title: "S M Masfequier Rahman Swapno - Research-First Data Scientist",
+        description: "Research-led data science portfolio focused on AI, machine learning, deep learning, NLP, computer vision, and data engineering",
         url: "www.S M Masfequier Rahman-ds.com",
         siteOwner: "S M Masfequier Rahman Swapno",
         copyright: "© 2024 S M Masfequier Rahman Swapno. All rights reserved.",

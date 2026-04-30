@@ -8,79 +8,79 @@ import type { AboutPage } from '../../entities/types';
 export const aboutPage: AboutPage = {
     page: {
         id: "about",
-        title: "About Me",
-        description: "Learn about S M Masfequier Rahman Swapno - Senior Data Scientist",
-        metaDescription: "Senior Data Scientist with 5+ years of experience in AI, machine learning, deep learning, NLP, computer vision, and data engineering",
+        title: "My Research Story",
+        description: "A research-first journey through AI, experiments, and production systems",
+        metaDescription: "Research-first data scientist with 5+ years of experience turning hypotheses into models, papers, and production systems",
     },
     sections: {
         hero: {
             title: "S M Masfequier Rahman Swapno",
-            subtitle: "Senior Data Scientist | AI Engineer | Data Strategist",
+            subtitle: "Research-First Data Scientist | Applied AI Researcher | Experiment Designer",
             ctaButton: {
-                text: "Get In Touch",
+                text: "Start a Research Conversation",
                 url: "/contact",
             },
         },
         introduction: {
-            heading: "About Me",
+            heading: "My Research Story",
             content:
-                "I'm a Senior Data Scientist with 5+ years of experience building AI and machine learning solutions that drive real business impact. My journey started with a passion for understanding data and has evolved into a career solving complex problems using statistics, deep learning, NLP, computer vision, and data engineering.\n\nI believe that the best solutions come from understanding both the data AND the business. That's why I focus on creating interpretable, scalable, and production-ready systems that stakeholders can trust and act upon.",
+                "I did not start in data science by chasing a title. I started by chasing questions. Why did one pattern appear here and not there? Which feature truly mattered? What would the model say if I changed the assumptions? That curiosity turned into a research habit, and that habit became my career.\n\nToday I work like a researcher inside a product environment. I read, test, compare, and document. I build baselines before I build sophistication. I prefer experiments to opinions, and reproducibility to intuition alone. The result is a portfolio of models, papers, and systems that are grounded in evidence and built to last.",
             image: "/images/about-hero.jpg",
         },
         mission: {
-            heading: "My Mission",
+            heading: "My Research Mission",
             content:
-                "To bridge the gap between cutting-edge AI research and practical business applications, creating data-driven solutions that generate measurable value and drive strategic decision-making.",
+                "To turn research questions into dependable systems by moving from literature review to experimentation, from experimentation to deployment, and from deployment back to measurement. I want every model I touch to explain something, improve something, or reveal the next better question.",
         },
         values: [
             {
                 icon: "target",
-                title: "Impact-Driven",
+                title: "Question First",
                 description:
-                    "Every project is measured by business value, not just technical metrics. I focus on delivering solutions that move the needle.",
+                    "Every project begins with a research question, a hypothesis, and a clear way to test whether the answer actually matters.",
             },
             {
                 icon: "code",
-                title: "Quality Code",
+                title: "Reproducible Work",
                 description:
-                    "Production-ready code with best practices, testing, documentation, and maintainability are non-negotiable.",
+                    "Experiments, code, and notebooks should be easy to revisit, rerun, and explain months later without losing the thread.",
             },
             {
                 icon: "users",
-                title: "Collaboration",
+                title: "Research Collaboration",
                 description:
-                    "Great solutions come from collaboration. I communicate clearly with both technical and non-technical stakeholders.",
+                    "The best research becomes stronger when it is discussed, challenged, and refined with people who bring different perspectives.",
             },
             {
                 icon: "book",
-                title: "Continuous Learning",
+                title: "Constant Reading",
                 description:
-                    "The ML field evolves rapidly. I stay current with latest research, tools, and best practices through continuous education.",
+                    "I keep reading because the field evolves quickly and every new paper can change how I frame the next experiment.",
             },
         ],
         highlight: {
-            heading: "Key Highlights",
+            heading: "Research Milestones",
             items: [
-                "5+ years of hands-on AI and data science experience",
-                "15+ production ML models deployed and maintaining 99.9%+ uptime",
-                "Generated $4.1M+ in quantifiable business value",
-                "Led cross-functional teams of 3-5 data scientists",
-                "Published 3 peer-reviewed research papers with 127+ citations",
+                "5+ years of hands-on research in AI and data science",
+                "15+ production models tested, deployed, and monitored",
+                "Generated $4.1M+ in measured impact from research-led work",
+                "Led cross-functional teams of 3-5 data scientists and engineers",
+                "Published 3 peer-reviewed papers with 127+ citations",
                 "AWS ML Specialist and Google Cloud Professional certified",
                 "Kaggle Master ranking (top 0.1%)",
-                "Keynote speaker at major ML conferences",
+                "Keynote speaker sharing research and production lessons",
             ],
         },
         statistics: {
-            heading: "By The Numbers",
+            heading: "Research By The Numbers",
             stats: [
                 {
                     number: "5+",
-                    label: "Years Experience",
+                    label: "Years Researching",
                 },
                 {
                     number: "15+",
-                    label: "Projects Delivered",
+                    label: "Research Projects",
                 },
                 {
                     number: "23+",
@@ -88,15 +88,15 @@ export const aboutPage: AboutPage = {
                 },
                 {
                     number: "$4.1M",
-                    label: "Business Impact",
+                    label: "Measured Impact",
                 },
                 {
                     number: "3",
-                    label: "Publications",
+                    label: "Peer-Reviewed Papers",
                 },
                 {
                     number: "8",
-                    label: "Companies",
+                    label: "Research Environments",
                 },
             ],
         },
