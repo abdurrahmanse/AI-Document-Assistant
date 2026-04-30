@@ -26,7 +26,7 @@ export const personalData: PersonalData = {
             state: "Dhaka",
             country: "Bangladesh",
             zipCode: "1213",
-            displayText: "Dhaka, Bangladesh",
+            displayText: "Rpnagar Residential Area, Mirpur, Dhaka",
         },
         website: "www.S M Masfequier Rahman-ds.com",
         timezone: "BST (UTC+6)",
