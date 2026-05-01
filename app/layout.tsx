@@ -1,13 +1,13 @@
 import Footer from '@/components/common/Footer'
 import Navigation from '@/components/common/Navigation'
 import type { Metadata } from 'next'
-import { Fira_Code } from 'next/font/google'
+import { Rajdhani } from 'next/font/google'
 import './globals.css'
 
-const firaCode = Fira_Code({
-  variable: '--font-fira-code',
+const rajdhani = Rajdhani({
+  variable: '--font-rajdhani',
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700'],
+  weight: ['600', '700'],
 })
 
 export const metadata: Metadata = {
@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={`${firaCode.variable} h-full antialiased`}>
+    <html lang='en' className={`${rajdhani.variable} h-full antialiased`}>
       <body className='min-h-full flex flex-col'>
         <Navigation />
         <main className='flex-1'>{children}</main>
