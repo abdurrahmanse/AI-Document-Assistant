@@ -4,148 +4,150 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 export default function Hero() {
-  const { personal, social, availability } = personalData
+  const { personal, social } = personalData
 
   return (
-    <section className='relative min-h-screen overflow-hidden bg-slate-950 text-white'>
-      <div className='absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(56,189,248,0.24),transparent_34%),radial-gradient(circle_at_top_right,rgba(14,165,233,0.16),transparent_28%),linear-gradient(135deg,#020617_0%,#0f172a_45%,#020617_100%)]' />
-      <div className='absolute inset-0 opacity-[0.14] bg-[linear-gradient(rgba(255,255,255,0.14)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.14)_1px,transparent_1px)] bg-size-[72px_72px]' />
-      <div className='absolute -left-32 top-24 h-72 w-72 rounded-full bg-cyan-500/20 blur-3xl' />
-      <div className='absolute -right-24 top-1/2 h-80 w-80 rounded-full bg-blue-500/15 blur-3xl' />
+    <header className='relative z-10 flex min-h-[84vh] items-center bg-gradient-to-b from-slate-900 via-slate-950 to-black/90 text-white'>
+      <div className='absolute inset-0 -z-10 overflow-hidden'>
+        <div className='pointer-events-none absolute left-[-10%] top-6 h-[520px] w-[520px] rounded-full bg-indigo-600/20 blur-3xl' />
+        <div className='pointer-events-none absolute right-[-8%] top-1/3 h-[420px] w-[420px] rounded-full bg-emerald-500/12 blur-3xl' />
+        <svg
+          className='absolute bottom-0 left-1/2 -z-20 translate-x-[-50%] opacity-10'
+          width='1200'
+          height='400'
+          viewBox='0 0 1200 400'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+          aria-hidden
+        >
+          <defs>
+            <linearGradient id='g' x1='0' x2='1'>
+              <stop offset='0' stopColor='#06b6d4' stopOpacity='0.12' />
+              <stop offset='1' stopColor='#7c3aed' stopOpacity='0.06' />
+            </linearGradient>
+          </defs>
+          <path d='M0 200 C300 80 900 320 1200 200 L1200 400 L0 400 Z' fill='url(#g)' />
+        </svg>
+      </div>
 
-      <div className='relative mx-auto max-w-7xl px-2 py-4 sm:px-6 lg:px-8 lg:py-28'>
-        <div className='grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16'>
-          <div className='space-y-8'>
-            <div className='space-y-5'>
-              <div className='inline-flex items-center gap-2 rounded-full border border-cyan-400/20 bg-cyan-400/10 px-4 py-2 text-sm font-medium text-cyan-200 backdrop-blur-xl'>
-                <span className='h-2 w-2 rounded-full bg-cyan-300' />
-                Portfolio Overview
-              </div>
-
-              <h1 className='max-w-3xl text-5xl font-semibold tracking-tight text-white sm:text-6xl lg:text-7xl'>
-                <span className='block text-slate-100'>{personal.firstName}</span>
-                <span className='mt-2 block bg-linear-to-r from-cyan-300 via-sky-300 to-blue-400 bg-clip-text text-transparent'>
-                  {personal.lastName}
-                </span>
-              </h1>
-
-              <p className='max-w-2xl text-xl font-medium text-slate-300 sm:text-2xl'>{personal.title}</p>
-
-              <p className='max-w-2xl text-base leading-8 text-slate-300/90 sm:text-lg'>{personal.bio}</p>
+      <div className='container mx-auto px-6 lg:px-8'>
+        <div className='grid grid-cols-1 items-center gap-10 lg:grid-cols-2'>
+          <div className='space-y-6'>
+            <div className='inline-flex items-center gap-3 rounded-full bg-white/6 px-3 py-1 text-sm font-medium text-slate-200'>
+              <span className='inline-block h-2 w-2 rounded-full bg-emerald-400 shadow-md' />
+              Product-focused Research & ML
             </div>
 
-            <div className='flex flex-wrap gap-4'>
+            <h1 className='text-[2.6rem] leading-tight tracking-tight text-white sm:text-[3.2rem] lg:text-[3.8rem]'>
+              <span className='block font-extrabold'>
+                {personal.firstName} {personal.lastName}
+              </span>
+              <div className='block mt-2 bg-gradient-to-r from-emerald-300 via-sky-300 to-indigo-400 bg-clip-text text-transparent font-semibold'>
+                <span className='inline-flex items-center gap-2'>Data Scientist and Researcher</span>
+              </div>
+            </h1>
+
+            <p className='max-w-2xl text-lg text-slate-300'>{personal.bio}</p>
+
+            <div className='flex flex-wrap items-center gap-4'>
               <Link
                 href='#projects'
-                className='inline-flex items-center justify-center rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-slate-950 shadow-lg shadow-cyan-500/20 transition-transform duration-300 hover:-translate-y-0.5 hover:bg-slate-100'
+                className='group inline-flex items-center gap-3 rounded-full bg-emerald-400 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg transition-transform hover:-translate-y-1'
               >
-                <span className='mr-2 inline-flex'>
-                  <SiteIcon name='rocket' className='h-4 w-4' />
-                </span>
-                View My Work
+                <SiteIcon name='rocket' className='h-4 w-4 text-slate-900' />
+                See Projects
               </Link>
+
               <Link
                 href='/contact'
-                className='inline-flex items-center justify-center rounded-full border border-white/15 bg-white/5 px-7 py-3.5 text-sm font-semibold text-white backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/10'
+                className='inline-flex items-center gap-3 rounded-full border border-white/10 px-5 py-3 text-sm font-medium text-white/90 backdrop-blur hover:bg-white/5'
               >
-                <span className='mr-2 inline-flex'>
-                  <SiteIcon name='message' className='h-4 w-4' />
-                </span>
-                Get in Touch
+                Contact Me
               </Link>
+
+              <div className='ml-2 flex items-center gap-3'>
+                {social.github && (
+                  <a
+                    href={social.github.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='rounded-full bg-white/6 p-2 text-slate-200 transition hover:bg-white/10'
+                  >
+                    <SiteIcon name='github' className='h-5 w-5' />
+                  </a>
+                )}
+                {social.linkedin && (
+                  <a
+                    href={social.linkedin.url}
+                    target='_blank'
+                    rel='noopener noreferrer'
+                    className='rounded-full bg-white/6 p-2 text-slate-200 transition hover:bg-white/10'
+                  >
+                    <SiteIcon name='linkedin' className='h-5 w-5' />
+                  </a>
+                )}
+              </div>
             </div>
 
-            <div className='flex flex-wrap gap-3 pt-2'>
-              {social.github && (
-                <a
-                  href={social.github.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label='GitHub'
-                  title='GitHub'
-                  className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:text-white'
-                >
-                  <SiteIcon name='github' className='h-5 w-5' />
-                </a>
-              )}
-              {social.linkedin && (
-                <a
-                  href={social.linkedin.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label='LinkedIn'
-                  title='LinkedIn'
-                  className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:text-white'
-                >
-                  <SiteIcon name='linkedin' className='h-5 w-5' />
-                </a>
-              )}
-              {social.twitter && (
-                <a
-                  href={social.twitter.url}
-                  target='_blank'
-                  rel='noopener noreferrer'
-                  aria-label='Twitter'
-                  title='Twitter'
-                  className='inline-flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-slate-200 backdrop-blur-xl transition-all duration-300 hover:-translate-y-0.5 hover:border-white/20 hover:bg-white/10 hover:text-white'
-                >
-                  <SiteIcon name='twitter' className='h-5 w-5' />
-                </a>
-              )}
-            </div>
+            <ul className='mt-6 flex flex-wrap gap-4 text-sm text-slate-400'>
+              <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
+                <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
+                  <SiteIcon name='chart' className='h-4 w-4' />
+                </span>
+                Research-led pipelines
+              </li>
+              <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
+                <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
+                  <SiteIcon name='brain' className='h-4 w-4' />
+                </span>
+                Scalable model deployments
+              </li>
+              <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
+                <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
+                  <SiteIcon name='briefcase' className='h-4 w-4' />
+                </span>
+                Cross-functional product impact
+              </li>
+            </ul>
           </div>
 
-          <div className='relative mx-auto w-full max-w-xl'>
-            <div className='absolute inset-0 translate-y-8 rounded-4xl bg-cyan-400/20 blur-3xl' />
-            <div className='relative rounded-4xl border border-white/10 bg-white/7 p-4 shadow-[0_24px_80px_rgba(15,23,42,0.55)] backdrop-blur-2xl sm:p-5'>
-              <div className='rounded-3xl border border-white/10 bg-slate-950/40 p-3 sm:p-4'>
-                <div className='relative aspect-4/5 overflow-hidden rounded-2xl border border-white/10 bg-slate-900'>
+          <aside className='mx-auto w-full max-w-md'>
+            <div className='relative rounded-3xl bg-gradient-to-br from-slate-800/60 to-slate-900/40 p-4 shadow-xl backdrop-blur-lg'>
+              <div className='relative overflow-hidden rounded-2xl border border-white/6'>
+                <div className='aspect-[4/5] relative h-0 w-full pb-[125%]'>
                   <Image
                     src='/images/profile/masfiq.png'
-                    alt='Masfiq profile portrait'
+                    alt='Profile'
                     fill
+                    sizes='(max-width: 768px) 100vw, 40vw'
+                    className='object-cover'
                     priority
-                    sizes='(max-width: 1024px) 100vw, 40vw'
-                    className='object-cover object-center'
                   />
-                  <div className='absolute inset-0 bg-linear-to-t from-slate-950 via-transparent to-transparent opacity-60' />
+                </div>
+                <div className='absolute left-4 bottom-4 flex flex-col gap-3'>
+                  <div className='rounded-full bg-white/6 px-3 py-2 text-sm font-medium text-white/90 backdrop-blur'>
+                    Senior ML Researcher
+                  </div>
+                  <div className='rounded-full bg-white/6 px-3 py-2 text-sm font-medium text-white/90 backdrop-blur'>
+                    Open to consulting
+                  </div>
                 </div>
               </div>
 
-              <div className='mt-4 grid grid-cols-2 gap-3 sm:mt-5'>
-                <div className='rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur-xl'>
-                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
-                    <SiteIcon name='briefcase' className='h-4 w-4' />
-                  </div>
-                  <div className='text-2xl font-semibold text-white'>5+</div>
-                  <div className='mt-1 text-sm text-slate-300'>Years Experience</div>
+              <div className='mt-4 grid grid-cols-2 gap-3'>
+                <div className='rounded-lg bg-white/4 p-3 text-center'>
+                  <div className='text-lg font-semibold'>5+</div>
+                  <div className='text-xs text-slate-300'>Years</div>
                 </div>
-                <div className='rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur-xl'>
-                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
-                    <SiteIcon name='rocket' className='h-4 w-4' />
-                  </div>
-                  <div className='text-2xl font-semibold text-white'>18+</div>
-                  <div className='mt-1 text-sm text-slate-300'>Projects Shipped</div>
-                </div>
-                <div className='rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur-xl'>
-                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
-                    <SiteIcon name='chart' className='h-4 w-4' />
-                  </div>
-                  <div className='text-2xl font-semibold text-white'>$4.1M</div>
-                  <div className='mt-1 text-sm text-slate-300'>Total Impact</div>
-                </div>
-                <div className='rounded-2xl border border-white/10 bg-white/6 p-4 backdrop-blur-xl'>
-                  <div className='mb-2 inline-flex rounded-lg bg-cyan-400/10 p-2 text-cyan-300'>
-                    <SiteIcon name='brain' className='h-4 w-4' />
-                  </div>
-                  <div className='text-2xl font-semibold text-white'>23+</div>
-                  <div className='mt-1 text-sm text-slate-300'>Models Deployed</div>
+                <div className='rounded-lg bg-white/4 p-3 text-center'>
+                  <div className='text-lg font-semibold'>18+</div>
+                  <div className='text-xs text-slate-300'>Projects</div>
                 </div>
               </div>
             </div>
-          </div>
+          </aside>
         </div>
       </div>
-    </section>
+    </header>
   )
 }
