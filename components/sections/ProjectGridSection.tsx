@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import { motion } from 'motion/react'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Code2, ExternalLink, FileText, Tag, Calendar } from 'lucide-react'
 import { Container } from '@/components/ui'
 
 interface ProjectGridSectionProps {
@@ -32,10 +32,12 @@ export function ProjectGridSection({ projects }: ProjectGridSectionProps) {
                 {/* Meta Column */}
                 <div className='w-full md:w-1/4 shrink-0 flex flex-col justify-between'>
                   <div>
-                    <div className='text-sm font-medium uppercase tracking-wider text-muted-foreground mb-2'>
+                    <div className='flex items-center gap-1.5 text-sm font-medium uppercase tracking-wider text-muted-foreground mb-2'>
+                      <Calendar className="w-4 h-4" />
                       {project.startDate.split('-')[0]} — {project.endDate.split('-')[0]}
                     </div>
-                    <div className='text-sm font-medium px-2 py-1 bg-accent/30 border border-border inline-block rounded-sm'>
+                    <div className='flex items-center gap-1.5 text-sm font-medium px-2 py-1 bg-accent/30 border border-border inline-block rounded-sm'>
+                      <Tag className="w-3 h-3" />
                       {project.category}
                     </div>
                   </div>
@@ -78,8 +80,9 @@ export function ProjectGridSection({ projects }: ProjectGridSectionProps) {
                         rel='noopener noreferrer'
                         className='inline-flex items-center gap-2 text-sm font-medium hover:text-muted-foreground transition-colors'
                       >
+                        <ExternalLink className="w-4 h-4" />
                         Live Demo
-                        <ArrowUpRight className='w-4 h-4' />
+                        <ArrowUpRight className='w-3 h-3 opacity-50' />
                       </a>
                     )}
                     {project.links.github && (
@@ -89,8 +92,9 @@ export function ProjectGridSection({ projects }: ProjectGridSectionProps) {
                         rel='noopener noreferrer'
                         className='inline-flex items-center gap-2 text-sm font-medium hover:text-muted-foreground transition-colors'
                       >
+                        <Code2 className="w-4 h-4" />
                         Source Code
-                        <ArrowUpRight className='w-4 h-4' />
+                        <ArrowUpRight className='w-3 h-3 opacity-50' />
                       </a>
                     )}
                     {project.links.blog && (
@@ -98,8 +102,9 @@ export function ProjectGridSection({ projects }: ProjectGridSectionProps) {
                         href={project.links.blog}
                         className='inline-flex items-center gap-2 text-sm font-medium hover:text-muted-foreground transition-colors'
                       >
+                        <FileText className="w-4 h-4" />
                         Read Case Study
-                        <ArrowUpRight className='w-4 h-4' />
+                        <ArrowUpRight className='w-3 h-3 opacity-50' />
                       </Link>
                     )}
                   </div>

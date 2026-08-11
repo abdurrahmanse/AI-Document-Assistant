@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { Container } from '@/components/ui'
+import { User, Target, CheckCircle2, Sparkles } from 'lucide-react'
 
 interface BiographySectionProps {
   introduction: { heading: string; content: string }
@@ -18,7 +19,8 @@ export function BiographySection({ introduction, mission, values }: BiographySec
           {/* Introduction */}
           <div className='grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16'>
             <div className='md:col-span-4'>
-              <h2 className='text-3xl font-bold tracking-tight text-foreground'>
+              <h2 className='text-3xl font-bold tracking-tight text-foreground flex items-center gap-3'>
+                <User className='w-8 h-8 text-primary' />
                 {introduction.heading}
               </h2>
             </div>
@@ -32,7 +34,8 @@ export function BiographySection({ introduction, mission, values }: BiographySec
           {/* Mission */}
           <div className='grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 pt-16 border-t border-border'>
             <div className='md:col-span-4'>
-              <h2 className='text-3xl font-bold tracking-tight text-foreground'>
+              <h2 className='text-3xl font-bold tracking-tight text-foreground flex items-center gap-3'>
+                <Target className='w-8 h-8 text-primary' />
                 {mission.heading}
               </h2>
             </div>
@@ -45,7 +48,8 @@ export function BiographySection({ introduction, mission, values }: BiographySec
 
           {/* Core Values */}
           <div className='pt-16 border-t border-border'>
-            <h2 className='text-3xl font-bold tracking-tight text-foreground mb-16'>
+            <h2 className='text-3xl font-bold tracking-tight text-foreground mb-16 flex items-center gap-3'>
+              <Sparkles className='w-8 h-8 text-primary' />
               Operating Principles
             </h2>
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-16'>
@@ -54,7 +58,8 @@ export function BiographySection({ introduction, mission, values }: BiographySec
                   <div className='text-sm font-medium tracking-widest uppercase text-muted-foreground mb-4'>
                     0{idx + 1}
                   </div>
-                  <h3 className='text-2xl font-bold tracking-tight mb-4'>
+                  <h3 className='text-2xl font-bold tracking-tight mb-4 flex items-center gap-2'>
+                    <CheckCircle2 className='w-5 h-5 text-primary shrink-0' />
                     {value.title}
                   </h3>
                   <p className='text-lg leading-relaxed text-muted-foreground'>

@@ -3,7 +3,15 @@
 import { Container } from '@/components/ui'
 import { personalData } from '@/data'
 import Link from 'next/link'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Code2, Briefcase, Hash, MessageSquare, Mail } from 'lucide-react'
+
+const getSocialIcon = (platform: string) => {
+  const p = platform.toLowerCase()
+  if (p.includes('github')) return <Code2 className="w-4 h-4" />
+  if (p.includes('linkedin')) return <Briefcase className="w-4 h-4" />
+  if (p.includes('twitter') || p.includes('x')) return <Hash className="w-4 h-4" />
+  return <MessageSquare className="w-4 h-4" />
+}
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -19,10 +27,11 @@ export default function Footer() {
             </h2>
             <a
               href={`mailto:${contact.email}`}
-              className='inline-flex items-center gap-2 text-xl md:text-2xl font-medium text-muted-foreground hover:text-foreground transition-colors group'
+              className='inline-flex items-center gap-3 text-xl md:text-2xl font-medium text-muted-foreground hover:text-foreground transition-colors group'
             >
+              <Mail className='w-6 h-6' />
               {contact.email}
-              <ArrowUpRight className='w-6 h-6 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1' />
+              <ArrowUpRight className='w-6 h-6 opacity-50 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1' />
             </a>
           </div>
           
@@ -36,8 +45,9 @@ export default function Footer() {
                     href={social.url}
                     target='_blank'
                     rel='noopener noreferrer'
-                    className='text-foreground hover:text-muted-foreground transition-colors capitalize'
+                    className='inline-flex items-center gap-2 text-foreground hover:text-muted-foreground transition-colors capitalize'
                   >
+                    {getSocialIcon(platform)}
                     {platform}
                   </a>
                 ))}
@@ -50,7 +60,6 @@ export default function Footer() {
                 <Link href='/about' className='text-foreground hover:text-muted-foreground transition-colors'>About</Link>
                 <Link href='/projects' className='text-foreground hover:text-muted-foreground transition-colors'>Projects</Link>
                 <Link href='/research' className='text-foreground hover:text-muted-foreground transition-colors'>Research</Link>
-                <Link href='/blog' className='text-foreground hover:text-muted-foreground transition-colors'>Blog</Link>
               </div>
             </div>
           </div>

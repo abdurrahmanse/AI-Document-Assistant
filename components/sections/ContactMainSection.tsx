@@ -1,12 +1,20 @@
 import React from 'react'
 import { Container } from '@/components/ui'
 import ContactForm from '../forms/ContactForm'
-import { ArrowUpRight } from 'lucide-react'
+import { ArrowUpRight, Mail, MapPin, Code2, Briefcase, Hash, MessageSquare } from 'lucide-react'
 
 interface ContactMainSectionProps {
   cta: { heading: string; description: string }
   contactInfo: any
-  socialLinks: Array<any>
+  socialLinks: Array<{ platform: string; url: string; icon?: string }>
+}
+
+const getSocialIcon = (platform: string) => {
+  const p = platform.toLowerCase()
+  if (p.includes('github')) return <Code2 className="w-4 h-4" />
+  if (p.includes('linkedin')) return <Briefcase className="w-4 h-4" />
+  if (p.includes('twitter') || p.includes('x')) return <Hash className="w-4 h-4" />
+  return <MessageSquare className="w-4 h-4" />
 }
 
 export function ContactMainSection({ cta, contactInfo, socialLinks }: ContactMainSectionProps) {
@@ -28,7 +36,8 @@ export function ContactMainSection({ cta, contactInfo, socialLinks }: ContactMai
 
             <div className='flex flex-col gap-10 border-t border-border pt-10'>
               <div className='flex flex-col gap-2'>
-                <div className='text-sm font-medium tracking-widest uppercase text-muted-foreground'>
+                <div className='flex items-center gap-2 text-sm font-medium tracking-widest uppercase text-muted-foreground'>
+                  <Mail className="w-4 h-4" />
                   {contactInfo.email.label}
                 </div>
                 <a 
@@ -43,7 +52,8 @@ export function ContactMainSection({ cta, contactInfo, socialLinks }: ContactMai
               </div>
 
               <div className='flex flex-col gap-2'>
-                <div className='text-sm font-medium tracking-widest uppercase text-muted-foreground'>
+                <div className='flex items-center gap-2 text-sm font-medium tracking-widest uppercase text-muted-foreground'>
+                  <MapPin className="w-4 h-4" />
                   {contactInfo.location.label}
                 </div>
                 <div className='text-xl font-medium tracking-tight text-foreground'>
@@ -70,8 +80,9 @@ export function ContactMainSection({ cta, contactInfo, socialLinks }: ContactMai
                     rel='noopener noreferrer'
                     className='inline-flex items-center gap-1.5 text-base font-medium text-foreground hover:text-muted-foreground transition-colors'
                   >
+                    {getSocialIcon(link.platform)}
                     {link.platform}
-                    <ArrowUpRight className='w-4 h-4' />
+                    <ArrowUpRight className='w-3 h-3 opacity-50' />
                   </a>
                 ))}
               </div>

@@ -1,11 +1,19 @@
 import Footer from '@/components/layout/Footer'
 import Navigation from '@/components/navigation/Navigation'
+import { Rajdhani } from 'next/font/google'
 import type { Metadata } from 'next'
 import '@radix-ui/themes/styles.css'
 import './globals.css'
 import { Theme } from '@radix-ui/themes'
 import { LenisProvider } from '@/components/providers/LenisProvider'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
+const rajdhani = Rajdhani({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-rajdhani',
+  display: 'swap',
+})
+
 export const metadata: Metadata = {
   title: 'S M Masfequier Rahman Swapno - Research-First Data Scientist',
   description:
@@ -18,8 +26,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={`h-full antialiased`} suppressHydrationWarning>
-      <body className='min-h-full flex flex-col'>
+    <html lang='en' className={`h-full ${rajdhani.variable} antialiased`} suppressHydrationWarning>
+      <body className='min-h-full flex flex-col font-sans'>
         <ThemeProvider
           attribute="class"
           defaultTheme="system"

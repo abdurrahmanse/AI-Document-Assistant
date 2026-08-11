@@ -4,7 +4,7 @@ import { personalData } from '@/data/pages/01-personal'
 import { Container } from '@/components/ui'
 import Link from 'next/link'
 import { motion, Variants } from 'motion/react'
-import { ArrowRight } from 'lucide-react'
+import { ArrowRight, Brain, BookOpen } from 'lucide-react'
 
 export default function Hero() {
   const { personal } = personalData
@@ -34,8 +34,8 @@ export default function Hero() {
           initial='hidden'
           animate='visible'
         >
-          <motion.div variants={itemVariants} className='mb-8 inline-flex items-center gap-3'>
-            <span className='inline-block h-2 w-2 bg-foreground rounded-full animate-pulse' />
+          <motion.div variants={itemVariants} className='mb-8 inline-flex items-center gap-3 bg-accent/50 px-4 py-2 rounded-full border border-border'>
+            <Brain className='w-4 h-4 text-primary animate-pulse' />
             <span className='text-sm font-medium tracking-widest uppercase text-muted-foreground'>
               Data Scientist & Researcher
             </span>
@@ -68,6 +68,7 @@ export default function Hero() {
               href='/about'
               className='group inline-flex items-center gap-3 border border-border bg-transparent text-foreground px-8 py-4 rounded-sm text-sm font-medium transition-colors hover:bg-accent'
             >
+              <BookOpen className='w-4 h-4 text-muted-foreground group-hover:text-foreground transition-colors' />
               Read Narrative
             </Link>
           </motion.div>
