@@ -20,28 +20,24 @@ export function CTASection({
   secondaryButtonUrl,
 }: CTASectionProps) {
   return (
-    <section className='py-20 md:py-32 bg-linear-to-r from-blue-950 to-cyan-950 border-b border-slate-800'>
+    <section className='py-32 border-b border-border bg-accent/30'>
       <div className='max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8'>
         <div>
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-6'>{heading}</h2>
-          <p className='text-xl text-slate-300 mb-8 max-w-2xl mx-auto'>{description}</p>
+          <h2 className='text-5xl md:text-7xl font-bold tracking-tighter mb-6'>{heading}</h2>
+          <p className='text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed'>{description}</p>
         </div>
-        <div className='flex flex-col sm:flex-row gap-4 justify-center'>
+        <div className='flex flex-col sm:flex-row gap-6 justify-center items-center'>
           <Link
             href={primaryButtonUrl}
-            className='px-8 py-4 bg-white text-blue-600 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-300 transform hover:scale-105'
+            className='px-8 py-4 bg-foreground text-background rounded-sm font-medium transition-transform hover:-translate-y-1 w-full sm:w-auto'
           >
-            <span className='inline-flex items-center gap-2'>
-              {primaryButtonText}
-            </span>
+            {primaryButtonText}
           </Link>
           <Link
             href={secondaryButtonUrl}
-            className='px-8 py-4 border-2 border-white text-white rounded-lg font-bold text-lg hover:bg-white/10 transition-all duration-300'
+            className='px-8 py-4 border border-border bg-transparent text-foreground rounded-sm font-medium hover:bg-accent transition-colors w-full sm:w-auto'
           >
-            <span className='inline-flex items-center gap-2'>
-              {secondaryButtonText}
-            </span>
+            {secondaryButtonText}
           </Link>
         </div>
       </div>

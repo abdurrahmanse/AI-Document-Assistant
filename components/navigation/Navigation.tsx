@@ -4,48 +4,45 @@ import { Container } from '@/components/ui'
 import { useScroll, useToggle } from '@/hooks'
 import { ROUTES } from '@/lib/utils'
 import Link from 'next/link'
+import { Menu, X } from 'lucide-react'
 
 export default function Navigation() {
   const { isAtTop } = useScroll()
   const [mobileMenuOpen, toggleMobileMenu, setMobileMenuOpen] = useToggle(false)
 
   const navLinks = [
-    { label: 'Home', href: ROUTES.HOME, icon: 'sparkles' as const },
-    { label: 'About', href: ROUTES.ABOUT, icon: 'users' as const },
-    { label: 'Experience', href: ROUTES.EXPERIENCE, icon: 'briefcase' as const },
-    { label: 'Projects', href: ROUTES.PROJECTS, icon: 'rocket' as const },
-    { label: 'Skills', href: ROUTES.SKILLS, icon: 'layers' as const },
-    { label: 'Publications', href: ROUTES.PUBLICATIONS, icon: 'book' as const },
-    { label: 'Contact', href: ROUTES.CONTACT, icon: 'message' as const },
+    { label: 'Home', href: ROUTES.HOME },
+    { label: 'About', href: ROUTES.ABOUT },
+    { label: 'Research', href: ROUTES.RESEARCH },
+    { label: 'Experience', href: ROUTES.EXPERIENCE },
+    { label: 'Projects', href: ROUTES.PROJECTS },
+    { label: 'Blog', href: ROUTES.BLOG },
+    { label: 'Contact', href: ROUTES.CONTACT },
   ]
 
   return (
     <nav
-      className={`sticky top-0 z-50 transition-all duration-300 ${
-        !isAtTop ? 'bg-slate-950/80 backdrop-blur-lg border-b border-slate-800/50' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 w-full z-50 transition-all duration-500 ${!isAtTop ? 'bg-background/80 backdrop-blur-md border-b border-border py-4' : 'bg-transparent py-6'
+        }`}
     >
       <Container size='xl'>
-        <div className='flex items-center justify-between py-4'>
-          {/* Logo */}
-          <Link href={ROUTES.HOME} className='flex items-center gap-2 group'>
-            <div className='w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all'>
-              
+        <div className='flex items-center justify-between'>
+          {/* Brand */}
+          <Link href={ROUTES.HOME} className='group flex items-center gap-3'>
+            <div className='w-8 h-8 rounded-sm bg-foreground flex items-center justify-center text-background font-bold tracking-tighter transition-transform group-hover:scale-95'>
+              M.
             </div>
-            <span className='font-bold text-lg hidden sm:inline'>Portfolio</span>
+            <span className='font-bold text-lg tracking-tight hidden sm:block'>Masfiqur</span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className='hidden lg:flex items-center gap-1'>
+          <div className='hidden lg:flex items-center gap-6'>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className='px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all duration-200 text-sm'
+                className='text-sm font-medium text-muted-foreground hover:text-foreground transition-colors'
               >
-                <span className='mr-2 inline-flex align-middle text-cyan-400'>
-                  
-                </span>
                 {link.label}
               </Link>
             ))}
@@ -54,31 +51,31 @@ export default function Navigation() {
           {/* Mobile Menu Toggle */}
           <button
             onClick={toggleMobileMenu}
-            className='lg:hidden p-2 hover:bg-slate-800/50 rounded-md transition-all'
+            className='lg:hidden p-2 text-foreground hover:bg-accent rounded-sm transition-colors'
             aria-label='Toggle navigation'
           >
-            
+            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
           </button>
         </div>
 
         {/* Mobile Navigation */}
-        {mobileMenuOpen && (
-          <div className='lg:hidden pb-4 space-y-2 border-t border-slate-800'>
+        <div
+          className={`lg:hidden overflow-hidden transition-all duration-300 ease-in-out ${mobileMenuOpen ? 'max-h-96 opacity-100 mt-6' : 'max-h-0 opacity-0 mt-0'
+            }`}
+        >
+          <div className='flex flex-col gap-4 py-4 border-t border-border'>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className='block px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all'
+                className='text-lg font-medium text-muted-foreground hover:text-foreground transition-colors'
                 onClick={() => setMobileMenuOpen(false)}
               >
-                <span className='mr-2 inline-flex align-middle text-cyan-400'>
-                  
-                </span>
                 {link.label}
               </Link>
             ))}
           </div>
-        )}
+        </div>
       </Container>
     </nav>
   )

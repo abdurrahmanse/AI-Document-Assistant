@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container } from '@/components/ui'
 
 interface ProjectFilterSectionProps {
   filters: Array<{ id: string; name: string }>
@@ -8,27 +9,24 @@ interface ProjectFilterSectionProps {
 
 export function ProjectFilterSection({ filters, selectedFilter, onSelectFilter }: ProjectFilterSectionProps) {
   return (
-    <section className='py-12 px-4 sm:px-6 lg:px-8 bg-slate-950 border-b border-slate-800 sticky top-20 z-30'>
-      <div className='max-w-6xl mx-auto'>
-        <div className='flex flex-wrap gap-3 justify-center'>
+    <section className='py-8 bg-background border-b border-border sticky top-[73px] z-30'>
+      <Container size='xl'>
+        <div className='flex flex-wrap gap-2 md:gap-4'>
           {filters.map((filter) => (
             <button
               key={filter.id}
               onClick={() => onSelectFilter(filter.id)}
-              className={`px-6 py-2 rounded-lg font-medium transition-all duration-300 ${
+              className={`px-4 py-2 text-sm font-medium transition-colors border ${
                 selectedFilter === filter.id
-                  ? 'bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/50'
-                  : 'bg-slate-800 text-slate-300 hover:bg-slate-700'
-              }`}
+                  ? 'border-foreground bg-foreground text-background'
+                  : 'border-transparent text-muted-foreground hover:text-foreground hover:bg-accent'
+              } rounded-sm`}
             >
-              <span className='inline-flex items-center gap-2'>
-                
-                {filter.name}
-              </span>
+              {filter.name}
             </button>
           ))}
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

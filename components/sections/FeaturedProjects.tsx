@@ -1,82 +1,99 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
+'use client'
+
 import { projectsPage } from '@/data'
+import { Container } from '@/components/ui'
 import Link from 'next/link'
+import { ArrowRight, ArrowUpRight } from 'lucide-react'
+import { motion } from 'motion/react'
 
 export default function FeaturedProjects() {
-  const { sections, projects } = projectsPage
-  const featuredProjects = projects.filter((p) => p.featured).slice(0, 2)
+  const { projects } = projectsPage
+  const featuredProjects = projects.filter((p) => p.featured).slice(0, 3)
 
   return (
-    <section id='projects' className='py-20 md:py-32 bg-slate-900'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
+    <section className='py-32 bg-background'>
+      <Container size='xl'>
         {/* Section Header */}
-        <div className='text-center mb-16'>
-          <div className='inline-block bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 text-sm text-blue-400 mb-4'>
-            <span className='inline-flex items-center gap-2'>
-               {sections.hero.title}
-            </span>
+        <div className='flex flex-col md:flex-row justify-between items-end mb-24 gap-8'>
+          <div className='max-w-2xl'>
+            <h2 className='text-4xl md:text-6xl font-bold tracking-tighter mb-6'>
+              Selected Work
+            </h2>
+            <p className='text-lg text-muted-foreground leading-relaxed'>
+              A selection of research-driven products and scalable machine learning systems.
+            </p>
           </div>
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>{sections.hero.title}</h2>
-          <p className='text-xl text-slate-400 max-w-2xl mx-auto'>{sections.hero.description}</p>
+          <Link
+            href='/projects'
+            className='inline-flex items-center gap-2 text-sm font-medium hover:text-muted-foreground transition-colors group'
+          >
+            View All Projects
+            <ArrowRight className='w-4 h-4 transition-transform group-hover:translate-x-1' />
+          </Link>
         </div>
 
         {/* Projects Grid */}
-        <div className='grid md:grid-cols-2 gap-8 mb-12'>
-          {featuredProjects.map((project: any) => (
-            <div
+        <div className='space-y-32'>
+          {featuredProjects.map((project: any, index: number) => (
+            <motion.div
               key={project.id}
-              className='group bg-linear-to-br from-slate-800 to-slate-900 rounded-xl p-8 border border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10'
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-100px' }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className={`flex flex-col lg:flex-row gap-12 lg:gap-24 items-center ${
+                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
+              }`}
             >
-              <div className='flex items-start justify-between mb-6'>
-                <div>
-                  <h3 className='text-xl font-bold text-white mb-2'>{project.title}</h3>
-                  <p className='text-slate-400 text-sm'>
-                    {project.startDate} - {project.endDate}
-                  </p>
+              {/* Project Image Placeholder */}
+              <div className='w-full lg:w-3/5 aspect-[4/3] bg-accent/30 rounded-sm overflow-hidden relative group'>
+                <div className='absolute inset-0 flex items-center justify-center text-muted-foreground font-mono text-sm tracking-widest uppercase'>
+                  Image / Visual
                 </div>
+                {/* When actual images are ready: 
+                  <Image src={project.image} alt={project.title} fill className="object-cover transition-transform duration-700 group-hover:scale-105" />
+                */}
               </div>
 
-              <p className='text-slate-300 mb-4'>{project.description}</p>
-
-              <div className='flex flex-wrap gap-2 mb-6'>
-                {project.technologies.slice(0, 4).map((tech: any) => (
-                  <span
-                    key={tech}
-                    className='px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-xs text-blue-300'
-                  >
-                    {tech}
-                  </span>
-                ))}
-              </div>
-
-              <div className='flex items-center justify-between pt-4 border-t border-slate-700'>
-                <div className='text-sm text-slate-400'>
-                  <span className='text-green-400 font-semibold'>{project.highlights.revenue_impact}</span> impact
+              {/* Project Details */}
+              <div className='w-full lg:w-2/5 flex flex-col'>
+                <div className='flex items-center gap-4 mb-6 text-sm font-medium tracking-wide text-muted-foreground uppercase'>
+                  <span>{project.startDate}</span>
+                  <span className='w-8 h-px bg-border' />
+                  <span>{project.endDate}</span>
                 </div>
+
+                <h3 className='text-3xl md:text-4xl font-bold tracking-tight mb-6'>
+                  {project.title}
+                </h3>
+                
+                <p className='text-lg text-muted-foreground leading-relaxed mb-8'>
+                  {project.description}
+                </p>
+
+                <div className='flex flex-wrap gap-2 mb-12'>
+                  {project.technologies.slice(0, 4).map((tech: any) => (
+                    <span
+                      key={tech}
+                      className='px-3 py-1 border border-border rounded-sm text-xs font-medium bg-accent/30'
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+
                 <Link
                   href='/projects'
-                  className='text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-2 transition-colors'
+                  className='inline-flex items-center gap-2 text-foreground font-medium group transition-colors hover:text-muted-foreground'
                 >
-                  
-                  Learn More
+                  Read Case Study
+                  <ArrowUpRight className='w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1' />
                 </Link>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
-
-        {/* Call to Action */}
-        <div className='text-center pt-8'>
-          <Link
-            href='/projects'
-            className='inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105'
-          >
-            <span className='inline-flex items-center gap-2'>
-               View All {projects.length} Projects
-            </span>
-          </Link>
-        </div>
-      </div>
+      </Container>
     </section>
   )
 }

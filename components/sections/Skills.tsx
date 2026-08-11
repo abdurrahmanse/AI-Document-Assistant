@@ -1,80 +1,84 @@
+'use client'
+
+import { useState } from 'react'
 import { skillsPage } from '@/data'
+import { Container } from '@/components/ui'
+import { Plus, Minus } from 'lucide-react'
+import { motion, AnimatePresence } from 'motion/react'
 
 export default function Skills() {
   const { sections, skillCategories } = skillsPage
+  const [expandedId, setExpandedId] = useState<string | null>(skillCategories[0]?.id || null)
 
   return (
-    <section className='py-20 md:py-32 bg-linear-to-b from-slate-800 to-slate-900'>
-      <div className='max-w-7xl mx-auto px-4 sm:px-6 lg:px-8'>
-        {/* Section Header */}
-        <div className='text-center mb-16'>
-          <div className='inline-block bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 text-sm text-blue-400 mb-4'>
-            <span className='inline-flex items-center gap-2'>
-               Technical Skills
-            </span>
+    <section className='py-24 bg-background border-y border-border'>
+      <Container size='xl'>
+        <div className='grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24'>
+          {/* Header Area */}
+          <div className='lg:col-span-5 space-y-6'>
+            <h2 className='text-4xl md:text-5xl font-bold tracking-tighter'>
+              Core<br />Capabilities
+            </h2>
+            <p className='text-lg text-muted-foreground leading-relaxed'>
+              {sections.hero.description}
+            </p>
           </div>
-          <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>{sections.hero.title}</h2>
-          <p className='text-xl text-slate-400 max-w-2xl mx-auto'>{sections.hero.description}</p>
-        </div>
 
-        {/* Skills Grid */}
-        <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12'>
-          {skillCategories.slice(0, 6).map((category) => (
-            <div
-              key={category.id}
-              className='bg-slate-800/50 border border-slate-700 rounded-lg p-6 hover:border-blue-500/50 transition-all duration-300'
-            >
-              <h3 className='text-lg font-semibold text-white mb-4 flex items-center gap-2'>
-                
-                {category.categoryName}
-              </h3>
-              <p className='text-slate-400 text-sm mb-4'>{category.description}</p>
-              <div className='space-y-2'>
-                {category.skills.slice(0, 3).map((skill) => (
-                  <div key={skill.name} className='flex items-center justify-between'>
-                    <span className='text-slate-300 text-sm flex items-center gap-2'>
-                      
-                      {skill.name}
-                    </span>
-                    <span className='text-xs text-blue-400 font-medium'>{skill.proficiency}</span>
-                  </div>
-                ))}
-                {category.skills.length > 3 && (
-                  <p className='text-xs text-slate-400 pt-2'>+ {category.skills.length - 3} more</p>
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
+          {/* Progressive Disclosure List */}
+          <div className='lg:col-span-7 flex flex-col'>
+            {skillCategories.map((category) => {
+              const isExpanded = expandedId === category.id
 
-        {/* Proficiency Levels */}
-        <div className='bg-slate-800/50 border border-slate-700 rounded-xl p-8 mt-12'>
-          <h3 className='text-2xl font-bold text-white mb-8 flex items-center gap-2'>
-            
-            Proficiency Overview
-          </h3>
+              return (
+                <div 
+                  key={category.id} 
+                  className='border-b border-border last:border-0'
+                >
+                  <button
+                    onClick={() => setExpandedId(isExpanded ? null : category.id)}
+                    className='w-full py-6 flex items-center justify-between text-left group transition-colors'
+                  >
+                    <h3 className={`text-2xl font-medium tracking-tight transition-colors ${isExpanded ? 'text-foreground' : 'text-muted-foreground group-hover:text-foreground'}`}>
+                      {category.categoryName}
+                    </h3>
+                    <div className={`p-2 rounded-full transition-colors ${isExpanded ? 'bg-foreground text-background' : 'bg-transparent text-muted-foreground group-hover:text-foreground'}`}>
+                      {isExpanded ? <Minus size={16} /> : <Plus size={16} />}
+                    </div>
+                  </button>
 
-          <div className='space-y-6'>
-            {skillCategories
-              .flatMap((cat) => cat.skills)
-              .slice(0, 8)
-              .map((skill) => (
-                <div key={skill.name}>
-                  <div className='flex items-center justify-between mb-2'>
-                    <span className='text-white font-medium'>{skill.name}</span>
-                    <span className='text-slate-400 text-sm'>{skill.proficiency}</span>
-                  </div>
-                  <div className='h-2 bg-slate-700 rounded-full overflow-hidden'>
-                    <div
-                      className='h-full bg-linear-to-r from-blue-400 to-cyan-400 rounded-full'
-                      style={{ width: `${skill.level * 20}%` }}
-                    ></div>
-                  </div>
+                  <AnimatePresence>
+                    {isExpanded && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: 'auto', opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: 'easeInOut' }}
+                        className='overflow-hidden'
+                      >
+                        <div className='pb-8 pt-2'>
+                          <p className='text-muted-foreground mb-6 max-w-xl'>
+                            {category.description}
+                          </p>
+                          <div className='flex flex-wrap gap-3'>
+                            {category.skills.map((skill) => (
+                              <span 
+                                key={skill.name}
+                                className='px-4 py-2 border border-border rounded-sm text-sm font-medium tracking-wide text-foreground bg-accent/30'
+                              >
+                                {skill.name}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
-              ))}
+              )
+            })}
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   )
 }

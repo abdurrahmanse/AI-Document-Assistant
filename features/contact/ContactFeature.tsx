@@ -1,8 +1,6 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react'
 import { PageHeroSection } from '@/components/sections/PageHeroSection'
 import { ContactMainSection } from '@/components/sections/ContactMainSection'
-import { FAQSection } from '@/components/sections/FAQSection'
 import { CTASection } from '@/components/sections/CTASection'
 
 interface ContactFeatureProps {
@@ -18,12 +16,11 @@ export function ContactFeature({ data }: ContactFeatureProps) {
   const { hero, cta, contactInfo, socialLinks } = data
 
   return (
-    <main className='bg-slate-900 min-h-screen'>
+    <main className='bg-background min-h-screen'>
       <PageHeroSection
         title={hero.title}
         subtitle={hero.subtitle}
         description={hero.description}
-        badge={{ icon: 'message', text: 'Get in Touch' }}
       />
       
       <ContactMainSection
@@ -32,15 +29,13 @@ export function ContactFeature({ data }: ContactFeatureProps) {
         socialLinks={socialLinks}
       />
       
-      <FAQSection />
-      
       <CTASection
-        heading="Let's Create Something Amazing Together"
-        description="Whether you have a specific project in mind or just want to chat about data science, I'm here to help."
-        primaryButtonText="View Experience"
-        primaryButtonUrl="/experience"
-        secondaryButtonText="Browse Projects"
-        secondaryButtonUrl="/projects"
+        heading="Explore my work"
+        description="Not ready to chat just yet? Feel free to browse through my projects and research to see how I approach problem solving."
+        primaryButtonText="View Projects"
+        primaryButtonUrl="/projects"
+        secondaryButtonText="Read Research"
+        secondaryButtonUrl="/research"
       />
     </main>
   )

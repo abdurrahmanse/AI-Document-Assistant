@@ -20,19 +20,19 @@ export function Button({
   disabled,
   ...props
 }: ButtonProps) {
-  const baseClasses = 'inline-flex items-center justify-center font-semibold transition-all duration-200'
+  const baseClasses = 'inline-flex items-center justify-center font-medium transition-all duration-300'
 
   const variantClasses = {
-    primary: 'bg-blue-500 text-white hover:bg-blue-600 disabled:opacity-50',
-    secondary: 'bg-slate-700 text-white hover:bg-slate-600 disabled:opacity-50',
-    outline: 'border border-slate-500 text-slate-300 hover:bg-slate-800/50 disabled:opacity-50',
-    ghost: 'text-slate-300 hover:text-white hover:bg-slate-800/50 disabled:opacity-50',
+    primary: 'bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-50',
+    secondary: 'bg-secondary text-secondary-foreground hover:bg-secondary/80 disabled:opacity-50',
+    outline: 'border border-border text-foreground hover:bg-accent hover:text-accent-foreground disabled:opacity-50',
+    ghost: 'text-muted-foreground hover:text-foreground hover:bg-accent disabled:opacity-50',
   }
 
   const sizeClasses = {
-    sm: 'px-3 py-1 text-sm rounded',
-    md: 'px-4 py-2 text-base rounded-md',
-    lg: 'px-6 py-3 text-lg rounded-lg',
+    sm: 'px-3 py-1.5 text-sm rounded-sm',
+    md: 'px-5 py-2.5 text-base rounded-md',
+    lg: 'px-8 py-4 text-lg rounded-md',
   }
 
   return (

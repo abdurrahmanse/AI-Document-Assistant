@@ -17,5 +17,7 @@ export const ROUTES = {
   PROJECTS: '/projects',
   SKILLS: '/skills',
   PUBLICATIONS: '/publications',
+  RESEARCH: '/research',
+  BLOG: '/blog',
   CONTACT: '/contact',
 }

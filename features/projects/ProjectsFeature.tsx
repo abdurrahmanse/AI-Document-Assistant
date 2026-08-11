@@ -23,7 +23,7 @@ export function ProjectsFeature({ data }: ProjectsFeatureProps) {
   const filteredProjects = selectedFilter === 'all' ? projects : projects.filter((p) => p.categoryId === selectedFilter)
 
   return (
-    <main className='overflow-hidden'>
+    <main className='bg-background min-h-screen'>
       <PageHeroSection
         title={hero.title}
         subtitle={hero.subtitle}

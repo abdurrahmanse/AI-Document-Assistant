@@ -8,20 +8,20 @@ export interface BadgeProps extends React.HTMLAttributes<HTMLSpanElement> {
 }
 
 export function Badge({ className, variant = 'primary', size = 'md', icon, children, ...props }: BadgeProps) {
-  const baseClasses = 'inline-flex items-center gap-2 font-semibold whitespace-nowrap'
+  const baseClasses = 'inline-flex items-center gap-1.5 font-medium whitespace-nowrap tracking-wide uppercase'
 
   const variantClasses = {
-    primary: 'bg-blue-500/20 text-blue-300 border border-blue-500/30',
-    secondary: 'bg-slate-500/20 text-slate-300 border border-slate-500/30',
-    success: 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30',
-    warning: 'bg-amber-500/20 text-amber-300 border border-amber-500/30',
-    error: 'bg-red-500/20 text-red-300 border border-red-500/30',
+    primary: 'bg-primary text-primary-foreground',
+    secondary: 'bg-secondary text-secondary-foreground border border-border',
+    success: 'bg-emerald-950 text-emerald-400 border border-emerald-900/50',
+    warning: 'bg-amber-950 text-amber-400 border border-amber-900/50',
+    error: 'bg-red-950 text-red-400 border border-red-900/50',
   }
 
   const sizeClasses = {
-    sm: 'px-2 py-1 text-xs rounded',
-    md: 'px-3 py-1.5 text-sm rounded-md',
-    lg: 'px-4 py-2 text-base rounded-lg',
+    sm: 'px-2 py-0.5 text-[10px] rounded-sm',
+    md: 'px-2.5 py-1 text-xs rounded-sm',
+    lg: 'px-3 py-1.5 text-sm rounded-md',
   }
 
   return (
