@@ -1,4 +1,3 @@
-import { SiteIcon } from '@/components/ui'
 import { personalData } from '@/data/pages/01-personal'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -54,7 +53,7 @@ export default function Hero() {
                 href='#projects'
                 className='group inline-flex items-center gap-3 rounded-full bg-emerald-400 px-5 py-3 text-sm font-semibold text-slate-900 shadow-lg transition-transform hover:-translate-y-1'
               >
-                <SiteIcon name='rocket' className='h-4 w-4 text-slate-900' />
+                
                 See Projects
               </Link>
 
@@ -73,7 +72,7 @@ export default function Hero() {
                     rel='noopener noreferrer'
                     className='rounded-full bg-white/6 p-2 text-slate-200 transition hover:bg-white/10'
                   >
-                    <SiteIcon name='github' className='h-5 w-5' />
+                    
                   </a>
                 )}
                 {social.linkedin && (
@@ -83,7 +82,7 @@ export default function Hero() {
                     rel='noopener noreferrer'
                     className='rounded-full bg-white/6 p-2 text-slate-200 transition hover:bg-white/10'
                   >
-                    <SiteIcon name='linkedin' className='h-5 w-5' />
+                    
                   </a>
                 )}
               </div>
@@ -92,19 +91,19 @@ export default function Hero() {
             <ul className='mt-6 flex flex-wrap gap-4 text-sm text-slate-400'>
               <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
                 <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
-                  <SiteIcon name='chart' className='h-4 w-4' />
+                  
                 </span>
                 Research-led pipelines
               </li>
               <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
                 <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
-                  <SiteIcon name='brain' className='h-4 w-4' />
+                  
                 </span>
                 Scalable model deployments
               </li>
               <li className='inline-flex items-center gap-2 rounded-lg bg-white/3 px-3 py-2'>
                 <span className='inline-flex h-6 w-6 items-center justify-center rounded-md bg-white/6 text-emerald-300'>
-                  <SiteIcon name='briefcase' className='h-4 w-4' />
+                  
                 </span>
                 Cross-functional product impact
               </li>

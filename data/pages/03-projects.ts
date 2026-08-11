@@ -4,7 +4,7 @@
  * This file contains featured projects with detailed case studies
  */
 
-import type { ProjectsPage } from '../../entities/types';
+import type { ProjectsPage } from '@/types/common';
 
 export const projectsPage: ProjectsPage = {
     page: {

@@ -1,6 +1,5 @@
 'use client'
 
-import { SiteIcon } from '@/components/ui'
 import { useState } from 'react'
 
 interface FormData {
@@ -69,7 +68,7 @@ export default function ContactForm() {
       <div>
         <label htmlFor='name' className='block text-sm font-medium text-white mb-2'>
           <span className='mr-2 inline-flex align-middle text-cyan-400'>
-            <SiteIcon name='users' className='h-4 w-4' />
+            
           </span>
           Name <span className='text-red-400'>*</span>
         </label>
@@ -89,7 +88,7 @@ export default function ContactForm() {
       <div>
         <label htmlFor='email' className='block text-sm font-medium text-white mb-2'>
           <span className='mr-2 inline-flex align-middle text-cyan-400'>
-            <SiteIcon name='mail' className='h-4 w-4' />
+            
           </span>
           Email <span className='text-red-400'>*</span>
         </label>
@@ -109,7 +108,7 @@ export default function ContactForm() {
       <div>
         <label htmlFor='subject' className='block text-sm font-medium text-white mb-2'>
           <span className='mr-2 inline-flex align-middle text-cyan-400'>
-            <SiteIcon name='message' className='h-4 w-4' />
+            
           </span>
           Subject <span className='text-red-400'>*</span>
         </label>
@@ -141,7 +140,7 @@ export default function ContactForm() {
       <div>
         <label htmlFor='message' className='block text-sm font-medium text-white mb-2'>
           <span className='mr-2 inline-flex align-middle text-cyan-400'>
-            <SiteIcon name='message' className='h-4 w-4' />
+            
           </span>
           Message <span className='text-red-400'>*</span>
         </label>
@@ -161,7 +160,7 @@ export default function ContactForm() {
       {submitStatus === 'success' && (
         <div className='p-4 bg-green-500/10 border border-green-500/30 rounded-lg text-green-300 text-sm'>
           <span className='mr-2 inline-flex align-middle text-green-300'>
-            <SiteIcon name='check' className='h-4 w-4' />
+            
           </span>
           {submitMessage}
         </div>
@@ -170,7 +169,7 @@ export default function ContactForm() {
       {submitStatus === 'error' && (
         <div className='p-4 bg-red-500/10 border border-red-500/30 rounded-lg text-red-300 text-sm'>
           <span className='mr-2 inline-flex align-middle text-red-300'>
-            <SiteIcon name='x' className='h-4 w-4' />
+            
           </span>
           {submitMessage}
         </div>
@@ -183,7 +182,7 @@ export default function ContactForm() {
         className='w-full px-6 py-3 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 disabled:from-slate-600 disabled:to-slate-600 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 disabled:scale-100'
       >
         <span className='inline-flex items-center gap-2'>
-          <SiteIcon name={isSubmitting ? 'sparkles' : 'mail'} className='h-4 w-4' />
+          
           {isSubmitting ? 'Sending...' : 'Send Message'}
         </span>
       </button>

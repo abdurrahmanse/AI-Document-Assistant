@@ -3,7 +3,7 @@
  * Generated from pages/09-contact.json
  */
 
-import type { ContactPage } from '../../entities/types';
+import type { ContactPage } from '@/types/common';
 
 export const contactPage: ContactPage = {
     page: {

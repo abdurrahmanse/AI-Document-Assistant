@@ -3,7 +3,7 @@
  * Generated from pages/06-education.json
  */
 
-import type { EducationPage } from '../../entities/types';
+import type { EducationPage } from '@/types/common';
 
 export const educationPage: EducationPage = {
     page: {

@@ -3,7 +3,7 @@
  * Generated from pages/01-personal.json
  */
 
-import type { PersonalData } from '../../entities/types';
+import type { PersonalData } from '@/types/common';
 
 export const personalData: PersonalData = {
     personal: {

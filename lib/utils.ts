@@ -9,3 +9,13 @@ export function cn(...classes: Array<string | number | boolean | null | undefine
         .replace(/\s+/g, ' ')
         .trim()
 }
+
+export const ROUTES = {
+  HOME: '/',
+  ABOUT: '/about',
+  EXPERIENCE: '/experience',
+  PROJECTS: '/projects',
+  SKILLS: '/skills',
+  PUBLICATIONS: '/publications',
+  CONTACT: '/contact',
+}

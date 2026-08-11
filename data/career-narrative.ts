@@ -3,7 +3,7 @@
  * Generated from career-narrative.json
  */
 
-import type { CareerNarrative } from '../entities/types';
+import type { CareerNarrative } from '@/types/common';
 
 export const careerNarrative: CareerNarrative = {
     careerNarrative: {

@@ -3,7 +3,7 @@
  * Generated from pages/07-publications.json
  */
 
-import type { PublicationsPage } from '../../entities/types';
+import type { PublicationsPage } from '@/types/common';
 
 export const publicationsPage: PublicationsPage = {
     page: {

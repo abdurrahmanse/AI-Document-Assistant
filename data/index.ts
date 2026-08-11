@@ -23,7 +23,7 @@ export { blogPage } from './pages/08-blog';
 export { contactPage } from './pages/09-contact';
 
 // Types Export
-export * from '../entities/types';
+export * from '@/types/common';
 
 // Convenience export for all data as an object
 import { careerNarrative } from './career-narrative';

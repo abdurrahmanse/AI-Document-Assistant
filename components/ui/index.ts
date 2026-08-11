@@ -23,8 +23,7 @@ export type { GradientTextProps } from './GradientText'
 export { Pagination } from './Pagination'
 export type { PaginationProps } from './Pagination'
 
-export { SiteIcon } from './Icon'
-export type { IconName } from './Icon'
+
 
 export { Container } from './Container'
 export type { ContainerProps } from './Container'

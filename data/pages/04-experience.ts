@@ -3,7 +3,7 @@
  * Generated from pages/04-experience.json
  */
 
-import type { ExperiencePage } from '../../entities/types';
+import type { ExperiencePage } from '@/types/common';
 
 export const experiencePage: ExperiencePage = {
     page: {

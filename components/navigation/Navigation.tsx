@@ -1,8 +1,8 @@
 'use client'
 
-import { Container, SiteIcon } from '@/components/ui'
+import { Container } from '@/components/ui'
 import { useScroll, useToggle } from '@/hooks'
-import { ROUTES } from '@/utils'
+import { ROUTES } from '@/lib/utils'
 import Link from 'next/link'
 
 export default function Navigation() {
@@ -30,7 +30,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href={ROUTES.HOME} className='flex items-center gap-2 group'>
             <div className='w-10 h-10 rounded-lg bg-linear-to-br from-blue-500 to-cyan-500 flex items-center justify-center font-bold text-white group-hover:shadow-lg group-hover:shadow-blue-500/50 transition-all'>
-              <SiteIcon name='sparkles' className='h-5 w-5' />
+              
             </div>
             <span className='font-bold text-lg hidden sm:inline'>Portfolio</span>
           </Link>
@@ -44,7 +44,7 @@ export default function Navigation() {
                 className='px-3 py-2 text-slate-300 hover:text-white hover:bg-slate-800/50 rounded-md transition-all duration-200 text-sm'
               >
                 <span className='mr-2 inline-flex align-middle text-cyan-400'>
-                  <SiteIcon name={link.icon} className='h-4 w-4' />
+                  
                 </span>
                 {link.label}
               </Link>
@@ -57,7 +57,7 @@ export default function Navigation() {
             className='lg:hidden p-2 hover:bg-slate-800/50 rounded-md transition-all'
             aria-label='Toggle navigation'
           >
-            <SiteIcon name={mobileMenuOpen ? 'x' : 'menu'} className='h-6 w-6' />
+            
           </button>
         </div>
 
@@ -72,7 +72,7 @@ export default function Navigation() {
                 onClick={() => setMobileMenuOpen(false)}
               >
                 <span className='mr-2 inline-flex align-middle text-cyan-400'>
-                  <SiteIcon name={link.icon} className='h-4 w-4' />
+                  
                 </span>
                 {link.label}
               </Link>

@@ -3,7 +3,7 @@
  * Generated from skill-evolution.json
  */
 
-import type { SkillEvolution } from '../entities/types';
+import type { SkillEvolution } from '@/types/common';
 
 export const skillEvolution: SkillEvolution = {
     skillEvolution: {

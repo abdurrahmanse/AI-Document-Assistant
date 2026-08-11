@@ -3,7 +3,7 @@
  * Generated from config.json
  */
 
-import type { SiteConfig } from '../entities/types';
+import type { SiteConfig } from '@/types/common';
 
 export const siteConfig: SiteConfig = {
     siteConfig: {

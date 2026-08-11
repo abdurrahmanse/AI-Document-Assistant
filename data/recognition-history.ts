@@ -3,7 +3,7 @@
  * Generated from recognition-history.json
  */
 
-import type { RecognitionHistory } from '../entities/types';
+import type { RecognitionHistory } from '@/types/common';
 
 export const recognitionHistory: RecognitionHistory = {
     recognitionHistory: {

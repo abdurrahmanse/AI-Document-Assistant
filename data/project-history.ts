@@ -3,7 +3,7 @@
  * Generated from project-history.json
  */
 
-import type { ProjectHistory } from '../entities/types';
+import type { ProjectHistory } from '@/types/common';
 
 export const projectHistory: ProjectHistory = {
     projectHistory: {

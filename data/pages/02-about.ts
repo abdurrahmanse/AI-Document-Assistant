@@ -3,7 +3,7 @@
  * Generated from pages/02-about.json
  */
 
-import type { AboutPage } from '../../entities/types';
+import type { AboutPage } from '@/types/common';
 
 export const aboutPage: AboutPage = {
     page: {

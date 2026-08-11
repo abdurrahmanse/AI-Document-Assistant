@@ -1,11 +1,11 @@
 'use client'
 
-import { Container, SiteIcon } from '@/components/ui'
+import { Container } from '@/components/ui'
 import { personalData } from '@/data'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
-  const { contact, social } = personalData
+  const { contact } = personalData
 
   return (
     <footer className='border-t border-slate-800 bg-slate-950'>
@@ -19,7 +19,7 @@ export default function Footer() {
                 className='break-all text-slate-300 transition-colors hover:text-blue-400'
               >
                 <span className='mr-2 inline-flex align-middle text-blue-400'>
-                  <SiteIcon name='mail' className='h-4 w-4' />
+                  
                 </span>
                 {contact.email}
               </a>
@@ -28,7 +28,7 @@ export default function Footer() {
               <p className='mb-2 text-xs uppercase tracking-[0.2em] text-slate-500'>Phone</p>
               <a href={`tel:${contact.phone}`} className='text-slate-300 transition-colors hover:text-blue-400'>
                 <span className='mr-2 inline-flex align-middle text-blue-400'>
-                  <SiteIcon name='phone' className='h-4 w-4' />
+                  
                 </span>
                 {contact.phone}
               </a>
@@ -36,7 +36,7 @@ export default function Footer() {
             <div>
               <p className='mb-2 text-xs uppercase tracking-[0.2em] text-slate-500'>Location</p>
               <p className='text-slate-300 flex items-center gap-2'>
-                <SiteIcon name='mapPin' className='h-4 w-4 text-blue-400' />
+                
                 {contact.location.displayText}
               </p>
             </div>
@@ -48,7 +48,7 @@ export default function Footer() {
             <div className='text-sm text-slate-400'>
               <p>© {currentYear} S M Masfequier Rahman Swapno. All rights reserved.</p>
               <p className='mt-1 text-slate-500 flex items-center gap-2'>
-                <SiteIcon name='sparkles' className='h-4 w-4' /> Crafted with precision and care.
+                 Crafted with precision and care.
               </p>
             </div>
 
@@ -64,7 +64,7 @@ export default function Footer() {
                 className='rounded-lg border border-slate-700 px-4 py-2 text-slate-300 transition-colors hover:border-blue-500/50 hover:text-white'
               >
                 <span className='mr-2 inline-flex align-middle text-blue-400'>
-                  <SiteIcon name='arrowUp' className='h-4 w-4' />
+                  
                 </span>
                 Back to Top
               </button>

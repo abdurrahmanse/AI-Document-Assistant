@@ -20,7 +20,6 @@ export function CoreValuesSection({ values }: CoreValuesSectionProps) {
               key={idx}
               title={value.title}
               description={value.description}
-              icon={value.icon}
             />
           ))}
         </div>

@@ -3,7 +3,7 @@
  * Generated from publication-history.json
  */
 
-import type { PublicationHistory } from '../entities/types';
+import type { PublicationHistory } from '@/types/common';
 
 export const publicationHistory: PublicationHistory = {
     publicationHistory: {

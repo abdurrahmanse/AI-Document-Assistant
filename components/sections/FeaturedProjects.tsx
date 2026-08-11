@@ -1,4 +1,4 @@
-import { SiteIcon } from '@/components/ui'
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { projectsPage } from '@/data'
 import Link from 'next/link'
 
@@ -13,7 +13,7 @@ export default function FeaturedProjects() {
         <div className='text-center mb-16'>
           <div className='inline-block bg-blue-500/10 border border-blue-500/30 rounded-full px-4 py-2 text-sm text-blue-400 mb-4'>
             <span className='inline-flex items-center gap-2'>
-              <SiteIcon name='sparkles' className='h-4 w-4' /> {sections.hero.title}
+               {sections.hero.title}
             </span>
           </div>
           <h2 className='text-4xl md:text-5xl font-bold text-white mb-4'>{sections.hero.title}</h2>
@@ -22,7 +22,7 @@ export default function FeaturedProjects() {
 
         {/* Projects Grid */}
         <div className='grid md:grid-cols-2 gap-8 mb-12'>
-          {featuredProjects.map((project) => (
+          {featuredProjects.map((project: any) => (
             <div
               key={project.id}
               className='group bg-linear-to-br from-slate-800 to-slate-900 rounded-xl p-8 border border-slate-700 hover:border-blue-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10'
@@ -34,25 +34,12 @@ export default function FeaturedProjects() {
                     {project.startDate} - {project.endDate}
                   </p>
                 </div>
-                <span className='text-3xl'>
-                  {project.categoryId === 'ml' ? (
-                    <SiteIcon name='target' className='h-8 w-8' />
-                  ) : project.categoryId === 'dl' ? (
-                    <SiteIcon name='brain' className='h-8 w-8' />
-                  ) : project.categoryId === 'nlp' ? (
-                    <SiteIcon name='message' className='h-8 w-8' />
-                  ) : project.categoryId === 'cv' ? (
-                    <SiteIcon name='layers' className='h-8 w-8' />
-                  ) : (
-                    <SiteIcon name='chart' className='h-8 w-8' />
-                  )}
-                </span>
               </div>
 
               <p className='text-slate-300 mb-4'>{project.description}</p>
 
               <div className='flex flex-wrap gap-2 mb-6'>
-                {project.technologies.slice(0, 4).map((tech) => (
+                {project.technologies.slice(0, 4).map((tech: any) => (
                   <span
                     key={tech}
                     className='px-3 py-1 bg-blue-500/10 border border-blue-500/30 rounded-full text-xs text-blue-300'
@@ -70,7 +57,7 @@ export default function FeaturedProjects() {
                   href='/projects'
                   className='text-blue-400 hover:text-blue-300 text-sm font-medium flex items-center gap-2 transition-colors'
                 >
-                  <SiteIcon name='arrowRight' className='h-4 w-4' />
+                  
                   Learn More
                 </Link>
               </div>
@@ -85,7 +72,7 @@ export default function FeaturedProjects() {
             className='inline-block px-8 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all duration-300 transform hover:scale-105'
           >
             <span className='inline-flex items-center gap-2'>
-              <SiteIcon name='rocket' className='h-4 w-4' /> View All {projects.length} Projects
+               View All {projects.length} Projects
             </span>
           </Link>
         </div>

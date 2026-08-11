@@ -1,4 +1,3 @@
-import { SiteIcon } from '@/components/ui'
 import React from 'react'
 
 interface HighlightSectionProps {
@@ -16,7 +15,7 @@ export function HighlightSection({ heading, items }: HighlightSectionProps) {
             <div key={idx} className='flex items-start gap-4'>
               <div className='shrink-0 pt-1'>
                 <div className='flex items-center justify-center h-6 w-6 rounded-full bg-linear-to-r from-blue-500 to-cyan-500'>
-                  <SiteIcon name='check' className='h-4 w-4 text-white' />
+                  
                 </div>
               </div>
               <div>

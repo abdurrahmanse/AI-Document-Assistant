@@ -3,7 +3,7 @@
  * Generated from pages/08-blog.json
  */
 
-import type { BlogPage } from '../../entities/types';
+import type { BlogPage } from '@/types/common';
 
 export const blogPage: BlogPage = {
     page: {

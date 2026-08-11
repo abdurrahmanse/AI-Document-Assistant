@@ -17,12 +17,12 @@ interface HomeFeatureProps {
     values: Array<{ title: string; description: string; icon: string }>
     highlight: { heading: string; items: string[] }
     statistics: { heading: string; stats: Array<{ number: string; label: string }> }
-    allAwards: Array<{ title: string; date: string; description?: string; year: number }>
+    awards: Array<{ title: string; date: string; description?: string; year: number }>
   }
 }
 
 export function HomeFeature({ data }: HomeFeatureProps) {
-  const { introduction, mission, values, highlight, statistics, allAwards } = data
+  const { introduction, mission, values, highlight, statistics, awards } = data
 
   return (
     <main className='overflow-hidden'>
@@ -34,8 +34,15 @@ export function HomeFeature({ data }: HomeFeatureProps) {
       <Skills />
       <HighlightSection heading={highlight.heading} items={highlight.items} />
       <StatisticsSection heading={statistics.heading} stats={statistics.stats} />
-      <AwardsSection awards={allAwards} />
-      <CTASection />
+      <AwardsSection awards={awards} />
+      <CTASection
+        heading="Ready to discuss your next project?"
+        description="I'm available for consulting projects, speaking engagements, and full-time opportunities to help solve complex data science challenges."
+        primaryButtonText="Get in Touch"
+        primaryButtonUrl="/contact"
+        secondaryButtonText="View My Work"
+        secondaryButtonUrl="/projects"
+      />
     </main>
   )
 }

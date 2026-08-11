@@ -3,7 +3,7 @@
  * Generated from pages/05-skills.json
  */
 
-import type { SkillsPage } from '../../entities/types';
+import type { SkillsPage } from '@/types/common';
 
 export const skillsPage: SkillsPage = {
     page: {
