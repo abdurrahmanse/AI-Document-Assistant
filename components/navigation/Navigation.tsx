@@ -1,6 +1,6 @@
 'use client'
 
-import { Container } from '@/components/ui'
+import { Container, ThemeToggle } from '@/components/ui'
 import { useScroll, useToggle } from '@/hooks'
 import { ROUTES } from '@/lib/utils'
 import Link from 'next/link'
@@ -16,7 +16,6 @@ export default function Navigation() {
     { label: 'Research', href: ROUTES.RESEARCH },
     { label: 'Experience', href: ROUTES.EXPERIENCE },
     { label: 'Projects', href: ROUTES.PROJECTS },
-    { label: 'Blog', href: ROUTES.BLOG },
     { label: 'Contact', href: ROUTES.CONTACT },
   ]
 
@@ -46,16 +45,20 @@ export default function Navigation() {
                 {link.label}
               </Link>
             ))}
+            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={toggleMobileMenu}
-            className='lg:hidden p-2 text-foreground hover:bg-accent rounded-sm transition-colors'
-            aria-label='Toggle navigation'
-          >
-            {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
-          </button>
+          {/* Mobile Menu Toggle & Theme Toggle */}
+          <div className='lg:hidden flex items-center gap-2'>
+            <ThemeToggle />
+            <button
+              onClick={toggleMobileMenu}
+              className='p-2 text-foreground hover:bg-accent rounded-sm transition-colors'
+              aria-label='Toggle navigation'
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}

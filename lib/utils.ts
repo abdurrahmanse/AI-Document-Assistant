@@ -18,6 +18,5 @@ export const ROUTES = {
   SKILLS: '/skills',
   PUBLICATIONS: '/publications',
   RESEARCH: '/research',
-  BLOG: '/blog',
   CONTACT: '/contact',
 }

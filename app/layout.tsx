@@ -5,7 +5,7 @@ import '@radix-ui/themes/styles.css'
 import './globals.css'
 import { Theme } from '@radix-ui/themes'
 import { LenisProvider } from '@/components/providers/LenisProvider'
-
+import { ThemeProvider } from '@/components/providers/ThemeProvider'
 export const metadata: Metadata = {
   title: 'S M Masfequier Rahman Swapno - Research-First Data Scientist',
   description:
@@ -18,15 +18,22 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang='en' className={`h-full antialiased`}>
+    <html lang='en' className={`h-full antialiased`} suppressHydrationWarning>
       <body className='min-h-full flex flex-col'>
-        <Theme accentColor="blue" grayColor="slate" radius="large" scaling="100%">
-          <LenisProvider>
-            <Navigation />
-            <main className='flex-1'>{children}</main>
-            <Footer />
-          </LenisProvider>
-        </Theme>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Theme accentColor="blue" grayColor="slate" radius="large" scaling="100%">
+            <LenisProvider>
+              <Navigation />
+              <main className='flex-1'>{children}</main>
+              <Footer />
+            </LenisProvider>
+          </Theme>
+        </ThemeProvider>
       </body>
     </html>
   )

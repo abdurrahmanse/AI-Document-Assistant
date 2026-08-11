@@ -35,11 +35,36 @@
   --animate-fade-up: fade-up 0.5s ease-out forwards;
 }
 
-/* 
-  Editorial dark-first theme. 
-  Extremely clean, high contrast, minimal noise. 
-*/
 :root {
+  --background: #ffffff;
+  --foreground: #000000;
+  
+  --card: #fdfdfd;
+  --card-foreground: #000000;
+  
+  --popover: #fdfdfd;
+  --popover-foreground: #000000;
+  
+  --primary: #000000;
+  --primary-foreground: #ffffff;
+  
+  --secondary: #f4f4f5;
+  --secondary-foreground: #000000;
+  
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  
+  --accent: #f4f4f5;
+  --accent-foreground: #000000;
+  
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #18181b;
+  
+  --radius: 0.25rem; /* Small radius for an editorial/premium feel */
+}
+
+.dark {
   --background: #000000;
   --foreground: #fafafa;
   
@@ -65,7 +90,7 @@
   --input: #27272a;
   --ring: #d4d4d8;
   
-  --radius: 0.25rem; /* Small radius for an editorial/premium feel */
+  --radius: 0.25rem;
 }
 
 @layer base {
