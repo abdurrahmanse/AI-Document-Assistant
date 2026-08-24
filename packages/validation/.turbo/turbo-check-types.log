@@ -1,0 +1,4 @@
+
+> @workspace/validation@0.0.0 check-types /Volumes/Fullstack/Github/AI-Document-Assistant/packages/validation
+> tsc --noEmit
+

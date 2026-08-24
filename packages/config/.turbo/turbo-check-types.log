@@ -1,0 +1,4 @@
+
+> @workspace/config@0.0.0 check-types /Volumes/Fullstack/Github/AI-Document-Assistant/packages/config
+> tsc --noEmit
+

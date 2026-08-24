@@ -1,0 +1,5 @@
+
+> @workspace/api@0.0.0 check-types /Volumes/Fullstack/Github/AI-Document-Assistant/apps/api
+> uv run pyright
+
+0 errors, 0 warnings, 0 informations

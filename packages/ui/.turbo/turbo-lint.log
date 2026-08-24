@@ -1,0 +1,4 @@
+
+> @workspace/ui@0.0.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/packages/ui
+> eslint . --max-warnings 0
+

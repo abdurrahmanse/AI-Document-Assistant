@@ -1,0 +1,4 @@
+
+> @workspace/auth@0.0.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/packages/auth
+> eslint . --max-warnings 0
+

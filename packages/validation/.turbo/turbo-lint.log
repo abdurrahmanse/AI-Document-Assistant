@@ -1,0 +1,4 @@
+
+> @workspace/validation@0.0.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/packages/validation
+> eslint . --max-warnings 0
+

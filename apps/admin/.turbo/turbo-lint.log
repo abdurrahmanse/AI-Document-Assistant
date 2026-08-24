@@ -1,0 +1,4 @@
+
+> @workspace/admin@0.1.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/apps/admin
+> eslint . --max-warnings 0
+

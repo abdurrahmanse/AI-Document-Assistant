@@ -1,0 +1,7 @@
+node_modules
+.next
+dist
+build
+.turbo
+apps/api/.venv
+apps/api/__pycache__
