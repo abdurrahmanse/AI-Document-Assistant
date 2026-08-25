@@ -58,7 +58,7 @@ export function StatusFeature({ apiUrl }: { apiUrl: string }) {
             
             <div className="p-6 space-y-4">
               {Object.entries(data.services).map(([key, svc]) => {
-                const service = svc as any;
+                const service = svc as { status: string; latency_ms?: number };
                 return (
                 <div key={key} className="flex items-center justify-between py-3 border-b border-neutral-800 last:border-0">
                   <div className="flex items-center space-x-3">

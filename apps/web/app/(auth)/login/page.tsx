@@ -29,7 +29,7 @@ export default function LoginPage() {
       // Assuming a successful login sets some global state or cookie, redirect:
       // localStorage.setItem("access_token", result.access_token);
       router.push("/app");
-    } catch (err: any) {
+    } catch {
       setError("Invalid credentials. Please try again.");
     }
   };
@@ -87,7 +87,7 @@ export default function LoginPage() {
           </form>
 
           <div className="mt-6 text-center text-sm text-muted-foreground">
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <Link href="/register" className="text-primary hover:underline font-medium">
               Register here
             </Link>

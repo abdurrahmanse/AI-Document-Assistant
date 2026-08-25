@@ -60,5 +60,5 @@ class OTPService:
                     logger.error(f"Failed to send email via Brevo: {response.text}")
                 else:
                     logger.info(f"Successfully sent OTP to {email}")
-        except Exception as e:
+        except Exception as e:  # noqa: BLE001
             logger.error(f"Exception while sending email via Brevo: {e!s}")

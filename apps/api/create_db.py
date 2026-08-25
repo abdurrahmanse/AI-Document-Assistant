@@ -16,7 +16,7 @@ async def main():
     try:
         await conn.execute(f'CREATE DATABASE "{settings.POSTGRES_DB}"')
         print("Database created!")
-    except Exception as e:
+    except Exception as e:  # noqa: BLE001
         print(f"Error: {e}")
     finally:
         await conn.close()

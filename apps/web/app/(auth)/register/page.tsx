@@ -34,7 +34,7 @@ export default function RegisterPage() {
       setTimeout(() => {
         router.push("/login");
       }, 2000);
-    } catch (err: any) {
+    } catch {
       setError("Failed to register. Email may already be in use.");
     }
   };

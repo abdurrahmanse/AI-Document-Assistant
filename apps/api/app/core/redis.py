@@ -21,7 +21,7 @@ class RedisClient:
             logger.info("Successfully connected to Redis.")
         except Exception as e:
             logger.error(f"Failed to connect to Redis: {e}")
-            raise e
+            raise
 
     async def disconnect(self):
         if self.redis:
