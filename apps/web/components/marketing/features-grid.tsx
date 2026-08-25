@@ -17,7 +17,7 @@ export function FeaturesGrid() {
           <p className="text-muted-foreground text-lg">A complete toolkit for modern teams.</p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {features.map((feature, i) => (
             <FadeInView
               key={i}
