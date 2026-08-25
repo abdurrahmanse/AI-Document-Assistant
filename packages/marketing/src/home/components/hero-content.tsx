@@ -1,45 +1,59 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
-import { ArrowRight, Sparkles, LayoutDashboard } from "lucide-react";
+import { ArrowRight, Zap, ChevronRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
+
 export function HeroContent({ hero }: { hero: { badge: string; title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string } }) {
 
   return (
     <FadeIn
-      duration={0.8}
-      yOffset={30}
-      className="max-w-5xl mx-auto z-10"
+      duration={1}
+      yOffset={40}
+      className="max-w-4xl mx-auto z-10 relative pt-10"
     >
-      <div className="relative space-y-8 flex flex-col items-center">
+      <div className="relative space-y-10 flex flex-col items-center">
+        {/* Minimalist Glowing Badge */}
         <FadeIn 
-          delay={0.1}
-          duration={0.5}
+          delay={0.2}
+          duration={0.6}
           yOffset={0}
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary font-semibold text-sm shadow-[0_0_15px_rgba(var(--primary),0.2)] backdrop-blur-md"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-foreground font-medium text-xs sm:text-sm backdrop-blur-md hover:bg-foreground/10 transition-colors cursor-pointer"
         >
-          <Sparkles className="w-4 h-4" />
-          <span>{hero.badge}</span>
+          <div className="w-4 h-4 rounded-full bg-indigo-500/20 flex items-center justify-center">
+            <Zap className="w-2.5 h-2.5 text-indigo-500 dark:text-indigo-400" />
+          </div>
+          <span className="opacity-90">{hero.badge}</span>
+          <span className="flex items-center text-foreground/50 group-hover:text-foreground/80 transition-colors">
+            <ChevronRight className="w-3.5 h-3.5 ml-1" />
+          </span>
         </FadeIn>
         
-        <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[1.05]">
-          {hero.title1} <br className="hidden md:block" />
-          <span className="text-transparent bg-clip-text bg-gradient-to-br from-indigo-400 via-purple-400 to-pink-600 drop-shadow-sm">
-            {hero.title2}
-          </span>
-        </h1>
+        {/* Massive Typography */}
+        <div className="relative w-full text-center">
+          <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7.5rem] font-medium tracking-tighter leading-[0.95] text-foreground">
+            {hero.title1} <br className="hidden md:block" />
+            <span className="relative inline-block mt-2 md:mt-4">
+              {/* Subtle text gradient */}
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-foreground via-foreground/90 to-foreground/60">
+                {hero.title2}
+              </span>
+            </span>
+          </h1>
+        </div>
         
-        <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
+        {/* Authoritative Subtext */}
+        <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground max-w-2xl mx-auto leading-relaxed font-normal tracking-tight text-center">
           {hero.description}
         </p>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full">
-          <Button size="lg" className="h-14 px-8 text-lg font-bold rounded-full group bg-gradient-to-r from-primary via-indigo-500 to-purple-600 hover:opacity-90 shadow-[0_0_40px_-10px_rgba(var(--primary),0.5)] border border-primary/20 transition-all w-full sm:w-auto hover:shadow-[0_0_60px_-15px_rgba(var(--primary),0.6)]">
+        {/* High-Contrast Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-6 w-full sm:w-auto relative z-20">
+          <Button size="lg" className="h-12 px-8 text-base font-medium rounded-full bg-foreground text-background hover:bg-foreground/90 transition-all w-full sm:w-auto shadow-[0_0_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_0_40px_-10px_rgba(255,255,255,0.3)] hover:scale-[1.02] group">
             {hero.primaryButton}
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+            <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Button>
-          <Button size="lg" variant="outline" className="h-14 px-8 text-lg font-bold rounded-full backdrop-blur-md bg-background/50 border-border/50 hover:bg-secondary/80 hover:border-border shadow-sm w-full sm:w-auto transition-all">
-            <LayoutDashboard className="mr-2 w-5 h-5 text-muted-foreground" />
+          <Button size="lg" variant="ghost" className="h-12 px-8 text-base font-medium rounded-full text-foreground/70 hover:text-foreground hover:bg-foreground/5 w-full sm:w-auto transition-all">
             {hero.secondaryButton}
           </Button>
         </div>

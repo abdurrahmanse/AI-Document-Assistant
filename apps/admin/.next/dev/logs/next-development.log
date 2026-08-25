@@ -7,3 +7,13 @@
 {"timestamp":"00:01:38.355","source":"Browser","level":"WARN","message":"PostHog environment variables are missing. Analytics will not be tracked."}
 {"timestamp":"00:01:38.425","source":"Server","level":"WARN","message":"[browser] \"\\u001b[33mPostHog environment variables are missing. Analytics will not be tracked.\\u001b[39m\" \"\\u001b[2m(../../packages/observability/src/PostHogProvider.tsx:18:13)\\u001b[22m\""}
 {"timestamp":"00:08:41.618","source":"Server","level":"LOG","message":"✓ Compiled in 6.3s"}
+{"timestamp":"00:10:23.700","source":"Server","level":"LOG","message":"✓ Compiled in 1780ms"}
+{"timestamp":"00:10:41.152","source":"Server","level":"LOG","message":"✓ Compiled in 1925ms"}
+{"timestamp":"00:11:05.175","source":"Server","level":"LOG","message":"✓ Compiled in 1732ms"}
+{"timestamp":"00:11:40.225","source":"Server","level":"LOG","message":"✓ Compiled in 21s"}
+{"timestamp":"00:12:49.400","source":"Server","level":"LOG","message":"✓ Compiled in 12.6s"}
+{"timestamp":"00:12:53.864","source":"Server","level":"LOG","message":"✓ Compiled in 2s"}
+{"timestamp":"00:13:18.833","source":"Server","level":"LOG","message":"✓ Compiled in 1821ms"}
+{"timestamp":"00:14:50.079","source":"Server","level":"LOG","message":"✓ Compiled in 2.5s"}
+{"timestamp":"00:15:09.962","source":"Server","level":"LOG","message":"✓ Compiled in 1717ms"}
+{"timestamp":"00:15:42.857","source":"Server","level":"LOG","message":"✓ Compiled in 2.1s"}

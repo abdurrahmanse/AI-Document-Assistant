@@ -1,72 +1,147 @@
 "use client";
 
-import Image from "next/image";
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { CheckCircle2, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { FileText, ChevronRight } from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useEffect, useState } from "react";
 
 export function HeroMockup() {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start end", "end start"]
+  });
+
+  const rotateX = useTransform(scrollYProgress, [0, 0.5], [20, 0]);
+  const y = useTransform(scrollYProgress, [0, 0.5], [100, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [0.9, 1]);
+
+  const [scanPosition, setScanPosition] = useState(0);
+
+  // Animate the scan line
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setScanPosition((prev) => (prev >= 100 ? 0 : prev + 1));
+    }, 30);
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <FadeInView 
-      className="w-full max-w-7xl mx-auto mt-20 relative z-20 px-4 md:px-8"
-      delay={0.3}
-      yOffset={60}
-    >
-      {/* Floating UI Elements */}
-      <motion.div 
-        initial={{ opacity: 0, y: 20, x: -20 }}
-        animate={{ opacity: 1, y: 0, x: 0 }}
-        transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
-        className="absolute -left-4 md:-left-12 top-1/4 z-40 bg-background/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl hidden md:flex items-center gap-4"
-      >
-        <div className="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center">
-          <CheckCircle2 className="w-5 h-5 text-green-500" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold">Contract Analyzed</p>
-          <p className="text-xs text-muted-foreground">Found 3 critical clauses</p>
-        </div>
-      </motion.div>
-
-      <motion.div 
-        initial={{ opacity: 0, y: -20, x: 20 }}
-        animate={{ opacity: 1, y: 0, x: 0 }}
-        transition={{ delay: 1, duration: 0.8, ease: "easeOut" }}
-        className="absolute -right-4 md:-right-8 top-1/3 z-40 bg-background/80 backdrop-blur-xl border border-white/10 p-4 rounded-2xl shadow-2xl hidden lg:flex items-center gap-4"
-      >
-        <div className="w-10 h-10 rounded-full bg-purple-500/20 flex items-center justify-center">
-          <Sparkles className="w-5 h-5 text-purple-400" />
-        </div>
-        <div>
-          <p className="text-sm font-semibold">AI Insight Generated</p>
-          <p className="text-xs text-muted-foreground">Summarized 45 pages in 2s</p>
-        </div>
-      </motion.div>
-
-      <div className="relative rounded-[2.5rem] border border-white/10 bg-background/30 p-2 md:p-4 backdrop-blur-3xl shadow-[0_0_80px_-20px_rgba(120,119,198,0.3)]">
-        <div className="absolute inset-0 bg-gradient-to-tr from-primary/10 via-transparent to-indigo-500/10 rounded-[2.5rem] pointer-events-none" />
+    <div ref={containerRef} className="w-full max-w-6xl mx-auto mt-32 relative z-20 px-4 md:px-8 perspective-[2000px]">
+      <motion.div style={{ rotateX, y, scale }} className="relative transform-style-3d mx-auto">
         
-        {/* Mac window controls */}
-        <div className="absolute top-6 left-8 flex gap-2 z-30 hidden md:flex">
-          <div className="w-3 h-3 rounded-full bg-red-500/80 shadow-[0_0_10px_rgba(239,68,68,0.5)]" />
-          <div className="w-3 h-3 rounded-full bg-yellow-500/80 shadow-[0_0_10px_rgba(234,179,8,0.5)]" />
-          <div className="w-3 h-3 rounded-full bg-green-500/80 shadow-[0_0_10px_rgba(34,197,94,0.5)]" />
-        </div>
+        {/* Glow behind the UI */}
+        <div className="absolute -inset-10 bg-indigo-500/20 blur-[100px] rounded-[3rem] -z-10 opacity-50" />
 
-        <div className="relative rounded-[2rem] overflow-hidden border border-white/10 shadow-2xl bg-muted/20 aspect-[16/9] w-full group">
-          {/* We use an unsplash placeholder for the beautiful dashboard UI */}
-          <Image 
-            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=2000"
-            alt="Dashboard Interface Mockup"
-            fill
-            className="object-cover object-top opacity-90 transition-transform duration-700 group-hover:scale-[1.02]"
-            priority
-          />
-          {/* Premium Glow overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent opacity-80" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,transparent_60%,rgba(0,0,0,0.4))]" />
+        <div className="relative rounded-2xl border border-white/10 bg-[#0A0A0A]/80 backdrop-blur-3xl shadow-2xl overflow-hidden flex flex-col">
+          
+          {/* Minimalist Header */}
+          <div className="h-12 border-b border-border/50 flex items-center px-4 justify-between bg-foreground/[0.02]">
+            <div className="flex gap-2 items-center">
+              <div className="w-3 h-3 rounded-full bg-foreground/10" />
+              <div className="w-3 h-3 rounded-full bg-foreground/10" />
+              <div className="w-3 h-3 rounded-full bg-foreground/10" />
+            </div>
+            <div className="flex items-center text-xs text-muted-foreground font-mono bg-foreground/5 px-3 py-1 rounded-md">
+              <FileText className="w-3 h-3 mr-2" /> document_analyzer.py
+            </div>
+            <div className="w-12" /> {/* Spacer */}
+          </div>
+
+          {/* Editor Body */}
+          <div className="relative flex flex-col md:flex-row h-[400px] md:h-[600px] w-full">
+            
+            {/* Left side: The Document */}
+            <div className="flex-1 border-r border-border/50 relative bg-background overflow-hidden flex items-center justify-center p-8">
+              
+              {/* Document Wireframe */}
+              <div className="w-full max-w-sm h-full bg-foreground/[0.02] border border-border/50 rounded-lg p-6 relative overflow-hidden shadow-2xl">
+                {/* Simulated text lines */}
+                <div className="space-y-4">
+                  <div className="h-6 w-3/4 bg-foreground/10 rounded" />
+                  <div className="h-3 w-1/4 bg-foreground/5 rounded mt-8" />
+                  <div className="h-3 w-full bg-foreground/5 rounded" />
+                  <div className="h-3 w-5/6 bg-foreground/5 rounded" />
+                  <div className="h-3 w-4/6 bg-foreground/5 rounded" />
+                  
+                  <div className="h-8 w-full bg-foreground/5 rounded mt-6 border border-border/50 flex items-center px-4">
+                     <div className="h-3 w-1/3 bg-foreground/10 rounded" />
+                  </div>
+                  
+                  <div className="h-3 w-full bg-foreground/5 rounded mt-6" />
+                  <div className="h-3 w-5/6 bg-foreground/5 rounded" />
+                </div>
+
+                {/* Laser Scanner */}
+                <motion.div 
+                  className="absolute left-0 right-0 h-[2px] bg-indigo-500 shadow-[0_0_15px_2px_rgba(99,102,241,0.8)] z-10"
+                  style={{ top: `${scanPosition}%` }}
+                />
+                <motion.div 
+                  className="absolute left-0 right-0 h-32 bg-gradient-to-b from-transparent to-indigo-500/10 pointer-events-none"
+                  style={{ top: `calc(${scanPosition}% - 8rem)` }}
+                />
+              </div>
+            </div>
+
+            {/* Right side: Real-time Data Output */}
+            <div className="w-full md:w-80 bg-card p-6 flex flex-col gap-4 overflow-hidden relative">
+              <div className="text-xs font-mono text-muted-foreground mb-2 uppercase tracking-wider flex items-center">
+                <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
+                Live Extraction Stream
+              </div>
+
+              {/* Data Node 1 */}
+              <motion.div 
+                animate={{ 
+                  opacity: scanPosition > 20 ? 1 : 0.3,
+                  x: scanPosition > 20 ? 0 : 20,
+                  borderColor: scanPosition > 20 && scanPosition < 40 ? 'rgba(99,102,241,0.5)' : 'var(--border)'
+                }}
+                className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
+              >
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">Entity: Organization</div>
+                <div className="text-sm font-medium text-foreground">Acme Corp Ltd.</div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Confidence: 99.9%</div>
+              </motion.div>
+
+              {/* Data Node 2 */}
+              <motion.div 
+                animate={{ 
+                  opacity: scanPosition > 50 ? 1 : 0.3,
+                  x: scanPosition > 50 ? 0 : 20,
+                  borderColor: scanPosition > 50 && scanPosition < 70 ? 'rgba(168,85,247,0.5)' : 'var(--border)'
+                }}
+                className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
+              >
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">Entity: Amount</div>
+                <div className="text-sm font-medium text-foreground">$45,200.00</div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Confidence: 98.4%</div>
+              </motion.div>
+
+              {/* Data Node 3 */}
+              <motion.div 
+                animate={{ 
+                  opacity: scanPosition > 80 ? 1 : 0.3,
+                  x: scanPosition > 80 ? 0 : 20,
+                  borderColor: scanPosition > 80 && scanPosition < 100 ? 'rgba(236,72,153,0.5)' : 'var(--border)'
+                }}
+                className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
+              >
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">Classification</div>
+                <div className="text-sm font-medium text-foreground flex items-center">
+                  Invoice <ChevronRight className="w-3 h-3 mx-1 text-muted-foreground" /> Urgent
+                </div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Auto-tagged</div>
+              </motion.div>
+              
+              {/* Fade out at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-card to-transparent pointer-events-none" />
+            </div>
+
+          </div>
         </div>
-      </div>
-    </FadeInView>
+      </motion.div>
+    </div>
   );
 }
