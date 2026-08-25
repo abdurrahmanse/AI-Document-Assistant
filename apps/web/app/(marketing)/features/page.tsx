@@ -1,10 +1,12 @@
 "use client";
 
-import { deepDives } from "../../../modules/features/config/features";
+import { websiteData } from "@workspace/data";
 import { FeaturesHero } from "../../../modules/features/components/features-hero";
 import { FeatureDeepDive } from "../../../modules/features/components/feature-deep-dive";
 
 export default function FeaturesPage() {
+  const { deepDives } = websiteData.features;
+
   return (
     <div className="flex flex-col items-center pb-24 overflow-hidden relative">
       <div className="absolute top-0 w-full h-[500px] bg-gradient-to-b from-primary/10 to-transparent -z-10" />

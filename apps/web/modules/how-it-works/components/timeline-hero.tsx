@@ -1,8 +1,13 @@
+import { websiteData } from "@workspace/data";
+
 export function TimelineHero() {
+  const { hero } = websiteData.howItWorks;
   return (
     <div className="text-center space-y-4 max-w-3xl mx-auto pt-32 pb-24 px-4 relative z-10">
-      <h1 className="text-5xl md:text-7xl font-black tracking-tighter">From upload to <span className="text-primary">insights</span></h1>
-      <p className="text-xl text-muted-foreground">Three simple steps to automate your entire document workflow.</p>
+      <h1 className="text-5xl md:text-7xl font-black tracking-tighter">
+        {hero.title.split(' ').slice(0, -1).join(' ')} <span className="text-primary">{hero.title.split(' ').pop()}</span>
+      </h1>
+      <p className="text-xl text-muted-foreground">{hero.description}</p>
     </div>
   );
 }

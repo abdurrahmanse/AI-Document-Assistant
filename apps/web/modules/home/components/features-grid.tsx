@@ -1,9 +1,10 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import type { LucideIcon } from "lucide-react";
-import { features } from "../../core/config/marketing";
+import { websiteData } from "@workspace/data";
 import { FeatureCard } from "../../features/components/feature-card";
 
 export function FeaturesGrid() {
+  const { features } = websiteData.home;
+  
   return (
     <section className="py-24 px-4 relative overflow-hidden bg-background">
       <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
@@ -14,7 +15,7 @@ export function FeaturesGrid() {
         </div>
         
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {features.map((feature: { title: string; description: string; icon: LucideIcon }, i: number) => {
+          {features.map((feature, i: number) => {
             // Create a bento box effect: make the first item span 2 columns on lg screens,
             // and the 4th item span 2 columns to create an asymmetric layout
             const isLarge = i === 0 || i === 3;

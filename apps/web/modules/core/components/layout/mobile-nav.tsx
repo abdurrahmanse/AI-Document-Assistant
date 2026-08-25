@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
 import { cn } from "@workspace/ui/lib/utils";
-import { mainNav } from "../../config/navigation";
+import { websiteData } from "@workspace/data";
+import * as Icons from "lucide-react";
 
 interface MobileNavProps {
   isOpen: boolean;
@@ -9,6 +10,7 @@ interface MobileNavProps {
 }
 
 export function MobileNav({ isOpen, onClose }: MobileNavProps) {
+  const mainNav = websiteData.core.navigation;
   return (
     <div className={cn(
       "lg:hidden flex flex-col gap-4 overflow-hidden transition-all duration-300 ease-in-out",
@@ -16,7 +18,7 @@ export function MobileNav({ isOpen, onClose }: MobileNavProps) {
     )}>
       <nav className="flex flex-col gap-4 px-2">
         {mainNav.map((item) => {
-          const Icon = item.icon;
+          const Icon = (Icons[item.icon as keyof typeof Icons] as any) || Icons.Circle;
           return (
             <Link 
               key={item.href} 

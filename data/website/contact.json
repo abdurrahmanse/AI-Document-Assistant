@@ -1,0 +1,51 @@
+{
+  "hero": {
+    "title": "Get in touch",
+    "description": "Whether you have a question about features, pricing, or need a custom enterprise solution, our team is ready to answer all your questions."
+  },
+  "contactMethods": [
+    {
+      "icon": "MessageSquare",
+      "title": "Chat with Sales",
+      "description": "Speak directly with our enterprise team.",
+      "link": "mailto:sales@aidocs.com",
+      "linkText": "sales@aidocs.com"
+    },
+    {
+      "icon": "Mail",
+      "title": "Support",
+      "description": "Need help with the platform?",
+      "link": "mailto:support@aidocs.com",
+      "linkText": "support@aidocs.com"
+    },
+    {
+      "icon": "MapPin",
+      "title": "Global HQ",
+      "description": "100 Innovation Drive\nSan Francisco, CA 94111\nUnited States"
+    }
+  ],
+  "form": {
+    "fields": [
+      {
+        "id": "name",
+        "label": "Full Name",
+        "type": "text",
+        "placeholder": "Jane Doe"
+      },
+      {
+        "id": "email",
+        "label": "Work Email",
+        "type": "email",
+        "placeholder": "jane@company.com"
+      },
+      {
+        "id": "message",
+        "label": "How can we help?",
+        "type": "textarea",
+        "placeholder": "Tell us about your project..."
+      }
+    ],
+    "submitButton": "Send Message",
+    "disclaimer": "By submitting this form, you agree to our privacy policy and terms of service."
+  }
+}

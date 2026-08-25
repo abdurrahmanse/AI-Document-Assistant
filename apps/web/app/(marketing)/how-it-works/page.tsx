@@ -1,10 +1,12 @@
 "use client";
 
-import { steps } from "../../../modules/how-it-works/config/how-it-works";
+import { websiteData } from "@workspace/data";
 import { TimelineHero } from "../../../modules/how-it-works/components/timeline-hero";
 import { TimelineStep } from "../../../modules/how-it-works/components/timeline-step";
 
 export default function HowItWorksPage() {
+  const { steps } = websiteData.howItWorks;
+
   return (
     <div className="flex flex-col items-center pb-24 overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
@@ -17,7 +19,7 @@ export default function HowItWorksPage() {
         
         <div className="space-y-24 py-12">
           {steps.map((step, i) => (
-            <TimelineStep key={i} step={step} index={i} />
+            <TimelineStep key={i} step={step as any} index={i} />
           ))}
         </div>
       </div>

@@ -1,11 +1,13 @@
 import Link from "next/link";
-import { mainNav } from "../../config/navigation";
+import { websiteData } from "@workspace/data";
+import * as Icons from "lucide-react";
 
 export function DesktopNav() {
+  const mainNav = websiteData.core.navigation;
   return (
     <nav className="hidden lg:flex items-center gap-8">
       {mainNav.map((item) => {
-        const Icon = item.icon;
+        const Icon = (Icons[item.icon as keyof typeof Icons] as any) || Icons.Circle;
         return (
           <Link 
             key={item.href} 

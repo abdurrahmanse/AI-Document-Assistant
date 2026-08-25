@@ -1,14 +1,19 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
-import { SecurityFeature } from "@workspace/types";
+import * as Icons from "lucide-react";
 
 interface SecurityBentoCardProps {
-  feature: SecurityFeature;
+  feature: {
+    title: string;
+    description: string;
+    icon: string;
+    span: string;
+  };
   index: number;
 }
 
 export function SecurityBentoCard({ feature, index }: SecurityBentoCardProps) {
-  const Icon = feature.icon;
+  const Icon = (Icons[feature.icon as keyof typeof Icons] as any) || Icons.Circle;
   return (
     <FadeInView delay={index * 0.1} yOffset={20} className={feature.span}>
       <Card className="h-full bg-background/50 backdrop-blur-sm border-white/5 shadow-xl overflow-hidden group">

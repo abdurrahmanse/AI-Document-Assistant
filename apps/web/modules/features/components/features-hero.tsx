@@ -1,12 +1,18 @@
+import { websiteData } from "@workspace/data";
+
 export function FeaturesHero() {
+  const { hero } = websiteData.features;
+
   return (
     <div className="text-center space-y-6 max-w-4xl mx-auto pt-32 pb-24 px-4 relative z-10">
       <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
-        Everything you need to <br className="hidden md:block"/>
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">automate documents</span>
+        {hero.title.split(' ').slice(0, -1).join(' ')} <br className="hidden md:block"/>
+        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">
+          {hero.title.split(' ').pop()}
+        </span>
       </h1>
       <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-        Stop manual data entry. Start extracting insights. Our platform gives you the tools to turn unstructured files into structured data.
+        {hero.description}
       </p>
     </div>
   );

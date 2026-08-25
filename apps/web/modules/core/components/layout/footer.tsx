@@ -1,8 +1,11 @@
 import Link from "next/link";
-import { footerLinks } from "../../config/footer";
+import { websiteData } from "@workspace/data";
 import { Logo } from "./logo";
+import * as Icons from "lucide-react";
 
 export function Footer() {
+  const footerLinks = websiteData.core.footerLinks;
+  
   return (
     <footer className="bg-background border-t border-border/50 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
@@ -18,7 +21,7 @@ export function Footer() {
             <h3 className="font-semibold mb-6">Product</h3>
             <ul className="space-y-4">
               {footerLinks.product.map((link) => {
-                const Icon = link.icon;
+                const Icon = (Icons[link.icon as keyof typeof Icons] as any) || Icons.Circle;
                 return (
                   <li key={link.name}>
                     <Link href={link.href} className="text-muted-foreground hover:text-primary text-sm transition-colors flex items-center gap-2 group">
@@ -35,7 +38,7 @@ export function Footer() {
             <h3 className="font-semibold mb-6">Company</h3>
             <ul className="space-y-4">
               {footerLinks.company.map((link) => {
-                const Icon = link.icon;
+                const Icon = (Icons[link.icon as keyof typeof Icons] as any) || Icons.Circle;
                 return (
                   <li key={link.name}>
                     <Link href={link.href} className="text-muted-foreground hover:text-primary text-sm transition-colors flex items-center gap-2 group">
@@ -52,7 +55,7 @@ export function Footer() {
             <h3 className="font-semibold mb-6">Legal</h3>
             <ul className="space-y-4">
               {footerLinks.legal.map((link) => {
-                const Icon = link.icon;
+                const Icon = (Icons[link.icon as keyof typeof Icons] as any) || Icons.Circle;
                 return (
                   <li key={link.name}>
                     <Link href={link.href} className="text-muted-foreground hover:text-primary text-sm transition-colors flex items-center gap-2 group">

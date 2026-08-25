@@ -1,33 +1,36 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
+import * as Icons from "lucide-react";
 import { ArrowRight } from "lucide-react";
-import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
-import { DocsSection } from "@workspace/types";
 
 interface DocsCardProps {
-  section: DocsSection;
+  section: {
+    title: string;
+    description: string;
+    icon: string;
+    color: string;
+    bg: string;
+  };
   index: number;
 }
 
 export function DocsCard({ section, index }: DocsCardProps) {
-  const Icon = section.icon;
+  const Icon = (Icons[section.icon as keyof typeof Icons] as any) || Icons.Circle;
+
   return (
-    <FadeInView delay={index * 0.1}>
-      <Card className="h-full bg-background/40 backdrop-blur-sm border-white/5 hover:border-primary/30 transition-all hover:-translate-y-1 cursor-pointer group shadow-lg hover:shadow-[0_10px_40px_-10px_rgba(var(--primary),0.2)]">
-        <CardHeader>
-          <div className={`w-12 h-12 rounded-xl flex items-center justify-center mb-4 ${section.bg}`}>
-            <Icon className={`w-6 h-6 ${section.color}`} />
-          </div>
-          <CardTitle className="text-2xl font-bold flex items-center justify-between">
-            {section.title}
-            <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
-          </CardTitle>
-        </CardHeader>
-        <CardContent>
-          <CardDescription className="text-base text-muted-foreground">
-            {section.description}
-          </CardDescription>
-        </CardContent>
-      </Card>
+    <FadeInView delay={index * 0.1} yOffset={20}>
+      <div className="h-full bg-background/40 backdrop-blur-sm border border-white/5 rounded-3xl p-8 hover:bg-white/[0.02] transition-colors group cursor-pointer">
+        <div className={`w-14 h-14 rounded-2xl ${section.bg} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
+          <Icon className={`w-7 h-7 ${section.color}`} />
+        </div>
+        <h3 className="text-2xl font-bold mb-3">{section.title}</h3>
+        <p className="text-muted-foreground leading-relaxed mb-6">
+          {section.description}
+        </p>
+        <div className="flex items-center text-sm font-semibold text-primary">
+          Explore documentation 
+          <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+        </div>
+      </div>
     </FadeInView>
   );
 }

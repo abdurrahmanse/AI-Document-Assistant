@@ -1,14 +1,16 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
-import { type LucideIcon } from "lucide-react";
+import * as Icons from "lucide-react";
 
 interface FeatureCardProps {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
   className?: string;
 }
 
-export function FeatureCard({ title, description, icon: Icon, className }: FeatureCardProps) {
+export function FeatureCard({ title, description, icon, className }: FeatureCardProps) {
+  const Icon = (Icons[icon as keyof typeof Icons] as any) || Icons.Circle;
+
   return (
     <Card className={`group relative overflow-hidden bg-muted/10 border-white/5 hover:border-white/10 transition-all duration-500 h-full backdrop-blur-sm ${className || ''}`}>
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

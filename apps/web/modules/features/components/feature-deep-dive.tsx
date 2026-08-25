@@ -1,16 +1,23 @@
 import Image from "next/image";
+import * as Icons from "lucide-react";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 
-import { DeepDiveFeature } from "@workspace/types";
-
 interface FeatureDeepDiveProps {
-  feature: DeepDiveFeature;
+  feature: {
+    title: string;
+    description: string;
+    icon: string;
+    image: string;
+    reverse: boolean;
+  };
 }
 
 export function FeatureDeepDive({ feature }: FeatureDeepDiveProps) {
-  const Icon = feature.icon;
+  // Map string icon name to Lucide component
+  const Icon = (Icons[feature.icon as keyof typeof Icons] as any) || Icons.Circle;
+
   return (
     <FadeInView delay={0.2} yOffset={40}>
       <div className={`flex flex-col gap-12 lg:gap-20 items-center ${feature.reverse ? 'lg:flex-row-reverse' : 'lg:flex-row'}`}>

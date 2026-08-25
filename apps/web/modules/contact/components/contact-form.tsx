@@ -1,7 +1,20 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { Button } from "@workspace/ui/components/ui";
 
-export function ContactForm() {
+interface ContactFormProps {
+  form: {
+    fields: {
+      id: string;
+      label: string;
+      type: string;
+      placeholder: string;
+    }[];
+    submitButton: string;
+    disclaimer: string;
+  };
+}
+
+export function ContactForm({ form }: ContactFormProps) {
   return (
     <div className="flex-1 w-full max-w-md mx-auto md:max-w-none">
       <FadeInView delay={0.3} yOffset={30}>
@@ -9,40 +22,31 @@ export function ContactForm() {
           <div className="absolute inset-0 bg-gradient-to-b from-white/5 to-transparent rounded-3xl pointer-events-none" />
           
           <form className="relative z-10 space-y-6" onSubmit={(e) => e.preventDefault()}>
-            <div className="space-y-2">
-              <label htmlFor="name" className="text-sm font-semibold">Full Name</label>
-              <input 
-                type="text" 
-                id="name"
-                className="w-full bg-muted/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                placeholder="Jane Doe"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-semibold">Work Email</label>
-              <input 
-                type="email" 
-                id="email"
-                className="w-full bg-muted/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
-                placeholder="jane@company.com"
-              />
-            </div>
-            
-            <div className="space-y-2">
-              <label htmlFor="message" className="text-sm font-semibold">How can we help?</label>
-              <textarea 
-                id="message"
-                rows={4}
-                className="w-full bg-muted/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
-                placeholder="Tell us about your project..."
-              />
-            </div>
+            {form.fields.map((field) => (
+              <div key={field.id} className="space-y-2">
+                <label htmlFor={field.id} className="text-sm font-semibold">{field.label}</label>
+                {field.type === "textarea" ? (
+                  <textarea 
+                    id={field.id}
+                    rows={4}
+                    className="w-full bg-muted/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all resize-none"
+                    placeholder={field.placeholder}
+                  />
+                ) : (
+                  <input 
+                    type={field.type} 
+                    id={field.id}
+                    className="w-full bg-muted/50 border border-white/10 rounded-xl px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary/50 transition-all"
+                    placeholder={field.placeholder}
+                  />
+                )}
+              </div>
+            ))}
 
-            <Button size="lg" className="w-full font-bold h-12 text-lg">Send Message</Button>
+            <Button size="lg" className="w-full font-bold h-12 text-lg">{form.submitButton}</Button>
             
             <p className="text-xs text-center text-muted-foreground mt-4">
-              By submitting this form, you agree to our privacy policy and terms of service.
+              {form.disclaimer}
             </p>
           </form>
         </div>
