@@ -1,18 +1,7 @@
 import { CheckCircle2, X } from "lucide-react";
 import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
 
-interface PricingFeature {
-  name: string;
-  included: boolean;
-}
-
-interface PricingPlan {
-  name: string;
-  description: string;
-  price: string;
-  popular: boolean;
-  features: PricingFeature[];
-}
+import { PricingFeature, PricingPlan } from "@workspace/types";
 
 interface PricingCardProps {
   plan: PricingPlan;
@@ -41,7 +30,7 @@ export function PricingCard({ plan }: PricingCardProps) {
           </div>
           
           <ul className="space-y-4 flex-grow">
-            {plan.features.map((feature, idx) => (
+            {plan.features.map((feature: PricingFeature, idx: number) => (
               <li key={idx} className="flex items-center gap-3">
                 {feature.included ? (
                   <div className="w-5 h-5 rounded-full bg-primary/20 flex items-center justify-center shrink-0">

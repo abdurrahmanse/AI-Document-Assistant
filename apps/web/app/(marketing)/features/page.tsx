@@ -13,7 +13,7 @@ export default function FeaturesPage() {
 
       <div className="w-full max-w-7xl mx-auto px-4 space-y-32 py-12">
         {deepDives.map((feature, i) => (
-          <FeatureDeepDive key={i} feature={feature} index={i} />
+          <FeatureDeepDive key={i} feature={feature} />
         ))}
       </div>
     </div>

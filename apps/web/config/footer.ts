@@ -1,15 +1,9 @@
 import { 
   Sparkles, Layers, CreditCard, ShieldCheck, FileText, 
   Info, Users, Newspaper, Mail, 
-  ShieldAlert, ScrollText, Cookie, 
-  LucideIcon 
+  ShieldAlert, ScrollText, Cookie
 } from "lucide-react";
-
-export interface FooterLink {
-  name: string;
-  href: string;
-  icon?: LucideIcon;
-}
+import { FooterLink } from "@workspace/types";
 
 export const footerLinks: Record<string, FooterLink[]> = {
   product: [

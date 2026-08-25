@@ -1,12 +1,5 @@
-import { UploadCloud, Cpu, Sparkles, LucideIcon } from "lucide-react";
-
-export interface TimelineStep {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  color: string;
-  iconColor: string;
-}
+import { UploadCloud, Cpu, Sparkles } from "lucide-react";
+import { TimelineStep } from "@workspace/types";
 
 export const steps: TimelineStep[] = [
   {

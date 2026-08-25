@@ -1,7 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { ArrowRight } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
-import { DocsSection } from "../../../config/marketing/docs";
+import { DocsSection } from "@workspace/types";
 
 interface DocsCardProps {
   section: DocsSection;

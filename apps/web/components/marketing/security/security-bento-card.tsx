@@ -1,6 +1,6 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
-import { SecurityFeature } from "../../../config/marketing/security";
+import { SecurityFeature } from "@workspace/types";
 
 interface SecurityBentoCardProps {
   feature: SecurityFeature;

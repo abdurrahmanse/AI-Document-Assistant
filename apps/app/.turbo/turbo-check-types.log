@@ -2,5 +2,3 @@
 > @workspace/app@0.1.0 check-types /Volumes/Fullstack/Github/AI-Document-Assistant/apps/app
 > tsc --noEmit
 
-app/global-error.tsx(3,10): error TS2305: Module '"@workspace/ui/components/errors"' has no exported member 'ErrorBoundaryUI'.
- ELIFECYCLE  Command failed with exit code 2.

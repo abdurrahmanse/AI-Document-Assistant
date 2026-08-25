@@ -1,5 +1,5 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { TimelineStep as TimelineStepType } from "../../../config/marketing/how-it-works";
+import { TimelineStep as TimelineStepType } from "@workspace/types";
 
 interface TimelineStepProps {
   step: TimelineStepType;

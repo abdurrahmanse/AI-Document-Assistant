@@ -1,12 +1,5 @@
-import { Book, Code, Terminal, Zap, LucideIcon } from "lucide-react";
-
-export interface DocsSection {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  color: string;
-  bg: string;
-}
+import { Book, Code, Terminal, Zap } from "lucide-react";
+import { DocsSection } from "@workspace/types";
 
 export const sections: DocsSection[] = [
   {

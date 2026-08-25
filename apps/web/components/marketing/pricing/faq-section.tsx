@@ -1,9 +1,6 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 
-interface FAQItem {
-  q: string;
-  a: string;
-}
+import { FAQItem } from "@workspace/types";
 
 interface FAQSectionProps {
   faqs: FAQItem[];

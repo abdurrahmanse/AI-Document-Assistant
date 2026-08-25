@@ -1,22 +1,15 @@
 import Image from "next/image";
-import { ArrowRight, LucideIcon } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 
-interface DeepDiveFeature {
-  title: string;
-  description: string;
-  icon: LucideIcon;
-  image: string;
-  reverse: boolean;
-}
+import { DeepDiveFeature } from "@workspace/types";
 
 interface FeatureDeepDiveProps {
   feature: DeepDiveFeature;
-  index: number;
 }
 
-export function FeatureDeepDive({ feature, index }: FeatureDeepDiveProps) {
+export function FeatureDeepDive({ feature }: FeatureDeepDiveProps) {
   const Icon = feature.icon;
   return (
     <FadeInView delay={0.2} yOffset={40}>

@@ -1,10 +1,5 @@
-import { Sparkles, Layers, CreditCard, ShieldCheck, FileText, LucideIcon } from "lucide-react";
-
-export interface NavItem {
-  title: string;
-  href: string;
-  icon?: LucideIcon;
-}
+import { Sparkles, Layers, CreditCard, ShieldCheck, FileText } from "lucide-react";
+import { NavItem } from "@workspace/types";
 
 export const mainNav: NavItem[] = [
   {
