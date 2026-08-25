@@ -36,7 +36,7 @@ export function GeneralErrorContent({
 
         <FadeIn delay={0.3}>
           <p className="text-muted-foreground text-lg mb-8 max-w-md mx-auto">
-            We've encountered an unexpected error. Our system administrators have been notified. Please try again.
+            We&apos;ve encountered an unexpected error. Our system administrators have been notified. Please try again.
           </p>
         </FadeIn>
         

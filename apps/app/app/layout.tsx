@@ -7,9 +7,9 @@ import { type Metadata } from "next";
 
 export const metadata: Metadata = constructMetadata({
   title: {
-    template: "%s | Dashboard - AI Document Assistant",
+    template: "%s | App - AI Document Assistant",
     default: "Dashboard - AI Document Assistant",
-  } as any,
+  },
   description: "Manage your documents and interact with our AI.",
 });
 

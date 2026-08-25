@@ -9,7 +9,7 @@ export const metadata: Metadata = constructMetadata({
   title: {
     template: "%s | Admin - AI Document Assistant",
     default: "Admin Command Center - AI Document Assistant",
-  } as any,
+  },
   description: "AI Document Assistant System Administration",
 });
 

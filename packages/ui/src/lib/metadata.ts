@@ -7,7 +7,7 @@ export function constructMetadata({
   icons = "/favicon.ico",
   noIndex = false,
 }: {
-  title?: string;
+  title?: string | { template: string; default: string };
   description?: string;
   image?: string;
   icons?: string;
@@ -17,7 +17,7 @@ export function constructMetadata({
     title,
     description,
     openGraph: {
-      title,
+      title: typeof title === "string" ? title : title?.default,
       description,
       images: [
         {
@@ -29,7 +29,7 @@ export function constructMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title,
+      title: typeof title === "string" ? title : title?.default,
       description,
       images: [image],
     },

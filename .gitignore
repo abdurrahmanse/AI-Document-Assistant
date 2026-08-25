@@ -16,7 +16,7 @@ pnpm-debug.log*
 # =========================
 # Turborepo
 # =========================
-.turbo
+.turbo/
 turbo*.log
 
 # =========================
@@ -26,16 +26,18 @@ turbo*.log
 out/
 build/
 dist/
-.contentlayer
+.contentlayer/
 next-env.d.ts
 *.tsbuildinfo
+.swc/
 
 # =========================
-# Python & Backend (FastAPI / uv / Ruff)
+# Python & Backend
 # =========================
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
 
 # Virtual Environments
 .venv/
@@ -53,16 +55,15 @@ venv.bak/
 coverage.xml
 *.cover
 *.log
+htmlcov/
 
 # =========================
 # Environment Variables
 # =========================
 .env
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-# DO NOT IGNORE .env.example
+.env.*
+!.env.example
+!.env.template
 
 # =========================
 # Operating System
@@ -91,19 +92,15 @@ desktop.ini
 !.vscode/launch.json
 !.vscode/extensions.json
 .history/
+.cursorrules
 
 # =========================
 # Miscellaneous
 # =========================
 coverage/
 tmp/
+temp/
 *.swp
 *.bak
-
-# =========================
-# Enterprise Caches & Tools
-# =========================
-.vercel/
-.cursorrules
 .eslintcache
-*.tsbuildinfo
+.vercel/

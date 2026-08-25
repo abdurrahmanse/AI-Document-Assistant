@@ -5,8 +5,9 @@
     "build": "turbo run build",
     "dev": "kill-port 3000 3001 3002 8000 || true && turbo run dev",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,md,json,yml}\"",
+    "format": "turbo run format && prettier --write \"**/*.{ts,tsx,js,jsx,md,json,yml}\"",
     "check-types": "turbo run check-types",
+    "clean": "turbo run clean && rm -rf node_modules .turbo",
     "prepare": "husky"
   },
   "devDependencies": {

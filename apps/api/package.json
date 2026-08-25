@@ -7,6 +7,7 @@
     "lint": "uv run ruff check .",
     "test": "uv run pytest",
     "format": "uv run ruff format .",
-    "check-types": "uv run pyright"
+    "check-types": "uv run pyright",
+    "clean": "rm -rf .pytest_cache .ruff_cache __pycache__ .mypy_cache coverage htmlcov"
   }
 }
