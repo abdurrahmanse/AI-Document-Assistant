@@ -21,9 +21,21 @@
       "outputs": ["*.tsbuildinfo", ".mypy_cache/**"]
     },
     "test": {
-      "dependsOn": ["^build"],
+      "dependsOn": ["build"],
       "inputs": ["src/**", "tests/**", "package.json"],
       "outputs": [".pytest_cache/**", "coverage/**", "htmlcov/**"]
+    },
+    "test:e2e": {
+      "dependsOn": ["build"],
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "storybook": {
+      "cache": false,
+      "persistent": true
+    },
+    "build-storybook": {
+      "dependsOn": ["^build"],
+      "outputs": ["storybook-static/**"]
     },
     "format": {
       "outputs": []

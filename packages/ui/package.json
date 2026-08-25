@@ -21,7 +21,9 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "check-types": "tsc --noEmit",
-    "clean": "rm -rf .turbo node_modules"
+    "clean": "rm -rf .turbo node_modules",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@types/node": "^22.15.3",
@@ -35,7 +37,19 @@
     "tailwindcss": "3.4.17",
     "tailwindcss-animate": "^1.0.7",
     "typescript": "5.9.2",
-    "next": "15.1.7"
+    "next": "15.1.7",
+    "storybook": "^10.5.10",
+    "@storybook/react-vite": "^10.5.10",
+    "@chromatic-com/storybook": "latest",
+    "@storybook/addon-vitest": "^10.5.10",
+    "@storybook/addon-a11y": "^10.5.10",
+    "@storybook/addon-docs": "^10.5.10",
+    "@storybook/addon-mcp": "latest",
+    "eslint-plugin-storybook": "^10.5.10",
+    "vitest": "latest",
+    "playwright": "latest",
+    "@vitest/browser-playwright": "latest",
+    "@vitest/coverage-v8": "latest"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.20",
