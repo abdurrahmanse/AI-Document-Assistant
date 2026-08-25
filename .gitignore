@@ -1,5 +1,5 @@
 # ==============================================================================
-# Turborepo Monorepo - .gitignore
+# AI Document Assistant Monorepo - .gitignore
 # Contains ignores for Node/Next.js (Frontend), Python/FastAPI (Backend), and Tooling
 # ==============================================================================
 
@@ -12,6 +12,7 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 .pnpm-store/
+.npm/
 
 # =========================
 # Turborepo
@@ -30,14 +31,33 @@ dist/
 next-env.d.ts
 *.tsbuildinfo
 .swc/
+coverage/
 
 # =========================
-# Python & Backend
+# Python & Backend (FastAPI)
 # =========================
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
 # Virtual Environments
 .venv/
@@ -47,7 +67,7 @@ env/
 env.bak/
 venv.bak/
 
-# Testing & Type-Checking & Linting
+# Testing & Linting
 .pytest_cache/
 .mypy_cache/
 .ruff_cache/
@@ -56,6 +76,14 @@ coverage.xml
 *.cover
 *.log
 htmlcov/
+.tox/
+nosetests.xml
+
+# Databases
+*.db
+*.sqlite3
+*.sqlite
+alembic.ini.bak
 
 # =========================
 # Environment Variables
@@ -99,13 +127,11 @@ desktop.ini
 # =========================
 # Miscellaneous
 # =========================
-coverage/
 tmp/
 temp/
 *.swp
 *.bak
 .eslintcache
 .vercel/
-
 *storybook.log
 storybook-static

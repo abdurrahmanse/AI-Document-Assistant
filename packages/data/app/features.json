@@ -1,0 +1,18 @@
+{
+  "billing": {
+    "title": "Billing",
+    "description": "Manage your billing settings."
+  },
+  "profile": {
+    "title": "Profile",
+    "description": "Manage your profile settings."
+  },
+  "chat": {
+    "title": "Chat",
+    "description": "Manage your chat settings."
+  },
+  "documents": {
+    "title": "Documents",
+    "description": "Manage your documents settings."
+  }
+}

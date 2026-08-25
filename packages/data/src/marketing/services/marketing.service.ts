@@ -31,6 +31,14 @@ export class MarketingService {
     return this.repository.getCore();
   }
 
+  async getLegal() {
+    return this.repository.getLegal();
+  }
+
+  async getAuth() {
+    return this.repository.getAuth();
+  }
+
   async getHome() {
     return this.repository.getHome();
   }

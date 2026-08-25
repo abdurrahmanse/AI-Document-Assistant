@@ -30,4 +30,4 @@ Retrieval-Augmented Generation (RAG) is susceptible to **prompt injection**. Thi
 ## 5. Audit & Compliance
 
 - **Audit Logging:** Sensitive actions (e.g., failed login attempts, document deletion, password resets, admin interventions) generate immutable records in the `audit_logs` table. This provides a clear trail for compliance and debugging.
-- **Rate Limiting:** Brute force and DoS attacks at the application layer are mitigated by IP-based and User-based rate limiting (via SlowAPI). This prevents attackers from spamming endpoints or running up OpenAI API bills.
+- **Rate Limiting:** Brute force and DoS attacks at the application layer are mitigated by IP-based and User-based rate limiting (via SlowAPI backed by Redis). This prevents attackers from spamming endpoints or running up OpenAI API bills.

@@ -1,10 +1,8 @@
-export { TopNav } from "./core/components/layout/top-nav";
-export { DashboardHero } from "./dashboard/components/hero";
-export { RecentDocuments } from "./dashboard/components/recent-documents";
-export { StatsGrid } from "./dashboard/components/stats-grid";
-
-export * from "./chat/ChatInterface";
-export * from "./chat/MessageList";
-
-export * from "./documents/DocumentGrid";
-export * from "./documents/DocumentCard";
+export * from "./chat";
+export * from "./documents";
+export * from "./dashboard/components/hero";
+export * from "./dashboard/components/recent-documents";
+export * from "./dashboard/components/stats-grid";
+export * from "./core/components/layout/top-nav";
+export * from "./billing";
+export * from "./profile";

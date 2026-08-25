@@ -1,41 +1,42 @@
-import os
-import sentry_sdk
-from app.core.config import settings
-from app.core.logger import setup_logging
+from contextlib import asynccontextmanager
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-sentry_dsn = os.getenv("SENTRY_DSN")
-if sentry_dsn:
-    sentry_sdk.init(
-        dsn=sentry_dsn,
-        traces_sample_rate=1.0,
-        profiles_sample_rate=1.0,
-    )
+from app.core.config import settings
+from app.core.redis import redis_client
+from app.router import api_router
 
-setup_logging()
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    # Startup
+    await redis_client.connect()
+    yield
+    # Shutdown
+    await redis_client.disconnect()
 
 app = FastAPI(
-    title="AI Document Intelligence API",
+    title=settings.PROJECT_NAME,
     description="Backend API for AI Document Intelligence Platform",
     version="0.1.0",
+    openapi_url=f"{settings.API_V1_STR}/openapi.json",
+    docs_url="/docs",
+    redoc_url="/redoc",
+    lifespan=lifespan
 )
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=settings.cors_origins_list,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+# Set up CORS rules
+if settings.BACKEND_CORS_ORIGINS:
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.BACKEND_CORS_ORIGINS,
+        allow_credentials=True,
+        allow_methods=["*"],
+        allow_headers=["*"],
+    )
 
-from app.observability import health
-from app.routers import admin, app_routes
-
-app.include_router(health.router)
-app.include_router(admin.router)
-app.include_router(app_routes.router)
+# Include our unified v1 router
+app.include_router(api_router, prefix=settings.API_V1_STR)
 
 @app.get("/")
 def read_root():
-    return {"message": "Welcome to AI Document Intelligence API"}
+    return {"message": "Welcome to AI Document Intelligence API. Visit /docs for Swagger UI."}

@@ -7,5 +7,7 @@ export const marketingKeys = {
   docs: () => [...marketingKeys.all, 'docs'] as const,
   contact: () => [...marketingKeys.all, 'contact'] as const,
   core: () => [...marketingKeys.all, 'core'] as const,
+  legal: () => [...marketingKeys.all, 'legal'] as const,
+  auth: () => [...marketingKeys.all, 'auth'] as const,
   home: () => [...marketingKeys.all, 'home'] as const,
 };

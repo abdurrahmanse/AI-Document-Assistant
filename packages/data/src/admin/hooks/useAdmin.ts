@@ -8,3 +8,10 @@ export function useAdminMetrics() {
     queryFn: () => adminService.getCoreMetrics(),
   });
 }
+
+export function useAdminFeatures() {
+  return useQuery({
+    queryKey: adminKeys.features(),
+    queryFn: () => adminService.getFeatures(),
+  });
+}

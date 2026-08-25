@@ -34,6 +34,11 @@ export * from './marketing/services/marketing.service';
 export * from './marketing/queries/keys';
 export * from './marketing/hooks/useMarketing';
 
+
+export * from "./api/client";
+export * from "./auth/api";
+export * from "./auth/hooks";
+
 export * from './admin/repositories/admin.repository';
 export * from './admin/services/admin.service';
 export * from './admin/queries/keys';

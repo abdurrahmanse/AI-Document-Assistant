@@ -1,0 +1,38 @@
+{
+  "audit-logs": {
+    "title": "Audit Logs Management",
+    "description": "Manage audit logs settings and configurations."
+  },
+  "dashboard": {
+    "title": "Dashboard Management",
+    "description": "Manage dashboard settings and configurations."
+  },
+  "documents": {
+    "title": "Documents Management",
+    "description": "Manage documents settings and configurations."
+  },
+  "feedback": {
+    "title": "Feedback Management",
+    "description": "Manage feedback settings and configurations."
+  },
+  "jobs": {
+    "title": "Jobs Management",
+    "description": "Manage jobs settings and configurations."
+  },
+  "settings": {
+    "title": "Settings Management",
+    "description": "Manage settings settings and configurations."
+  },
+  "system": {
+    "title": "System Management",
+    "description": "Manage system settings and configurations."
+  },
+  "usage": {
+    "title": "Usage Management",
+    "description": "Manage usage settings and configurations."
+  },
+  "users": {
+    "title": "Users Management",
+    "description": "Manage users settings and configurations."
+  }
+}

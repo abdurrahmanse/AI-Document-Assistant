@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}>
         <PostHogProvider>
-          <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem disableTransitionOnChange>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <NuqsProvider>
               <QueryProvider>
                 <LenisProvider>

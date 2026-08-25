@@ -1,3 +1,4 @@
+/// <reference types="node" />
 // Base API URL from environment variables, defaulting to localhost for local dev if missing
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 

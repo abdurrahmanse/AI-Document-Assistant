@@ -1,10 +1,15 @@
-import { adminRepository } from '../repositories/admin.repository';
-import { CoreMetricsData } from "@workspace/types/src/admin";
+import { IAdminRepository, AdminMockRepository } from '../repositories/admin.repository';
 
 export class AdminService {
-  async getCoreMetrics(): Promise<CoreMetricsData> {
-    return adminRepository.getCoreMetrics();
+  constructor(private readonly repository: IAdminRepository) {}
+
+  async getFeatures() {
+    return this.repository.getFeatures();
+  }
+
+  async getCoreMetrics() {
+    return this.repository.getCoreMetrics();
   }
 }
 
-export const adminService = new AdminService();
+export const adminService = new AdminService(new AdminMockRepository());

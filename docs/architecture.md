@@ -7,7 +7,7 @@ This document defines the high-level topology and architectural decisions for th
 The system uses a decoupled client-server architecture:
 - **Client Layer:** Next.js Monorepo. Handles all user interface, edge routing, SSR, and client-side state.
 - **Core API Layer:** FastAPI. Handles authentication, document management, AI orchestration, and database persistence.
-- **Data Layer:** PostgreSQL (relational data and AI vectors) and S3/R2 (raw object storage).
+- **Data Layer:** PostgreSQL (relational + vectors), Redis (caching/rate-limiting), and S3/R2 (object storage).
 
 *Why this stack?* Next.js provides the best Developer Experience (DX) and SEO/performance for React. FastAPI provides extreme performance for Python (native async/await), which is essential since all AI ecosystem libraries (OpenAI, LangChain, LlamaIndex) are primarily Python-based.
 
@@ -54,6 +54,7 @@ Document processing (parsing PDFs, chunking text, generating embeddings via Open
 ## 5. Storage Architecture
 
 Data is heavily segmented based on its lifecycle and format:
-- **PostgreSQL:** Primary source of truth. Stores structured, relational data (`users`, `documents`, `conversations`).
-- **pgvector:** A PostgreSQL extension. We use it to store 1536-dimensional embeddings and perform high-speed cosine similarity searches directly inside the DB, eliminating the need for a separate vector database like Pinecone.
-- **Object Storage (S3/R2):** Used exclusively for secure, cheap storage of the raw uploaded files (PDFs, DOCX). The database only stores the `s3_key`.
+- **PostgreSQL:** Primary source of truth (users, documents, conversations).
+- **pgvector:** PostgreSQL extension for storing and performing hybrid searches on AI embeddings.
+- **Redis:** High-speed in-memory store for rate limiting (SlowAPI), token blacklisting, and caching.
+- **Object Storage (S3/R2):** Secure storage for raw files (PDFs, DOCX, TXT). DB stores URLs/keys only.

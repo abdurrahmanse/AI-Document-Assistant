@@ -54,5 +54,5 @@ query = select(Document).where(
 
 Because stateless JWTs cannot be revoked until they naturally expire, we implement a revocation strategy for emergency scenarios (e.g., an Admin suspends a user, or a user clicks "Log out of all devices").
 
-- When a revocation event occurs, the user's Refresh Token generation timestamp or ID is blacklisted in the database.
+- When a revocation event occurs, the user's Refresh Token generation timestamp or ID is blacklisted in Redis.
 - The next time the short-lived Access Token expires (max 15 mins) and the client attempts to use the Refresh Token, the API rejects it, forcing an immediate logout.

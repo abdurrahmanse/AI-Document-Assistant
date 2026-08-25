@@ -43,7 +43,7 @@ To ensure the frontend can predictably parse errors, the backend must *never* re
 
 To protect the infrastructure from brute force attacks and to control OpenAI API costs, rate limiting is strictly enforced at the router layer using SlowAPI.
 
-- **Strategy:** Limits are applied dynamically based on the User's ID (if authenticated) or IP address (if anonymous).
+- **Strategy:** Limits are applied dynamically based on the User's ID (if authenticated) or IP address (if anonymous), backed by Redis for high performance in distributed deployments.
 - **Example Limits:**
   - `/api/v1/auth/login`: 5 requests per minute.
   - `/api/v1/chat`: 20 requests per minute.

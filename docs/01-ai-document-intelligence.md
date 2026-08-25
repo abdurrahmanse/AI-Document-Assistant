@@ -4,7 +4,7 @@
 ## 1. Product Goal
 Build a production-style document intelligence SaaS. Users upload private documents, the platform processes them asynchronously, indexes their contents, supports semantic/hybrid search, and provides citation-grounded AI chat.
 
-The project must demonstrate: **Next.js + FastAPI + PostgreSQL/pgvector + object storage + RAG + production security/testing/observability.**
+The project must demonstrate: **Next.js + FastAPI + PostgreSQL/pgvector + Redis (Caching/Rate Limiting) + object storage + RAG + production security/testing/observability.**
 
 ## 2. Applications
 
@@ -117,7 +117,7 @@ Security/auth:
 - `argon2-cffi`
 - `PyJWT`
 - `email-validator`
-- `slowapi` for rate limiting
+- `slowapi` or Redis-backed rate limiting
 
 HTTP/integration:
 - `httpx`
@@ -199,6 +199,7 @@ Rules:
 - repositories/data-access contain persistence;
 - schemas contain API contracts;
 - AI extraction is too slow for sync request-response. Must use FastAPI `BackgroundTasks`.
+- Redis handles rate limiting so APIs do not go down under load.
 - AI code is isolated from generic domain services.
 
 ## 5. Document Pipeline

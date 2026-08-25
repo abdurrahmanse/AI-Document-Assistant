@@ -1,13 +1,19 @@
 import { CoreMetricsData } from "@workspace/types/src/admin";
 import { apiClient } from "../../api/client";
+import featuresData from "../../../admin/features.json";
 
 export interface IAdminRepository {
   getCoreMetrics(): Promise<CoreMetricsData>;
+  getFeatures(): Promise<any>;
 }
 
 export class AdminRepository implements IAdminRepository {
   async getCoreMetrics(): Promise<CoreMetricsData> {
     return await apiClient.get<CoreMetricsData>("/api/admin/metrics");
+  }
+
+  async getFeatures(): Promise<any> {
+    return featuresData;
   }
 }
 
@@ -37,6 +43,10 @@ export class AdminMockRepository implements IAdminRepository {
         isPositive: false,
       },
     };
+  }
+
+  async getFeatures(): Promise<any> {
+    return featuresData;
   }
 }
 

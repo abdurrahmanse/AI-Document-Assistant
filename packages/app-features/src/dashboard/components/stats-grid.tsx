@@ -1,7 +1,7 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
 import { FileText, Users, Loader2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@workspace/ui/components/ui";
-import { useDashboardStats } from "@workspace/data";
+import { useAppStats } from "@workspace/data";
 
 function DatabaseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -14,7 +14,7 @@ function DatabaseIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function StatsGrid() {
-  const { data: stats, isLoading, error } = useDashboardStats();
+  const { data: stats, isLoading, error } = useAppStats();
 
   if (isLoading) {
     return (

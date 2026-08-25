@@ -1,14 +1,19 @@
-import { appRepository } from '../repositories/app.repository';
-import { DashboardStats, RecentDocument } from "@workspace/types";
+import { IAppRepository, AppRepository } from '../repositories/app.repository';
 
 export class AppService {
-  async getDashboardStats(): Promise<DashboardStats> {
-    return appRepository.getDashboardStats();
+  constructor(private readonly repository: IAppRepository) {}
+
+  async getFeatures() {
+    return this.repository.getFeatures();
   }
 
-  async getRecentDocuments(): Promise<RecentDocument[]> {
-    return appRepository.getRecentDocuments();
+  async getDashboardStats() {
+    return this.repository.getDashboardStats();
+  }
+
+  async getRecentDocuments() {
+    return this.repository.getRecentDocuments();
   }
 }
 
-export const appService = new AppService();
+export const appService = new AppService(new AppRepository());

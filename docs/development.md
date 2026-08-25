@@ -8,6 +8,7 @@ Before starting, ensure you have the following installed on your machine:
 - **Node.js** (v20+) & **pnpm** (v9+)
 - **Python** (3.11+) & **uv** (or pip)
 - **PostgreSQL** (running locally or via a cloud provider like Neon) with the **pgvector** extension installed.
+- **Redis** (running locally or via a cloud provider like Upstash) for rate limiting and token revocation.
 
 ## 2. Local Environment Setup
 

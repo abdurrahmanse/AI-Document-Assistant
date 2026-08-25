@@ -61,5 +61,23 @@
         "answer": "Yes, it respects your system preferences and includes a beautiful dark mode implementation."
       }
     ]
+  },
+  "howItWorksSection": {
+    "title": "How it works",
+    "description": "From raw documents to intelligent insights in seconds."
+  },
+  "securitySection": {
+    "title": "Enterprise-grade Security",
+    "description": "Your data is protected by the highest security standards."
+  },
+  "pricingSection": {
+    "title": "Simple, transparent pricing",
+    "description": "Start for free, upgrade when you need to."
+  },
+  "cta": {
+    "title": "Ready to transform your documents?",
+    "description": "Join thousands of teams already using AI Document Assistant to extract insights in seconds.",
+    "primaryButton": "Get Started Free",
+    "secondaryButton": "Contact Sales"
   }
 }

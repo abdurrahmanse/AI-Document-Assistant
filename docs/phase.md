@@ -30,7 +30,7 @@ This document is the master tracker for the AI Document Intelligence platform. I
 
 ---
 
-## [ ] Phase 2 → Backend Foundation
+## [x] Phase 2 → Backend Foundation
 **Goal:** Establish the core FastAPI server, lifecycle events, configuration validation, and API routing structure.
 **Stack:** FastAPI, Uvicorn, Pydantic V2
 
@@ -190,11 +190,11 @@ This document is the master tracker for the AI Document Intelligence platform. I
 
 ## [ ] Phase 11 → Security Hardening
 **Goal:** Mitigate application-layer attacks, enforce rate limits, and secure object storage access.
-**Stack:** SlowAPI, AWS S3/Cloudflare R2 Presigned URLs
+**Stack:** SlowAPI, Redis, AWS S3/Cloudflare R2 Presigned URLs
 
 - [ ] **Step 11.1: Rate Limiting**
   - [ ] **Action:** Implement `slowapi` on FastAPI routes.
-  - [ ] **Details:** Enforce strict limits (e.g., 5 requests/minute) on `/api/v1/auth/login` and `/api/v1/chat` to prevent brute force and runaway LLM costs. Use an in-memory or DB-backed rate limiter.
+  - [ ] **Details:** Enforce strict limits (e.g., 5 requests/minute) on `/api/v1/auth/login` and `/api/v1/chat` to prevent brute force and runaway LLM costs. Use Redis as the backing store for distributed environments.
   - [ ] **Verification:** Rapidly hitting the login endpoint triggers a `429 Too Many Requests` response.
 - [ ] **Step 11.2: Signed URLs for Storage**
   - [ ] **Action:** Implement secure document retrieval.

@@ -57,3 +57,17 @@ export function useHome() {
     queryFn: () => marketingService.getHome(),
   });
 }
+
+export function useLegal() {
+  return useQuery({
+    queryKey: marketingKeys.legal(),
+    queryFn: () => marketingService.getLegal(),
+  });
+}
+
+export function useAuthContent() {
+  return useQuery({
+    queryKey: marketingKeys.auth(),
+    queryFn: () => marketingService.getAuth(),
+  });
+}

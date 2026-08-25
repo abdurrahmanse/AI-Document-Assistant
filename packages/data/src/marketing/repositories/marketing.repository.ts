@@ -17,6 +17,8 @@ export interface MarketingRepository {
   getDocs(): Promise<DocsData>;
   getContact(): Promise<ContactData>;
   getCore(): Promise<CoreData>;
+  getLegal(): Promise<any>;
+  getAuth(): Promise<any>;
   getHome(): Promise<HomeData>;
 }
 
@@ -29,6 +31,8 @@ import docsData from '../../../website/docs.json';
 import contactData from '../../../website/contact.json';
 import coreData from '../../../website/core.json';
 import homeData from '../../../website/home.json';
+import legalData from '../../../website/legal.json';
+import authData from '../../../website/auth.json';
 
 export class LocalMarketingRepository implements MarketingRepository {
   async getPricing(): Promise<PricingData> {
@@ -59,6 +63,12 @@ export class LocalMarketingRepository implements MarketingRepository {
     return coreData;
   }
   
+  async getLegal(): Promise<any> {
+    return legalData;
+  }
+  async getAuth(): Promise<any> {
+    return authData;
+  }
   async getHome(): Promise<HomeData> {
     return homeData;
   }

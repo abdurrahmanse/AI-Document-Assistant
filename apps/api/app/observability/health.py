@@ -1,11 +1,12 @@
 import time
 from typing import Any
 
-from app.core.config import settings
 from fastapi import APIRouter
 from loguru import logger
 from redis.asyncio import Redis
 from sqlalchemy.ext.asyncio import create_async_engine
+
+from app.core.config import settings
 
 router = APIRouter(prefix="/health", tags=["observability"])
 
