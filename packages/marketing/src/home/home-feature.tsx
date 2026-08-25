@@ -43,23 +43,7 @@ export function HomeFeature() {
       {/* 2. Product value proposition */}
       <SocialProof socialProof={homeData.socialProof} />
 
-      {/* 3. How RAG works */}
-      <div className="py-24 bg-muted/30">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{homeData.howItWorksSection.title}</h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            {homeData.howItWorksSection.description}
-          </p>
-        </div>
-        <div className="max-w-4xl mx-auto w-full px-4 relative z-10">
-          <div className="absolute left-12 md:left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-transparent via-border to-transparent -translate-x-1/2 hidden md:block" />
-          <div className="space-y-24 py-12">
-            {howItWorksData.steps.map((step, i) => (
-              <TimelineStep key={i} step={step as TimelineStepProps["step"]} index={i} />
-            ))}
-          </div>
-        </div>
-      </div>
+     
 
       {/* 4. Feature grid */}
       <FeaturesGrid features={homeData.features} featuresSection={homeData.featuresSection} />
@@ -81,24 +65,7 @@ export function HomeFeature() {
 
       {/* 6. Workflow demo */}
       <InteractiveDemo interactiveDemo={homeData.interactiveDemo} />
-
-      {/* 7. Pricing */}
-      <div className="py-24 bg-muted/30" id="pricing">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight">{homeData.pricingSection.title}</h2>
-          <p className="mt-4 text-xl text-muted-foreground max-w-2xl mx-auto">
-            {homeData.pricingSection.description}
-          </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto px-4 relative z-10 w-full">
-          {pricingData.plans.map((plan, i) => (
-            <FadeInView key={plan.name} delay={i * 0.1} yOffset={30}>
-              <PricingCard plan={plan} />
-            </FadeInView>
-          ))}
-        </div>
-      </div>
-
+      
       {/* 8. FAQ */}
       <div className="py-24">
         <FAQSection faqs={pricingData.faqs} />

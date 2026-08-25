@@ -12,23 +12,7 @@ export function HeroContent({ hero }: { hero: { badge: string; title1: string; t
     >
       <div className="relative space-y-10 flex flex-col items-center">
         {/* Minimalist Glowing Badge */}
-        <FadeIn 
-          delay={0.2}
-          duration={0.6}
-          yOffset={0}
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="group inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-foreground/5 border border-foreground/10 text-foreground font-medium text-xs sm:text-sm backdrop-blur-md hover:bg-foreground/10 transition-colors cursor-pointer"
-        >
-          <div className="w-4 h-4 rounded-full bg-indigo-500/20 flex items-center justify-center">
-            <Zap className="w-2.5 h-2.5 text-indigo-500 dark:text-indigo-400" />
-          </div>
-          <span className="opacity-90">{hero.badge}</span>
-          <span className="flex items-center text-foreground/50 group-hover:text-foreground/80 transition-colors">
-            <ChevronRight className="w-3.5 h-3.5 ml-1" />
-          </span>
-        </FadeIn>
-        
+       
         {/* Massive Typography */}
         <div className="relative w-full text-center">
           <h1 className="text-[3.5rem] sm:text-7xl md:text-[6rem] lg:text-[7.5rem] font-medium tracking-tighter leading-[0.95] text-foreground">

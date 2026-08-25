@@ -5,8 +5,8 @@ import dashboardData from "../../../app/dashboard.json";
 export interface IAppRepository {
   getDashboardStats(): Promise<DashboardStats>;
   getRecentDocuments(): Promise<RecentDocument[]>;
-  getFeatures(): Promise<any>;
-  getDashboardData(): Promise<any>;
+  getFeatures(): Promise<unknown>;
+  getDashboardData(): Promise<unknown>;
 }
 
 export class AppRepository implements IAppRepository {
@@ -38,11 +38,11 @@ export class AppRepository implements IAppRepository {
     ];
   }
 
-  async getFeatures(): Promise<any> {
+  async getFeatures(): Promise<unknown> {
     return featuresData;
   }
 
-  async getDashboardData(): Promise<any> {
+  async getDashboardData(): Promise<unknown> {
     return dashboardData;
   }
 }

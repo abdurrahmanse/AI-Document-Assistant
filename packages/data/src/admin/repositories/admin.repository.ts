@@ -5,8 +5,8 @@ import heroData from "../../../admin/hero.json";
 
 export interface IAdminRepository {
   getCoreMetrics(): Promise<CoreMetricsData>;
-  getFeatures(): Promise<any>;
-  getDashboardHero(): Promise<any>;
+  getFeatures(): Promise<unknown>;
+  getDashboardHero(): Promise<unknown>;
 }
 
 export class AdminRepository implements IAdminRepository {
@@ -14,11 +14,11 @@ export class AdminRepository implements IAdminRepository {
     return await apiClient.get<CoreMetricsData>("/api/admin/metrics");
   }
 
-  async getFeatures(): Promise<any> {
+  async getFeatures(): Promise<unknown> {
     return featuresData;
   }
 
-  async getDashboardHero(): Promise<any> {
+  async getDashboardHero(): Promise<unknown> {
     return heroData;
   }
 }
@@ -51,11 +51,11 @@ export class AdminMockRepository implements IAdminRepository {
     };
   }
 
-  async getFeatures(): Promise<any> {
+  async getFeatures(): Promise<unknown> {
     return featuresData;
   }
 
-  async getDashboardHero(): Promise<any> {
+  async getDashboardHero(): Promise<unknown> {
     return heroData;
   }
 }

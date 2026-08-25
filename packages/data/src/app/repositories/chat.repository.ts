@@ -17,15 +17,11 @@ export class ChatRepository implements IChatRepository {
   }
 
   async sendMessage(sessionId: string, content: string): Promise<Message> {
-    try {
-      // POST to FastAPI
-      const response = await apiClient.post<Message>(`/api/app/chat/sessions/${sessionId}/messages`, {
-        content,
-      });
-      return response;
-    } catch (error) {
-      throw error;
-    }
+    // POST to FastAPI
+    const response = await apiClient.post<Message>(`/api/app/chat/sessions/${sessionId}/messages`, {
+      content,
+    });
+    return response;
   }
 }
 

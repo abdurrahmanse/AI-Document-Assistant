@@ -14,11 +14,11 @@ dependencies = [
     "redis>=8.1.0",
     "loguru>=0.7.3",
     "sentry-sdk[fastapi]>=2.0.0",
-    "passlib[bcrypt]>=1.7.4",
     "pyjwt>=2.13.0",
     "python-dotenv>=1.2.3",
     "httpx>=0.28.1",
     "greenlet>=3.5.5",
+    "bcrypt>=5.0.0",
 ]
 
 [dependency-groups]

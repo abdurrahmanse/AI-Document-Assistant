@@ -17,8 +17,8 @@ export interface MarketingRepository {
   getDocs(): Promise<DocsData>;
   getContact(): Promise<ContactData>;
   getCore(): Promise<CoreData>;
-  getLegal(): Promise<any>;
-  getAuth(): Promise<any>;
+  getLegal(): Promise<unknown>;
+  getAuth(): Promise<unknown>;
   getHome(): Promise<HomeData>;
 }
 
@@ -63,10 +63,10 @@ export class LocalMarketingRepository implements MarketingRepository {
     return coreData;
   }
   
-  async getLegal(): Promise<any> {
+  async getLegal(): Promise<unknown> {
     return legalData;
   }
-  async getAuth(): Promise<any> {
+  async getAuth(): Promise<unknown> {
     return authData;
   }
   async getHome(): Promise<HomeData> {
