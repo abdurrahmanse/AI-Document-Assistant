@@ -138,6 +138,9 @@ importers:
       '@workspace/api-client':
         specifier: workspace:^
         version: link:../../packages/api-client
+      '@workspace/app-features':
+        specifier: workspace:*
+        version: link:../../packages/app-features
       '@workspace/ui':
         specifier: workspace:*
         version: link:../../packages/ui
@@ -219,7 +222,7 @@ importers:
         version: link:../../packages/api-client
       '@workspace/data':
         specifier: workspace:*
-        version: link:../../data
+        version: link:../../packages/data
       '@workspace/marketing':
         specifier: workspace:*
         version: link:../../packages/marketing
@@ -288,23 +291,11 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
-  data:
-    devDependencies:
-      '@types/react':
-        specifier: 19.2.2
-        version: 19.2.2
-      '@workspace/typescript-config':
-        specifier: workspace:*
-        version: link:../packages/typescript-config
-      typescript:
-        specifier: ^5.3.3
-        version: 5.9.2
-
   packages/admin-features:
     dependencies:
       '@workspace/data':
         specifier: workspace:*
-        version: link:../../data
+        version: link:../data
       '@workspace/ui':
         specifier: workspace:*
         version: link:../ui
@@ -358,6 +349,43 @@ importers:
         specifier: 5.9.2
         version: 5.9.2
 
+  packages/app-features:
+    dependencies:
+      '@workspace/data':
+        specifier: workspace:*
+        version: link:../data
+      '@workspace/ui':
+        specifier: workspace:*
+        version: link:../ui
+      lucide-react:
+        specifier: ^0.471.0
+        version: 0.471.2(react@19.2.0)
+      next:
+        specifier: 16.3.0
+        version: 16.3.0(@babel/core@7.29.7)(@types/node@22.15.3)(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+      react:
+        specifier: ^19.2.0
+        version: 19.2.0
+      recharts:
+        specifier: ^2.15.0
+        version: 2.15.4(react-dom@19.2.0(react@19.2.0))(react@19.2.0)
+    devDependencies:
+      '@types/react':
+        specifier: 19.2.2
+        version: 19.2.2
+      '@workspace/eslint-config':
+        specifier: workspace:*
+        version: link:../eslint-config
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      eslint:
+        specifier: ^9.39.1
+        version: 9.39.1(jiti@1.21.7)
+      typescript:
+        specifier: 5.9.2
+        version: 5.9.2
+
   packages/auth:
     devDependencies:
       '@types/node':
@@ -392,6 +420,25 @@ importers:
         version: 9.39.1(jiti@1.21.7)
       typescript:
         specifier: 5.9.2
+        version: 5.9.2
+
+  packages/data:
+    dependencies:
+      '@tanstack/react-query':
+        specifier: ^5.102.3
+        version: 5.102.3(react@19.2.0)
+      '@workspace/types':
+        specifier: workspace:*
+        version: link:../types
+    devDependencies:
+      '@types/react':
+        specifier: 19.2.2
+        version: 19.2.2
+      '@workspace/typescript-config':
+        specifier: workspace:*
+        version: link:../typescript-config
+      typescript:
+        specifier: ^5.3.3
         version: 5.9.2
 
   packages/eslint-config:
@@ -434,7 +481,7 @@ importers:
     dependencies:
       '@workspace/data':
         specifier: workspace:*
-        version: link:../../data
+        version: link:../data
       '@workspace/types':
         specifier: workspace:*
         version: link:../types

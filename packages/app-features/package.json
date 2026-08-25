@@ -1,0 +1,28 @@
+{
+  "name": "@workspace/app-features",
+  "version": "0.1.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.tsx"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@workspace/ui": "workspace:*",
+    "@workspace/data": "workspace:*",
+    "lucide-react": "^0.471.0",
+    "react": "^19.2.0",
+    "next": "16.3.0",
+    "recharts": "^2.15.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.2",
+    "@workspace/eslint-config": "workspace:*",
+    "@workspace/typescript-config": "workspace:*",
+    "eslint": "^9.39.1",
+    "typescript": "5.9.2"
+  }
+}

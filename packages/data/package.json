@@ -8,6 +8,10 @@
     "lint": "eslint .",
     "check-types": "tsc --noEmit"
   },
+  "dependencies": {
+    "@tanstack/react-query": "^5.102.3",
+    "@workspace/types": "workspace:*"
+  },
   "devDependencies": {
     "@types/react": "19.2.2",
     "@workspace/typescript-config": "workspace:*",

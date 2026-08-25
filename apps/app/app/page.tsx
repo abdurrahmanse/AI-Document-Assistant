@@ -1,9 +1,6 @@
 "use client";
 
-import { DashboardHero } from "@/modules/dashboard/components/hero";
-import { RecentDocuments } from "@/modules/dashboard/components/recent-documents";
-import { StatsGrid } from "@/modules/dashboard/components/stats-grid";
-import { TopNav } from "@/modules/core/components/layout/top-nav";
+import { DashboardHero, RecentDocuments, StatsGrid, TopNav } from "@workspace/app-features";
 
 
 
