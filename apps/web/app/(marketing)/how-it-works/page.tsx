@@ -1,8 +1,8 @@
 "use client";
 
-import { steps } from "../../../config/marketing/how-it-works";
-import { TimelineHero } from "../../../components/marketing/how-it-works/timeline-hero";
-import { TimelineStep } from "../../../components/marketing/how-it-works/timeline-step";
+import { steps } from "../../../modules/how-it-works/config/how-it-works";
+import { TimelineHero } from "../../../modules/how-it-works/components/timeline-hero";
+import { TimelineStep } from "../../../modules/how-it-works/components/timeline-step";
 
 export default function HowItWorksPage() {
   return (

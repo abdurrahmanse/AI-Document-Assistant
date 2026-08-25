@@ -1,7 +1,7 @@
 "use client";
 
-import { ContactInfo } from "../../../components/marketing/contact/contact-info";
-import { ContactForm } from "../../../components/marketing/contact/contact-form";
+import { ContactInfo } from "../../../modules/contact/components/contact-info";
+import { ContactForm } from "../../../modules/contact/components/contact-form";
 
 export default function ContactPage() {
   return (

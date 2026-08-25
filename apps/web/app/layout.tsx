@@ -8,6 +8,7 @@ export const metadata: Metadata = constructMetadata({
   title: {
     template: "%s | AI Document Assistant",
     default: "AI Document Assistant - The Future of Document Intelligence",
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any, // type assertion for template string format
   description: "AI-powered document intelligence platform. Upload, analyze, and extract insights from your enterprise documents in seconds.",
 });
@@ -20,7 +21,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem disableTransitionOnChange>
           <NuqsProvider>
             <QueryProvider>
               <LenisProvider>

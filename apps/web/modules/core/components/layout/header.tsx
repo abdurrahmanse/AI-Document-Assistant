@@ -31,11 +31,11 @@ export function Header() {
             ? "bg-background/80 backdrop-blur-2xl border border-border shadow-[0_4px_30px_rgba(0,0,0,0.1)]"
             : "bg-transparent border-transparent"
         )}>
-          
+
           <div className="flex items-center justify-between">
             <Logo />
             <DesktopNav />
-            
+
             <div className="flex items-center gap-2 sm:gap-4">
               <AuthButtons />
               <Button

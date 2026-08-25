@@ -1,8 +1,8 @@
 "use client";
 
-import { deepDives } from "../../../config/marketing/features";
-import { FeaturesHero } from "../../../components/marketing/features/features-hero";
-import { FeatureDeepDive } from "../../../components/marketing/features/feature-deep-dive";
+import { deepDives } from "../../../modules/features/config/features";
+import { FeaturesHero } from "../../../modules/features/components/features-hero";
+import { FeatureDeepDive } from "../../../modules/features/components/feature-deep-dive";
 
 export default function FeaturesPage() {
   return (

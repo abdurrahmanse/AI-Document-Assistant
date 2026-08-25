@@ -10,7 +10,7 @@ export function Footer() {
           <div className="col-span-1 md:col-span-1">
             <Logo />
             <p className="mt-6 text-muted-foreground text-sm leading-relaxed">
-              The world's most advanced AI document assistant. Process, analyze, and understand enterprise documents at scale.
+              The world&apos;s most advanced AI document assistant. Process, analyze, and understand enterprise documents at scale.
             </p>
           </div>
           

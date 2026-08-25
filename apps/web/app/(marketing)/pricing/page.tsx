@@ -1,9 +1,9 @@
 "use client";
 
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { plans, faqs } from "../../../config/marketing/pricing";
-import { PricingCard } from "../../../components/marketing/pricing/pricing-card";
-import { FAQSection } from "../../../components/marketing/pricing/faq-section";
+import { plans, faqs } from "../../../modules/pricing/config/pricing";
+import { PricingCard } from "../../../modules/pricing/components/pricing-card";
+import { FAQSection } from "../../../modules/pricing/components/faq-section";
 
 export default function PricingPage() {
   return (

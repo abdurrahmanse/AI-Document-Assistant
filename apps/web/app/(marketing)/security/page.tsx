@@ -1,9 +1,9 @@
 "use client";
 
-import { securityFeatures, trustChecklist } from "../../../config/marketing/security";
-import { SecurityHero } from "../../../components/marketing/security/security-hero";
-import { SecurityBentoCard } from "../../../components/marketing/security/security-bento-card";
-import { TrustChecklist } from "../../../components/marketing/security/trust-checklist";
+import { securityFeatures, trustChecklist } from "../../../modules/security/config/security";
+import { SecurityHero } from "../../../modules/security/components/security-hero";
+import { SecurityBentoCard } from "../../../modules/security/components/security-bento-card";
+import { TrustChecklist } from "../../../modules/security/components/trust-checklist";
 
 export default function SecurityPage() {
   return (

@@ -1,9 +1,9 @@
-import { Header } from "../components/layout/header";
-import { Footer } from "../components/layout/footer";
-import { MarketingHero } from "../components/marketing/hero";
-import { SocialProof } from "../components/marketing/social-proof";
-import { FeaturesGrid } from "../components/marketing/features-grid";
-import { InteractiveDemo } from "../components/marketing/interactive-demo";
+import { Header } from "../modules/core/components/layout/header";
+import { Footer } from "../modules/core/components/layout/footer";
+import { MarketingHero } from "../modules/home/components/hero";
+import { SocialProof } from "../modules/home/components/social-proof";
+import { FeaturesGrid } from "../modules/home/components/features-grid";
+import { InteractiveDemo } from "../modules/home/components/interactive-demo";
 
 export default function WebHomepage() {
   return (

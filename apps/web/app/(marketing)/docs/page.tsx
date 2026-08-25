@@ -1,8 +1,8 @@
 "use client";
 
-import { sections } from "../../../config/marketing/docs";
-import { DocsHero } from "../../../components/marketing/docs/docs-hero";
-import { DocsCard } from "../../../components/marketing/docs/docs-card";
+import { sections } from "../../../modules/docs/config/docs";
+import { DocsHero } from "../../../modules/docs/components/docs-hero";
+import { DocsCard } from "../../../modules/docs/components/docs-card";
 
 export default function DocsPage() {
   return (

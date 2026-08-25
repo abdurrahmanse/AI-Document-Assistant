@@ -30,7 +30,7 @@ export function HeroContent() {
         </h1>
         
         <p className="text-xl md:text-2xl text-muted-foreground max-w-3xl mx-auto leading-relaxed font-medium tracking-tight">
-          Upload, analyze, and extract insights from your enterprise documents in seconds. Powered by the world's most advanced AI models.
+          Upload, analyze, and extract insights from your enterprise documents in seconds. Powered by the world&apos;s most advanced AI models.
         </p>
         
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4 w-full">
