@@ -23,6 +23,6 @@
     "vitest": "^4.1.11"
   },
   "dependencies": {
-    "lucide-react": "^1.34.0"
+    "lucide-react": "^1.33.0"
   }
 }
