@@ -7,7 +7,7 @@ import {
   ContactData, 
   CoreData, 
   HomeData 
-} from '../index';
+} from '../../index';
 
 export interface MarketingRepository {
   getPricing(): Promise<PricingData>;
@@ -21,14 +21,14 @@ export interface MarketingRepository {
 }
 
 // Simulated local repository
-import pricingData from '../../website/pricing.json';
-import featuresData from '../../website/features.json';
-import securityData from '../../website/security.json';
-import howItWorksData from '../../website/how-it-works.json';
-import docsData from '../../website/docs.json';
-import contactData from '../../website/contact.json';
-import coreData from '../../website/core.json';
-import homeData from '../../website/home.json';
+import pricingData from '../../../website/pricing.json';
+import featuresData from '../../../website/features.json';
+import securityData from '../../../website/security.json';
+import howItWorksData from '../../../website/how-it-works.json';
+import docsData from '../../../website/docs.json';
+import contactData from '../../../website/contact.json';
+import coreData from '../../../website/core.json';
+import homeData from '../../../website/home.json';
 
 export class LocalMarketingRepository implements MarketingRepository {
   async getPricing(): Promise<PricingData> {

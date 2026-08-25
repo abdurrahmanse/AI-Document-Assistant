@@ -93,6 +93,8 @@ desktop.ini
 !.vscode/extensions.json
 .history/
 .cursorrules
+.gemini/
+.agents/
 
 # =========================
 # Miscellaneous

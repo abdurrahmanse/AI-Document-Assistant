@@ -29,7 +29,17 @@ export const websiteData = {
 };
 
 // Export New Data Access Architecture
-export * from './repositories/marketing.repository';
-export * from './services/marketing.service';
-export * from './queries/keys';
-export * from './hooks/useMarketing';
+export * from './marketing/repositories/marketing.repository';
+export * from './marketing/services/marketing.service';
+export * from './marketing/queries/keys';
+export * from './marketing/hooks/useMarketing';
+
+export * from './admin/repositories/admin.repository';
+export * from './admin/services/admin.service';
+export * from './admin/queries/keys';
+export * from './admin/hooks/useAdmin';
+
+export * from './app/repositories/app.repository';
+export * from './app/services/app.service';
+export * from './app/queries/keys';
+export * from './app/hooks/useApp';

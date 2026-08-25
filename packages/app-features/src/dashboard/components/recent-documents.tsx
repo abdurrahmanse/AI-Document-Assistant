@@ -17,14 +17,43 @@ import {
   Badge
 } from "@workspace/ui/components/ui";
 
-const recentDocuments = [
-  { id: 1, title: "Q3 Financial Report", date: "2 hours ago", status: "Analyzed", members: 3 },
-  { id: 2, title: "Product Roadmap 2026", date: "5 hours ago", status: "Processing", members: 5 },
-  { id: 3, title: "Legal Terms v4", date: "Yesterday", status: "Analyzed", members: 2 },
-  { id: 4, title: "Marketing Copy", date: "Yesterday", status: "Failed", members: 1 },
-];
+import { useRecentDocuments } from "@workspace/data";
 
 export function RecentDocuments() {
+  const { data: recentDocuments, isLoading, error } = useRecentDocuments();
+
+  if (isLoading) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Activity</CardTitle>
+          <CardDescription>Your recently uploaded and analyzed documents.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-card">
+            Loading...
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
+  if (error || !recentDocuments) {
+    return (
+      <Card>
+        <CardHeader>
+          <CardTitle>Recent Activity</CardTitle>
+          <CardDescription>Your recently uploaded and analyzed documents.</CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-destructive/10 text-destructive">
+            Failed to load recent documents.
+          </div>
+        </CardContent>
+      </Card>
+    );
+  }
+
   return (
     <Card>
       <CardHeader>

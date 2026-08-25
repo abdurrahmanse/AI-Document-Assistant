@@ -1,6 +1,7 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
-import { FileText, Users } from "lucide-react";
+import { FileText, Users, Loader2 } from "lucide-react";
 import { Card, CardHeader, CardTitle, CardContent } from "@workspace/ui/components/ui";
+import { useDashboardStats } from "@workspace/data";
 
 function DatabaseIcon(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -13,6 +14,24 @@ function DatabaseIcon(props: React.SVGProps<SVGSVGElement>) {
 }
 
 export function StatsGrid() {
+  const { data: stats, isLoading, error } = useDashboardStats();
+
+  if (isLoading) {
+    return (
+      <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-card">
+        <Loader2 className="h-6 w-6 animate-spin text-muted-foreground" />
+      </div>
+    );
+  }
+
+  if (error || !stats) {
+    return (
+      <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-destructive/10 text-destructive">
+        Failed to load stats.
+      </div>
+    );
+  }
+
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
       <FadeIn yOffset={10} delay={0.1}>
@@ -22,8 +41,8 @@ export function StatsGrid() {
             <FileText className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">1,248</div>
-            <p className="text-xs text-muted-foreground mt-1">+12% from last month</p>
+            <div className="text-3xl font-bold">{stats.totalDocuments.value}</div>
+            <p className="text-xs text-muted-foreground mt-1">{stats.totalDocuments.description}</p>
           </CardContent>
         </Card>
       </FadeIn>
@@ -34,8 +53,8 @@ export function StatsGrid() {
             <DatabaseIcon className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">48.2 GB</div>
-            <p className="text-xs text-muted-foreground mt-1">out of 100 GB allowance</p>
+            <div className="text-3xl font-bold">{stats.storageUsed.value}</div>
+            <p className="text-xs text-muted-foreground mt-1">{stats.storageUsed.description}</p>
           </CardContent>
         </Card>
       </FadeIn>
@@ -46,8 +65,8 @@ export function StatsGrid() {
             <Users className="w-4 h-4 text-muted-foreground" />
           </CardHeader>
           <CardContent>
-            <div className="text-3xl font-bold">14</div>
-            <p className="text-xs text-muted-foreground mt-1">3 currently online</p>
+            <div className="text-3xl font-bold">{stats.activeMembers.value}</div>
+            <p className="text-xs text-muted-foreground mt-1">{stats.activeMembers.description}</p>
           </CardContent>
         </Card>
       </FadeIn>
