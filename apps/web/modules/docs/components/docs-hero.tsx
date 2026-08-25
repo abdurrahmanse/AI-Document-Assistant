@@ -2,7 +2,7 @@ import { Search } from "lucide-react";
 
 export function DocsHero() {
   return (
-    <div className="text-center space-y-8 max-w-3xl mx-auto py-24 px-4 relative z-10 w-full">
+    <div className="text-center space-y-8 max-w-3xl mx-auto pt-32 pb-24 px-4 relative z-10 w-full">
       <h1 className="text-4xl md:text-6xl font-black tracking-tighter">Documentation</h1>
       <p className="text-xl text-muted-foreground">Everything you need to build with AI Document Assistant.</p>
       

@@ -1,6 +1,6 @@
 export function FeaturesHero() {
   return (
-    <div className="text-center space-y-6 max-w-4xl mx-auto py-24 px-4 relative z-10">
+    <div className="text-center space-y-6 max-w-4xl mx-auto pt-32 pb-24 px-4 relative z-10">
       <h1 className="text-5xl md:text-7xl font-black tracking-tighter leading-tight">
         Everything you need to <br className="hidden md:block"/>
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-cyan-400">automate documents</span>
