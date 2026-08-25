@@ -1,5 +1,6 @@
 "use client";
 
+import { Container } from "@workspace/ui/components/ui/container";
 import { AdminNav } from "../core/components/layout/admin-nav";
 import { SystemOverviewHero } from "./components/system-overview-hero";
 import { CoreMetrics } from "./components/core-metrics";
@@ -9,11 +10,11 @@ export function AdminDashboardFeature() {
   return (
     <div className="min-h-screen bg-background">
       <AdminNav />
-      <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+      <Container size="dashboard" as="main">
         <SystemOverviewHero />
         <CoreMetrics />
         <ManagementTabs />
-      </main>
+      </Container>
     </div>
   );
 }

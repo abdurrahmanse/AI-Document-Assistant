@@ -1,12 +1,16 @@
-import { CoreMetricsData } from "@workspace/types/src/admin";
+import {
+  AdminDashboardHeroData,
+  AdminFeaturesData,
+  CoreMetricsData,
+} from "@workspace/types/src/admin";
 import { apiClient } from "../../api/client";
 import featuresData from "../../../admin/features.json";
 import heroData from "../../../admin/hero.json";
 
 export interface IAdminRepository {
   getCoreMetrics(): Promise<CoreMetricsData>;
-  getFeatures(): Promise<unknown>;
-  getDashboardHero(): Promise<unknown>;
+  getFeatures(): Promise<AdminFeaturesData>;
+  getDashboardHero(): Promise<AdminDashboardHeroData>;
 }
 
 export class AdminRepository implements IAdminRepository {
@@ -14,12 +18,12 @@ export class AdminRepository implements IAdminRepository {
     return await apiClient.get<CoreMetricsData>("/api/admin/metrics");
   }
 
-  async getFeatures(): Promise<unknown> {
-    return featuresData;
+  async getFeatures(): Promise<AdminFeaturesData> {
+    return featuresData as AdminFeaturesData;
   }
 
-  async getDashboardHero(): Promise<unknown> {
-    return heroData;
+  async getDashboardHero(): Promise<AdminDashboardHeroData> {
+    return heroData as AdminDashboardHeroData;
   }
 }
 
@@ -27,7 +31,7 @@ export class AdminRepository implements IAdminRepository {
 export class AdminMockRepository implements IAdminRepository {
   async getCoreMetrics(): Promise<CoreMetricsData> {
     await new Promise((resolve) => setTimeout(resolve, 500));
-    
+
     return {
       totalUsers: {
         value: "10,482",
@@ -51,12 +55,12 @@ export class AdminMockRepository implements IAdminRepository {
     };
   }
 
-  async getFeatures(): Promise<unknown> {
-    return featuresData;
+  async getFeatures(): Promise<AdminFeaturesData> {
+    return featuresData as AdminFeaturesData;
   }
 
-  async getDashboardHero(): Promise<unknown> {
-    return heroData;
+  async getDashboardHero(): Promise<AdminDashboardHeroData> {
+    return heroData as AdminDashboardHeroData;
   }
 }
 

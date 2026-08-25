@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Footer } from "../index";
+
 import { useCore, useLegal } from "@workspace/data";
 
 export function PrivacyFeature() {

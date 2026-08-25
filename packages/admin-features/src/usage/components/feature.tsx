@@ -1,3 +1,4 @@
+import { Container } from "@workspace/ui/components/ui/container";
 import { useAdminFeatures } from "@workspace/data";
 
 export function UsageFeature() {
@@ -7,9 +8,9 @@ export function UsageFeature() {
   const featureData = data["usage"];
 
   return (
-    <div className="w-full max-w-7xl mx-auto py-6">
+    <Container size="fluid" className="py-6">
       <h1 className="text-3xl font-bold tracking-tight">{featureData?.title}</h1>
       <p className="mt-2 text-muted-foreground">{featureData?.description}</p>
-    </div>
+    </Container>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Footer } from "@workspace/marketing";
+
 import { useCore, useAuthContent, useRegister } from "@workspace/data";
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";

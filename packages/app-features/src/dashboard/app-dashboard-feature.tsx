@@ -1,5 +1,6 @@
 "use client";
 
+import { Container } from "@workspace/ui/components/ui/container";
 import { DashboardHero } from "./components/hero";
 import { RecentDocuments } from "./components/recent-documents";
 import { StatsGrid } from "./components/stats-grid";
@@ -9,11 +10,11 @@ export function AppDashboardFeature() {
   return (
     <div className="min-h-screen bg-secondary/20">
       <TopNav />
-      <main className="max-w-7xl mx-auto px-4 py-8 space-y-8">
+      <Container size="dashboard" as="main">
         <DashboardHero />
         <StatsGrid />
         <RecentDocuments />
-      </main>
+      </Container>
     </div>
   );
 }

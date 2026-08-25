@@ -1,21 +1,17 @@
 "use client";
 
 import {
-  Header,
-  Footer,
   MarketingHero,
   SocialProof,
   FeaturesGrid,
   InteractiveDemo,
-  TimelineStep,
   SecurityBentoCard,
-  PricingCard,
   FAQSection
 } from "../index";
-import { FadeInView } from "@workspace/ui/components/ui/motion";
+
 import { Button } from "@workspace/ui/components/ui/button";
 import { Container } from "@workspace/ui/components/ui/container";
-import type { TimelineStepProps, SecurityBentoCardProps } from "@workspace/types";
+import type { SecurityBentoCardProps } from "@workspace/types";
 import { useHome, useCore, useHowItWorks, useSecurity, usePricing } from "@workspace/data";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
