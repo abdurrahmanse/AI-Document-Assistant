@@ -1,15 +1,10 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import * as Icons from "lucide-react";
 import { ArrowRight } from "lucide-react";
+import type { DocsSection } from "@workspace/types";
 
 export interface DocsCardProps {
-  section: {
-    title: string;
-    description: string;
-    icon: string;
-    color: string;
-    bg: string;
-  };
+  section: DocsSection;
   index: number;
 }
 

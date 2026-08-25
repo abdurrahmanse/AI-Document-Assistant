@@ -1,14 +1,10 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
 import * as Icons from "lucide-react";
+import type { SecurityFeature } from "@workspace/types";
 
 export interface SecurityBentoCardProps {
-  feature: {
-    title: string;
-    description: string;
-    icon: string;
-    span: string;
-  };
+  feature: SecurityFeature;
   index: number;
 }
 
