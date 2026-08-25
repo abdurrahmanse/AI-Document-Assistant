@@ -7,7 +7,6 @@ setup_logging()
 
 app = FastAPI(
     title="AI Document Intelligence API",
-
     description="Backend API for AI Document Intelligence Platform",
     version="0.1.0",
 )
@@ -23,6 +22,7 @@ app.add_middleware(
 from app.observability import health
 
 app.include_router(health.router)
+
 
 @app.get("/")
 def read_root():

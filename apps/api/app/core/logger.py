@@ -9,6 +9,7 @@ class InterceptHandler(logging.Handler):
     """
     Intercept standard logging messages toward Loguru sinks.
     """
+
     def emit(self, record: logging.LogRecord) -> None:
         # Get corresponding Loguru level if it exists
         try:
@@ -22,9 +23,7 @@ class InterceptHandler(logging.Handler):
             frame = frame.f_back
             depth += 1
 
-        logger.opt(depth=depth, exception=record.exc_info).log(
-            level, record.getMessage()
-        )
+        logger.opt(depth=depth, exception=record.exc_info).log(level, record.getMessage())
 
 
 def setup_logging() -> None:
@@ -51,7 +50,7 @@ def setup_logging() -> None:
     for name in logging.root.manager.loggerDict:
         logging.getLogger(name).handlers = []
         logging.getLogger(name).propagate = True
-        
+
     # Uvicorn specific tweaks
     logging.getLogger("uvicorn.access").handlers = [InterceptHandler()]
     logging.getLogger("uvicorn.error").handlers = [InterceptHandler()]
