@@ -2,7 +2,7 @@
 
 import { websiteData } from "@workspace/data";
 import { DocsHero } from "@workspace/marketing";
-import { DocsCard } from "@workspace/marketing";
+import { DocsCard, type DocsCardProps } from "@workspace/marketing";
 
 export default function DocsPage() {
   const { sections } = websiteData.docs;
@@ -15,7 +15,7 @@ export default function DocsPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4 relative z-10 w-full">
         {sections.map((section, i) => (
-          <DocsCard key={i} section={section as any} index={i} />
+          <DocsCard key={i} section={section as DocsCardProps["section"]} index={i} />
         ))}
       </div>
     </div>

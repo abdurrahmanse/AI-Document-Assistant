@@ -1,7 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import * as Icons from "lucide-react";
 
-interface TimelineStepProps {
+export interface TimelineStepProps {
   step: {
     title: string;
     description: string;

@@ -2,7 +2,7 @@
 
 import { websiteData } from "@workspace/data";
 import { SecurityHero } from "@workspace/marketing";
-import { SecurityBentoCard } from "@workspace/marketing";
+import { SecurityBentoCard, type SecurityBentoCardProps } from "@workspace/marketing";
 import { TrustChecklist } from "@workspace/marketing";
 
 export default function SecurityPage() {
@@ -16,7 +16,7 @@ export default function SecurityPage() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto px-4 relative z-10 w-full">
         {features.map((feature, i) => (
-          <SecurityBentoCard key={i} feature={feature as any} index={i} />
+          <SecurityBentoCard key={i} feature={feature as SecurityBentoCardProps["feature"]} index={i} />
         ))}
       </div>
 

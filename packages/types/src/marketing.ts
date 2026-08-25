@@ -12,26 +12,23 @@ export interface FooterLink {
   icon?: LucideIcon;
 }
 
-export interface DocsSection {
+export interface BaseMarketingFeature {
   title: string;
   description: string;
-  icon: LucideIcon;
+  icon: string;
+}
+
+export interface DocsSection extends BaseMarketingFeature {
   color: string;
   bg: string;
 }
 
-export interface TimelineStep {
-  title: string;
-  description: string;
-  icon: LucideIcon;
+export interface TimelineStep extends BaseMarketingFeature {
   color: string;
   iconColor: string;
 }
 
-export interface SecurityFeature {
-  title: string;
-  description: string;
-  icon: LucideIcon;
+export interface SecurityFeature extends BaseMarketingFeature {
   span: string;
 }
 

@@ -2,7 +2,7 @@
 
 import { websiteData } from "@workspace/data";
 import { TimelineHero } from "@workspace/marketing";
-import { TimelineStep } from "@workspace/marketing";
+import { TimelineStep, type TimelineStepProps } from "@workspace/marketing";
 
 export default function HowItWorksPage() {
   const { steps } = websiteData.howItWorks;
@@ -19,7 +19,7 @@ export default function HowItWorksPage() {
         
         <div className="space-y-24 py-12">
           {steps.map((step, i) => (
-            <TimelineStep key={i} step={step as any} index={i} />
+            <TimelineStep key={i} step={step as TimelineStepProps["step"]} index={i} />
           ))}
         </div>
       </div>

@@ -7,7 +7,7 @@
     {
       "name": "Starter",
       "description": "Perfect for individuals and small teams.",
-      "price": "$19",
+      "price": "$1",
       "popular": false,
       "features": [
         { "name": "Up to 100 documents/mo", "included": true },
@@ -21,7 +21,7 @@
     {
       "name": "Pro",
       "description": "Everything you need for production.",
-      "price": "$49",
+      "price": "$9",
       "popular": true,
       "features": [
         { "name": "Unlimited documents", "included": true },
