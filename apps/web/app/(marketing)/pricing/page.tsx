@@ -10,7 +10,7 @@ export default function PricingPage() {
     <div className="flex flex-col items-center pb-24 px-4 overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
       
-      <div className="text-center space-y-4 max-w-3xl mx-auto py-16 md:py-24 relative z-10">
+      <div className="text-center space-y-4 max-w-3xl mx-auto pt-32 pb-16 md:pt-40 md:pb-24 relative z-10">
         <h1 className="text-5xl md:text-7xl font-black tracking-tighter">Simple, transparent pricing</h1>
         <p className="text-xl text-muted-foreground">Start for free, upgrade when you need to. No hidden fees.</p>
       </div>
