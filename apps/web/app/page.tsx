@@ -5,7 +5,7 @@ import { InteractiveDemo } from "../components/marketing/interactive-demo";
 
 export default function WebHomepage() {
   return (
-    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-hidden">
+    <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
       <Header />
       <MarketingHero />
       <FeaturesGrid />
