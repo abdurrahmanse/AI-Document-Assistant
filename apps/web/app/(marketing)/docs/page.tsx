@@ -20,7 +20,7 @@ export default function DocsPage() {
       
       <DocsHero hero={docsData.hero} />
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto px-4 relative z-10 w-full">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-7xl mx-auto px-4 relative z-10 w-full">
         {sections.map((section, i) => (
           <DocsCard key={i} section={section as DocsCardProps["section"]} index={i} />
         ))}
