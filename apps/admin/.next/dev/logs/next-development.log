@@ -200,3 +200,22 @@
 {"timestamp":"00:41:49.566","source":"Browser","level":"ERROR","message":"./apps/admin/app/global-error.tsx:3:1\nError: Export ErrorBoundaryUI doesn't exist in target module\n  1 | \"use client\";\n  2 |\n> 3 | import { ErrorBoundaryUI } from \"@workspace/ui/components/errors\";\n    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  4 |\n  5 | export default function GlobalError({\n  6 |   error,\n\nThe export ErrorBoundaryUI was not found in module [project]/packages/ui/src/components/errors/index.ts [app-ssr] (ecmascript).\nDid you mean to import GeneralErrorContent?\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\n\nImport traces:\n  Client Component Browser:\n    ./apps/admin/app/global-error.tsx [Client Component Browser]\n    ./apps/admin/app/global-error.tsx [Server Component]\n\n  Client Component SSR:\n    ./apps/admin/app/global-error.tsx [Client Component SSR]\n    ./apps/admin/app/global-error.tsx [Server Component] "}
 {"timestamp":"00:41:49.566","source":"Server","level":"ERROR","message":"[browser] \"./apps/admin/app/global-error.tsx:3:1\\nError: Export ErrorBoundaryUI doesn't exist in target module\\n  1 | \\\"use client\\\";\\n  2 |\\n> 3 | import { ErrorBoundaryUI } from \\\"@workspace/ui/components/errors\\\";\\n    | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\\n  4 |\\n  5 | export default function GlobalError({\\n  6 |   error,\\n\\nThe export ErrorBoundaryUI was not found in module [project]/packages/ui/src/components/errors/index.ts [app-ssr] (ecmascript).\\nDid you mean to import GeneralErrorContent?\\nAll exports of the module are statically known (It doesn't have dynamic exports). So it's known statically that the requested export doesn't exist.\\n\\nImport traces:\\n  Client Component Browser:\\n    ./apps/admin/app/global-error.tsx [Client Component Browser]\\n    ./apps/admin/app/global-error.tsx [Server Component]\\n\\n  Client Component SSR:\\n    ./apps/admin/app/global-error.tsx [Client Component SSR]\\n    ./apps/admin/app/global-error.tsx [Server Component]\" \"\""}
 {"timestamp":"00:42:05.803","source":"Server","level":"LOG","message":"✓ Compiled in 977ms"}
+{"timestamp":"01:05:00.219","source":"Server","level":"LOG","message":"✓ Compiled in 1247ms"}
+{"timestamp":"01:05:01.607","source":"Server","level":"LOG","message":"✓ Compiled in 599ms"}
+{"timestamp":"01:05:21.417","source":"Server","level":"LOG","message":"✓ Compiled in 849ms"}
+{"timestamp":"01:05:33.460","source":"Server","level":"LOG","message":"✓ Compiled in 723ms"}
+{"timestamp":"01:06:01.620","source":"Server","level":"LOG","message":"✓ Compiled in 689ms"}
+{"timestamp":"01:06:14.659","source":"Server","level":"LOG","message":"✓ Compiled in 831ms"}
+{"timestamp":"01:06:16.686","source":"Server","level":"LOG","message":"✓ Compiled in 800ms"}
+{"timestamp":"01:06:30.608","source":"Server","level":"LOG","message":"✓ Compiled in 871ms"}
+{"timestamp":"01:06:55.911","source":"Server","level":"LOG","message":"✓ Compiled in 948ms"}
+{"timestamp":"01:11:00.942","source":"Server","level":"LOG","message":"✓ Compiled in 876ms"}
+{"timestamp":"01:11:21.200","source":"Server","level":"LOG","message":"✓ Compiled in 865ms"}
+{"timestamp":"01:11:42.586","source":"Server","level":"LOG","message":"✓ Compiled in 865ms"}
+{"timestamp":"01:12:01.301","source":"Server","level":"LOG","message":"✓ Compiled in 667ms"}
+{"timestamp":"01:12:18.405","source":"Server","level":"LOG","message":"✓ Compiled in 675ms"}
+{"timestamp":"01:12:38.275","source":"Server","level":"LOG","message":"✓ Compiled in 701ms"}
+{"timestamp":"01:12:56.482","source":"Server","level":"LOG","message":"✓ Compiled in 712ms"}
+{"timestamp":"01:13:11.786","source":"Server","level":"LOG","message":"✓ Finished filesystem cache database compaction in 31.4s"}
+{"timestamp":"01:13:12.767","source":"Server","level":"LOG","message":"✓ Compiled in 818ms"}
+{"timestamp":"01:20:00.125","source":"Server","level":"LOG","message":"✓ Compiled in 849ms"}

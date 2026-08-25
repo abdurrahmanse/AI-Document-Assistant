@@ -32,24 +32,34 @@ export function InteractiveDemo() {
           </TabsList>
           
           <TabsContent value="pricing" className="mt-0">
-            <Card>
-              <CardHeader>
-                <CardTitle>Pro Plan</CardTitle>
-                <CardDescription>Everything you need for production.</CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="text-4xl font-bold">$49<span className="text-lg text-muted-foreground font-normal">/mo</span></div>
-                <ul className="space-y-3">
-                  {["Unlimited Documents", "GPT-4 & Claude 3", "Priority Support", "Custom Branding"].map((item, i) => (
-                    <li key={i} className="flex items-center gap-3">
-                      <CheckCircle2 className="w-5 h-5 text-primary" />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <Button className="w-full">Subscribe Now</Button>
-              </CardContent>
-            </Card>
+            <div className="relative group max-w-lg mx-auto">
+              <div className="absolute inset-0 bg-gradient-to-r from-primary via-indigo-500 to-purple-500 rounded-3xl blur-xl opacity-20 group-hover:opacity-40 transition-opacity duration-500" />
+              <Card className="relative bg-background/50 backdrop-blur-xl border-white/10 overflow-hidden">
+                <div className="absolute top-0 right-0 bg-primary/20 text-primary px-4 py-1 rounded-bl-lg text-sm font-semibold border-b border-l border-primary/20">
+                  Most Popular
+                </div>
+                <CardHeader className="pb-8">
+                  <CardTitle className="text-2xl font-bold tracking-tight">Pro Plan</CardTitle>
+                  <CardDescription className="text-base text-muted-foreground">Everything you need for production.</CardDescription>
+                </CardHeader>
+                <CardContent className="space-y-8">
+                  <div className="text-6xl font-black tracking-tighter">$49<span className="text-xl text-muted-foreground font-normal tracking-normal">/mo</span></div>
+                  <ul className="space-y-4">
+                    {["Unlimited Documents", "GPT-4 & Claude 3", "Priority Support", "Custom Branding"].map((item, i) => (
+                      <li key={i} className="flex items-center gap-3">
+                        <div className="w-6 h-6 rounded-full bg-primary/20 flex items-center justify-center">
+                          <CheckCircle2 className="w-4 h-4 text-primary" />
+                        </div>
+                        <span className="font-medium text-muted-foreground hover:text-foreground transition-colors">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <Button size="lg" className="w-full h-14 text-lg font-bold rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground shadow-[0_0_20px_rgba(var(--primary),0.3)] transition-all">
+                    Subscribe Now
+                  </Button>
+                </CardContent>
+              </Card>
+            </div>
           </TabsContent>
 
           <TabsContent value="faq" className="mt-0">
