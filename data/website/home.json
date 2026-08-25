@@ -1,4 +1,23 @@
 {
+  "hero": {
+    "badge": "Introducing AI Document Assistant",
+    "title1": "The Future of",
+    "title2": "Document Intelligence",
+    "description": "Upload, analyze, and extract insights from your enterprise documents in seconds. Powered by the world's most advanced AI models.",
+    "primaryButton": "Start Building Free",
+    "secondaryButton": "View Live Demo"
+  },
+  "socialProof": {
+    "title": "Trusted by innovative teams worldwide",
+    "logos": [
+      { "name": "Acme Corp", "icon": "Building2" },
+      { "name": "Global Systems", "icon": "Globe2" },
+      { "name": "Command AI", "icon": "Command" },
+      { "name": "Stack Labs", "icon": "Layers" },
+      { "name": "TechNova", "icon": "Cpu" },
+      { "name": "UI Components", "icon": "Component" }
+    ]
+  },
   "features": [
     { 
       "title": "Lightning Fast", 
@@ -15,5 +34,32 @@
       "description": "Harness the power of latest frontier models to analyze your documents.", 
       "icon": "Sparkles" 
     }
-  ]
+  ],
+  "interactiveDemo": {
+    "title": "Interactive Showcase",
+    "description": "Verifying Radix and Shadcn UI integration.",
+    "pricing": {
+      "badge": "Most Popular",
+      "title": "Pro Plan",
+      "description": "Everything you need for production.",
+      "price": "$49",
+      "frequency": "/mo",
+      "features": ["Unlimited Documents", "GPT-4 & Claude 3", "Priority Support", "Custom Branding"],
+      "button": "Subscribe Now"
+    },
+    "faq": [
+      {
+        "question": "Is it built with Radix UI?",
+        "answer": "Yes, it uses Radix UI primitives under the hood via Shadcn UI, providing unstyled, accessible components."
+      },
+      {
+        "question": "Is it fully responsive?",
+        "answer": "Absolutely. The UI is built mobile-first using Tailwind CSS."
+      },
+      {
+        "question": "Does it support dark mode?",
+        "answer": "Yes, it respects your system preferences and includes a beautiful dark mode implementation."
+      }
+    ]
+  }
 }

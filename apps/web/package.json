@@ -17,6 +17,7 @@
     "@tanstack/react-query-devtools": "^5.102.3",
     "@workspace/api-client": "workspace:^",
     "@workspace/data": "workspace:*",
+    "@workspace/marketing": "workspace:*",
     "@workspace/types": "workspace:*",
     "@workspace/ui": "workspace:*",
     "lenis": "^1.3.26",

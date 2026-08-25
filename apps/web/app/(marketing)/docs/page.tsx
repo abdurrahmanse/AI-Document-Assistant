@@ -1,8 +1,8 @@
 "use client";
 
 import { websiteData } from "@workspace/data";
-import { DocsHero } from "../../../modules/docs/components/docs-hero";
-import { DocsCard } from "../../../modules/docs/components/docs-card";
+import { DocsHero } from "@workspace/marketing";
+import { DocsCard } from "@workspace/marketing";
 
 export default function DocsPage() {
   const { sections } = websiteData.docs;

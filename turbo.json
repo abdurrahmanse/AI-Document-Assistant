@@ -5,20 +5,24 @@
     "build": {
       "dependsOn": ["^build"],
       "outputs": [".next/**", "!.next/cache/**", "dist/**", "build/**"],
+      "inputs": ["src/**", "app/**", "components/**", "modules/**", "package.json", "tsconfig.json", "next.config.mjs", "postcss.config.mjs", "tailwind.config.ts"],
       "env": [
         "NEXT_PUBLIC_*"
       ]
     },
     "lint": {
-      "dependsOn": ["^lint"],
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "app/**", "components/**", "modules/**", "package.json", "eslint.config.mjs", "tsconfig.json"],
       "outputs": [".eslintcache", ".ruff_cache/**"]
     },
     "check-types": {
-      "dependsOn": ["^check-types"],
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "app/**", "components/**", "modules/**", "package.json", "tsconfig.json"],
       "outputs": ["*.tsbuildinfo", ".mypy_cache/**"]
     },
     "test": {
-      "dependsOn": ["^test"],
+      "dependsOn": ["^build"],
+      "inputs": ["src/**", "tests/**", "package.json"],
       "outputs": [".pytest_cache/**", "coverage/**", "htmlcov/**"]
     },
     "format": {
@@ -28,6 +32,7 @@
       "cache": false
     },
     "dev": {
+      "dependsOn": ["^build"],
       "cache": false,
       "persistent": true
     }

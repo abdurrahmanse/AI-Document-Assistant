@@ -2,8 +2,8 @@
 
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { websiteData } from "@workspace/data";
-import { PricingCard } from "../../../modules/pricing/components/pricing-card";
-import { FAQSection } from "../../../modules/pricing/components/faq-section";
+import { PricingCard } from "@workspace/marketing";
+import { FAQSection } from "@workspace/marketing";
 
 export default function PricingPage() {
   const { hero, plans, faqs } = websiteData.pricing;

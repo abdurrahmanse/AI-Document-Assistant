@@ -1,8 +1,8 @@
 "use client";
 
 import { websiteData } from "@workspace/data";
-import { FeaturesHero } from "../../../modules/features/components/features-hero";
-import { FeatureDeepDive } from "../../../modules/features/components/feature-deep-dive";
+import { FeaturesHero } from "@workspace/marketing";
+import { FeatureDeepDive } from "@workspace/marketing";
 
 export default function FeaturesPage() {
   const { deepDives } = websiteData.features;

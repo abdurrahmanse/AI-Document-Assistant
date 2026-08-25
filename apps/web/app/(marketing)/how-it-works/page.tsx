@@ -1,8 +1,8 @@
 "use client";
 
 import { websiteData } from "@workspace/data";
-import { TimelineHero } from "../../../modules/how-it-works/components/timeline-hero";
-import { TimelineStep } from "../../../modules/how-it-works/components/timeline-step";
+import { TimelineHero } from "@workspace/marketing";
+import { TimelineStep } from "@workspace/marketing";
 
 export default function HowItWorksPage() {
   const { steps } = websiteData.howItWorks;

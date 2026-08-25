@@ -1,6 +1,6 @@
-import os
+const fs = require('fs');
 
-files = [
+const files = [
     "apps/web/app/(marketing)/docs/page.tsx",
     "apps/web/app/(marketing)/how-it-works/page.tsx",
     "apps/web/app/(marketing)/security/page.tsx",
@@ -14,11 +14,12 @@ files = [
     "apps/web/modules/home/components/social-proof.tsx",
     "apps/web/modules/how-it-works/components/timeline-step.tsx",
     "apps/web/modules/security/components/security-bento-card.tsx"
-]
+];
 
-for file in files:
-    with open(file, "r") as f:
-        content = f.read()
-    content = content.replace("as any)", "as React.ElementType)")
-    with open(file, "w") as f:
-        f.write(content)
+for (const file of files) {
+    if (fs.existsSync(file)) {
+        let content = fs.readFileSync(file, 'utf8');
+        content = content.replace(/as any\)/g, 'as React.ElementType)');
+        fs.writeFileSync(file, content);
+    }
+}

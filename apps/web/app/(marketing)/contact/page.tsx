@@ -1,7 +1,7 @@
 "use client";
 
-import { ContactInfo } from "../../../modules/contact/components/contact-info";
-import { ContactForm } from "../../../modules/contact/components/contact-form";
+import { ContactInfo } from "@workspace/marketing";
+import { ContactForm } from "@workspace/marketing";
 import { websiteData } from "@workspace/data";
 
 export default function ContactPage() {
