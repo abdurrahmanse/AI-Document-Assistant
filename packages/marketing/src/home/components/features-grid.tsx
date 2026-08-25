@@ -1,9 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { websiteData } from "@workspace/data";
 import { FeatureCard } from "../../features/components/feature-card";
 
-export function FeaturesGrid() {
-  const { features } = websiteData.home;
+export function FeaturesGrid({ features }: { features: { title: string; description: string; icon: string }[] }) {
   
   return (
     <section className="py-24 px-4 relative overflow-hidden bg-background">

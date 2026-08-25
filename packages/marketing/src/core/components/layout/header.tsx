@@ -9,8 +9,12 @@ import { Logo } from "./logo";
 import { DesktopNav } from "./desktop-nav";
 import { MobileNav } from "./mobile-nav";
 import { AuthButtons } from "./auth-buttons";
+import type { HeaderProps } from "@workspace/types";
 
-export function Header() {
+export function Header({ 
+  siteName, 
+  navItems 
+}: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -33,8 +37,8 @@ export function Header() {
         )}>
 
           <div className="flex items-center justify-between">
-            <Logo />
-            <DesktopNav />
+            <Logo siteName={siteName} />
+            <DesktopNav items={navItems} />
 
             <div className="flex items-center gap-2 sm:gap-4">
               <AuthButtons />
@@ -49,7 +53,7 @@ export function Header() {
             </div>
           </div>
 
-          <MobileNav isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
+          <MobileNav isOpen={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} items={navItems} />
         </div>
       </div>
     </header>

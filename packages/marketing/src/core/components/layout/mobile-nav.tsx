@@ -1,16 +1,16 @@
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
 import { cn } from "@workspace/ui/lib/utils";
-import { websiteData } from "@workspace/data";
 import * as Icons from "lucide-react";
 
 interface MobileNavProps {
   isOpen: boolean;
   onClose: () => void;
+  items: { title: string; href: string; icon: string }[];
 }
 
-export function MobileNav({ isOpen, onClose }: MobileNavProps) {
-  const mainNav = websiteData.core.navigation;
+export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
+  const mainNav = items;
   return (
     <div className={cn(
       "lg:hidden flex flex-col gap-4 overflow-hidden transition-all duration-300 ease-in-out",

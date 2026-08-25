@@ -1,10 +1,7 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
 import { ArrowRight, Sparkles, LayoutDashboard } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
-import { websiteData } from "@workspace/data";
-
-export function HeroContent() {
-  const { hero } = websiteData.home;
+export function HeroContent({ hero }: { hero: { badge: string; title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string } }) {
 
   return (
     <FadeIn

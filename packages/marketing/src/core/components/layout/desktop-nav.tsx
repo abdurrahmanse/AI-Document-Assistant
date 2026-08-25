@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { websiteData } from "@workspace/data";
 import * as Icons from "lucide-react";
 
-export function DesktopNav() {
-  const mainNav = websiteData.core.navigation;
+export function DesktopNav({ items }: { items: { title: string; href: string; icon: string }[] }) {
+  const mainNav = items;
   return (
     <nav className="hidden lg:flex items-center gap-8">
       {mainNav.map((item) => {

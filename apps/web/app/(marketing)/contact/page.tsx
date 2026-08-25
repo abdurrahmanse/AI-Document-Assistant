@@ -2,10 +2,16 @@
 
 import { ContactInfo } from "@workspace/marketing";
 import { ContactForm } from "@workspace/marketing";
-import { websiteData } from "@workspace/data";
+import { useContact } from "@workspace/data";
 
 export default function ContactPage() {
-  const { hero, contactMethods, form } = websiteData.contact;
+  const { data: contactData, isLoading } = useContact();
+
+  if (isLoading || !contactData) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  const { hero, contactMethods, form } = contactData;
 
   return (
     <div className="flex flex-col pb-24 overflow-hidden relative min-h-screen">

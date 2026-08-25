@@ -1,9 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { websiteData } from "@workspace/data";
 import * as Icons from "lucide-react";
 
-export function SocialProof() {
-  const { socialProof } = websiteData.home;
+export function SocialProof({ socialProof }: { socialProof: { title: string; logos: { name: string; icon: string }[] } }) {
 
   return (
     <section className="py-24 border-b border-border/50 relative overflow-hidden bg-background">

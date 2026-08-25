@@ -4,15 +4,7 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 
-interface FeatureDeepDiveProps {
-  feature: {
-    title: string;
-    description: string;
-    icon: string;
-    image: string;
-    reverse: boolean;
-  };
-}
+import type { FeatureDeepDiveProps } from "@workspace/types";
 
 export function FeatureDeepDive({ feature }: FeatureDeepDiveProps) {
   // Map string icon name to Lucide component

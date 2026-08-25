@@ -1,18 +1,24 @@
 "use client";
 
-import { websiteData } from "@workspace/data";
+import { useHowItWorks } from "@workspace/data";
 import { TimelineHero } from "@workspace/marketing";
 import { TimelineStep } from "@workspace/marketing";
 import type { TimelineStepProps } from "@workspace/types";
 
 export default function HowItWorksPage() {
-  const { steps } = websiteData.howItWorks;
+  const { data: howItWorksData, isLoading } = useHowItWorks();
+
+  if (isLoading || !howItWorksData) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  const { steps } = howItWorksData;
 
   return (
     <div className="flex flex-col items-center pb-24 overflow-hidden relative">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_60%_60%_at_50%_0%,rgba(120,119,198,0.1),rgba(255,255,255,0))]" />
       
-      <TimelineHero />
+      <TimelineHero hero={howItWorksData.hero} />
 
       <div className="max-w-4xl mx-auto w-full px-4 relative z-10">
         {/* Vertical Line */}

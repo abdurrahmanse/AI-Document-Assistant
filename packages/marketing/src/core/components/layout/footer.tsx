@@ -1,17 +1,18 @@
 import Link from "next/link";
-import { websiteData } from "@workspace/data";
 import { Logo } from "./logo";
 import * as Icons from "lucide-react";
+import type { FooterProps } from "@workspace/types";
 
-export function Footer() {
-  const footerLinks = websiteData.core.footerLinks;
-  
+export function Footer({ 
+  footerLinks,
+  siteName 
+}: FooterProps) {
   return (
     <footer className="bg-background border-t border-border/50 pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 lg:gap-8 mb-16">
           <div className="col-span-1 md:col-span-1">
-            <Logo />
+            <Logo siteName={siteName} />
             <p className="mt-6 text-muted-foreground text-sm leading-relaxed">
               The world&apos;s most advanced AI document assistant. Process, analyze, and understand enterprise documents at scale.
             </p>

@@ -15,10 +15,7 @@ import {
   CardDescription, 
   CardContent 
 } from "@workspace/ui/components/ui";
-import { websiteData } from "@workspace/data";
-
-export function InteractiveDemo() {
-  const { interactiveDemo } = websiteData.home;
+export function InteractiveDemo({ interactiveDemo }: { interactiveDemo: { title: string; description: string; pricing: { badge: string; title: string; description: string; price: string; frequency: string; features: string[]; button: string }; faq: { question: string; answer: string }[] } }) {
 
   return (
     <section className="py-24 px-4">

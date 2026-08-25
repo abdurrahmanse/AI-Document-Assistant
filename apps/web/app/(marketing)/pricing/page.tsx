@@ -1,12 +1,18 @@
 "use client";
 
 import { FadeInView } from "@workspace/ui/components/ui/motion";
-import { websiteData } from "@workspace/data";
+import { usePricing } from "@workspace/data";
 import { PricingCard } from "@workspace/marketing";
 import { FAQSection } from "@workspace/marketing";
 
 export default function PricingPage() {
-  const { hero, plans, faqs } = websiteData.pricing;
+  const { data: pricingData, isLoading } = usePricing();
+
+  if (isLoading || !pricingData) {
+    return <div className="min-h-screen flex items-center justify-center">Loading...</div>;
+  }
+
+  const { hero, plans, faqs } = pricingData;
 
   return (
     <div className="flex flex-col items-center pb-24 px-4 overflow-hidden relative">

@@ -1,7 +1,4 @@
-import { websiteData } from "@workspace/data";
-
-export function FeaturesHero() {
-  const { hero } = websiteData.features;
+export function FeaturesHero({ hero }: { hero: { title: string; description: string } }) {
 
   return (
     <div className="text-center space-y-6 max-w-4xl mx-auto pt-32 pb-24 px-4 relative z-10">

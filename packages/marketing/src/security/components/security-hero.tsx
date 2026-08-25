@@ -1,8 +1,6 @@
 import { Shield } from "lucide-react";
-import { websiteData } from "@workspace/data";
 
-export function SecurityHero() {
-  const { hero } = websiteData.security;
+export function SecurityHero({ hero }: { hero: { title: string; description: string } }) {
   return (
     <div className="text-center space-y-6 max-w-3xl mx-auto pt-32 pb-24 px-4 relative z-10">
       <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto mb-8 shadow-[0_0_30px_rgba(16,185,129,0.2)]">

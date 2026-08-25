@@ -27,3 +27,9 @@ export const websiteData = {
   core: coreData,
   home: homeData,
 };
+
+// Export New Data Access Architecture
+export * from './repositories/marketing.repository';
+export * from './services/marketing.service';
+export * from './queries/keys';
+export * from './hooks/useMarketing';

@@ -72,3 +72,68 @@ export interface SecurityBentoCardProps {
   feature: SecurityFeature;
   index: number;
 }
+
+export interface FooterProps {
+  footerLinks: {
+    product: { name: string; href: string; icon: string }[];
+    company: { name: string; href: string; icon: string }[];
+    legal: { name: string; href: string; icon: string }[];
+  };
+  siteName: string;
+}
+
+export interface HeaderProps {
+  siteName: string;
+  navItems: { title: string; href: string; icon: string }[];
+}
+
+export interface LogoProps {
+  siteName: string;
+}
+
+export interface FeaturesGridProps {
+  features: { title: string; description: string; icon: string }[];
+}
+
+export interface HeroContentProps {
+  hero: { badge: string; title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string };
+}
+
+export interface InteractiveDemoProps {
+  interactiveDemo: {
+    title: string;
+    description: string;
+    pricing: { badge: string; title: string; description: string; price: string; frequency: string; features: string[]; button: string };
+    faq: { question: string; answer: string }[];
+  };
+}
+
+export interface SocialProofProps {
+  socialProof: { title: string; logos: { name: string; icon: string }[] };
+}
+
+export interface DocsHeroProps {
+  hero: { title: string; description: string };
+}
+
+export interface FeaturesHeroProps {
+  hero: { title: string; description: string };
+}
+
+export interface TimelineHeroProps {
+  hero: { title: string; description: string };
+}
+
+export interface SecurityHeroProps {
+  hero: { title: string; description: string };
+}
+
+export interface FeatureDeepDiveProps {
+  feature: {
+    title: string;
+    description: string;
+    icon: string;
+    image: string;
+    reverse: boolean;
+  };
+}
