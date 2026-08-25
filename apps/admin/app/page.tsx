@@ -1,9 +1,9 @@
 "use client";
 
-import { AdminNav } from "../components/layout/admin-nav";
-import { SystemOverviewHero } from "../components/dashboard/system-overview-hero";
-import { CoreMetrics } from "../components/dashboard/core-metrics";
-import { ManagementTabs } from "../components/dashboard/management-tabs";
+import { AdminNav } from "../modules/core/components/layout/admin-nav";
+import { SystemOverviewHero } from "../modules/dashboard/components/system-overview-hero";
+import { CoreMetrics } from "../modules/dashboard/components/core-metrics";
+import { ManagementTabs } from "../modules/dashboard/components/management-tabs";
 
 export default function AdminDashboardPage() {
   return (

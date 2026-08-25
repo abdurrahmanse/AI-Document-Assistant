@@ -1,9 +1,9 @@
 "use client";
 
-import { DashboardHero } from "@/components/dashboard/hero";
-import { RecentDocuments } from "@/components/dashboard/recent-documents";
-import { StatsGrid } from "@/components/dashboard/stats-grid";
-import { TopNav } from "@/components/layout/top-nav";
+import { DashboardHero } from "@/modules/dashboard/components/hero";
+import { RecentDocuments } from "@/modules/dashboard/components/recent-documents";
+import { StatsGrid } from "@/modules/dashboard/components/stats-grid";
+import { TopNav } from "@/modules/core/components/layout/top-nav";
 
 
 
