@@ -3,6 +3,8 @@ import { fontRajdhani } from "@workspace/ui/lib/fonts";
 import { constructMetadata } from "@workspace/ui/lib/metadata";
 import "@workspace/ui/globals.css";
 import { QueryProvider, LenisProvider, ThemeProvider, ToastProvider, NuqsProvider } from "@workspace/ui/providers";
+import { Suspense } from "react";
+import { PostHogProvider, PostHogPageView } from "@workspace/observability";
 
 export const metadata: Metadata = constructMetadata({
   title: {
@@ -21,16 +23,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}>
-        <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem disableTransitionOnChange>
-          <NuqsProvider>
-            <QueryProvider>
-              <LenisProvider>
-                {children}
-                <ToastProvider />
-              </LenisProvider>
-            </QueryProvider>
-          </NuqsProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="dark" forcedTheme="dark" enableSystem disableTransitionOnChange>
+            <NuqsProvider>
+              <QueryProvider>
+                <LenisProvider>
+                  <Suspense fallback={null}>
+                    <PostHogPageView />
+                  </Suspense>
+                  {children}
+                  <ToastProvider />
+                </LenisProvider>
+              </QueryProvider>
+            </NuqsProvider>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

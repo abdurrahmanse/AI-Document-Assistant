@@ -4,6 +4,8 @@ import { constructMetadata } from "@workspace/ui/lib/metadata";
 import "@workspace/ui/globals.css";
 import { QueryProvider, LenisProvider, ThemeProvider, ToastProvider, NuqsProvider } from "@workspace/ui/providers";
 import { type Metadata } from "next";
+import { Suspense } from "react";
+import { PostHogProvider, PostHogPageView } from "@workspace/observability";
 
 export const metadata: Metadata = constructMetadata({
   title: {
@@ -17,16 +19,21 @@ export default function Layout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased`}>
-        <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          <NuqsProvider>
-            <QueryProvider>
-              <LenisProvider>
-                {children}
-                <ToastProvider />
-              </LenisProvider>
-            </QueryProvider>
-          </NuqsProvider>
-        </ThemeProvider>
+        <PostHogProvider>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <NuqsProvider>
+              <QueryProvider>
+                <LenisProvider>
+                  <Suspense fallback={null}>
+                    <PostHogPageView />
+                  </Suspense>
+                  {children}
+                  <ToastProvider />
+                </LenisProvider>
+              </QueryProvider>
+            </NuqsProvider>
+          </ThemeProvider>
+        </PostHogProvider>
       </body>
     </html>
   );

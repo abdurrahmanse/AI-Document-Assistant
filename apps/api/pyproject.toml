@@ -13,6 +13,7 @@ dependencies = [
     "asyncpg>=0.31.0",
     "redis>=8.1.0",
     "loguru>=0.7.3",
+    "sentry-sdk[fastapi]>=2.0.0",
 ]
 
 [dependency-groups]
