@@ -20,9 +20,10 @@ app.add_middleware(
 )
 
 from app.observability import health
+from app.routers import admin
 
 app.include_router(health.router)
-
+app.include_router(admin.router)
 
 @app.get("/")
 def read_root():

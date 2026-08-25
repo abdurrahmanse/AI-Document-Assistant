@@ -1,8 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { adminRepository } from './admin.repository';
+import { AdminMockRepository } from './admin.repository';
 
 describe('AdminRepository', () => {
   it('should return core metrics', async () => {
+    const adminRepository = new AdminMockRepository();
     const metrics = await adminRepository.getCoreMetrics();
     
     expect(metrics).toBeDefined();

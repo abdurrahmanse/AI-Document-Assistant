@@ -1,4 +1,5 @@
 import { CoreMetricsData } from "@workspace/types/src/admin";
+import { apiClient } from "../../api/client";
 
 export interface IAdminRepository {
   getCoreMetrics(): Promise<CoreMetricsData>;
@@ -6,7 +7,13 @@ export interface IAdminRepository {
 
 export class AdminRepository implements IAdminRepository {
   async getCoreMetrics(): Promise<CoreMetricsData> {
-    // Simulated API delay
+    return await apiClient.get<CoreMetricsData>("/api/admin/metrics");
+  }
+}
+
+// We can still export a mock repository for local testing if the backend is down
+export class AdminMockRepository implements IAdminRepository {
+  async getCoreMetrics(): Promise<CoreMetricsData> {
     await new Promise((resolve) => setTimeout(resolve, 500));
     
     return {
@@ -33,4 +40,5 @@ export class AdminRepository implements IAdminRepository {
   }
 }
 
+// Ensure the application uses the real API backend
 export const adminRepository = new AdminRepository();
