@@ -1,7 +1,7 @@
-import os
 from pathlib import Path
-from pydantic_settings import BaseSettings, SettingsConfigDict
+
 from pydantic import computed_field
+from pydantic_settings import BaseSettings, SettingsConfigDict
 
 # Calculate root directory robustly (5 levels up from apps/api/app/core/config.py)
 ROOT_DIR = Path(__file__).resolve().parent.parent.parent.parent.parent

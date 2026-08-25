@@ -1,6 +1,8 @@
 import asyncio
+
 import asyncpg
 from app.core.config import settings
+
 
 async def main():
     print(f"Connecting to Postgres to create {settings.POSTGRES_DB}...")

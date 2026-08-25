@@ -1,7 +1,6 @@
-from typing import Optional
 import uuid
 
-from app.domains.users.models import User, Role
+from app.domains.users.models import User
 from app.domains.users.repositories.user_repository import UserRepository
 
 
@@ -9,10 +8,10 @@ class UserService:
     def __init__(self, repository: UserRepository):
         self.repository = repository
 
-    async def get_user_by_email(self, email: str) -> Optional[User]:
+    async def get_user_by_email(self, email: str) -> User | None:
         return await self.repository.get_by_email(email)
 
-    async def get_user_by_id(self, user_id: uuid.UUID) -> Optional[User]:
+    async def get_user_by_id(self, user_id: uuid.UUID) -> User | None:
         return await self.repository.get_by_id(user_id)
 
     async def create_user(

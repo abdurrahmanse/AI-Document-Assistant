@@ -8,3 +8,4 @@ export * from "./settings";
 export * from "./system";
 export * from "./usage";
 export * from "./users";
+export * from "./dashboard/admin-dashboard-feature";

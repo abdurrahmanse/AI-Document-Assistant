@@ -1,14 +1,17 @@
-from typing import Annotated
-from fastapi import APIRouter, Depends, HTTPException, status
-from pydantic import BaseModel, EmailStr
-
-from app.domains.users.services.user_service import UserService
-from app.domains.users.repositories.user_repository import UserRepository
-from app.infrastructure.db.session import get_db_session
-from sqlalchemy.ext.asyncio import AsyncSession
-from app.domains.auth.services.security import get_password_hash, verify_password, create_access_token, create_refresh_token
 from app.domains.auth.services.otp_service import OTPService
+from app.domains.auth.services.security import (
+    create_access_token,
+    create_refresh_token,
+    get_password_hash,
+    verify_password,
+)
 from app.domains.users.models import OTP
+from app.domains.users.repositories.user_repository import UserRepository
+from app.domains.users.services.user_service import UserService
+from app.infrastructure.db.session import get_db_session
+from fastapi import APIRouter, Depends, HTTPException
+from pydantic import BaseModel, EmailStr
+from sqlalchemy.ext.asyncio import AsyncSession
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 

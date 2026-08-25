@@ -1,11 +1,11 @@
 "use client";
 
-import { 
-  Header, 
-  Footer, 
-  MarketingHero, 
-  SocialProof, 
-  FeaturesGrid, 
+import {
+  Header,
+  Footer,
+  MarketingHero,
+  SocialProof,
+  FeaturesGrid,
   InteractiveDemo,
   TimelineStep,
   SecurityBentoCard,
@@ -36,13 +36,13 @@ export function HomeFeature() {
   return (
     <div className="min-h-screen bg-background text-foreground selection:bg-primary selection:text-primary-foreground overflow-x-hidden">
       <Header siteName={coreData.site.name} navItems={coreData.navigation} />
-      
+
       {/* 1. Hero */}
       <MarketingHero hero={homeData.hero} />
-      
+
       {/* 2. Product value proposition */}
       <SocialProof socialProof={homeData.socialProof} />
-      
+
       {/* 3. How RAG works */}
       <div className="py-24 bg-muted/30">
         <div className="text-center mb-16">
@@ -63,7 +63,7 @@ export function HomeFeature() {
 
       {/* 4. Feature grid */}
       <FeaturesGrid features={homeData.features} featuresSection={homeData.featuresSection} />
-      
+
       {/* 5. Security/privacy */}
       <div className="py-24">
         <div className="text-center mb-16">
@@ -81,7 +81,7 @@ export function HomeFeature() {
 
       {/* 6. Workflow demo */}
       <InteractiveDemo interactiveDemo={homeData.interactiveDemo} />
-      
+
       {/* 7. Pricing */}
       <div className="py-24 bg-muted/30" id="pricing">
         <div className="text-center mb-16">

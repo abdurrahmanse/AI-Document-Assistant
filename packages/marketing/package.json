@@ -11,6 +11,8 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.64.1",
+    "@workspace/api-client": "workspace:*",
     "@workspace/ui": "workspace:*",
     "@workspace/data": "workspace:*",
     "@workspace/types": "workspace:*",

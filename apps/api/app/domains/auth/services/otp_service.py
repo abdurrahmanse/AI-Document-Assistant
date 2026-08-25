@@ -1,6 +1,6 @@
 import secrets
 import string
-from datetime import datetime, timedelta, UTC
+from datetime import UTC, datetime, timedelta
 
 from loguru import logger
 
@@ -22,16 +22,16 @@ class OTPService:
         """
         Sends an email using Brevo (Sendinblue) API.
         """
-        from app.core.config import settings
         import httpx
+        from app.core.config import settings
         
         # If no API key is provided, fallback to log (e.g. in local dev without env variables)
         if not settings.BREVO_API_KEY:
-            logger.info(f"==== MOCK EMAIL SENDER (No Brevo API Key) ====")
+            logger.info("==== MOCK EMAIL SENDER (No Brevo API Key) ====")
             logger.info(f"To: {email}")
             logger.info(f"Subject: Your OTP Code for {purpose}")
             logger.info(f"Body: Your 6-digit code is: {otp_code}")
-            logger.info(f"===========================")
+            logger.info("===========================")
             return
 
         sender_email = settings.BREVO_SENDER_EMAIL or "noreply@example.com"
@@ -61,4 +61,4 @@ class OTPService:
                 else:
                     logger.info(f"Successfully sent OTP to {email}")
         except Exception as e:
-            logger.error(f"Exception while sending email via Brevo: {str(e)}")
+            logger.error(f"Exception while sending email via Brevo: {e!s}")

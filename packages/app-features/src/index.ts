@@ -6,3 +6,4 @@ export * from "./dashboard/components/stats-grid";
 export * from "./core/components/layout/top-nav";
 export * from "./billing";
 export * from "./profile";
+export * from "./dashboard/app-dashboard-feature";

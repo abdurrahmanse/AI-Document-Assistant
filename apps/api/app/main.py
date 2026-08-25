@@ -1,10 +1,12 @@
 from contextlib import asynccontextmanager
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.core.config import settings
 from app.core.redis import redis_client
 from app.router import api_router
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

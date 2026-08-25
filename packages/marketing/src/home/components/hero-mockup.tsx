@@ -1,6 +1,6 @@
 "use client";
 
-import { FadeInView } from "@workspace/ui/components/ui/motion";
+
 import { FileText, ChevronRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";

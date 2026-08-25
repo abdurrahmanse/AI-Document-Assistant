@@ -1,23 +1,20 @@
-from typing import Optional
 import uuid
 
+from app.domains.users.models import OTP, Role, User
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy.orm import selectinload
-
-from app.domains.users.models import User, Role, OTP
 
 
 class UserRepository:
     def __init__(self, session: AsyncSession):
         self.session = session
 
-    async def get_by_id(self, user_id: uuid.UUID) -> Optional[User]:
+    async def get_by_id(self, user_id: uuid.UUID) -> User | None:
         stmt = select(User).where(User.id == user_id)
         result = await self.session.execute(stmt)
         return result.scalars().first()
 
-    async def get_by_email(self, email: str) -> Optional[User]:
+    async def get_by_email(self, email: str) -> User | None:
         stmt = select(User).where(User.email == email)
         result = await self.session.execute(stmt)
         return result.scalars().first()
@@ -27,7 +24,7 @@ class UserRepository:
         await self.session.flush()
         return user
 
-    async def get_role_by_name(self, name: str) -> Optional[Role]:
+    async def get_role_by_name(self, name: str) -> Role | None:
         stmt = select(Role).where(Role.name == name)
         result = await self.session.execute(stmt)
         return result.scalars().first()
@@ -37,8 +34,8 @@ class UserRepository:
         await self.session.flush()
         return otp
 
-    async def get_valid_otp(self, user_id: uuid.UUID, purpose: str) -> Optional[OTP]:
-        from datetime import datetime, UTC
+    async def get_valid_otp(self, user_id: uuid.UUID, purpose: str) -> OTP | None:
+        from datetime import UTC, datetime
         stmt = (
             select(OTP)
             .where(OTP.user_id == user_id)

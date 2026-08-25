@@ -1,9 +1,8 @@
 import uuid
-from datetime import datetime, UTC
-from typing import Any
+from datetime import UTC, datetime
 
-from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 from sqlalchemy.ext.declarative import declared_attr
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column
 
 
 class Base(DeclarativeBase):

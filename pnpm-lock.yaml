@@ -537,6 +537,12 @@ importers:
 
   packages/marketing:
     dependencies:
+      '@tanstack/react-query':
+        specifier: ^5.64.1
+        version: 5.102.3(react@19.2.0)
+      '@workspace/api-client':
+        specifier: workspace:*
+        version: link:../api-client
       '@workspace/data':
         specifier: workspace:*
         version: link:../data
@@ -7146,7 +7152,7 @@ snapshots:
       '@storybook/icons': 2.1.0(react@19.2.0)
       storybook: 10.5.10(@types/react@19.2.2)(prettier@3.7.4)(react@19.2.0)
     optionalDependencies:
-      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)
+      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11(@types/node@22.15.3)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0)))
       '@vitest/browser-playwright': 4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)
       '@vitest/runner': 4.1.11
       vitest: 4.1.11(@types/node@22.15.3)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))
@@ -7665,7 +7671,7 @@ snapshots:
 
   '@vitest/browser-playwright@4.1.11(playwright@1.62.1)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)':
     dependencies:
-      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)
+      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11(@types/node@22.15.3)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0)))
       '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))
       playwright: 1.62.1
       tinyrainbow: 3.1.1
@@ -7690,7 +7696,7 @@ snapshots:
       - vite
     optional: true
 
-  '@vitest/browser@4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)':
+  '@vitest/browser@4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11(@types/node@22.15.3)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0)))':
     dependencies:
       '@blazediff/core': 1.9.1
       '@vitest/mocker': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))
@@ -7737,9 +7743,9 @@ snapshots:
       obug: 2.1.4
       std-env: 4.2.0
       tinyrainbow: 3.1.1
-      vitest: 4.1.11(@types/node@22.15.3)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))
+      vitest: 4.1.11(@types/node@26.3.0)(@vitest/browser-playwright@4.1.11)(@vitest/coverage-v8@4.1.11)(vite@8.2.2(@types/node@26.3.0)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))
     optionalDependencies:
-      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@22.15.3)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)
+      '@vitest/browser': 4.1.11(vite@8.2.2(@types/node@26.3.0)(esbuild@0.28.2)(jiti@1.21.7)(yaml@2.9.0))(vitest@4.1.11)
 
   '@vitest/expect@3.2.4':
     dependencies:

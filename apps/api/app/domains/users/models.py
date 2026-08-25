@@ -1,11 +1,10 @@
 import uuid
-from typing import List
 from datetime import datetime
 
-from sqlalchemy import ForeignKey, String, Boolean, DateTime
+from app.infrastructure.db.base import Base
+from sqlalchemy import Boolean, DateTime, ForeignKey, String
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 
-from app.infrastructure.db.base import Base
 
 class UserRole(Base):
     """Association table between User and Role"""
@@ -22,7 +21,7 @@ class Role(Base):
     name: Mapped[str] = mapped_column(String(50), unique=True, index=True)
     description: Mapped[str | None] = mapped_column(String(255))
     
-    users: Mapped[List["User"]] = relationship(
+    users: Mapped[list["User"]] = relationship(
         secondary="user_roles", back_populates="roles"
     )
 
@@ -40,11 +39,11 @@ class User(Base):
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     is_verified: Mapped[bool] = mapped_column(Boolean, default=False)
     
-    roles: Mapped[List["Role"]] = relationship(
+    roles: Mapped[list["Role"]] = relationship(
         secondary="user_roles", back_populates="users", lazy="selectin"
     )
     
-    otps: Mapped[List["OTP"]] = relationship(
+    otps: Mapped[list["OTP"]] = relationship(
         back_populates="user", cascade="all, delete-orphan"
     )
 

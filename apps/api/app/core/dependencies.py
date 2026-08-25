@@ -1,7 +1,10 @@
 from typing import Annotated
-from fastapi import Depends
+
 import redis.asyncio as redis
+from fastapi import Depends
+
 from app.core.redis import redis_client
+
 
 async def get_redis() -> redis.Redis:
     if not redis_client.redis:

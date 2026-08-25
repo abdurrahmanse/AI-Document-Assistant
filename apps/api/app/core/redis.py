@@ -1,6 +1,8 @@
 import redis.asyncio as redis
 from loguru import logger
+
 from app.core.config import settings
+
 
 class RedisClient:
     def __init__(self):
