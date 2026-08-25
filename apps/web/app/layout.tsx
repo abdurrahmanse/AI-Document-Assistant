@@ -19,7 +19,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased`}>
+      <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased overflow-x-hidden`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <NuqsProvider>
             <QueryProvider>
