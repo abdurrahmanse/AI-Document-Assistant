@@ -1,61 +1,78 @@
 # Development Guide
 
-Welcome to the AI Document Intelligence project. This guide covers how to set up and develop within this Turborepo monorepo.
+This guide outlines the developer experience (DX) and tooling required to build, test, and run the AI Document Intelligence platform locally.
 
-## Prerequisites
+## 1. Prerequisites
 
-- **Node.js** v20+
-- **pnpm** v9+
-- **Python** (via `uv`)
-- **PostgreSQL** (running locally or via Docker)
+Before starting, ensure you have the following installed on your machine:
+- **Node.js** (v20+) & **pnpm** (v9+)
+- **Python** (3.11+) & **uv** (or pip)
+- **PostgreSQL** (running locally or via a cloud provider like Neon) with the **pgvector** extension installed.
 
-## Setup
+## 2. Local Environment Setup
 
-1. **Install JavaScript dependencies**
+1. **Clone & Install Dependencies**:
    ```bash
+   git clone <repo>
+   cd ai-document-assistant
    pnpm install
    ```
-2. **Setup Python dependencies**
-   The backend uses `uv` for lightning-fast Python package management.
-   *(Python dependencies will be installed automatically when you run the API or you can run `uv sync` in `apps/api`)*
-3. **Environment Configuration**
-   Copy the `.env.example` file to `.env` in the root and individual apps as needed.
+
+2. **Environment Variables**:
+   Copy the `.env.example` to `.env` in the root of the project.
    ```bash
    cp .env.example .env
    ```
+   Fill in the required keys:
+   - `DATABASE_URL`: Connection string to your Postgres instance.
+   - `OPENAI_API_KEY`: Required for embeddings and chat generation.
+   - `JWT_SECRET`: A random string for local token signing.
 
-## Development Commands
+3. **Database Migrations**:
+   Navigate to the backend directory and run the Alembic migrations to build your local schema.
+   ```bash
+   cd apps/api
+   alembic upgrade head
+   ```
 
-Run these commands from the **root** of the monorepo:
+## 3. Running the Stack (Turborepo)
 
-### Start the entire stack
+We utilize **Turborepo** to orchestrate the entire full-stack platform. Instead of opening 4 different terminal tabs, you run a single command from the root of the project:
+
 ```bash
-pnpm dev
-```
-Starts Next.js apps on ports 3000, 3001, 3002 and the FastAPI server on port 8000.
-
-### Code Quality & Formatting
-```bash
-pnpm run lint         # Runs ESLint (JS/TS) and Ruff (Python)
-pnpm run check-types  # Runs tsc (TypeScript) and Pyright (Python)
+pnpm turbo run dev
 ```
 
-### Build for Production
-```bash
-pnpm run build
-```
-Builds all applications and shared libraries using Turborepo's caching.
+This command automatically executes the `dev` script inside every `package.json` in the workspace. It simultaneously starts:
+- `apps/web` (Next.js Marketing site) on `http://localhost:3001`
+- `apps/app` (Next.js SaaS application) on `http://localhost:3000`
+- `apps/admin` (Next.js Admin dashboard) on `http://localhost:3002`
+- `apps/api` (FastAPI backend) on `http://localhost:8000`
 
-## Package Naming Convention
+## 4. Testing Matrix
 
-All internal packages use the `@workspace/*` scope. When importing a shared package in an application, use this scope:
+We maintain strict testing requirements. All tests must pass before a PR is merged.
 
-```tsx
-import { Button } from "@workspace/ui/button";
-```
+### Backend (Python)
+- **Framework:** `pytest` and `httpx` (for async request mocking).
+- **Command:** `pytest apps/api/tests/`
+- **Requirement:** High coverage on all domain logic, especially authorization checks (Tenant Isolation) and token validation.
 
-## Adding Dependencies
+### Frontend (TypeScript)
+- **Framework:** `vitest` (Unit/Component level), `playwright` (End-to-End browser simulation).
+- **Command (Unit):** `pnpm run test`
+- **Command (E2E):** `pnpm run test:e2e`
 
-- **To an App**: `pnpm --filter web add lodash`
-- **To the Backend**: `cd apps/api && uv add fastapi`
-- **To a Shared Package**: `pnpm --filter @workspace/ui add clsx`
+## 5. Code Quality & Formatting
+
+To ensure consistency across the codebase, we enforce strict linting. This prevents "bikeshedding" over syntax in code reviews.
+
+**Frontend:**
+- `eslint` catches logical errors.
+- `prettier` enforces formatting.
+- Run manually via: `pnpm lint` and `pnpm format`
+
+**Backend:**
+- `ruff` is used for ultra-fast Python linting and formatting (replacing flake8/black/isort).
+- `mypy` is used for strict static type checking.
+- Run manually via: `ruff check apps/api` and `ruff format apps/api`
