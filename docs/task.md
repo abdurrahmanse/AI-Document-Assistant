@@ -3,3 +3,4 @@ all applicatio (web , admin , users (app)) into small, focused, reusable compone
 
 Audit → Plan → Implement → Test → Detect Errors → Fix → Re-test → Verify → Final Report
 
+You audit the entire project and you tell me what the current status of the project is, what the project is actually about, and in which direction the project is moving.
