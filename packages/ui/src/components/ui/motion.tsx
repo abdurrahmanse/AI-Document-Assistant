@@ -60,3 +60,52 @@ export function MotionDiv({ children, className, ...props }: HTMLMotionProps<"di
     </motion.div>
   );
 }
+
+interface AnimatedMeshProps extends HTMLMotionProps<"div"> {
+  animationType?: "primary" | "secondary" | "tertiary";
+}
+
+export function AnimatedMesh({ animationType = "primary", className, ...props }: AnimatedMeshProps) {
+  const getAnimation = () => {
+    switch (animationType) {
+      case "primary":
+        return {
+          animate: {
+            scale: [1, 1.1, 1],
+            opacity: [0.3, 0.5, 0.3],
+            rotate: [0, 90, 0],
+          },
+          transition: { duration: 20, repeat: Infinity, ease: "linear" }
+        };
+      case "secondary":
+        return {
+          animate: {
+            scale: [1, 1.2, 1],
+            opacity: [0.2, 0.4, 0.2],
+            rotate: [0, -90, 0],
+          },
+          transition: { duration: 25, repeat: Infinity, ease: "linear" }
+        };
+      case "tertiary":
+        return {
+          animate: {
+            scale: [1, 1.5, 1],
+            opacity: [0.15, 0.3, 0.15],
+            y: [0, 50, 0],
+          },
+          transition: { duration: 15, repeat: Infinity, ease: "easeInOut" }
+        };
+    }
+  };
+
+  const anim = getAnimation();
+
+  return (
+    <motion.div
+      animate={anim.animate}
+      transition={anim.transition as any}
+      className={className}
+      {...props}
+    />
+  );
+}

@@ -1,11 +1,12 @@
 "use client";
 
-import { Header, Footer } from "@workspace/marketing";
+import { Footer } from "@workspace/marketing";
 import { useCore, useAuthContent, useLogin } from "@workspace/data";
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { AnimatedMesh } from "@workspace/ui/components/ui/motion";
 
 export default function LoginPage() {
   const { data: coreData, isLoading: coreLoading } = useCore();
@@ -35,72 +36,102 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header siteName={coreData.site.name} navItems={coreData.navigation} />
-      <main className="flex-grow flex flex-col items-center justify-center p-4">
-        <div className="w-full max-w-md p-8 border rounded-lg shadow-sm bg-card">
-          <h1 className="text-3xl font-bold mb-2">{authData.login.title}</h1>
-          <p className="text-muted-foreground mb-6">
-            {authData.login.description}
+    <div className="min-h-screen bg-background text-foreground flex flex-col md:flex-row">
+      {/* Left side Hero Section */}
+      <div className="hidden md:flex flex-1 relative bg-zinc-950 overflow-hidden flex-col justify-center p-12 lg:p-24 text-white">
+        {/* Animated Background Elements */}
+        <AnimatedMesh
+          animationType="primary"
+          className="absolute -top-[10%] -left-[10%] w-[70%] h-[70%] rounded-full bg-primary/20 blur-[100px] pointer-events-none"
+        />
+        <AnimatedMesh
+          animationType="secondary"
+          className="absolute top-[20%] -right-[10%] w-[60%] h-[80%] rounded-full bg-indigo-500/20 blur-[100px] pointer-events-none"
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#09090b_100%)] opacity-80" />
+        <div className="absolute inset-0 opacity-20 mix-blend-overlay pointer-events-none" style={{ backgroundImage: "url('https://grainy-gradients.vercel.app/noise.svg')" }} />
+
+        {/* Hero Content */}
+        <div className="relative z-10 max-w-lg">
+          <Link href="/" className="inline-block mb-12">
+            <div className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
+              <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground text-xl">A</span>
+              </div>
+              <span>AI Document</span>
+            </div>
+          </Link>
+          <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
+            Welcome back to the future of documents.
+          </h1>
+          <p className="text-xl text-zinc-400">
+            Log in to continue extracting insights and analyzing your enterprise data securely.
           </p>
+        </div>
+      </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            {error && (
-              <div className="p-3 text-sm text-destructive-foreground bg-destructive/10 rounded-md">
-                {error}
-              </div>
-            )}
-            
-            <div className="space-y-2">
-              <label htmlFor="email" className="text-sm font-medium">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                className="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-              />
+      {/* Right side Auth Form */}
+      <div className="flex-1 flex flex-col">
+        <main className="flex-grow flex flex-col items-center justify-center p-6 lg:p-12 pt-32 md:pt-12">
+          <div className="w-full max-w-md">
+            <div className="mb-10 text-center md:text-left">
+              <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.login.title}</h2>
+              <p className="text-muted-foreground">
+                {authData.login.description}
+              </p>
             </div>
 
-            <div className="space-y-2">
-              <div className="flex items-center justify-between">
-                <label htmlFor="password" className="text-sm font-medium">Password</label>
-                <Link href="/forgot-password" className="text-sm text-primary hover:underline">
-                  Forgot password?
-                </Link>
+            <form onSubmit={handleSubmit} className="space-y-5">
+              {error && (
+                <div className="p-3 text-sm text-destructive-foreground bg-destructive/10 rounded-md border border-destructive/20">
+                  {error}
+                </div>
+              )}
+              
+              <div className="space-y-2">
+                <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="you@example.com"
+                />
               </div>
-              <input
-                id="password"
-                type="password"
-                required
-                className="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+
+              <div className="space-y-2">
+                <div className="flex items-center justify-between">
+                  <label htmlFor="password" className="text-sm font-medium">Password</label>
+                  <Link href="/forgot-password" className="text-sm text-primary hover:underline transition-colors">
+                    Forgot password?
+                  </Link>
+                </div>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              <Button type="submit" size="lg" className="w-full text-base font-semibold" disabled={loginMutation.isPending}>
+                {loginMutation.isPending ? "Authenticating..." : authData.login.title}
+              </Button>
+            </form>
+
+            <div className="mt-8 text-center text-sm text-muted-foreground">
+              Don&apos;t have an account?{" "}
+              <Link href="/register" className="text-primary hover:underline font-semibold transition-colors">
+                Create one now
+              </Link>
             </div>
-
-            <Button type="submit" className="w-full" disabled={loginMutation.isPending}>
-              {loginMutation.isPending ? "Logging in..." : authData.login.title}
-            </Button>
-          </form>
-
-          <div className="mt-6 text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link href="/register" className="text-primary hover:underline font-medium">
-              Register here
-            </Link>
           </div>
-        </div>
-        
-        <div className="mt-8">
-          <Button variant="ghost" asChild>
-            <Link href="/">{authData.login.returnHome}</Link>
-          </Button>
-        </div>
-      </main>
-      <Footer siteName={coreData.site.name} footerLinks={coreData.footerLinks} />
+        </main>
+      </div>
     </div>
   );
 }

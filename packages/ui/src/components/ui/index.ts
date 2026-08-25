@@ -8,3 +8,4 @@ export * from "./dropdown-menu";
 export * from "./hover-card";
 export * from "./tabs";
 export * from "./motion";
+export * from "./container";

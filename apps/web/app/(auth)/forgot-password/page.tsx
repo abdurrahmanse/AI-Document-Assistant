@@ -1,6 +1,6 @@
 "use client";
 
-import { Header, Footer } from "@workspace/marketing";
+import { Footer } from "@workspace/marketing";
 import { useCore, useAuthContent } from "@workspace/data";
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
@@ -13,7 +13,6 @@ export default function ForgotPasswordPage() {
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">
-      <Header siteName={coreData.site.name} navItems={coreData.navigation} />
       <main className="flex-grow flex flex-col items-center justify-center p-4">
         <h1 className="text-4xl font-bold mb-4">{authData.forgotPassword.title}</h1>
         <p className="text-muted-foreground mb-8 text-center max-w-md">
@@ -23,7 +22,6 @@ export default function ForgotPasswordPage() {
           <Link href="/">{authData.forgotPassword.returnHome}</Link>
         </Button>
       </main>
-      <Footer siteName={coreData.site.name} footerLinks={coreData.footerLinks} />
     </div>
   );
 }

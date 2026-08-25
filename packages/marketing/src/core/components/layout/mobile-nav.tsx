@@ -33,11 +33,11 @@ export function MobileNav({ isOpen, onClose, items }: MobileNavProps) {
         })}
       </nav>
       <div className="flex flex-col gap-2 pt-4 border-t border-border/50">
-        <Button variant="outline" className="w-full font-bold justify-center rounded-full" onClick={onClose}>
-          Sign In
+        <Button variant="outline" className="w-full font-bold justify-center rounded-full" onClick={onClose} asChild>
+          <Link href="/login">Sign In</Link>
         </Button>
-        <Button className="w-full font-bold justify-center rounded-full" onClick={onClose}>
-          Get Started
+        <Button className="w-full font-bold justify-center rounded-full" onClick={onClose} asChild>
+          <Link href="/register">Get Started</Link>
         </Button>
       </div>
     </div>

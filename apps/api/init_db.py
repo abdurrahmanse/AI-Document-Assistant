@@ -1,8 +1,10 @@
 import asyncio
 
-# Import all models to ensure they are registered with Base
 from app.infrastructure.db.base import Base
 from app.infrastructure.db.session import engine
+
+# Import all domain models to ensure they are registered with Base
+import app.domains.users.models
 
 
 async def init_db():
