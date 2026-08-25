@@ -8,7 +8,7 @@ on:
 
 jobs:
   build:
-    name: Build and Test
+    name: Build, Lint, and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -21,7 +21,7 @@ jobs:
           node-version: 20
 
       - name: Install pnpm
-        uses: pnpm/action-setup@v3
+        uses: pnpm/action-setup@v4
         with:
           version: 9
 
@@ -38,11 +38,25 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-pnpm-store-
 
-      - name: Install dependencies
+      - name: Install Node dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Install uv (Python)
-        run: curl -LsSf https://astral.sh/uv/install.sh | sh
+      - name: Setup Python environment (uv)
+        uses: astral-sh/setup-uv@v3
+        with:
+          version: "latest"
+          enable-cache: true
+          cache-dependency-glob: "**/pyproject.toml"
+
+      - name: Install Python dependencies
+        run: |
+          cd apps/api
+          uv sync
+
+      - name: Run Python Format Check
+        run: |
+          cd apps/api
+          uv run ruff format --check .
 
       - name: Run Lint
         run: pnpm turbo run lint

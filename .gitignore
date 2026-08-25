@@ -99,3 +99,11 @@ coverage/
 tmp/
 *.swp
 *.bak
+
+# =========================
+# Enterprise Caches & Tools
+# =========================
+.vercel/
+.cursorrules
+.eslintcache
+*.tsbuildinfo
