@@ -1,28 +1,40 @@
-import { Book, Code, PlayCircle, Puzzle } from "lucide-react";
+import { Book, Code, Terminal, Zap, LucideIcon } from "lucide-react";
 
-export const docCategories = [
-  {
-    title: "Getting Started",
-    description: "Learn the basics, setup your workspace, and make your first query.",
-    icon: PlayCircle,
-    href: "/docs/getting-started"
-  },
+export interface DocsSection {
+  title: string;
+  description: string;
+  icon: LucideIcon;
+  color: string;
+  bg: string;
+}
+
+export const sections: DocsSection[] = [
   {
     title: "API Reference",
-    description: "Detailed documentation for our REST and GraphQL APIs.",
+    description: "Detailed documentation for all our REST API endpoints, including request/response formats and authentication.",
     icon: Code,
-    href: "/docs/api"
+    color: "text-blue-500",
+    bg: "bg-blue-500/10"
   },
   {
-    title: "Integrations",
-    description: "Connect with Salesforce, Google Drive, Notion, and more.",
-    icon: Puzzle,
-    href: "/docs/integrations"
+    title: "SDKs & Libraries",
+    description: "Official clients for Node.js, Python, Go, and Java to get you integrated in minutes.",
+    icon: Terminal,
+    color: "text-purple-500",
+    bg: "bg-purple-500/10"
   },
   {
-    title: "Guides & Tutorials",
-    description: "Deep dives into advanced topics, workflows, and best practices.",
+    title: "Quickstarts",
+    description: "Step-by-step tutorials to help you build your first document processing pipeline.",
+    icon: Zap,
+    color: "text-amber-500",
+    bg: "bg-amber-500/10"
+  },
+  {
+    title: "Core Concepts",
+    description: "Learn how our document intelligence engine works under the hood.",
     icon: Book,
-    href: "/docs/guides"
+    color: "text-emerald-500",
+    bg: "bg-emerald-500/10"
   }
 ];
