@@ -1,4 +1,4 @@
-import { DashboardStats, RecentDocument } from "@workspace/types/src/app";
+import { DashboardStats, RecentDocument } from "@workspace/types";
 
 export interface IAppRepository {
   getDashboardStats(): Promise<DashboardStats>;

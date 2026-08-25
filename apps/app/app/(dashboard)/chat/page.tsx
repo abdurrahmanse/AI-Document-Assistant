@@ -1,4 +1,5 @@
 import { type Metadata } from "next";
+import { ChatInterface } from "@workspace/app-features";
 
 export const metadata: Metadata = {
   title: "Chat",
@@ -6,5 +7,9 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <div>Page Placeholder</div>;
+  return (
+    <div className="w-full max-w-5xl mx-auto py-6">
+      <ChatInterface />
+    </div>
+  );
 }

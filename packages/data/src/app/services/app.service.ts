@@ -1,5 +1,5 @@
 import { appRepository } from '../repositories/app.repository';
-import { DashboardStats, RecentDocument } from "@workspace/types/src/app";
+import { DashboardStats, RecentDocument } from "@workspace/types";
 
 export class AppService {
   async getDashboardStats(): Promise<DashboardStats> {

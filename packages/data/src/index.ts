@@ -40,6 +40,8 @@ export * from './admin/queries/keys';
 export * from './admin/hooks/useAdmin';
 
 export * from './app/repositories/app.repository';
+export * from './app/repositories/chat.repository';
+export * from './app/repositories/document.repository';
 export * from './app/services/app.service';
 export * from './app/queries/keys';
 export * from './app/hooks/useApp';
