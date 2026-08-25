@@ -1,11 +1,6 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import * as Icons from "lucide-react";
-import type { TimelineStep as TimelineStepType } from "@workspace/types";
-
-export interface TimelineStepProps {
-  step: TimelineStepType;
-  index: number;
-}
+import type { TimelineStepProps } from "@workspace/types";
 
 export function TimelineStep({ step, index }: TimelineStepProps) {
   const Icon = (Icons[step.icon as keyof typeof Icons] as React.ElementType) || Icons.Circle;

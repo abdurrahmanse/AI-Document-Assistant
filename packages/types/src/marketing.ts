@@ -57,3 +57,18 @@ export interface FAQItem {
   q: string;
   a: string;
 }
+
+export interface DocsCardProps {
+  section: DocsSection;
+  index: number;
+}
+
+export interface TimelineStepProps {
+  step: TimelineStep;
+  index: number;
+}
+
+export interface SecurityBentoCardProps {
+  feature: SecurityFeature;
+  index: number;
+}

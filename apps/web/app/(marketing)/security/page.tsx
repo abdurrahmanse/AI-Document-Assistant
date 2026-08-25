@@ -2,7 +2,8 @@
 
 import { websiteData } from "@workspace/data";
 import { SecurityHero } from "@workspace/marketing";
-import { SecurityBentoCard, type SecurityBentoCardProps } from "@workspace/marketing";
+import { SecurityBentoCard } from "@workspace/marketing";
+import type { SecurityBentoCardProps } from "@workspace/types";
 import { TrustChecklist } from "@workspace/marketing";
 
 export default function SecurityPage() {

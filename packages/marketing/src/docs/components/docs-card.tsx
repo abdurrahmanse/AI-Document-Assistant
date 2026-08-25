@@ -1,12 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import * as Icons from "lucide-react";
 import { ArrowRight } from "lucide-react";
-import type { DocsSection } from "@workspace/types";
-
-export interface DocsCardProps {
-  section: DocsSection;
-  index: number;
-}
+import type { DocsCardProps } from "@workspace/types";
 
 export function DocsCard({ section, index }: DocsCardProps) {
   const Icon = (Icons[section.icon as keyof typeof Icons] as React.ElementType) || Icons.Circle;

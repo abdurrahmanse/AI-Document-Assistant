@@ -2,7 +2,8 @@
 
 import { websiteData } from "@workspace/data";
 import { DocsHero } from "@workspace/marketing";
-import { DocsCard, type DocsCardProps } from "@workspace/marketing";
+import { DocsCard } from "@workspace/marketing";
+import type { DocsCardProps } from "@workspace/types";
 
 export default function DocsPage() {
   const { sections } = websiteData.docs;

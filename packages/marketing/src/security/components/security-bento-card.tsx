@@ -1,12 +1,7 @@
 import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@workspace/ui/components/ui";
 import * as Icons from "lucide-react";
-import type { SecurityFeature } from "@workspace/types";
-
-export interface SecurityBentoCardProps {
-  feature: SecurityFeature;
-  index: number;
-}
+import type { SecurityBentoCardProps } from "@workspace/types";
 
 export function SecurityBentoCard({ feature, index }: SecurityBentoCardProps) {
   const Icon = (Icons[feature.icon as keyof typeof Icons] as React.ElementType) || Icons.Circle;

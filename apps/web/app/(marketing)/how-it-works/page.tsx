@@ -2,7 +2,8 @@
 
 import { websiteData } from "@workspace/data";
 import { TimelineHero } from "@workspace/marketing";
-import { TimelineStep, type TimelineStepProps } from "@workspace/marketing";
+import { TimelineStep } from "@workspace/marketing";
+import type { TimelineStepProps } from "@workspace/types";
 
 export default function HowItWorksPage() {
   const { steps } = websiteData.howItWorks;
