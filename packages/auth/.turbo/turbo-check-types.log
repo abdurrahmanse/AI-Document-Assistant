@@ -1,4 +1,0 @@
-
-> @workspace/auth@0.0.0 check-types /Volumes/Fullstack/Github/AI-Document-Assistant/packages/auth
-> tsc --noEmit
-

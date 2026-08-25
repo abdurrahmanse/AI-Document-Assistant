@@ -1,4 +1,0 @@
-
-> @workspace/types@0.0.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/packages/types
-> eslint . --max-warnings 0
-

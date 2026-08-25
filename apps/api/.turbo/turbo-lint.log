@@ -1,5 +1,0 @@
-
-> @workspace/api@0.0.0 lint /Volumes/Fullstack/Github/AI-Document-Assistant/apps/api
-> uv run ruff check .
-
-All checks passed!
