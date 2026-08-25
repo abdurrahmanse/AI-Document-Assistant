@@ -1,4 +1,4 @@
-import { FileText, Share2, MoreVertical, Clock } from "lucide-react";
+import { FileText, Share2, MoreVertical, Clock, Loader2 } from "lucide-react";
 import { 
   Button, 
   Card, 
@@ -17,37 +17,39 @@ import {
   Badge
 } from "@workspace/ui/components/ui";
 
-import { useRecentDocuments } from "@workspace/data";
+import { useRecentDocuments, useAppDashboardData } from "@workspace/data";
 
 export function RecentDocuments() {
-  const { data: recentDocuments, isLoading, error } = useRecentDocuments();
+  const { data: recentDocuments, isLoading: isDocsLoading, error: docsError } = useRecentDocuments();
+  const { data: dashboard, isLoading: isDashboardLoading } = useAppDashboardData();
 
-  if (isLoading) {
+  if (isDocsLoading || isDashboardLoading) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
-          <CardDescription>Your recently uploaded and analyzed documents.</CardDescription>
+          <CardTitle>{dashboard?.recentDocuments.title || "Recent Activity"}</CardTitle>
+          <CardDescription>{dashboard?.recentDocuments.description || "Your recently uploaded and analyzed documents."}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-card">
-            Loading...
+            <Loader2 className="h-6 w-6 animate-spin text-muted-foreground mr-2" />
+            {dashboard?.recentDocuments.loadingText || "Loading..."}
           </div>
         </CardContent>
       </Card>
     );
   }
 
-  if (error || !recentDocuments) {
+  if (docsError || !recentDocuments || !dashboard) {
     return (
       <Card>
         <CardHeader>
-          <CardTitle>Recent Activity</CardTitle>
-          <CardDescription>Your recently uploaded and analyzed documents.</CardDescription>
+          <CardTitle>{dashboard?.recentDocuments.title || "Recent Activity"}</CardTitle>
+          <CardDescription>{dashboard?.recentDocuments.description || "Your recently uploaded and analyzed documents."}</CardDescription>
         </CardHeader>
         <CardContent>
           <div className="flex h-32 w-full items-center justify-center border rounded-lg bg-destructive/10 text-destructive">
-            Failed to load recent documents.
+            {dashboard?.recentDocuments.errorText || "Failed to load recent documents."}
           </div>
         </CardContent>
       </Card>
@@ -57,8 +59,8 @@ export function RecentDocuments() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Recent Activity</CardTitle>
-        <CardDescription>Your recently uploaded and analyzed documents.</CardDescription>
+        <CardTitle>{dashboard.recentDocuments.title}</CardTitle>
+        <CardDescription>{dashboard.recentDocuments.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
@@ -98,12 +100,12 @@ export function RecentDocuments() {
                     </Button>
                   </DropdownMenuTrigger>
                   <DropdownMenuContent align="end">
-                    <DropdownMenuItem>View Details</DropdownMenuItem>
+                    <DropdownMenuItem>{dashboard.recentDocuments.menuItems.viewDetails}</DropdownMenuItem>
                     <DropdownMenuItem>
-                      <Share2 className="w-4 h-4 mr-2" /> Share
+                      <Share2 className="w-4 h-4 mr-2" /> {dashboard.recentDocuments.menuItems.share}
                     </DropdownMenuItem>
                     <DropdownMenuSeparator />
-                    <DropdownMenuItem className="text-destructive">Delete</DropdownMenuItem>
+                    <DropdownMenuItem className="text-destructive">{dashboard.recentDocuments.menuItems.delete}</DropdownMenuItem>
                   </DropdownMenuContent>
                 </DropdownMenu>
               </div>

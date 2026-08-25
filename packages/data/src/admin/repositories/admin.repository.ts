@@ -1,10 +1,12 @@
 import { CoreMetricsData } from "@workspace/types/src/admin";
 import { apiClient } from "../../api/client";
 import featuresData from "../../../admin/features.json";
+import heroData from "../../../admin/hero.json";
 
 export interface IAdminRepository {
   getCoreMetrics(): Promise<CoreMetricsData>;
   getFeatures(): Promise<any>;
+  getDashboardHero(): Promise<any>;
 }
 
 export class AdminRepository implements IAdminRepository {
@@ -14,6 +16,10 @@ export class AdminRepository implements IAdminRepository {
 
   async getFeatures(): Promise<any> {
     return featuresData;
+  }
+
+  async getDashboardHero(): Promise<any> {
+    return heroData;
   }
 }
 
@@ -47,6 +53,10 @@ export class AdminMockRepository implements IAdminRepository {
 
   async getFeatures(): Promise<any> {
     return featuresData;
+  }
+
+  async getDashboardHero(): Promise<any> {
+    return heroData;
   }
 }
 

@@ -25,3 +25,4 @@ export * from "./pricing/components/pricing-card";
 export * from "./security/components/security-bento-card";
 export * from "./security/components/security-hero";
 export * from "./security/components/trust-checklist";
+export * from "./home/home-feature";

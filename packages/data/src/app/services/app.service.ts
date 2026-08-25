@@ -1,4 +1,4 @@
-import { IAppRepository, AppRepository } from '../repositories/app.repository';
+import { IAppRepository, appRepository } from "../repositories/app.repository";
 
 export class AppService {
   constructor(private readonly repository: IAppRepository) {}
@@ -14,6 +14,10 @@ export class AppService {
   async getRecentDocuments() {
     return this.repository.getRecentDocuments();
   }
+
+  async getDashboardData() {
+    return this.repository.getDashboardData();
+  }
 }
 
-export const appService = new AppService(new AppRepository());
+export const appService = new AppService(appRepository);

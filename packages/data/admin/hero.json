@@ -1,0 +1,9 @@
+{
+  "badge": "Enterprise Command Center",
+  "title": "System Overview",
+  "description": "Manage infrastructure, security policies, and monitor real-time enterprise telemetry.",
+  "buttons": {
+    "primary": "Generate Report",
+    "secondary": "Global Settings"
+  }
+}

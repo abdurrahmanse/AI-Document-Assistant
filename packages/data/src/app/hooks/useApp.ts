@@ -22,3 +22,10 @@ export function useAppFeatures() {
     queryFn: () => appService.getFeatures(),
   });
 }
+
+export function useAppDashboardData() {
+  return useQuery({
+    queryKey: appKeys.dashboard(),
+    queryFn: () => appService.getDashboardData(),
+  });
+}

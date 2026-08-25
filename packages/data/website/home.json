@@ -1,11 +1,20 @@
 {
   "hero": {
-    "badge": "Introducing AI Document Assistant",
+    "badge": "Introducing AI Document Assistant v2.0",
     "title1": "The Future of",
     "title2": "Document Intelligence",
     "description": "Upload, analyze, and extract insights from your enterprise documents in seconds. Powered by the world's most advanced AI models.",
     "primaryButton": "Start Building Free",
-    "secondaryButton": "View Live Demo"
+    "secondaryButton": "View Live Demo",
+    "mockup": {
+      "headerFilename": "document_analyzer.py",
+      "streamLabel": "Live Extraction Stream",
+      "nodes": [
+        { "label": "Entity: Organization", "value": "Acme Corp Ltd.", "confidence": "Confidence: 99.9%" },
+        { "label": "Entity: Amount", "value": "$45,200.00", "confidence": "Confidence: 98.4%" },
+        { "label": "Classification", "value": "Invoice", "subValue": "Urgent", "confidence": "Auto-tagged" }
+      ]
+    }
   },
   "socialProof": {
     "title": "Trusted by innovative teams worldwide",
@@ -35,6 +44,10 @@
       "icon": "Sparkles" 
     }
   ],
+  "featuresSection": {
+    "title": "Everything you need",
+    "description": "A complete toolkit for modern teams to process, analyze, and manage enterprise documents at scale."
+  },
   "interactiveDemo": {
     "title": "Interactive Showcase",
     "description": "Verifying Radix and Shadcn UI integration.",

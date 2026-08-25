@@ -93,10 +93,28 @@ export interface LogoProps {
 
 export interface FeaturesGridProps {
   features: { title: string; description: string; icon: string }[];
+  featuresSection?: { title: string; description: string };
 }
 
 export interface HeroContentProps {
-  hero: { badge: string; title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string };
+  hero: { 
+    badge: string; 
+    title1: string; 
+    title2: string; 
+    description: string; 
+    primaryButton: string; 
+    secondaryButton: string;
+    mockup?: {
+      headerFilename: string;
+      streamLabel: string;
+      nodes: {
+        label: string;
+        value: string;
+        subValue?: string;
+        confidence: string;
+      }[];
+    }
+  };
 }
 
 export interface InteractiveDemoProps {

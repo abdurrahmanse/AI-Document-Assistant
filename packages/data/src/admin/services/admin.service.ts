@@ -10,6 +10,10 @@ export class AdminService {
   async getCoreMetrics() {
     return this.repository.getCoreMetrics();
   }
+
+  async getDashboardHero() {
+    return this.repository.getDashboardHero();
+  }
 }
 
 export const adminService = new AdminService(new AdminMockRepository());

@@ -9,7 +9,7 @@ export function MarketingHero({ hero }: HeroContentProps) {
     <section className="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 flex flex-col items-center text-center overflow-hidden">
       <HeroBackground />
       <HeroContent hero={hero} />
-      <HeroMockup />
+      {hero.mockup && <HeroMockup mockup={hero.mockup} />}
     </section>
   );
 }

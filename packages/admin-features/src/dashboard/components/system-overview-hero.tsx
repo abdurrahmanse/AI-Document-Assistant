@@ -1,8 +1,13 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
 import { ShieldCheck, Settings, Activity } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
+import { useAdminDashboardHero } from "@workspace/data";
 
 export function SystemOverviewHero() {
+  const { data: hero, isLoading } = useAdminDashboardHero();
+
+  if (isLoading || !hero) return null;
+
   return (
     <FadeIn 
       duration={0.6}
@@ -16,24 +21,24 @@ export function SystemOverviewHero() {
         <div className="space-y-2">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 border border-primary/20 text-primary font-medium text-xs mb-2">
             <ShieldCheck className="w-3 h-3" />
-            <span>Enterprise Command Center</span>
+            <span>{hero.badge}</span>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-foreground to-foreground/70">
-            System Overview
+            {hero.title}
           </h1>
           <p className="text-muted-foreground text-lg max-w-lg">
-            Manage infrastructure, security policies, and monitor real-time enterprise telemetry.
+            {hero.description}
           </p>
         </div>
         
         <div className="flex flex-col sm:flex-row items-center gap-3 w-full md:w-auto">
           <Button variant="outline" className="w-full sm:w-auto rounded-full h-12 px-6 backdrop-blur-md bg-background/50 border-border/50 hover:bg-secondary/50">
             <Settings className="w-4 h-4 mr-2" />
-            Global Settings
+            {hero.buttons.secondary}
           </Button>
           <Button className="w-full sm:w-auto rounded-full h-12 px-6 bg-gradient-to-r from-primary to-blue-600 hover:opacity-90 shadow-lg shadow-primary/25 transition-all">
             <Activity className="w-4 h-4 mr-2" />
-            Generate Report
+            {hero.buttons.primary}
           </Button>
         </div>
       </div>

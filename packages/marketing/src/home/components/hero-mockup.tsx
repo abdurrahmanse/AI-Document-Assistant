@@ -4,8 +4,9 @@ import { FadeInView } from "@workspace/ui/components/ui/motion";
 import { FileText, ChevronRight } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
+import type { HeroContentProps } from "@workspace/types";
 
-export function HeroMockup() {
+export function HeroMockup({ mockup }: { mockup: NonNullable<HeroContentProps["hero"]["mockup"]> }) {
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -33,7 +34,7 @@ export function HeroMockup() {
         {/* Glow behind the UI */}
         <div className="absolute -inset-10 bg-indigo-500/20 blur-[100px] rounded-[3rem] -z-10 opacity-50" />
 
-        <div className="relative rounded-2xl border border-white/10 bg-[#0A0A0A]/80 backdrop-blur-3xl shadow-2xl overflow-hidden flex flex-col">
+        <div className="relative rounded-2xl border border-border/50 bg-background/80 backdrop-blur-3xl shadow-2xl overflow-hidden flex flex-col">
           
           {/* Minimalist Header */}
           <div className="h-12 border-b border-border/50 flex items-center px-4 justify-between bg-foreground/[0.02]">
@@ -43,7 +44,7 @@ export function HeroMockup() {
               <div className="w-3 h-3 rounded-full bg-foreground/10" />
             </div>
             <div className="flex items-center text-xs text-muted-foreground font-mono bg-foreground/5 px-3 py-1 rounded-md">
-              <FileText className="w-3 h-3 mr-2" /> document_analyzer.py
+              <FileText className="w-3 h-3 mr-2" /> {mockup.headerFilename}
             </div>
             <div className="w-12" /> {/* Spacer */}
           </div>
@@ -88,7 +89,7 @@ export function HeroMockup() {
             <div className="w-full md:w-80 bg-card p-6 flex flex-col gap-4 overflow-hidden relative">
               <div className="text-xs font-mono text-muted-foreground mb-2 uppercase tracking-wider flex items-center">
                 <div className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse" />
-                Live Extraction Stream
+                {mockup.streamLabel}
               </div>
 
               {/* Data Node 1 */}
@@ -100,9 +101,9 @@ export function HeroMockup() {
                 }}
                 className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
               >
-                <div className="text-[10px] text-muted-foreground font-mono mb-1">Entity: Organization</div>
-                <div className="text-sm font-medium text-foreground">Acme Corp Ltd.</div>
-                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Confidence: 99.9%</div>
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">{mockup.nodes[0].label}</div>
+                <div className="text-sm font-medium text-foreground">{mockup.nodes[0].value}</div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">{mockup.nodes[0].confidence}</div>
               </motion.div>
 
               {/* Data Node 2 */}
@@ -114,9 +115,9 @@ export function HeroMockup() {
                 }}
                 className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
               >
-                <div className="text-[10px] text-muted-foreground font-mono mb-1">Entity: Amount</div>
-                <div className="text-sm font-medium text-foreground">$45,200.00</div>
-                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Confidence: 98.4%</div>
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">{mockup.nodes[1].label}</div>
+                <div className="text-sm font-medium text-foreground">{mockup.nodes[1].value}</div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">{mockup.nodes[1].confidence}</div>
               </motion.div>
 
               {/* Data Node 3 */}
@@ -128,11 +129,17 @@ export function HeroMockup() {
                 }}
                 className="p-4 rounded-lg bg-foreground/[0.02] border border-border/50 transition-all duration-300"
               >
-                <div className="text-[10px] text-muted-foreground font-mono mb-1">Classification</div>
+                <div className="text-[10px] text-muted-foreground font-mono mb-1">{mockup.nodes[2].label}</div>
                 <div className="text-sm font-medium text-foreground flex items-center">
-                  Invoice <ChevronRight className="w-3 h-3 mx-1 text-muted-foreground" /> Urgent
+                  {mockup.nodes[2].value}
+                  {mockup.nodes[2].subValue && (
+                    <>
+                      <ChevronRight className="w-3 h-3 mx-1 text-muted-foreground" />
+                      {mockup.nodes[2].subValue}
+                    </>
+                  )}
                 </div>
-                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">Auto-tagged</div>
+                <div className="mt-2 text-[10px] text-green-500 dark:text-green-400 font-mono">{mockup.nodes[2].confidence}</div>
               </motion.div>
               
               {/* Fade out at bottom */}

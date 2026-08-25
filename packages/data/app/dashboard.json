@@ -1,0 +1,31 @@
+{
+  "hero": {
+    "badge": "AI-Powered Workspace",
+    "title": "Dashboard",
+    "description": "Welcome back! Here's what's happening with your analyzed documents today.",
+    "newDocumentButton": "New Document",
+    "uploadModal": {
+      "title": "Upload Document",
+      "description": "Upload a PDF, Word, or Text document for AI analysis.",
+      "dragDropText": "Click to upload or drag and drop",
+      "cancelButton": "Cancel",
+      "submitButton": "Start Analysis"
+    }
+  },
+  "stats": {
+    "totalDocumentsTitle": "Total Documents",
+    "storageUsedTitle": "Storage Used",
+    "activeMembersTitle": "Active Members"
+  },
+  "recentDocuments": {
+    "title": "Recent Activity",
+    "description": "Your recently uploaded and analyzed documents.",
+    "loadingText": "Loading...",
+    "errorText": "Failed to load recent documents.",
+    "menuItems": {
+      "viewDetails": "View Details",
+      "share": "Share",
+      "delete": "Delete"
+    }
+  }
+}

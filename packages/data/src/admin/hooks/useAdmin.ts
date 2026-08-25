@@ -15,3 +15,10 @@ export function useAdminFeatures() {
     queryFn: () => adminService.getFeatures(),
   });
 }
+
+export function useAdminDashboardHero() {
+  return useQuery({
+    queryKey: adminKeys.hero(),
+    queryFn: () => adminService.getDashboardHero(),
+  });
+}
