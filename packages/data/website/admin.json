@@ -1,0 +1,20 @@
+{
+  "jobs": {
+    "title": "Job Management",
+    "loading": "Loading jobs...",
+    "table": {
+      "columns": ["Job Name", "Status", "Created At", "Error"]
+    }
+  },
+  "usage": {
+    "title": "Platform Usage",
+    "loading": "Loading metrics...",
+    "failed": "Failed to load metrics.",
+    "cards": {
+      "users": { "title": "Total Users" },
+      "documents": { "title": "Total Documents" },
+      "conversations": { "title": "Total Conversations" },
+      "jobs": { "title": "Total Jobs Executed" }
+    }
+  }
+}

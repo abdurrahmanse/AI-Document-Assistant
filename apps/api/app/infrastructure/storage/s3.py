@@ -29,7 +29,7 @@ class S3StorageService:
         key = f"{prefix}/{uuid.uuid4()}_{file.filename}"
         
         try:
-            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:
+            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:  # type: ignore
                 await s3.upload_fileobj(
                     file.file, 
                     self.bucket, 
@@ -50,7 +50,7 @@ class S3StorageService:
             return f"http://mock-storage/{self.bucket}/{key}"
             
         try:
-            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:
+            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:  # type: ignore
                 url = await s3.generate_presigned_url(
                     'get_object',
                     Params={'Bucket': self.bucket, 'Key': key},
@@ -69,7 +69,7 @@ class S3StorageService:
             return
             
         try:
-            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:
+            async with self.session.client("s3", endpoint_url=self.endpoint_url) as s3:  # type: ignore
                 await s3.delete_object(Bucket=self.bucket, Key=key)
             logger.info(f"Successfully deleted {key} from {self.bucket}")
         except Exception as e:

@@ -2,8 +2,8 @@
 
 import { useEffect, useState, useRef } from "react";
 import { useApi } from "@/hooks/use-api";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
+import { Button } from '@workspace/ui/components/ui';
+import { Input } from '@workspace/ui/components/ui';
 import { Send, Loader2 } from "lucide-react";
 import { MessageList } from "./MessageList";
 
@@ -49,9 +49,14 @@ export function ChatInterface({ conversationId }: ChatInterfaceProps) {
     setMessages((prev) => [...prev, { id: assistantMessageId, role: "assistant", content: "" }]);
 
     try {
-      const token = api.config.getToken ? api.config.getToken() : null;
+      let token = null;
+      if (typeof document !== 'undefined') {
+        const value = `; ${document.cookie}`;
+        const parts = value.split(`; auth_token=`);
+        if (parts.length === 2) token = parts.pop()?.split(';').shift() || null;
+      }
       
-      const response = await fetch(api.chat.getChatStreamUrl(conversationId), {
+      const response = await fetch(`${api.client.baseUrl}/chat/${conversationId}/messages`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -121,7 +126,12 @@ export function ChatInterface({ conversationId }: ChatInterfaceProps) {
             onChange={(e) => setInput(e.target.value)}
             placeholder="Ask about your documents..."
             className="flex-1"
-            onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" && !e.shiftKey) {
+                e.preventDefault();
+                handleSend();
+              }
+            }}
             disabled={isLoading}
           />
           <Button onClick={handleSend} disabled={isLoading || !input.trim()}>

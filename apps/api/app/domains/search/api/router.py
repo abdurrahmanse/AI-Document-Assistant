@@ -4,8 +4,8 @@ from typing import List, Optional
 import uuid
 from pydantic import BaseModel
 
-from app.infrastructure.db.session import get_db
-from app.domains.auth.dependencies import get_current_user
+from app.infrastructure.db.session import get_db_session
+from app.domains.auth.api.dependencies import get_current_user
 from app.domains.search.services.search import SearchService, SearchResult
 
 router = APIRouter(prefix="/search", tags=["search"])
@@ -19,7 +19,7 @@ class SearchRequest(BaseModel):
 async def search_documents(
     request: SearchRequest,
     current_user = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db_session)
 ):
     """
     Search across uploaded documents using hybrid vector retrieval.

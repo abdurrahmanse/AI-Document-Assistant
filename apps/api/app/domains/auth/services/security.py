@@ -1,7 +1,7 @@
 from datetime import UTC, datetime, timedelta
 from typing import Any
 
-from passlib.hash import argon2
+from passlib.hash import argon2  # type: ignore
 import jwt
 from app.core.config import settings
 

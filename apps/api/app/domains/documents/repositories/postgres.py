@@ -1,9 +1,12 @@
 import uuid
-from typing import List, Optional
+from typing import List, Optional, TYPE_CHECKING
 
 from app.infrastructure.db.models.document import Document, DocumentStatus
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
+
+if TYPE_CHECKING:
+    from app.infrastructure.db.models.document_chunk import DocumentChunk
 
 class DocumentRepository:
     def __init__(self, session: AsyncSession):

@@ -1,17 +1,17 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { DocumentIntelligenceAPI } from '@workspace/api-client'
-import { Document } from '@workspace/api-client/src/modules/documents'
+import { DocumentIntelligenceAPI, Document } from '@workspace/api-client'
+import { websiteData } from '@workspace/data'
 import { DocumentUploader } from '@/components/document-uploader'
-import { Button } from '@workspace/ui/components/button'
+import { Button } from '@workspace/ui/components/ui'
 import { 
   Card, 
   CardContent, 
   CardDescription, 
   CardHeader, 
   CardTitle 
-} from '@workspace/ui/components/card'
+} from '@workspace/ui/components/ui'
 import { FileText, Download, Trash2, Loader2 } from 'lucide-react'
 
 const api = new DocumentIntelligenceAPI({ baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1' })
@@ -59,17 +59,17 @@ export default function DocumentsPage() {
   return (
     <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold tracking-tight">Documents</h1>
+        <h1 className="text-3xl font-bold tracking-tight">{websiteData.appContent.documents.title}</h1>
         <p className="text-zinc-500 dark:text-zinc-400">
-          Upload and manage your documents for analysis.
+          {websiteData.appContent.documents.description}
         </p>
       </div>
 
       <Card>
         <CardHeader>
-          <CardTitle>Upload Document</CardTitle>
+          <CardTitle>{websiteData.appContent.documents.upload.title}</CardTitle>
           <CardDescription>
-            Add a new document to your workspace to start chatting with it.
+            {websiteData.appContent.documents.upload.description}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -79,9 +79,9 @@ export default function DocumentsPage() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Your Documents</CardTitle>
+          <CardTitle>{websiteData.appContent.documents.list.title}</CardTitle>
           <CardDescription>
-            A list of all documents you have uploaded.
+            {websiteData.appContent.documents.list.description}
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -92,9 +92,9 @@ export default function DocumentsPage() {
           ) : documents.length === 0 ? (
             <div className="text-center py-12">
               <FileText className="mx-auto h-12 w-12 text-zinc-300 dark:text-zinc-600 mb-4" />
-              <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">No documents yet</h3>
+              <h3 className="text-lg font-medium text-zinc-900 dark:text-zinc-100">{websiteData.appContent.documents.list.empty.title}</h3>
               <p className="text-zinc-500 dark:text-zinc-400 mt-2">
-                Upload your first document to get started.
+                {websiteData.appContent.documents.list.empty.description}
               </p>
             </div>
           ) : (

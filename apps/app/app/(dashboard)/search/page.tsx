@@ -2,8 +2,8 @@
 
 import { useState } from "react"
 import { Search } from "lucide-react"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
+import { Input } from '@workspace/ui/components/ui'
+import { Button } from '@workspace/ui/components/ui'
 import { useQuery } from "@tanstack/react-query"
 import { useApi } from "@/hooks/use-api"
 import { SearchResult } from "@workspace/api-client"
@@ -41,7 +41,7 @@ export default function SearchPage() {
           type="text"
           placeholder="Ask a question or search for concepts..."
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
           className="flex-1"
         />
         <Button type="submit" disabled={isLoading}>

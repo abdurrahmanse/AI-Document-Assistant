@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { DocumentIntelligenceAPI } from "@workspace/api-client";
+import { websiteData } from "@workspace/data";
 
 const api = new DocumentIntelligenceAPI({ baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1' });
 
@@ -33,19 +34,18 @@ export default function JobsPage() {
 
   return (
     <div className="space-y-6">
-      <h1 className="text-3xl font-bold">Job Management</h1>
+      <h1 className="text-3xl font-bold">{websiteData.admin.jobs.title}</h1>
       
       {loading ? (
-        <div>Loading jobs...</div>
+        <div>{websiteData.admin.jobs.loading}</div>
       ) : (
         <div className="border rounded-md overflow-hidden bg-background">
           <table className="w-full text-sm text-left">
             <thead className="bg-muted text-muted-foreground uppercase">
               <tr>
-                <th className="px-6 py-3">Job Name</th>
-                <th className="px-6 py-3">Status</th>
-                <th className="px-6 py-3">Created At</th>
-                <th className="px-6 py-3">Error</th>
+                {websiteData.admin.jobs.table.columns.map((col: string) => (
+                  <th key={col} className="px-6 py-3">{col}</th>
+                ))}
               </tr>
             </thead>
             <tbody className="divide-y">

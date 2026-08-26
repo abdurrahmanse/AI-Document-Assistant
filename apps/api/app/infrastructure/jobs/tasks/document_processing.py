@@ -42,7 +42,7 @@ async def _process_document_async(document_id: str):
                 logger.warning("Mocking document download due to missing S3 bucket")
                 file_content = b"This is a mock document content for testing AI parsing, chunking, and embedding."
             else:
-                async with storage.session.client("s3", endpoint_url=storage.endpoint_url) as s3:
+                async with storage.session.client("s3", endpoint_url=storage.endpoint_url) as s3:  # type: ignore
                     response = await s3.get_object(Bucket=storage.bucket, Key=document.storage_key)
                     file_content = await response['Body'].read()
             

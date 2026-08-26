@@ -7,7 +7,7 @@ from app.core.config import settings
 from app.core.redis import redis_client
 from app.core.logging import setup_logging
 from app.router import api_router
-from fastapi_limiter import FastAPILimiter
+from fastapi_limiter import FastAPILimiter  # type: ignore
 
 
 @asynccontextmanager

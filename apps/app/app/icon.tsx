@@ -1,5 +1,5 @@
 import { ImageResponse } from "next/og";
-import { AppIcon } from "@workspace/ui/components/app-icon";
+import { AppIcon } from '@workspace/ui/components/app-icon';
 
 export const runtime = "edge";
 export const size = { width: 32, height: 32 };

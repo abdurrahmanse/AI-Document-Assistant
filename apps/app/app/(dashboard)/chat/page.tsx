@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useApi } from "@/hooks/use-api"
-import { Button } from "@/components/ui/button"
+import { Button } from '@workspace/ui/components/ui'
 import { MessageSquarePlus, MessageSquare, Loader2 } from "lucide-react"
 
 export default function ChatMainPage() {

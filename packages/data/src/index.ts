@@ -10,6 +10,7 @@ import legalData from '../website/legal.json';
 import authData from '../website/auth.json';
 import metadataData from '../website/metadata.json';
 import appContentData from '../website/app.json';
+import adminData from '../website/admin.json';
 
 // Basic exported types inferred from the JSON
 export type PricingData = typeof pricingData;
@@ -24,6 +25,7 @@ export type LegalData = typeof legalData;
 export type AuthData = typeof authData;
 export type MetadataData = typeof metadataData;
 export type AppContentData = typeof appContentData;
+export type AdminData = typeof adminData;
 
 export const websiteData = {
   pricing: pricingData,
@@ -36,6 +38,7 @@ export const websiteData = {
   home: homeData,
   metadata: metadataData,
   appContent: appContentData,
+  admin: adminData,
 };
 
 // Export New Data Access Architecture

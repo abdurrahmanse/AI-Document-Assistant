@@ -2,7 +2,7 @@
 
 import { useState, useRef } from 'react'
 import { Upload, X, File, CheckCircle, AlertCircle } from 'lucide-react'
-import { Button } from '@workspace/ui/components/button'
+import { Button } from '@workspace/ui/components/ui'
 import { DocumentIntelligenceAPI } from '@workspace/api-client'
 
 interface DocumentUploaderProps {
@@ -14,7 +14,6 @@ const api = new DocumentIntelligenceAPI({ baseUrl: process.env.NEXT_PUBLIC_API_U
 export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
   const [isDragging, setIsDragging] = useState(false)
   const [file, setFile] = useState<File | null>(null)
-  const [isUploading, setIsUploading] = useState(false)
   const [uploadProgress, setUploadProgress] = useState(0)
   const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
@@ -51,7 +50,6 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
   const handleUpload = async () => {
     if (!file) return
     
-    setIsUploading(true)
     setStatus('uploading')
     setUploadProgress(0)
     
@@ -76,8 +74,6 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
       console.error('Upload failed:', err)
       setStatus('error')
       setErrorMessage(err.response?.data?.detail || 'Failed to upload document')
-    } finally {
-      setIsUploading(false)
     }
   }
 

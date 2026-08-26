@@ -3,7 +3,7 @@
 import { use } from "react"
 import { useRouter } from "next/navigation"
 import { ArrowLeft } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Button } from '@workspace/ui/components/ui'
 import { ChatInterface } from "@/components/chat/ChatInterface"
 
 export default function ChatSessionPage({ params }: { params: Promise<{ conversationId: string }> }) {

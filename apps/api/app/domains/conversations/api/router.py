@@ -5,24 +5,18 @@ from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
 
-from app.infrastructure.db.session import get_db
-from app.domains.auth.dependencies import get_current_user
+from app.infrastructure.db.session import get_db_session
+from app.domains.auth.api.dependencies import get_current_user
 from app.domains.conversations.repositories.postgres import ConversationRepository
 from app.domains.conversations.services.chat_engine import ChatEngine
+from app.domains.conversations.schemas.conversation_schemas import ConversationResponse, ChatMessageRequest
 
 router = APIRouter()
-
-class ConversationResponse(BaseModel):
-    id: uuid.UUID
-    title: str
-
-class ChatMessageRequest(BaseModel):
-    message: str
 
 @router.get("", response_model=List[ConversationResponse])
 async def list_conversations(
     current_user = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db_session)
 ):
     repo = ConversationRepository(db)
     conversations = await repo.get_all_for_user(current_user.id)
@@ -31,7 +25,7 @@ async def list_conversations(
 @router.post("", response_model=ConversationResponse)
 async def create_conversation(
     current_user = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db_session)
 ):
     repo = ConversationRepository(db)
     conversation = await repo.create(current_user.id)
@@ -42,7 +36,7 @@ async def create_conversation(
 async def delete_conversation(
     conversation_id: uuid.UUID,
     current_user = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db_session)
 ):
     repo = ConversationRepository(db)
     success = await repo.delete(conversation_id, current_user.id)
@@ -53,12 +47,12 @@ async def delete_conversation(
 
 from fastapi_limiter.depends import RateLimiter
 
-@router.post("/{conversation_id}/messages", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
+@router.post("/{conversation_id}/messages", dependencies=[Depends(RateLimiter(times=10, seconds=60))])  # type: ignore
 async def send_message(
     conversation_id: uuid.UUID,
     request: ChatMessageRequest,
     current_user = Depends(get_current_user),
-    db: AsyncSession = Depends(get_db)
+    db: AsyncSession = Depends(get_db_session)
 ):
     """
     Streams the AI response back to the client.

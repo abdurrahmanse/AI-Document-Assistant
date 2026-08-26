@@ -1,5 +1,5 @@
 "use client";
-import { GeneralErrorContent } from "@workspace/ui/components/errors";
+import { GeneralErrorContent } from '@workspace/ui/components/errors';
 
 export default function Error({
   error,

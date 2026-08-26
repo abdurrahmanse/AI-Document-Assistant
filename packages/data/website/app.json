@@ -21,6 +21,22 @@
     "latency": "Latency",
     "rawJsonResponse": "Raw JSON Response"
   },
+  "documents": {
+    "title": "Documents",
+    "description": "Upload and manage your documents for analysis.",
+    "upload": {
+      "title": "Upload Document",
+      "description": "Add a new document to your workspace to start chatting with it."
+    },
+    "list": {
+      "title": "Your Documents",
+      "description": "A list of all documents you have uploaded.",
+      "empty": {
+        "title": "No documents yet",
+        "description": "Upload your first document to get started."
+      }
+    }
+  },
   "notFound": {
     "web": {
       "returnLabel": "Return Home",

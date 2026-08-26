@@ -25,13 +25,16 @@ async def get_documents(
 async def upload_document(
     file: UploadFile = File(...),
     current_user: User = Depends(get_current_user),
-    service: DocumentService = Depends(get_document_service)
+    service: DocumentService = Depends(get_document_service),
+    session: AsyncSession = Depends(get_db_session)
 ):
     # In FastAPI, file.size is accessible asynchronously if read, or from headers
     if not file.filename:
         raise HTTPException(status_code=400, detail="Filename missing")
         
-    return await service.upload_document(current_user.id, file)
+    doc = await service.upload_document(current_user.id, file)
+    await session.commit()
+    return doc
 
 @router.get("/{document_id}")
 async def get_document(
@@ -54,9 +57,11 @@ async def get_document_download_url(
 async def delete_document(
     document_id: uuid.UUID,
     current_user: User = Depends(get_current_user),
-    service: DocumentService = Depends(get_document_service)
+    service: DocumentService = Depends(get_document_service),
+    session: AsyncSession = Depends(get_db_session)
 ):
     success = await service.delete_document(document_id, current_user.id)
     if not success:
         raise HTTPException(status_code=404, detail="Document not found")
+    await session.commit()
     return {"message": "Document deleted successfully"}

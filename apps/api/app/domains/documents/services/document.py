@@ -28,7 +28,7 @@ class DocumentService:
         storage_key = await self.storage.upload_file(file)
         
         # 2. Estimate size
-        await file.seek(0, 2)
+        await file.seek(0, 2)  # type: ignore
         size_bytes = file.size or 0
         await file.seek(0)
         
@@ -48,7 +48,7 @@ class DocumentService:
         # Trigger background processing task
         try:
             from app.infrastructure.jobs.tasks.document_processing import process_document_task
-            process_document_task.delay(str(created_doc.id))
+            process_document_task.delay(str(created_doc.id))  # type: ignore
             # Status remains UPLOADING until the task picks it up, or we can set it to QUEUED
             await self.repository.update_status(created_doc.id, DocumentStatus.QUEUED)
         except Exception as e:

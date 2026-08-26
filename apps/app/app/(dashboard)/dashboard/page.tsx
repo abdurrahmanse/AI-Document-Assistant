@@ -1,4 +1,4 @@
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@workspace/ui/components/card'
+import { Card, CardContent, CardHeader, CardTitle } from '@workspace/ui/components/ui'
 
 export default function DashboardPage() {
   return (
