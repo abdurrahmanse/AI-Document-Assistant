@@ -3,22 +3,40 @@
 import { useState, useRef } from 'react'
 import { Upload, X, File, CheckCircle, AlertCircle } from 'lucide-react'
 import { Button } from '@workspace/ui/components/ui'
-import { DocumentIntelligenceAPI } from '@workspace/api-client'
+import { useApi } from '@/hooks/use-api'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 
-interface DocumentUploaderProps {
-  onUploadComplete?: () => void;
-}
-
-const api = new DocumentIntelligenceAPI({ baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1' })
-
-export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
+export function DocumentUploader() {
   const [isDragging, setIsDragging] = useState(false)
   const [file, setFile] = useState<File | null>(null)
   const [uploadProgress, setUploadProgress] = useState(0)
-  const [status, setStatus] = useState<'idle' | 'uploading' | 'success' | 'error'>('idle')
   const [errorMessage, setErrorMessage] = useState('')
   
+  const api = useApi()
+  const queryClient = useQueryClient()
   const fileInputRef = useRef<HTMLInputElement>(null)
+
+  const uploadMutation = useMutation({
+    mutationFn: async (uploadFile: File) => {
+      setUploadProgress(0)
+      return await api.client.documents.uploadDocument(uploadFile, (progressEvent: any) => {
+        const percentCompleted = Math.round((progressEvent.loaded * 100) / (progressEvent.total || uploadFile.size))
+        setUploadProgress(percentCompleted)
+      })
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['documents'] })
+      setTimeout(() => {
+        setFile(null)
+        setUploadProgress(0)
+        uploadMutation.reset()
+      }, 3000)
+    },
+    onError: (err: any) => {
+      console.error('Upload failed:', err)
+      setErrorMessage(err.response?.data?.detail || 'Failed to upload document')
+    }
+  })
 
   const handleDragOver = (e: React.DragEvent) => {
     e.preventDefault()
@@ -36,45 +54,20 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
     
     if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
       setFile(e.dataTransfer.files[0])
-      setStatus('idle')
+      uploadMutation.reset()
     }
   }
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files.length > 0) {
       setFile(e.target.files[0])
-      setStatus('idle')
+      uploadMutation.reset()
     }
   }
 
-  const handleUpload = async () => {
+  const handleUpload = () => {
     if (!file) return
-    
-    setStatus('uploading')
-    setUploadProgress(0)
-    
-    try {
-      await api.client.documents.uploadDocument(file, (progressEvent: any) => {
-        const percentCompleted = Math.round((progressEvent.loaded * 100) / (progressEvent.total || file.size))
-        setUploadProgress(percentCompleted)
-      })
-      
-      setStatus('success')
-      if (onUploadComplete) {
-        onUploadComplete()
-      }
-      
-      // Reset after 3 seconds
-      setTimeout(() => {
-        setFile(null)
-        setStatus('idle')
-        setUploadProgress(0)
-      }, 3000)
-    } catch (err: any) {
-      console.error('Upload failed:', err)
-      setStatus('error')
-      setErrorMessage(err.response?.data?.detail || 'Failed to upload document')
-    }
+    uploadMutation.mutate(file)
   }
 
   return (
@@ -125,7 +118,7 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
               </div>
             </div>
             
-            {status === 'idle' && (
+            {uploadMutation.isIdle && (
               <Button 
                 variant="ghost" 
                 size="sm" 
@@ -137,7 +130,7 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
             )}
           </div>
           
-          {status === 'uploading' && (
+          {uploadMutation.isPending && (
             <div className="mt-4 space-y-2">
               <div className="flex justify-between text-xs font-medium">
                 <span>Uploading...</span>
@@ -152,21 +145,21 @@ export function DocumentUploader({ onUploadComplete }: DocumentUploaderProps) {
             </div>
           )}
           
-          {status === 'success' && (
+          {uploadMutation.isSuccess && (
             <div className="mt-4 flex items-center text-sm text-green-600 dark:text-green-400">
               <CheckCircle className="h-4 w-4 mr-2" />
               Upload complete
             </div>
           )}
           
-          {status === 'error' && (
+          {uploadMutation.isError && (
             <div className="mt-4 flex items-center text-sm text-red-600 dark:text-red-400">
               <AlertCircle className="h-4 w-4 mr-2" />
               {errorMessage}
             </div>
           )}
           
-          {status === 'idle' && (
+          {uploadMutation.isIdle && (
             <div className="mt-4 flex justify-end">
               <Button onClick={handleUpload}>
                 Upload Document

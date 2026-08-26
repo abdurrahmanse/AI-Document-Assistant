@@ -1,7 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { DocumentIntelligenceAPI, Document } from '@workspace/api-client'
+import { useApi } from '@/hooks/use-api'
 import { websiteData } from '@workspace/data'
 import { DocumentUploader } from '@/components/document-uploader'
 import { Button } from '@workspace/ui/components/ui'
@@ -13,47 +12,52 @@ import {
   CardTitle 
 } from '@workspace/ui/components/ui'
 import { FileText, Download, Trash2, Loader2 } from 'lucide-react'
-
-const api = new DocumentIntelligenceAPI({ baseUrl: process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1' })
+import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query'
 
 export default function DocumentsPage() {
-  const [documents, setDocuments] = useState<Document[]>([])
-  const [isLoading, setIsLoading] = useState(true)
+  const api = useApi()
+  const queryClient = useQueryClient()
 
-  const fetchDocuments = async () => {
-    try {
-      setIsLoading(true)
-      const data = await api.client.documents.getDocuments()
-      setDocuments(data)
-    } catch (error) {
-      console.error('Failed to fetch documents:', error)
-    } finally {
-      setIsLoading(false)
+  const { data: documents = [], isLoading } = useQuery({
+    queryKey: ['documents'],
+    queryFn: async () => {
+      return await api.client.documents.getDocuments()
     }
-  }
+  })
 
-  useEffect(() => {
-    fetchDocuments()
-  }, [])
-
-  const handleDownload = async (id: string) => {
-    try {
+  const downloadMutation = useMutation({
+    mutationFn: async (id: string) => {
       const { url } = await api.client.documents.getDownloadUrl(id)
+      return url
+    },
+    onSuccess: (url) => {
       window.open(url, '_blank')
-    } catch (error) {
+    },
+    onError: (error) => {
       console.error('Failed to get download URL:', error)
     }
-  }
+  })
 
-  const handleDelete = async (id: string) => {
-    if (!confirm('Are you sure you want to delete this document?')) return
-    
-    try {
+  const deleteMutation = useMutation({
+    mutationFn: async (id: string) => {
       await api.client.documents.deleteDocument(id)
-      setDocuments(documents.filter(doc => doc.id !== id))
-    } catch (error) {
+      return id
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['documents'] })
+    },
+    onError: (error) => {
       console.error('Failed to delete document:', error)
     }
+  })
+
+  const handleDownload = (id: string) => {
+    downloadMutation.mutate(id)
+  }
+
+  const handleDelete = (id: string) => {
+    if (!confirm('Are you sure you want to delete this document?')) return
+    deleteMutation.mutate(id)
   }
 
   return (
@@ -73,7 +77,7 @@ export default function DocumentsPage() {
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <DocumentUploader onUploadComplete={fetchDocuments} />
+          <DocumentUploader />
         </CardContent>
       </Card>
 
@@ -120,18 +124,27 @@ export default function DocumentsPage() {
                       variant="ghost" 
                       size="sm"
                       onClick={() => handleDownload(doc.id)}
-                      disabled={doc.status !== 'READY'}
+                      disabled={doc.status !== 'READY' || downloadMutation.isPending}
                     >
-                      <Download className="h-4 w-4" />
+                      {downloadMutation.isPending && downloadMutation.variables === doc.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Download className="h-4 w-4" />
+                      )}
                       <span className="sr-only">Download</span>
                     </Button>
                     <Button 
                       variant="ghost" 
                       size="sm"
                       onClick={() => handleDelete(doc.id)}
+                      disabled={deleteMutation.isPending}
                       className="text-red-500 hover:text-red-600 hover:bg-red-50 dark:hover:bg-red-950/30"
                     >
-                      <Trash2 className="h-4 w-4" />
+                      {deleteMutation.isPending && deleteMutation.variables === doc.id ? (
+                        <Loader2 className="h-4 w-4 animate-spin" />
+                      ) : (
+                        <Trash2 className="h-4 w-4" />
+                      )}
                       <span className="sr-only">Delete</span>
                     </Button>
                   </div>
