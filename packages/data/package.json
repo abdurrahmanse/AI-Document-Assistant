@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@tanstack/react-query": "^5.102.3",
-    "@workspace/types": "workspace:*"
+    "@workspace/types": "workspace:*",
+    "@workspace/api-client": "workspace:*",
+    "zustand": "^5.0.15"
   },
   "devDependencies": {
     "@types/node": "^26.3.0",

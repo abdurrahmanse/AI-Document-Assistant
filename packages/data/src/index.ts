@@ -46,6 +46,11 @@ export * from './marketing/hooks/useMarketing';
 
 
 export * from "./api/client";
+
+// Export Zustand Stores
+export * from "./store/app-store";
+export * from "./store/auth-store";
+
 export * from "./auth/api";
 export * from "./auth/hooks";
 

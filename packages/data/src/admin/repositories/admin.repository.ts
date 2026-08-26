@@ -3,7 +3,7 @@ import {
   AdminFeaturesData,
   CoreMetricsData,
 } from "@workspace/types/src/admin";
-import { apiClient } from "../../api/client";
+import { axiosInstance } from "../../api/client";
 import featuresData from "../../../admin/features.json";
 import heroData from "../../../admin/hero.json";
 
@@ -15,7 +15,8 @@ export interface IAdminRepository {
 
 export class AdminRepository implements IAdminRepository {
   async getCoreMetrics(): Promise<CoreMetricsData> {
-    return await apiClient.get<CoreMetricsData>("/api/admin/metrics");
+    const res = await axiosInstance.get<CoreMetricsData>("/api/admin/metrics");
+    return res.data;
   }
 
   async getFeatures(): Promise<AdminFeaturesData> {

@@ -1,5 +1,5 @@
 import { Document } from "@workspace/types";
-import { apiClient } from "../../api/client";
+import { axiosInstance } from "../../api/client";
 
 export interface IDocumentRepository {
   getDocuments(): Promise<Document[]>;
@@ -8,7 +8,8 @@ export interface IDocumentRepository {
 
 export class DocumentRepository implements IDocumentRepository {
   async getDocuments(): Promise<Document[]> {
-    return await apiClient.get<Document[]>("/api/app/documents");
+    const res = await axiosInstance.get<Document[]>("/api/app/documents");
+    return res.data;
   }
 
   async uploadDocument(file: File): Promise<Document> {
@@ -16,7 +17,12 @@ export class DocumentRepository implements IDocumentRepository {
     const formData = new FormData();
     formData.append("file", file);
     
-    return await apiClient.post<Document>("/api/app/documents/upload", formData);
+    const res = await axiosInstance.post<Document>("/api/app/documents/upload", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    return res.data;
   }
 }
 

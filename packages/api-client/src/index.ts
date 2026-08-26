@@ -2,6 +2,7 @@ import { ApiClient, ApiClientConfig } from "./client";
 import { HealthModule } from "./modules/health";
 
 export * from "./client";
+export * from "./interceptors";
 export * from "./modules/health";
 
 export class DocumentIntelligenceAPI {

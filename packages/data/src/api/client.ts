@@ -1,43 +1,22 @@
-/// <reference types="node" />
+import { ApiClient, setTokenProvider, setOnUnauthorized } from "@workspace/api-client";
+import { useAuthStore } from "../store/auth-store";
+
 // Base API URL from environment variables, defaulting to localhost for local dev if missing
 const BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
-/**
- * A lightweight API client built on top of the native fetch API.
- * Automatically prepends the base URL and handles JSON parsing.
- */
-export const apiClient = {
-  async get<T>(endpoint: string, options?: RequestInit): Promise<T> {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options?.headers,
-      },
-    });
+// Instantiate the global singleton for the data layer
+export const apiClient = new ApiClient({
+  baseUrl: BASE_URL,
+});
 
-    if (!response.ok) {
-      throw new Error(`API GET request failed: ${response.statusText}`);
-    }
+// Wire up the token provider from the Zustand store
+setTokenProvider(() => useAuthStore.getState().token);
 
-    return response.json();
-  },
+// Handle global 401s
+setOnUnauthorized(() => {
+  useAuthStore.getState().logout();
+  // We can also trigger a redirect here if we have a router instance or global event
+});
 
-  async post<T>(endpoint: string, data?: unknown, options?: RequestInit): Promise<T> {
-    const response = await fetch(`${BASE_URL}${endpoint}`, {
-      method: "POST",
-      ...options,
-      headers: {
-        "Content-Type": "application/json",
-        ...options?.headers,
-      },
-      body: data ? JSON.stringify(data) : undefined,
-    });
-
-    if (!response.ok) {
-      throw new Error(`API POST request failed: ${response.statusText}`);
-    }
-
-    return response.json();
-  },
-};
+// Helper for direct access to the configured axios instance
+export const axiosInstance = apiClient.axios;

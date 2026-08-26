@@ -4,6 +4,7 @@ import {
   DashboardStats,
   RecentDocument,
 } from "@workspace/types";
+import type { AppContentData } from "../../index";
 import featuresData from "../../../app/features.json";
 import dashboardData from "../../../app/dashboard.json";
 
@@ -12,7 +13,7 @@ export interface IAppRepository {
   getRecentDocuments(): Promise<RecentDocument[]>;
   getFeatures(): Promise<AppFeaturesData>;
   getDashboardData(): Promise<AppDashboardData>;
-  getAppContent(): Promise<unknown>;
+  getAppContent(): Promise<AppContentData>;
 }
 
 export class AppRepository implements IAppRepository {
@@ -52,7 +53,7 @@ export class AppRepository implements IAppRepository {
     return dashboardData as AppDashboardData;
   }
 
-  async getAppContent(): Promise<unknown> {
+  async getAppContent(): Promise<AppContentData> {
     const { websiteData } = await import("../../index");
     return websiteData.appContent;
   }

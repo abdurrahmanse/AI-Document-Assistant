@@ -1,5 +1,5 @@
 import { ChatSession, Message } from "@workspace/types";
-import { apiClient } from "../../api/client";
+import { axiosInstance } from "../../api/client";
 
 export interface IChatRepository {
   getSessions(): Promise<ChatSession[]>;
@@ -9,19 +9,20 @@ export interface IChatRepository {
 
 export class ChatRepository implements IChatRepository {
   async getSessions(): Promise<ChatSession[]> {
-    return await apiClient.get<ChatSession[]>("/api/app/chat/sessions");
+    const res = await axiosInstance.get<ChatSession[]>("/api/app/chat/sessions");
+    return res.data;
   }
 
   async getSession(id: string): Promise<ChatSession> {
-    return await apiClient.get<ChatSession>(`/api/app/chat/sessions/${id}`);
+    const res = await axiosInstance.get<ChatSession>(`/api/app/chat/sessions/${id}`);
+    return res.data;
   }
 
   async sendMessage(sessionId: string, content: string): Promise<Message> {
-    // POST to FastAPI
-    const response = await apiClient.post<Message>(`/api/app/chat/sessions/${sessionId}/messages`, {
+    const res = await axiosInstance.post<Message>(`/api/app/chat/sessions/${sessionId}/messages`, {
       content,
     });
-    return response;
+    return res.data;
   }
 }
 

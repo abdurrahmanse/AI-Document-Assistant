@@ -20,6 +20,7 @@
     "recharts": "^2.15.0"
   },
   "devDependencies": {
+    "@types/node": "^22.15.3",
     "@types/react": "19.2.2",
     "@workspace/eslint-config": "workspace:*",
     "@workspace/typescript-config": "workspace:*",

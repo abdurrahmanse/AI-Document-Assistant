@@ -22,6 +22,7 @@ export class HealthModule {
   constructor(private client: ApiClient) {}
 
   async getDetailedHealth(): Promise<DetailedHealthResponse> {
-    return this.client.fetch<DetailedHealthResponse>("/health/detailed");
+    const response = await this.client.axios.get<DetailedHealthResponse>("/health/detailed");
+    return response.data;
   }
 }

@@ -1,29 +1,25 @@
+import axios, { type AxiosInstance } from "axios";
+import { setupInterceptors } from "./interceptors";
+
 export interface ApiClientConfig {
   baseUrl: string;
 }
 
 export class ApiClient {
   public baseUrl: string;
+  public axios: AxiosInstance;
 
   constructor(config: ApiClientConfig) {
     this.baseUrl = config.baseUrl.replace(/\/$/, "");
-  }
-
-  async fetch<T>(path: string, options?: RequestInit): Promise<T> {
-    const url = `${this.baseUrl}${path.startsWith("/") ? path : `/${path}`}`;
     
-    const response = await fetch(url, {
-      ...options,
+    this.axios = axios.create({
+      baseURL: this.baseUrl,
       headers: {
         "Content-Type": "application/json",
-        ...options?.headers,
       },
     });
 
-    if (!response.ok) {
-      throw new Error(`API Error: ${response.status} ${response.statusText}`);
-    }
-
-    return response.json() as Promise<T>;
+    // Attach interceptors
+    setupInterceptors(this.axios);
   }
 }
