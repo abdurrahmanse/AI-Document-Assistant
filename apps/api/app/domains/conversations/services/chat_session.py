@@ -3,6 +3,7 @@ from datetime import UTC, datetime
 
 # Mock Data
 from typing import Any
+
 chat_sessions: list[dict[str, Any]] = [
     {
         "id": "1",
