@@ -1,12 +1,17 @@
-import { DashboardStats, RecentDocument } from "@workspace/types";
+import {
+  AppDashboardData,
+  AppFeaturesData,
+  DashboardStats,
+  RecentDocument,
+} from "@workspace/types";
 import featuresData from "../../../app/features.json";
 import dashboardData from "../../../app/dashboard.json";
 
 export interface IAppRepository {
   getDashboardStats(): Promise<DashboardStats>;
   getRecentDocuments(): Promise<RecentDocument[]>;
-  getFeatures(): Promise<unknown>;
-  getDashboardData(): Promise<unknown>;
+  getFeatures(): Promise<AppFeaturesData>;
+  getDashboardData(): Promise<AppDashboardData>;
 }
 
 export class AppRepository implements IAppRepository {
@@ -38,12 +43,12 @@ export class AppRepository implements IAppRepository {
     ];
   }
 
-  async getFeatures(): Promise<unknown> {
-    return featuresData;
+  async getFeatures(): Promise<AppFeaturesData> {
+    return featuresData as AppFeaturesData;
   }
 
-  async getDashboardData(): Promise<unknown> {
-    return dashboardData;
+  async getDashboardData(): Promise<AppDashboardData> {
+    return dashboardData as AppDashboardData;
   }
 }
 

@@ -1,12 +1,13 @@
-import { 
-  PricingData, 
-  FeaturesData, 
-  SecurityData, 
-  HowItWorksData, 
-  DocsData, 
-  ContactData, 
-  CoreData, 
-  HomeData 
+import {
+  PricingData,
+  FeaturesData,
+  SecurityData,
+  HowItWorksData,
+  DocsData,
+  ContactData,
+  CoreData,
+  HomeData,
+  LegalData,
 } from '../../index';
 
 export interface MarketingRepository {
@@ -17,7 +18,7 @@ export interface MarketingRepository {
   getDocs(): Promise<DocsData>;
   getContact(): Promise<ContactData>;
   getCore(): Promise<CoreData>;
-  getLegal(): Promise<unknown>;
+  getLegal(): Promise<LegalData>;
   getAuth(): Promise<unknown>;
   getHome(): Promise<HomeData>;
 }
@@ -63,8 +64,8 @@ export class LocalMarketingRepository implements MarketingRepository {
     return coreData;
   }
   
-  async getLegal(): Promise<unknown> {
-    return legalData;
+  async getLegal(): Promise<LegalData> {
+    return legalData as LegalData;
   }
   async getAuth(): Promise<unknown> {
     return authData;

@@ -1,6 +1,6 @@
 "use client";
 
-import { FileText, Database, Code, Shield } from "lucide-react";
+import { Database, Code, Shield } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 import type { HeroContentProps } from "@workspace/types";

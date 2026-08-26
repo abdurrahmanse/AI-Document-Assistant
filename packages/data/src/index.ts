@@ -6,6 +6,8 @@ import docsData from '../website/docs.json';
 import contactData from '../website/contact.json';
 import coreData from '../website/core.json';
 import homeData from '../website/home.json';
+import legalData from '../website/legal.json';
+import authData from '../website/auth.json';
 
 // Basic exported types inferred from the JSON
 export type PricingData = typeof pricingData;
@@ -16,6 +18,8 @@ export type DocsData = typeof docsData;
 export type ContactData = typeof contactData;
 export type CoreData = typeof coreData;
 export type HomeData = typeof homeData;
+export type LegalData = typeof legalData;
+export type AuthData = typeof authData;
 
 export const websiteData = {
   pricing: pricingData,

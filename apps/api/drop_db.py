@@ -1,6 +1,8 @@
-from app.core.config import settings
 import asyncio
+
 import asyncpg
+from app.core.config import settings
+
 
 async def drop():
     # Connect to default postgres DB to drop the custom one

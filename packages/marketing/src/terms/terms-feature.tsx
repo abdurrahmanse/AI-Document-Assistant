@@ -1,13 +1,12 @@
 "use client";
 
 
-import { useCore, useLegal } from "@workspace/data";
+import { useLegal } from "@workspace/data";
 
 export function TermsFeature() {
-  const { data: coreData, isLoading: coreLoading } = useCore();
   const { data: legalData, isLoading: legalLoading } = useLegal();
 
-  if (coreLoading || legalLoading || !coreData || !legalData) return null;
+  if (legalLoading || !legalData) return null;
 
   return (
     <div className="min-h-screen bg-background text-foreground flex flex-col">

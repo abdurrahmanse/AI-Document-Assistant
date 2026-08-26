@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, HTMLMotionProps } from "framer-motion";
+import { motion, HTMLMotionProps, type MotionProps } from "framer-motion";
 import React from "react";
 
 interface FadeInProps extends HTMLMotionProps<"div"> {
@@ -66,7 +66,7 @@ interface AnimatedMeshProps extends HTMLMotionProps<"div"> {
 }
 
 export function AnimatedMesh({ animationType = "primary", className, ...props }: AnimatedMeshProps) {
-  const getAnimation = () => {
+  const getAnimation = (): Pick<MotionProps, "animate" | "transition"> => {
     switch (animationType) {
       case "primary":
         return {
@@ -103,7 +103,7 @@ export function AnimatedMesh({ animationType = "primary", className, ...props }:
   return (
     <motion.div
       animate={anim.animate}
-      transition={anim.transition as any}
+      transition={anim.transition}
       className={className}
       {...props}
     />

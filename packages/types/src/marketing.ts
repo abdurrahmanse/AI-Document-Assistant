@@ -155,3 +155,18 @@ export interface FeatureDeepDiveProps {
     reverse: boolean;
   };
 }
+
+/**
+ * Legal pages data (privacy + terms). Mirrors
+ * `packages/data/website/legal.json`.
+ */
+export interface LegalDocument {
+  title: string;
+  effectiveDate: string;
+  content: string;
+}
+
+export interface LegalData {
+  privacy: LegalDocument;
+  terms: LegalDocument;
+}
