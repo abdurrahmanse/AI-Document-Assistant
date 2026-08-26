@@ -2,7 +2,8 @@ import uuid
 from datetime import UTC, datetime
 
 # Mock Data
-chat_sessions = [
+from typing import Any
+chat_sessions: list[dict[str, Any]] = [
     {
         "id": "1",
         "title": "Project Alpha Planning",
