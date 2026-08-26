@@ -51,7 +51,7 @@ export default function ForgotPasswordPage() {
     setError(null);
     
     if (newPassword !== confirmPassword) {
-      setError("Passwords do not match.");
+      setError(authData.forgotPassword.errors.passwordMismatch);
       return;
     }
 
@@ -69,11 +69,11 @@ export default function ForgotPasswordPage() {
       <Container size="form">
         <main className="flex flex-col">
           <div className="mb-10 text-center md:text-left">
-            <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.forgotPassword.title}</h2>
+            <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.forgotPassword.form.title}</h2>
             <p className="text-muted-foreground">
-              {step === 1 && authData.forgotPassword.description}
-              {step === 2 && "Enter the OTP sent to your email address."}
-              {step === 3 && "Create a new secure password for your account."}
+              {step === 1 && authData.forgotPassword.form.description}
+              {step === 2 && authData.forgotPassword.form.checkEmailText}
+              {step === 3 && authData.forgotPassword.form.newPasswordLabel}
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function ForgotPasswordPage() {
             {step === 1 && (
               <form onSubmit={handleRequestOtp} className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                  <label htmlFor="email" className="text-sm font-medium">{authData.forgotPassword.form.emailLabel}</label>
                   <input
                     id="email"
                     type="email"
@@ -95,11 +95,11 @@ export default function ForgotPasswordPage() {
                     className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
+                    placeholder={authData.forgotPassword.form.emailPlaceholder}
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full text-base font-semibold" disabled={requestOtpMutation.isPending}>
-                  {requestOtpMutation.isPending ? "Sending OTP..." : "Send OTP"}
+                  {requestOtpMutation.isPending ? authData.forgotPassword.form.submitEmailButtonLoading : authData.forgotPassword.form.submitEmailButton}
                 </Button>
               </form>
             )}
@@ -107,7 +107,7 @@ export default function ForgotPasswordPage() {
             {step === 2 && (
               <form onSubmit={handleVerifyOtp} className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="otp" className="text-sm font-medium">One-Time Password (OTP)</label>
+                  <label htmlFor="otp" className="text-sm font-medium">{authData.forgotPassword.form.otpLabel}</label>
                   <input
                     id="otp"
                     type="text"
@@ -115,18 +115,18 @@ export default function ForgotPasswordPage() {
                     className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
-                    placeholder="Enter 6-digit code"
+                    placeholder={authData.forgotPassword.form.otpPlaceholder}
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full text-base font-semibold">
-                  Verify OTP
+                  {authData.forgotPassword.form.submitOtpButton}
                 </Button>
                 <button
                   type="button"
                   onClick={() => setStep(1)}
                   className="w-full text-sm text-muted-foreground hover:text-foreground transition-colors mt-2"
                 >
-                  Change email address
+                  {authData.forgotPassword.form.changeEmailText}
                 </button>
               </form>
             )}
@@ -134,7 +134,7 @@ export default function ForgotPasswordPage() {
             {step === 3 && (
               <form onSubmit={handleResetPassword} className="space-y-5">
                 <div className="space-y-2">
-                  <label htmlFor="newPassword" className="text-sm font-medium">New Password</label>
+                  <label htmlFor="newPassword" className="text-sm font-medium">{authData.forgotPassword.form.newPasswordLabel}</label>
                   <input
                     id="newPassword"
                     type="password"
@@ -145,7 +145,7 @@ export default function ForgotPasswordPage() {
                   />
                 </div>
                 <div className="space-y-2">
-                  <label htmlFor="confirmPassword" className="text-sm font-medium">Confirm New Password</label>
+                  <label htmlFor="confirmPassword" className="text-sm font-medium">{authData.forgotPassword.form.confirmNewPasswordLabel}</label>
                   <input
                     id="confirmPassword"
                     type="password"
@@ -156,15 +156,15 @@ export default function ForgotPasswordPage() {
                   />
                 </div>
                 <Button type="submit" size="lg" className="w-full text-base font-semibold" disabled={resetPasswordMutation.isPending}>
-                  {resetPasswordMutation.isPending ? "Resetting Password..." : "Reset Password"}
+                  {resetPasswordMutation.isPending ? authData.forgotPassword.form.submitPasswordButtonLoading : authData.forgotPassword.form.submitPasswordButton}
                 </Button>
               </form>
             )}
 
             <div className="mt-8 text-center text-sm text-muted-foreground">
-              Remembered your password?{" "}
-              <Link href="/login" className="text-primary hover:underline font-semibold transition-colors">
-                Back to login
+              {authData.forgotPassword.footer.text}{" "}
+              <Link href={authData.forgotPassword.footer.linkHref} className="text-primary hover:underline font-semibold transition-colors">
+                {authData.forgotPassword.footer.linkText}
               </Link>
             </div>
           </div>

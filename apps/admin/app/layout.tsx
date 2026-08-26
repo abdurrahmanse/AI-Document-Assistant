@@ -7,12 +7,14 @@ import { type Metadata } from "next";
 import { Suspense } from "react";
 import { PostHogProvider, PostHogPageView } from "@workspace/observability";
 
+import { websiteData } from "@workspace/data";
+
 export const metadata: Metadata = constructMetadata({
   title: {
-    template: "%s | Admin - AI Document Assistant",
-    default: "Admin Command Center - AI Document Assistant",
+    template: websiteData.metadata.admin.title.template,
+    default: websiteData.metadata.admin.title.default,
   },
-  description: "AI Document Assistant System Administration",
+  description: websiteData.metadata.admin.description,
 });
 
 export default function RootLayout({ children }: { children: ReactNode }) {

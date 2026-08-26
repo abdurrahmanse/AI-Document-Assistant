@@ -4,4 +4,5 @@ export const appKeys = {
   stats: () => [...appKeys.all, 'stats'] as const,
   recentDocuments: () => [...appKeys.all, 'recent-documents'] as const,
   dashboard: () => [...appKeys.all, 'dashboard'] as const,
+  appContent: () => [...appKeys.all, 'app-content'] as const,
 };

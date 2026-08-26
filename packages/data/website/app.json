@@ -1,0 +1,38 @@
+{
+  "health": {
+    "title": "Platform Health",
+    "description": "Authenticated user view",
+    "loading": "Loading platform health data...",
+    "refreshButton": "Refresh Status",
+    "refreshingButton": "Refreshing...",
+    "errorTitle": "Health Check Failed",
+    "lastUpdated": "Last updated:"
+  },
+  "adminHealth": {
+    "title": "Infrastructure Health Dashboard",
+    "environment": "Environment:",
+    "syncing": "Syncing...",
+    "showCompact": "Show Compact",
+    "showDetailed": "Show Detailed",
+    "refresh": "Refresh",
+    "errorTitle": "API Connection Failed",
+    "overallStatus": "Overall Status:",
+    "lastCheck": "Last Check:",
+    "latency": "Latency",
+    "rawJsonResponse": "Raw JSON Response"
+  },
+  "notFound": {
+    "web": {
+      "returnLabel": "Return Home",
+      "returnUrl": "/"
+    },
+    "app": {
+      "returnLabel": "Return to Dashboard",
+      "returnUrl": "/"
+    },
+    "admin": {
+      "returnLabel": "Return to Command Center",
+      "returnUrl": "/"
+    }
+  }
+}

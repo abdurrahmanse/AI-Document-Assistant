@@ -3,17 +3,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { DocumentIntelligenceAPI, DetailedHealthResponse } from "@workspace/api-client";
 import { env } from "../../env";
+import { useAppContent } from "@workspace/data";
 
 const api = new DocumentIntelligenceAPI({
   baseUrl: env.NEXT_PUBLIC_API_URL,
 });
 
 export default function AppHealthPage() {
+  const { data: appData, isLoading: appLoading } = useAppContent();
   const { data, isLoading, isError, error, refetch, dataUpdatedAt } = useQuery<DetailedHealthResponse, Error>({
     queryKey: ["app-health"],
     queryFn: () => api.health.getDetailedHealth(),
     refetchInterval: 30000,
   });
+
+  if (appLoading || !appData) return null;
 
   const lastUpdated = dataUpdatedAt ? new Date(dataUpdatedAt) : null;
 
@@ -21,21 +25,21 @@ export default function AppHealthPage() {
     <div className="p-8 max-w-4xl mx-auto font-sans">
       <div className="flex justify-between items-center mb-6 border-b pb-4 border-gray-200 dark:border-gray-800">
         <div>
-          <h1 className="text-2xl font-bold">Platform Health</h1>
-          <p className="text-sm text-gray-500 mt-1">Authenticated user view</p>
+          <h1 className="text-2xl font-bold">{appData.health.title}</h1>
+          <p className="text-sm text-gray-500 mt-1">{appData.health.description}</p>
         </div>
         <button 
           onClick={() => refetch()}
           disabled={isLoading}
           className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 disabled:opacity-50"
         >
-          {isLoading ? "Checking..." : "Refresh Status"}
+          {isLoading ? appData.health.refreshingButton : appData.health.refreshButton}
         </button>
       </div>
 
       {isError && (
         <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded mb-6">
-          <strong>Error:</strong> {error.message}
+          <strong>{appData.health.errorTitle}:</strong> {error.message}
         </div>
       )}
 
@@ -61,12 +65,12 @@ export default function AppHealthPage() {
           })}
         </div>
       ) : !isError && (
-        <div className="text-gray-500">Loading platform health data...</div>
+        <div className="text-gray-500">{appData.health.loading}</div>
       )}
       
       {lastUpdated && (
         <div className="mt-8 text-sm text-gray-400 text-center">
-          Last updated: {lastUpdated.toLocaleTimeString()}
+          {appData.health.lastUpdated} {lastUpdated.toLocaleTimeString()}
         </div>
       )}
     </div>

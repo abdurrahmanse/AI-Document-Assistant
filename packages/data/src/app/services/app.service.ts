@@ -18,6 +18,10 @@ export class AppService {
   async getDashboardData() {
     return this.repository.getDashboardData();
   }
+
+  async getAppContent() {
+    return this.repository.getAppContent();
+  }
 }
 
 export const appService = new AppService(appRepository);

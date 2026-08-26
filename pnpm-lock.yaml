@@ -57,6 +57,9 @@ importers:
       '@workspace/api-client':
         specifier: workspace:^
         version: link:../../packages/api-client
+      '@workspace/data':
+        specifier: workspace:*
+        version: link:../../packages/data
       '@workspace/email':
         specifier: workspace:*
         version: link:../../packages/email
@@ -150,6 +153,9 @@ importers:
       '@workspace/app-features':
         specifier: workspace:*
         version: link:../../packages/app-features
+      '@workspace/data':
+        specifier: workspace:*
+        version: link:../../packages/data
       '@workspace/email':
         specifier: workspace:*
         version: link:../../packages/email

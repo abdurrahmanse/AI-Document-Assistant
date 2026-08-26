@@ -1,0 +1,37 @@
+{
+  "web": {
+    "title": {
+      "template": "%s | AI Document Assistant",
+      "default": "AI Document Assistant - Enterprise Document Intelligence"
+    },
+    "description": "AI-powered document intelligence platform. Upload, analyze, and extract insights from your enterprise documents in seconds."
+  },
+  "admin": {
+    "title": {
+      "template": "%s | Admin - AI Document Assistant",
+      "default": "Admin Command Center - AI Document Assistant"
+    },
+    "description": "AI Document Assistant System Administration"
+  },
+  "app": {
+    "title": {
+      "template": "%s | App - AI Document Assistant",
+      "default": "Dashboard - AI Document Assistant"
+    },
+    "description": "Manage your documents and interact with our AI.",
+    "documents": {
+      "title": "Documents",
+      "description": "Manage your uploaded documents and files",
+      "dynamicTitle": "Document {id}",
+      "dynamicDescription": "Analysis for document {id}",
+      "placeholder": "Document {id} Placeholder"
+    },
+    "chat": {
+      "title": "Chat",
+      "description": "Chat with your AI assistant about your documents",
+      "dynamicTitle": "Chat {id}",
+      "dynamicDescription": "AI Chat conversation {id}",
+      "placeholder": "Chat {id} Placeholder"
+    }
+  }
+}

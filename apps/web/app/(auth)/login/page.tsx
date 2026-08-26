@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useCore, useAuthContent, useLogin } from "@workspace/data";
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
@@ -28,11 +27,9 @@ export default function LoginPage() {
     
     try {
       await loginMutation.mutateAsync([email, password]);
-      // Assuming a successful login sets some global state or cookie, redirect:
-      // localStorage.setItem("access_token", result.access_token);
       router.push("/app");
     } catch {
-      setError("Invalid credentials. Please try again.");
+      setError(authData.login.errors.invalidCredentials);
     }
   };
 
@@ -59,16 +56,16 @@ export default function LoginPage() {
               <Link href="/" className="inline-block mb-12">
                 <div className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
                   <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                    <span className="text-primary-foreground text-xl">A</span>
+                    <span className="text-primary-foreground text-xl">{authData.login.hero.logo}</span>
                   </div>
-                  <span>AI Document</span>
+                  <span>{authData.login.hero.company}</span>
                 </div>
               </Link>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                Welcome back to the future of documents.
+                {authData.login.hero.title}
               </h1>
               <p className="text-xl text-zinc-400">
-                Log in to continue extracting insights and analyzing your enterprise data securely.
+                {authData.login.hero.description}
               </p>
             </div>
           </div>
@@ -78,9 +75,9 @@ export default function LoginPage() {
             <main className="flex-grow flex flex-col items-center justify-center p-6 lg:p-12">
               <div className="w-full max-w-sm lg:max-w-md">
                 <div className="mb-10 text-center md:text-left">
-                  <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.login.title}</h2>
+                  <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.login.form.title}</h2>
                   <p className="text-muted-foreground">
-                    {authData.login.description}
+                    {authData.login.form.description}
                   </p>
                 </div>
 
@@ -92,7 +89,7 @@ export default function LoginPage() {
                   )}
                   
                   <div className="space-y-2">
-                    <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                    <label htmlFor="email" className="text-sm font-medium">{authData.login.form.emailLabel}</label>
                     <input
                       id="email"
                       type="email"
@@ -100,15 +97,15 @@ export default function LoginPage() {
                       className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      placeholder="you@example.com"
+                      placeholder={authData.login.form.emailPlaceholder}
                     />
                   </div>
 
                   <div className="space-y-2">
                     <div className="flex items-center justify-between">
-                      <label htmlFor="password" className="text-sm font-medium">Password</label>
+                      <label htmlFor="password" className="text-sm font-medium">{authData.login.form.passwordLabel}</label>
                       <Link href="/forgot-password" className="text-sm text-primary hover:underline transition-colors">
-                        Forgot password?
+                        {authData.login.form.forgotPasswordLink}
                       </Link>
                     </div>
                     <input
@@ -122,14 +119,14 @@ export default function LoginPage() {
                   </div>
 
                   <Button type="submit" size="lg" className="w-full text-base font-semibold" disabled={loginMutation.isPending}>
-                    {loginMutation.isPending ? "Authenticating..." : authData.login.title}
+                    {loginMutation.isPending ? authData.login.form.submitButtonLoading : authData.login.form.submitButton}
                   </Button>
                 </form>
 
                 <div className="mt-8 text-center text-sm text-muted-foreground">
-                  Don&apos;t have an account?{" "}
-                  <Link href="/register" className="text-primary hover:underline font-semibold transition-colors">
-                    Create one now
+                  {authData.login.footer.text}{" "}
+                  <Link href={authData.login.footer.linkHref} className="text-primary hover:underline font-semibold transition-colors">
+                    {authData.login.footer.linkText}
                   </Link>
                 </div>
               </div>

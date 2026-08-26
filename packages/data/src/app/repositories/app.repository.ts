@@ -12,6 +12,7 @@ export interface IAppRepository {
   getRecentDocuments(): Promise<RecentDocument[]>;
   getFeatures(): Promise<AppFeaturesData>;
   getDashboardData(): Promise<AppDashboardData>;
+  getAppContent(): Promise<any>;
 }
 
 export class AppRepository implements IAppRepository {
@@ -49,6 +50,11 @@ export class AppRepository implements IAppRepository {
 
   async getDashboardData(): Promise<AppDashboardData> {
     return dashboardData as AppDashboardData;
+  }
+
+  async getAppContent(): Promise<any> {
+    const { websiteData } = await import("../../index");
+    return websiteData.appContent;
   }
 }
 

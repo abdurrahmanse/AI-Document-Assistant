@@ -6,13 +6,15 @@ import { QueryProvider, LenisProvider, ThemeProvider, ToastProvider, NuqsProvide
 import { Suspense } from "react";
 import { PostHogProvider, PostHogPageView } from "@workspace/observability";
 
+import { websiteData } from "@workspace/data";
+
 export const metadata: Metadata = constructMetadata({
   title: {
-    template: "%s | AI Document Assistant",
-    default: "AI Document Assistant - The Future of Document Intelligence",
+    template: websiteData.metadata.web.title.template,
+    default: websiteData.metadata.web.title.default,
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } as any, // type assertion for template string format
-  description: "AI-powered document intelligence platform. Upload, analyze, and extract insights from your enterprise documents in seconds.",
+  description: websiteData.metadata.web.description,
 });
 
 export default function RootLayout({

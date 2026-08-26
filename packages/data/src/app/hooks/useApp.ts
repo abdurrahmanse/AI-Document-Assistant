@@ -29,3 +29,10 @@ export function useAppDashboardData() {
     queryFn: () => appService.getDashboardData(),
   });
 }
+
+export function useAppContent() {
+  return useQuery({
+    queryKey: appKeys.appContent(),
+    queryFn: () => appService.getAppContent(),
+  });
+}

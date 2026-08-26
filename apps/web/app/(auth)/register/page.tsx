@@ -1,6 +1,5 @@
 "use client";
 
-
 import { useCore, useAuthContent, useRegister } from "@workspace/data";
 import Link from "next/link";
 import { Button } from "@workspace/ui/components/ui/button";
@@ -37,7 +36,7 @@ export default function RegisterPage() {
         router.push("/login");
       }, 2000);
     } catch {
-      setError("Failed to register. Email may already be in use.");
+      setError(authData.register.errors.registrationFailed);
     }
   };
 
@@ -64,16 +63,16 @@ export default function RegisterPage() {
               <Link href="/" className="inline-block mb-12">
                 <div className="flex items-center gap-2 font-bold text-2xl tracking-tighter">
                   <div className="w-8 h-8 rounded-lg bg-primary flex items-center justify-center">
-                    <span className="text-primary-foreground text-xl">A</span>
+                    <span className="text-primary-foreground text-xl">{authData.register.hero.logo}</span>
                   </div>
-                  <span>AI Document</span>
+                  <span>{authData.register.hero.company}</span>
                 </div>
               </Link>
               <h1 className="text-4xl lg:text-5xl font-bold tracking-tight mb-6">
-                Unlock the intelligence in your documents.
+                {authData.register.hero.title}
               </h1>
               <p className="text-xl text-zinc-400">
-                Join thousands of teams using AI Document Assistant to streamline operations and uncover hidden data.
+                {authData.register.hero.description}
               </p>
             </div>
           </div>
@@ -83,9 +82,9 @@ export default function RegisterPage() {
             <main className="flex-grow flex flex-col items-center justify-center p-6 lg:p-12">
               <div className="w-full max-w-sm lg:max-w-md">
                 <div className="mb-10 text-center md:text-left">
-                  <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.register.title}</h2>
+                  <h2 className="text-3xl font-bold tracking-tight mb-2">{authData.register.form.title}</h2>
                   <p className="text-muted-foreground">
-                    {authData.register.description}
+                    {authData.register.form.description}
                   </p>
                 </div>
 
@@ -123,7 +122,7 @@ export default function RegisterPage() {
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="email" className="text-sm font-medium">Email Address</label>
+                      <label htmlFor="email" className="text-sm font-medium">{authData.register.form.emailLabel}</label>
                       <input
                         id="email"
                         type="email"
@@ -131,12 +130,12 @@ export default function RegisterPage() {
                         className="w-full flex h-11 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50 transition-colors"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        placeholder="you@example.com"
+                        placeholder={authData.register.form.emailPlaceholder}
                       />
                     </div>
 
                     <div className="space-y-2">
-                      <label htmlFor="password" className="text-sm font-medium">Password</label>
+                      <label htmlFor="password" className="text-sm font-medium">{authData.register.form.passwordLabel}</label>
                       <input
                         id="password"
                         type="password"
@@ -148,15 +147,15 @@ export default function RegisterPage() {
                     </div>
 
                     <Button type="submit" size="lg" className="w-full text-base font-semibold" disabled={registerMutation.isPending}>
-                      {registerMutation.isPending ? "Creating account..." : authData.register.title}
+                      {registerMutation.isPending ? authData.register.form.submitButtonLoading : authData.register.form.submitButton}
                     </Button>
                   </form>
                 )}
 
                 <div className="mt-8 text-center text-sm text-muted-foreground">
-                  Already have an account?{" "}
-                  <Link href="/login" className="text-primary hover:underline font-semibold transition-colors">
-                    Log in here
+                  {authData.register.footer.text}{" "}
+                  <Link href={authData.register.footer.linkHref} className="text-primary hover:underline font-semibold transition-colors">
+                    {authData.register.footer.linkText}
                   </Link>
                 </div>
               </div>
