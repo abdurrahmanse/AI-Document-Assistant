@@ -14,7 +14,7 @@ if (typeof window !== "undefined") {
       api_host: posthogHost,
       person_profiles: "identified_only", // or 'always' to create profiles for anonymous users as well
     });
-  } else {
+  } else if (process.env.NODE_ENV !== "development") {
     console.warn("PostHog environment variables are missing. Analytics will not be tracked.");
   }
 }

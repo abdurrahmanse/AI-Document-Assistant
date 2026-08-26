@@ -1,3 +1,5 @@
+"use client";
+
 import { useAppFeatures } from "@workspace/data";
 
 export function ProfileFeature() {

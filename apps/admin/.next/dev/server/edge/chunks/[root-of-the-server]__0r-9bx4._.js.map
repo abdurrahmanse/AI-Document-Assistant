@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 16, "column": 0}, "map": {"version":3,"sources":["file:///Volumes/Fullstack/Github/AI-Document-Assistant/apps/admin/middleware.ts"],"sourcesContent":["import { NextResponse } from \"next/server\";\n\nexport function middleware() {\n  return NextResponse.next();\n}\n\nexport const config = {\n  matcher: [\n    \"/((?!api|_next/static|_next/image|favicon.ico).*)\",\n  ],\n};\n"],"names":["middleware","next","config","matcher"],"mappings":";;;;;;AAAA;AAAA;;AAEO,SAASA;IACd,OAAO,wbAAY,CAACC,IAAI;AAC1B;AAEO,MAAMC,SAAS;IACpBC,SAAS;QACP;KACD;AACH"}}]
-}

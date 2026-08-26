@@ -25,3 +25,15 @@ export const useLogin = () => {
     mutationFn: (data: Parameters<typeof authApi.login>) => authApi.login(...data),
   });
 };
+
+export const useRequestPasswordReset = () => {
+  return useMutation({
+    mutationFn: (email: string) => authApi.requestPasswordReset(email),
+  });
+};
+
+export const useResetPassword = () => {
+  return useMutation({
+    mutationFn: (data: Parameters<typeof authApi.resetPassword>) => authApi.resetPassword(...data),
+  });
+};

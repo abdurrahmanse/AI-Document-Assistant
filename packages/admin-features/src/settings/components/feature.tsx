@@ -1,3 +1,5 @@
+"use client";
+
 import { Container } from "@workspace/ui/components/ui/container";
 import { useAdminFeatures } from "@workspace/data";
 

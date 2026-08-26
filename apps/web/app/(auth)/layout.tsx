@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { Header } from "@workspace/marketing";
+import { Logo } from "@workspace/marketing";
 import { useCore } from "@workspace/data";
 
 export default function AuthLayout({ children }: { children: ReactNode }) {
@@ -13,7 +13,9 @@ export default function AuthLayout({ children }: { children: ReactNode }) {
 
   return (
     <>
-      <Header siteName={coreData.site.name} navItems={coreData.navigation} />
+      <div className="absolute top-0 left-0 p-6 md:p-8 z-50">
+        <Logo siteName={coreData.site.name} />
+      </div>
       {children}
     </>
   );

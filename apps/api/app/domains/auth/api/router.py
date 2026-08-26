@@ -34,10 +34,16 @@ class LoginRequest(BaseModel):
 
 class OtpRequest(BaseModel):
     email: EmailStr
+    purpose: str = "login"
 
 class VerifyOtpRequest(BaseModel):
     email: EmailStr
     code: str
+
+class ResetPasswordRequest(BaseModel):
+    email: EmailStr
+    code: str
+    new_password: str
 
 
 @router.post("/register")
@@ -109,14 +115,14 @@ async def request_otp(
     otp_record = OTP(
         user_id=user.id,
         code_hash=hashed_code,
-        purpose="login",
+        purpose=payload.purpose,
         expires_at=OTPService.calculate_expiry()
     )
     
     await repo.create_otp(otp_record)
     await session.commit()
     
-    await OTPService.send_otp_email(user.email, code, "login")
+    await OTPService.send_otp_email(user.email, code, payload.purpose)
     
     return {"message": "If the email is registered, an OTP was sent."}
 
@@ -155,3 +161,31 @@ async def verify_otp(
             "email": user.email,
         }
     }
+
+
+@router.post("/reset-password")
+async def reset_password(
+    payload: ResetPasswordRequest,
+    user_service: UserService = Depends(get_user_service),
+    repo: UserRepository = Depends(get_user_repo),
+    session: AsyncSession = Depends(get_db_session)
+):
+    user = await user_service.get_user_by_email(payload.email)
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid OTP")
+        
+    valid_otp = await repo.get_valid_otp(user.id, "reset_password")
+    if not valid_otp:
+        raise HTTPException(status_code=401, detail="OTP expired or not found")
+        
+    if not verify_password(payload.code, valid_otp.code_hash):
+        raise HTTPException(status_code=401, detail="Invalid OTP")
+        
+    # Hash the new password and update the user
+    user.hashed_password = get_password_hash(payload.new_password)
+    
+    # Mark as used
+    valid_otp.is_used = True
+    await session.commit()
+    
+    return {"message": "Password reset successfully"}

@@ -25,5 +25,20 @@ export const authApi = {
       refresh_token: string;
       user: { id: string; email: string; first_name: string; last_name: string };
     }>("/api/v1/auth/login", { email, password });
+  },
+
+  requestPasswordReset: async (email: string) => {
+    return apiClient.post<{ message: string }>("/api/v1/auth/request-otp", { 
+      email, 
+      purpose: "reset_password" 
+    });
+  },
+
+  resetPassword: async (email: string, code: string, new_password: string) => {
+    return apiClient.post<{ message: string }>("/api/v1/auth/reset-password", { 
+      email, 
+      code, 
+      new_password 
+    });
   }
 };

@@ -12,7 +12,7 @@ export function SocialProof({ socialProof }: { socialProof: { title: string; log
           </h2>
           <div className="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
             {socialProof.logos.map((logo, i) => {
-              const Icon = (Icons as any)[logo.icon] || Icons.HelpCircle;
+              const Icon = (Icons as unknown as Record<string, React.ElementType>)[logo.icon] || Icons.HelpCircle;
               return (
                 <div key={i} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
                   <Icon className="w-6 h-6" />
