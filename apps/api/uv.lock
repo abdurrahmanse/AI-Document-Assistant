@@ -292,7 +292,7 @@ requires-dist = [
     { name = "boto3", specifier = ">=1.40.61" },
     { name = "celery", specifier = ">=5.6.3" },
     { name = "fastapi", extras = ["standard"], specifier = ">=0.115.0" },
-    { name = "fastapi-limiter", specifier = ">=0.1.6" },
+    { name = "fastapi-limiter", specifier = "==0.1.6" },
     { name = "greenlet", specifier = ">=3.5.5" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "langchain-text-splitters", specifier = ">=1.1.2" },
@@ -878,15 +878,15 @@ wheels = [
 
 [[package]]
 name = "fastapi-limiter"
-version = "0.2.0"
+version = "0.1.6"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "fastapi" },
-    { name = "pyrate-limiter" },
+    { name = "redis" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/b7/32/81f64b69a79345caca0a90d1601ae7c84c39438145793514ee82daac4fc6/fastapi_limiter-0.2.0.tar.gz", hash = "sha256:b042259f6280056b5b2b3f506edd76c8e0648d7a5ce86c3485216a4a0fd0ec14", size = 7401, upload-time = "2026-02-06T07:00:09.831Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/7f/99/c7903234488d4dca5f9bccb4f88c2f582a234f0dca33348781c9cf8a48c6/fastapi_limiter-0.1.6.tar.gz", hash = "sha256:6f5fde8efebe12eb33861bdffb91009f699369a3c2862cdc7c1d9acf912ff443", size = 8307, upload-time = "2024-01-05T09:14:48.628Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c4/9b/35278a18254f187d55bb450ded6bc9a59c7b3010d164e1796f3dfb7aa73d/fastapi_limiter-0.2.0-py3-none-any.whl", hash = "sha256:e576ebb29cc9614c2f38471c60ed0e849024e9a1b7a2aeb4c2a31a6d708b4aea", size = 5219, upload-time = "2026-02-06T07:00:07.824Z" },
+    { url = "https://files.pythonhosted.org/packages/cd/b5/6f6b4d18bee1cafc857eae12738b3a03b7d1102b833668be868938c57b9d/fastapi_limiter-0.1.6-py3-none-any.whl", hash = "sha256:2e53179a4208b8f2c8795e38bb001324d3dc37d2800ff49fd28ec5caabf7a240", size = 15829, upload-time = "2024-01-05T09:14:47.613Z" },
 ]
 
 [[package]]
@@ -2198,15 +2198,6 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/44/66/54212e75406afd9f3e933d0dda23072f6aecc55c5a273077dc2e0b028b23/pypdf-6.16.2.tar.gz", hash = "sha256:595647f6191de6f402cfde1d0c455d6cbccbd509aac32b34783009c032de5d6e", size = 7008996, upload-time = "2026-08-23T13:50:07.135Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/13/f1/a2da3b55acd4ab737bf728c97edaaed5ec1d3c1236acb639dcdfa97e42c7/pypdf-6.16.2-py3-none-any.whl", hash = "sha256:c8b09a59399062fb45a1b8156c18a787a10a3dae03ac9674397a226712c94604", size = 385060, upload-time = "2026-08-23T13:50:05.349Z" },
-]
-
-[[package]]
-name = "pyrate-limiter"
-version = "4.4.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/19/27/e564f33ea085c63d5540f707b31aeb50a4992eac2da655dc02435a760a07/pyrate_limiter-4.4.0.tar.gz", hash = "sha256:2c0c720c4fa16c5d8199e4821bf34507fb49c007a25b786cec6fb94ffd0844aa", size = 90955, upload-time = "2026-06-14T10:52:03.021Z" }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/2b/77/2b5ea2e5e343fd7f74ba9c50a282d7cb66d1be3d12bd647510338d78fcf1/pyrate_limiter-4.4.0-py3-none-any.whl", hash = "sha256:f738dfa3c7ac1222a5ea3d31e00cfd31b5592b13ade4077afe9e8ac6293381f5", size = 43102, upload-time = "2026-06-14T10:52:01.334Z" },
 ]
 
 [[package]]
