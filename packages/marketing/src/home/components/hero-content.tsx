@@ -1,8 +1,8 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
 
-export function HeroContent({ hero }: { hero: { badge: string; title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string } }) {
+export function HeroContent({ hero }: { hero: { title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string } }) {
 
   return (
     <FadeIn
@@ -11,13 +11,6 @@ export function HeroContent({ hero }: { hero: { badge: string; title1: string; t
       className="max-w-5xl mx-auto z-10 relative pt-12 md:pt-20"
     >
       <div className="relative space-y-10 flex flex-col items-center text-center">
-        {/* Organic Glowing Badge */}
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-background/50 backdrop-blur-xl border border-primary/20 text-sm font-medium text-foreground shadow-[0_0_20px_rgba(99,102,241,0.15)] transition-all hover:scale-105 hover:bg-background/80 cursor-default">
-          <Sparkles className="w-4 h-4 text-primary animate-pulse" />
-          <span className="bg-gradient-to-r from-primary to-indigo-500 bg-clip-text text-transparent">
-            {hero.badge}
-          </span>
-        </div>
        
         {/* Massive Dynamic Typography */}
         <div className="relative w-full text-center">
