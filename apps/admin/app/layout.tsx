@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { fontRajdhani } from "@workspace/ui/lib/fonts";
+import { fontRajdhani, fontInter } from "@workspace/ui/lib/fonts";
 import { constructMetadata } from "@workspace/ui/lib/metadata";
 import "@workspace/ui/globals.css";
 import { QueryProvider, LenisProvider, ThemeProvider, ToastProvider, NuqsProvider } from "@workspace/ui/providers";
@@ -20,7 +20,7 @@ export const metadata: Metadata = constructMetadata({
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${fontRajdhani.variable} min-h-screen bg-background font-sans antialiased`}>
+      <body className={`${fontRajdhani.variable} ${fontInter.variable} min-h-screen bg-background font-sans antialiased`}>
         <PostHogProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
             <NuqsProvider>

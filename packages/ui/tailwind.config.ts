@@ -18,6 +18,7 @@ const config = {
   	extend: {
   		fontFamily: {
   			sans: ['var(--font-rajdhani)', 'sans-serif'],
+  			display: ['var(--font-inter)', 'sans-serif'],
   		},
   		colors: {
   			border: 'hsl(var(--border))',
