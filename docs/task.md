@@ -18,9 +18,8 @@ Task: Identify root causes of ALL reported errors and issues, then implement rob
 Review: Re-run all checks after fixes, verify the project is clean, consistent, maintainable, and production-ready, and do not stop until all issues are resolved or only clearly documented non-blocking warnings remain.
 
 
-Audit → Plan → Implement → Test → Detect Errors → Fix → Re-test → Verify → Final Report
 
-You audit the entire project and you tell me what the current status of the project is, what the project is actually about, and in which direction the project is moving.
+
 
 Context: Audit the entire project for TypeScript/type errors, build failures, runtime issues, and Git/`.gitignore` configuration problems.
 Role: Act as a senior full-stack engineer and code-quality auditor.
