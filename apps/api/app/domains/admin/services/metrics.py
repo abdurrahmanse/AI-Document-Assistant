@@ -1,24 +1,39 @@
+from sqlalchemy import select, func
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from app.infrastructure.db.models.user import User
+from app.infrastructure.db.models.document import Document
+from app.infrastructure.db.models.conversation import Conversation
+from app.infrastructure.db.models.job import Job
+
 class AdminMetricsService:
-    @staticmethod
-    async def get_core_metrics() -> dict:
+    def __init__(self, session: AsyncSession):
+        self.session = session
+
+    async def get_core_metrics(self) -> dict:
+        users_count = await self.session.execute(select(func.count()).select_from(User))
+        docs_count = await self.session.execute(select(func.count()).select_from(Document))
+        conversations_count = await self.session.execute(select(func.count()).select_from(Conversation))
+        jobs_count = await self.session.execute(select(func.count()).select_from(Job))
+
         return {
             "totalUsers": {
-                "value": "10,482",
-                "trend": "+20.1% from last month",
+                "value": str(users_count.scalar()),
+                "trend": "Live Data",
                 "isPositive": True,
             },
-            "activeSubscriptions": {
-                "value": "+2350",
-                "trend": "+180 since yesterday",
+            "totalDocuments": {
+                "value": str(docs_count.scalar()),
+                "trend": "Live Data",
                 "isPositive": True,
             },
-            "systemHealth": {
-                "value": "99.99%",
-                "trend": "Uptime over 30 days",
+            "totalConversations": {
+                "value": str(conversations_count.scalar()),
+                "trend": "Live Data",
             },
-            "databaseLoad": {
-                "value": "42%",
-                "trend": "-4% since last hour",
-                "isPositive": False,
+            "totalJobs": {
+                "value": str(jobs_count.scalar()),
+                "trend": "Live Data",
+                "isPositive": True,
             },
         }

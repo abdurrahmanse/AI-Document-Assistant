@@ -5,7 +5,7 @@ from app.domains.auth.services.security import (
     get_password_hash,
     verify_password,
 )
-from app.domains.users.models import OTP
+from app.infrastructure.db.models.user import OTP
 from app.domains.users.repositories.user_repository import UserRepository
 from app.domains.users.services.user_service import UserService
 from app.infrastructure.db.session import get_db_session
@@ -45,8 +45,9 @@ class ResetPasswordRequest(BaseModel):
     code: str
     new_password: str
 
+from fastapi_limiter.depends import RateLimiter
 
-@router.post("/register")
+@router.post("/register", dependencies=[Depends(RateLimiter(times=5, seconds=60))])
 async def register(
     payload: RegisterRequest, 
     user_service: UserService = Depends(get_user_service),
@@ -69,7 +70,7 @@ async def register(
     return {"message": "User created successfully", "user_id": user.id}
 
 
-@router.post("/login")
+@router.post("/login", dependencies=[Depends(RateLimiter(times=10, seconds=60))])
 async def login(
     payload: LoginRequest,
     user_service: UserService = Depends(get_user_service)
@@ -97,7 +98,7 @@ async def login(
     }
 
 
-@router.post("/request-otp")
+@router.post("/request-otp", dependencies=[Depends(RateLimiter(times=3, seconds=60))])
 async def request_otp(
     payload: OtpRequest,
     user_service: UserService = Depends(get_user_service),
@@ -161,6 +162,39 @@ async def verify_otp(
             "email": user.email,
         }
     }
+
+
+class RefreshRequest(BaseModel):
+    refresh_token: str
+
+@router.post("/refresh")
+async def refresh(
+    payload: RefreshRequest,
+    user_service: UserService = Depends(get_user_service)
+):
+    from app.domains.auth.services.security import decode_token
+    token_data = decode_token(payload.refresh_token)
+    if not token_data or token_data.get("type") != "refresh":
+        raise HTTPException(status_code=401, detail="Invalid refresh token")
+        
+    user_id = token_data.get("sub")
+    if not user_id:
+        raise HTTPException(status_code=401, detail="Invalid refresh token")
+        
+    import uuid
+    user = await user_service.get_user_by_id(uuid.UUID(user_id))
+    if not user:
+        raise HTTPException(status_code=401, detail="Invalid user")
+        
+    access_token = create_access_token(subject=user.id)
+    # optionally return a new refresh token as well
+    
+    return {
+        "access_token": access_token,
+        "token_type": "bearer"
+    }
+
+
 
 
 @router.post("/reset-password")

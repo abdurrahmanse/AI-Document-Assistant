@@ -1,6 +1,6 @@
 import uuid
 
-from app.domains.users.models import OTP, Role, User
+from app.infrastructure.db.models.user import OTP, Role, User
 from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 

@@ -79,6 +79,7 @@ class Settings(BaseSettings):
     AWS_REGION: str | None = None
     AWS_ACCESS_KEY_ID: str | None = None
     AWS_SECRET_ACCESS_KEY: str | None = None
+    S3_ENDPOINT_URL: str | None = None
     
     # AI / LLM
     OPENAI_API_KEY: str | None = None

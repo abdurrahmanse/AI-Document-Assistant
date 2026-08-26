@@ -1,6 +1,6 @@
 import uuid
 
-from app.domains.users.models import User
+from app.infrastructure.db.models.user import User
 from app.domains.users.repositories.user_repository import UserRepository
 
 
