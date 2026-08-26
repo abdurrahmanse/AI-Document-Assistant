@@ -8,6 +8,7 @@ import {
   CoreData,
   HomeData,
   LegalData,
+  AuthData,
 } from '../../index';
 
 export interface MarketingRepository {
@@ -19,7 +20,7 @@ export interface MarketingRepository {
   getContact(): Promise<ContactData>;
   getCore(): Promise<CoreData>;
   getLegal(): Promise<LegalData>;
-  getAuth(): Promise<unknown>;
+  getAuth(): Promise<AuthData>;
   getHome(): Promise<HomeData>;
 }
 
@@ -67,8 +68,8 @@ export class LocalMarketingRepository implements MarketingRepository {
   async getLegal(): Promise<LegalData> {
     return legalData as LegalData;
   }
-  async getAuth(): Promise<unknown> {
-    return authData;
+  async getAuth(): Promise<AuthData> {
+    return authData as AuthData;
   }
   async getHome(): Promise<HomeData> {
     return homeData;
