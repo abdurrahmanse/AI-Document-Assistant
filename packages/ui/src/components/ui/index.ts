@@ -9,3 +9,6 @@ export * from "./hover-card";
 export * from "./tabs";
 export * from "./motion";
 export * from "./container";
+export * from "./marquee";
+export * from "./spotlight-card";
+export * from "./shiny-text";

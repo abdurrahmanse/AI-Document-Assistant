@@ -1,6 +1,7 @@
 import { FadeIn } from "@workspace/ui/components/ui/motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { Button } from "@workspace/ui/components/ui";
+import { ShinyText } from "@workspace/ui/components/ui/shiny-text";
 
 export function HeroContent({ hero }: { hero: { title1: string; title2: string; description: string; primaryButton: string; secondaryButton: string } }) {
 
@@ -12,6 +13,11 @@ export function HeroContent({ hero }: { hero: { title1: string; title2: string; 
     >
       <div className="relative space-y-10 flex flex-col items-center text-center">
        
+        <ShinyText className="mb-6">
+          <Sparkles className="w-4 h-4 text-primary" />
+          <span>Next-Generation Document Intelligence</span>
+        </ShinyText>
+
         {/* Massive Dynamic Typography */}
         <div className="relative w-full text-center">
           <h1 className="text-5xl sm:text-6xl md:text-8xl font-semibold tracking-tighter leading-[1.05] text-foreground">

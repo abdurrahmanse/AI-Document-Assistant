@@ -70,18 +70,29 @@ const config = {
   				to: { height: '0' }
   			},
 			shimmer: {
-				'100%': { transform: 'translateX(100%)' },
+				'0%': { backgroundPosition: '200% 0' },
+                '100%': { backgroundPosition: '-200% 0' },
 			},
 			scan: {
 				'0%, 100%': { top: '0%' },
 				'50%': { top: '100%' },
-			}
+			},
+            marquee: {
+                from: { transform: 'translateX(0)' },
+                to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+            },
+            'marquee-vertical': {
+                from: { transform: 'translateY(0)' },
+                to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+            }
   		},
   		animation: {
   			'accordion-down': 'accordion-down 0.2s ease-out',
   			'accordion-up': 'accordion-up 0.2s ease-out',
-			'shimmer': 'shimmer 2s infinite',
-			'scan': 'scan 3s ease-in-out infinite'
+			'shimmer': 'shimmer 8s infinite linear',
+			'scan': 'scan 3s ease-in-out infinite',
+            'marquee': 'marquee var(--duration) linear infinite',
+            'marquee-vertical': 'marquee-vertical var(--duration) linear infinite',
   		}
   	}
   },
