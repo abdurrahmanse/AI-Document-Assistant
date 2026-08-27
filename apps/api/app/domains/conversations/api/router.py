@@ -46,7 +46,7 @@ async def delete_conversation(
     await db.commit()
     return {"status": "deleted"}
 
-from fastapi_limiter.depends import RateLimiter
+from app.core.rate_limit import RateLimiter
 
 @router.post("/{conversation_id}/messages", dependencies=[Depends(RateLimiter(times=10, seconds=60))])  # type: ignore
 async def send_message(

@@ -12,7 +12,7 @@ from app.domains.auth.schemas.auth_schemas import (
 from app.infrastructure.db.session import get_db_session
 from fastapi import APIRouter, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
-from fastapi_limiter.depends import RateLimiter
+from app.core.rate_limit import RateLimiter
 
 router = APIRouter(prefix="/auth", tags=["auth"])
 
