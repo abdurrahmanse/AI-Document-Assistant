@@ -1,5 +1,6 @@
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
+from app.core.exceptions import ForbiddenException
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.infrastructure.db.session import get_db_session
@@ -12,7 +13,7 @@ router = APIRouter()
 async def require_admin(current_user: User = Depends(get_current_user)):
     is_admin = any(role.name == "admin" for role in current_user.roles)
     if not is_admin:
-        raise HTTPException(status_code=403, detail="Not authorized")
+        raise ForbiddenException(message="Not authorized")
     return current_user
 
 def get_admin_service(db: AsyncSession = Depends(get_db_session)) -> AdminService:

@@ -1,6 +1,7 @@
 import uuid
-from fastapi import APIRouter, Depends, File, UploadFile, HTTPException
+from fastapi import APIRouter, Depends, File, UploadFile
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.core.exceptions import BadRequestException, NotFoundException
 
 from app.domains.documents.services.document import DocumentService
 from app.domains.documents.repositories.postgres import DocumentRepository
@@ -30,7 +31,7 @@ async def upload_document(
 ):
     # In FastAPI, file.size is accessible asynchronously if read, or from headers
     if not file.filename:
-        raise HTTPException(status_code=400, detail="Filename missing")
+        raise BadRequestException(message="Filename missing")
         
     doc = await service.upload_document(current_user.id, file)
     await session.commit()
@@ -62,6 +63,6 @@ async def delete_document(
 ):
     success = await service.delete_document(document_id, current_user.id)
     if not success:
-        raise HTTPException(status_code=404, detail="Document not found")
+        raise NotFoundException(message="Document not found")
     await session.commit()
     return {"message": "Document deleted successfully"}

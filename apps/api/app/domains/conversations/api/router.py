@@ -1,6 +1,7 @@
 import uuid
 from typing import List
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import APIRouter, Depends
+from app.core.exceptions import NotFoundException
 from fastapi.responses import StreamingResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 from pydantic import BaseModel
@@ -41,7 +42,7 @@ async def delete_conversation(
     repo = ConversationRepository(db)
     success = await repo.delete(conversation_id, current_user.id)
     if not success:
-        raise HTTPException(status_code=404, detail="Conversation not found")
+        raise NotFoundException(message="Conversation not found")
     await db.commit()
     return {"status": "deleted"}
 

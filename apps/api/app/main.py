@@ -8,6 +8,16 @@ from app.core.redis import redis_client
 from app.core.logging import setup_logging
 from app.router import api_router
 from fastapi_limiter import FastAPILimiter  # type: ignore
+from fastapi.exceptions import RequestValidationError
+from starlette.exceptions import HTTPException as StarletteHTTPException
+
+from app.core.exceptions import AppException
+from app.core.exception_handlers import (
+    app_exception_handler,
+    http_exception_handler,
+    validation_exception_handler,
+    unhandled_exception_handler,
+)
 
 
 @asynccontextmanager
@@ -30,6 +40,12 @@ app = FastAPI(
     redoc_url="/redoc",
     lifespan=lifespan
 )
+
+# Exception handlers
+app.add_exception_handler(AppException, app_exception_handler)  # type: ignore
+app.add_exception_handler(StarletteHTTPException, http_exception_handler)  # type: ignore
+app.add_exception_handler(RequestValidationError, validation_exception_handler)  # type: ignore
+app.add_exception_handler(Exception, unhandled_exception_handler)  # type: ignore
 
 # Set up CORS rules
 if settings.BACKEND_CORS_ORIGINS:

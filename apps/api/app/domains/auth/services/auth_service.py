@@ -20,8 +20,7 @@ from app.domains.auth.services.security import (
 from app.infrastructure.db.models.user import OTP
 from app.domains.users.repositories.user_repository import UserRepository
 from app.domains.users.services.user_service import UserService
-from fastapi import HTTPException
-
+from app.core.exceptions import BadRequestException, UnauthorizedException
 
 class AuthService:
     def __init__(self, user_service: UserService, repo: UserRepository):
@@ -31,7 +30,7 @@ class AuthService:
     async def register(self, payload: RegisterRequest) -> Dict[str, Any]:
         existing = await self.user_service.get_user_by_email(payload.email)
         if existing:
-            raise HTTPException(status_code=400, detail="Email already registered")
+            raise BadRequestException(message="Email already registered")
 
         hashed = get_password_hash(payload.password)
         user = await self.user_service.create_user(
@@ -45,10 +44,10 @@ class AuthService:
     async def login(self, payload: LoginRequest) -> Dict[str, Any]:
         user = await self.user_service.get_user_by_email(payload.email)
         if not user or not user.hashed_password:
-            raise HTTPException(status_code=401, detail="Invalid credentials")
+            raise UnauthorizedException(message="Invalid credentials")
 
         if not verify_password(payload.password, user.hashed_password):
-            raise HTTPException(status_code=401, detail="Invalid credentials")
+            raise UnauthorizedException(message="Invalid credentials")
 
         access_token = create_access_token(subject=user.id)
         refresh_token = create_refresh_token(subject=user.id)
@@ -89,14 +88,14 @@ class AuthService:
     async def verify_otp(self, payload: VerifyOtpRequest) -> Dict[str, Any]:
         user = await self.user_service.get_user_by_email(payload.email)
         if not user:
-            raise HTTPException(status_code=401, detail="Invalid OTP")
+            raise UnauthorizedException(message="Invalid OTP")
 
         valid_otp = await self.repo.get_valid_otp(user.id, "login")
         if not valid_otp:
-            raise HTTPException(status_code=401, detail="OTP expired or not found")
+            raise UnauthorizedException(message="OTP expired or not found")
 
         if not verify_password(payload.code, valid_otp.code_hash):
-            raise HTTPException(status_code=401, detail="Invalid OTP")
+            raise UnauthorizedException(message="Invalid OTP")
 
         valid_otp.is_used = True
 
@@ -116,15 +115,15 @@ class AuthService:
     async def refresh(self, payload: RefreshRequest) -> Dict[str, Any]:
         token_data = decode_token(payload.refresh_token)
         if not token_data or token_data.get("type") != "refresh":
-            raise HTTPException(status_code=401, detail="Invalid refresh token")
+            raise UnauthorizedException(message="Invalid refresh token")
 
         user_id = token_data.get("sub")
         if not user_id:
-            raise HTTPException(status_code=401, detail="Invalid refresh token")
+            raise UnauthorizedException(message="Invalid refresh token")
 
         user = await self.user_service.get_user_by_id(uuid.UUID(user_id))
         if not user:
-            raise HTTPException(status_code=401, detail="Invalid user")
+            raise UnauthorizedException(message="Invalid user")
 
         access_token = create_access_token(subject=user.id)
 
@@ -136,14 +135,14 @@ class AuthService:
     async def reset_password(self, payload: ResetPasswordRequest) -> Dict[str, Any]:
         user = await self.user_service.get_user_by_email(payload.email)
         if not user:
-            raise HTTPException(status_code=401, detail="Invalid OTP")
+            raise UnauthorizedException(message="Invalid OTP")
 
         valid_otp = await self.repo.get_valid_otp(user.id, "reset_password")
         if not valid_otp:
-            raise HTTPException(status_code=401, detail="OTP expired or not found")
+            raise UnauthorizedException(message="OTP expired or not found")
 
         if not verify_password(payload.code, valid_otp.code_hash):
-            raise HTTPException(status_code=401, detail="Invalid OTP")
+            raise UnauthorizedException(message="Invalid OTP")
 
         user.hashed_password = get_password_hash(payload.new_password)
         valid_otp.is_used = True

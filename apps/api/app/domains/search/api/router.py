@@ -1,5 +1,6 @@
-from fastapi import APIRouter, Depends, HTTPException, Query
+from fastapi import APIRouter, Depends, Query
 from sqlalchemy.ext.asyncio import AsyncSession
+from app.core.exceptions import InternalServerException
 from typing import List, Optional
 import uuid
 from pydantic import BaseModel
@@ -35,4 +36,4 @@ async def search_documents(
         )
         return results
     except Exception as e:
-        raise HTTPException(status_code=500, detail=str(e))
+        raise InternalServerException(message="Search failed", details={"error": str(e)})

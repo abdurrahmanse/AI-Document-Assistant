@@ -1,3 +1,4 @@
+from typing import Any
 from fastapi import Request, status
 from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
@@ -8,7 +9,7 @@ from app.core.exceptions import AppException
 
 logger = logging.getLogger(__name__)
 
-def create_error_response(code: str, message: str, details: list | dict | None = None) -> dict:
+def create_error_response(code: str, message: str, details: Any = None) -> dict:
     return {
         "error": {
             "code": code,

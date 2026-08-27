@@ -1,7 +1,8 @@
 import uuid
 from typing import List, Optional
 
-from fastapi import UploadFile, HTTPException
+from fastapi import UploadFile
+from app.core.exceptions import NotFoundException
 from app.infrastructure.db.models.document import Document, DocumentStatus
 from app.domains.documents.repositories.postgres import DocumentRepository
 from app.infrastructure.storage.s3 import S3StorageService
@@ -18,7 +19,7 @@ class DocumentService:
     async def get_document(self, document_id: uuid.UUID, user_id: uuid.UUID) -> Document:
         document = await self.repository.get_by_id(document_id)
         if not document or document.user_id != user_id:
-            raise HTTPException(status_code=404, detail="Document not found")
+            raise NotFoundException(message="Document not found")
         return document
         
     async def upload_document(self, user_id: uuid.UUID, file: UploadFile) -> Document:
