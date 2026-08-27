@@ -1,4 +1,5 @@
 "use client";
+import { env } from "@/env";
 
 import { useCore, useAuthContent, useLogin } from "@workspace/data";
 import Link from "next/link";
@@ -27,7 +28,7 @@ export default function LoginPage() {
     
     try {
       await loginMutation.mutateAsync([email, password]);
-      router.push("/app");
+      window.location.href = `${env.NEXT_PUBLIC_APP_URL}/dashboard`;
     } catch {
       setError(authData.login.errors.invalidCredentials);
     }
