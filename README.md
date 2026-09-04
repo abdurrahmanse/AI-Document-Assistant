@@ -1,159 +1,130 @@
-# Turborepo starter
+# AI Document Assistant (AI Document Intelligence Platform)
 
-This Turborepo starter is maintained by the Turborepo core team.
+![Status: Work in Progress](https://img.shields.io/badge/Status-Work%20in%20Progress-yellow)
+![License: MIT](https://img.shields.io/badge/License-MIT-blue)
 
-## Using this example
+**AI Document Assistant** is an advanced AI-powered Document Intelligence Platform. It provides a secure, intelligent, and interactive workspace for analyzing, processing, and interacting with documents using state-of-the-art AI models.
 
-Run the following command:
+> **Note**: This project is currently under active development. The architecture and features are continually evolving.
 
-```sh
-npx create-turbo@latest
+---
+
+## 🌟 Key Features
+
+- **Smart Document Analysis:** Extract insights, summarize, and intelligently query documents.
+- **Interactive Workflows:** Intuitive, real-time UI/UX for managing documents.
+- **Robust Security & Privacy:** Built with security at its core, keeping your sensitive documents safe.
+- **High Performance:** FastAPI backend for quick AI inferences paired with a responsive Next.js frontend.
+- **Modern Monorepo:** Scalable architecture built on Turborepo.
+
+## 🚀 Tech Stack
+
+This project is structured as a monorepo using **Turborepo** and **pnpm** workspaces.
+
+### Frontend
+- **Framework:** [Next.js](https://nextjs.org/) & [React 19](https://react.dev/)
+- **Styling & UI:** [Tailwind CSS](https://tailwindcss.com/) & [Framer Motion](https://www.framer.com/motion/)
+- **State Management & Data Fetching:** [Zustand](https://zustand-demo.pmnd.rs/) & [TanStack React Query](https://tanstack.com/query/latest)
+- **Validation:** [Zod](https://zod.dev/)
+- **Testing:** [Playwright](https://playwright.dev/)
+
+### Backend (API)
+- **Framework:** [FastAPI](https://fastapi.tiangolo.com/) (Python)
+- **Server:** Uvicorn
+- **Caching/Queue:** Redis
+- **Tooling:** [uv](https://github.com/astral-sh/uv), Ruff, Pytest, Pyright
+
+### Tooling
+- **Monorepo Management:** [Turborepo](https://turbo.build/)
+- **Package Manager:** [pnpm](https://pnpm.io/)
+- **Formatting & Linting:** ESLint, Prettier, Husky, lint-staged
+
+## 📁 Repository Structure
+
+```text
+AI-Document-Assistant/
+├── apps/
+│   ├── api/            # Python FastAPI backend service
+│   ├── web/            # Next.js web application (marketing & user dashboard)
+│   ├── admin/          # Admin dashboard application
+│   └── app/            # Main core application client
+├── packages/
+│   ├── ui/             # Shared React UI components (Tailwind + Radix)
+│   ├── types/          # Shared TypeScript definitions
+│   ├── data/           # Shared data access and state logic
+│   ├── marketing/      # Marketing page components & features
+│   ├── auth/           # Authentication utilities
+│   ├── config/         # Shared configurations
+│   ├── api-client/     # API client integrations
+│   ├── email/          # Email templates and utilities
+│   ├── observability/  # Logging and metrics
+│   ├── validation/     # Zod schemas and validation rules
+│   ├── eslint-config/  # Shared ESLint configs
+│   └── typescript-config/# Shared tsconfig.json files
+└── turbo.json          # Turborepo configuration
 ```
 
-## What's inside?
+## 🛠 Getting Started
 
-This Turborepo includes the following packages/apps:
+### Prerequisites
 
-### Apps and Packages
+Make sure you have the following installed on your local development machine:
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+- **Node.js** (v18 or higher)
+- **pnpm** (v9+)
+- **Python** (v3.10+)
+- **uv** (Python package manager)
+- **Redis** (Running locally or via Docker)
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+### Installation
 
-### Utilities
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your-username/AI-Document-Assistant.git
+   cd AI-Document-Assistant
+   ```
 
-This Turborepo has some additional tools already setup for you:
+2. **Install JavaScript/TypeScript dependencies:**
+   ```bash
+   pnpm install
+   ```
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+3. **Install Python dependencies (for API):**
+   ```bash
+   cd apps/api
+   uv sync  # Or follow specific virtual environment instructions
+   cd ../..
+   ```
 
-### Build
+4. **Environment Variables:**
+   Create `.env` files based on `.env.example` / `.env.template` at the root and in the respective `apps/api` and `apps/web` directories.
 
-To build all apps and packages, run the following command:
+### Running the Application
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
+You can use Turborepo to spin up the entire stack concurrently from the root directory:
 
-```sh
-cd my-turborepo
-turbo build
+```bash
+pnpm dev
+```
+This command starts both the **Next.js** frontend(s) and the **FastAPI** backend simultaneously.
+
+Alternatively, to build all apps and packages:
+```bash
+pnpm build
 ```
 
-Without global `turbo`, use your package manager:
+## 🧪 Testing and Linting
 
-```sh
-cd my-turborepo
-npx turbo build
-pnpm dlx turbo build
-pnpm exec turbo build
-```
+- **Run Linter:** `pnpm lint`
+- **Run Formatter:** `pnpm format`
+- **Check Types:** `pnpm check-types`
+- **Run Backend Tests:** `cd apps/api && uv run pytest`
+- **Run Frontend E2E:** `cd apps/web && pnpm test:e2e`
 
-You can build a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
+## 🤝 Contributing
 
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
+Contributions, issues, and feature requests are welcome! Since the project is currently in active development, please reach out or open an issue to discuss proposed changes before submitting a pull request.
 
-```sh
-turbo build --filter=docs
-```
+## 📄 License
 
-Without global `turbo`:
-
-```sh
-npx turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-pnpm exec turbo build --filter=docs
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo dev
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo dev
-pnpm exec turbo dev
-pnpm exec turbo dev
-```
-
-You can develop a specific package by using a [filter](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters):
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo dev --filter=web
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-pnpm exec turbo dev --filter=web
-```
-
-### Remote Caching
-
-> [!TIP]
-> Vercel Remote Cache is free for all plans. Get started today at [vercel.com](https://vercel.com/signup?utm_source=remote-cache-sdk&utm_campaign=free_remote_cache).
-
-Turborepo can use a technique known as [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup?utm_source=turborepo-examples), then enter the following commands:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed (recommended):
-
-```sh
-cd my-turborepo
-turbo login
-```
-
-Without global `turbo`, use your package manager:
-
-```sh
-cd my-turborepo
-npx turbo login
-pnpm exec turbo login
-pnpm exec turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-With [global `turbo`](https://turborepo.dev/docs/getting-started/installation#global-installation) installed:
-
-```sh
-turbo link
-```
-
-Without global `turbo`:
-
-```sh
-npx turbo link
-pnpm exec turbo link
-pnpm exec turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turborepo.dev/docs/crafting-your-repository/running-tasks)
-- [Caching](https://turborepo.dev/docs/crafting-your-repository/caching)
-- [Remote Caching](https://turborepo.dev/docs/core-concepts/remote-caching)
-- [Filtering](https://turborepo.dev/docs/crafting-your-repository/running-tasks#using-filters)
-- [Configuration Options](https://turborepo.dev/docs/reference/configuration)
-- [CLI Usage](https://turborepo.dev/docs/reference/command-line-reference)
+This project is licensed under the MIT License.
